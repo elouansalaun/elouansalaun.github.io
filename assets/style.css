@@ -539,6 +539,24 @@ td:not(:first-child), th:not(:first-child) { font-variant-numeric: tabular-nums;
   display: block; width: 100%; height: auto;
   background: #fff; border-radius: 4px;
 }
+/* the opening schematic: one image summarising the whole project, first thing
+   in the panel, with no frame and no caption. It takes the full width of the
+   block and sets its own height from its aspect ratio. */
+.rk > .rk-resume {
+  display: block;
+  width: 100%; height: auto;
+  margin: 0 0 1.75rem;
+}
+
+/* These exports are transparent-background line art drawn in the same palette
+   as the page, so inverting is enough under the dark theme and no light plate
+   is needed: hue-rotate puts the accents back where invert sent them, and the
+   near-black ink lands on the text colour while the canvas stays transparent. */
+[data-theme="dark"] .rk > .rk-resume { filter: invert(1) hue-rotate(180deg); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .rk > .rk-resume { filter: invert(1) hue-rotate(180deg); }
+}
+
 .rk .rk-shots {
   display: grid; gap: 1.1rem;
   grid-template-columns: repeat(2, minmax(0, 1fr));

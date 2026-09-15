@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <path d="M799.5,10.5L799.5,589.5C799.5,595.019 795.019,599.5 789.5,599.5L10.5,599.5C4.981,599.5 0.5,595.019 0.5,589.5L0.5,10.5C0.5,4.981 4.981,0.5 10.5,0.5L789.5,0.5C795.019,0.5 799.5,4.981 799.5,10.5Z" style="fill:none;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <g transform="matrix(1,0,0,1,40,58)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:20.5px;fill:rgb(26,26,24);">T<tspan x="10.25px 21.651px " y="0px 0px ">en</tspan>der Response Process Leveraging Data</text>
+    </g>
+    <g transform="matrix(1,0,0,1,760,58)">
+        <text x="-103.327px" y="0px" style="font-family:'Helvetica';font-size:13px;fill:rgb(142,142,134);">MSc thesis · 2026</text>
+    </g>
+    <g transform="matrix(1,0,0,1,40,81)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:12.5px;fill:rgb(107,107,100);">Five modules turn ten years of Quebec public tenders into a priced, ranked bid decision.</text>
+    </g>
+    <path d="M40,100L760,100" style="fill:none;fill-rule:nonzero;stroke:rgb(222,222,216);stroke-width:1px;stroke-linecap:round;"/>
+    <path d="M170,133L170,175C170,178.863 166.863,182 163,182L47,182C43.137,182 40,178.863 40,175L40,133C40,129.137 43.137,126 47,126L163,126C166.863,126 170,129.137 170,133Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M40.5,133L40.5,175" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,53,151)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(31,95,168);">1</text>
+    </g>
+    <g transform="matrix(1,0,0,1,66,151)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Monitor</text>
+    </g>
+    <g transform="matrix(1,0,0,1,53,167)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">SEAO scraping</text>
+    </g>
+    <path d="M175.25,149.5L181.25,154L175.25,158.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M105,186L105,237" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:1.5px;stroke-linecap:round;"/>
+    <path d="M317.5,133L317.5,175C317.5,178.863 314.363,182 310.5,182L194.5,182C190.637,182 187.5,178.863 187.5,175L187.5,133C187.5,129.137 190.637,126 194.5,126L310.5,126C314.363,126 317.5,129.137 317.5,133Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M188,133L188,175" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,200.5,151)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(31,95,168);">2</text>
+    </g>
+    <g transform="matrix(1,0,0,1,213.5,151)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Read</text>
+    </g>
+    <g transform="matrix(1,0,0,1,200.5,167)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">hierarchical RAG</text>
+    </g>
+    <path d="M322.75,149.5L328.75,154L322.75,158.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M252.5,186L252.5,237" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:1.5px;stroke-linecap:round;"/>
+    <path d="M465,133L465,175C465,178.863 461.863,182 458,182L342,182C338.137,182 335,178.863 335,175L335,133C335,129.137 338.137,126 342,126L458,126C461.863,126 465,129.137 465,133Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M335.5,133L335.5,175" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,348,151)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(31,95,168);">3</text>
+    </g>
+    <g transform="matrix(1,0,0,1,361,151)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Compare</text>
+    </g>
+    <g transform="matrix(1,0,0,1,348,167)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">RankNet ranking</text>
+    </g>
+    <path d="M470.25,149.5L476.25,154L470.25,158.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M394,186L394,237" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:1.5px;stroke-linecap:round;"/>
+    <path d="M406,237L406,186" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1.5px;stroke-linecap:round;"/>
+    <path d="M612.5,133L612.5,175C612.5,178.863 609.363,182 605.5,182L489.5,182C485.637,182 482.5,178.863 482.5,175L482.5,133C482.5,129.137 485.637,126 489.5,126L605.5,126C609.363,126 612.5,129.137 612.5,133Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M483,133L483,175" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,495.5,151)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(31,95,168);">4</text>
+    </g>
+    <g transform="matrix(1,0,0,1,508.5,151)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Price</text>
+    </g>
+    <g transform="matrix(1,0,0,1,495.5,167)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">XGBRanker</text>
+    </g>
+    <path d="M617.75,149.5L623.75,154L617.75,158.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M541.5,186L541.5,237" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:1.5px;stroke-linecap:round;"/>
+    <path d="M553.5,237L553.5,186" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1.5px;stroke-linecap:round;"/>
+    <path d="M760,133L760,175C760,178.863 756.863,182 753,182L637,182C633.137,182 630,178.863 630,175L630,133C630,129.137 633.137,126 637,126L753,126C756.863,126 760,129.137 760,133Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M630.5,133L630.5,175" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,643,151)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(31,95,168);">5</text>
+    </g>
+    <g transform="matrix(1,0,0,1,656,151)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Show</text>
+    </g>
+    <g transform="matrix(1,0,0,1,643,167)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Streamlit</text>
+    </g>
+    <path d="M695,237L695,186" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1.5px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,40,213)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(31,95,168);">write</text>
+    </g>
+    <g transform="matrix(1,0,0,1,760,213)">
+        <text x="-20.015px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(14,156,134);">read</text>
+    </g>
+    <path d="M760,251L760,281C760,285.415 756.415,289 752,289L48,289C43.585,289 40,285.415 40,281L40,251C40,246.585 43.585,243 48,243L752,243C756.415,243 760,246.585 760,251Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M40.5,251L40.5,281" style="fill:none;fill-rule:nonzero;stroke:rgb(109,74,168);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,0.533333,15.632206,121.595691)">
+        <path d="M40.5,251L40.5,281" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1.25px;stroke-linecap:round;"/>
+    </g>
+    <g transform="matrix(1,0,0,0.533333,15.365784,121.715369)">
+        <path d="M40.5,251L40.5,281" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1.25px;stroke-linecap:round;"/>
+    </g>
+    <g transform="matrix(1,0,0,0.533333,31.414115,121.753006)">
+        <path d="M40.5,251L40.5,281" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1.25px;stroke-linecap:round;"/>
+    </g>
+    <ellipse cx="64" cy="256" rx="8" ry="3" style="fill:none;stroke:black;stroke-width:1.3px;"/>
+    <ellipse cx="64" cy="263.5" rx="8" ry="3" style="fill:none;stroke:black;stroke-width:1.3px;"/>
+    <ellipse cx="64" cy="271" rx="8" ry="3" style="fill:none;stroke:black;stroke-width:1.3px;"/>
+    <g transform="matrix(1,0,0,1,82,264)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13px;fill:rgb(26,26,24);">One shared database</text>
+    </g>
+    <g transform="matrix(1,0,0,1,82,279)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">publications · parsed documents · similarity features · margin scores</text>
+    </g>
+    <g transform="matrix(1,0,0,1,746,271)">
+        <text x="-103.898px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(142,142,134);">Jan 2015</text>
+        <text x="-57.776px" y="0px" style="font-family:'LucidaGrande', 'Lucida Grande', sans-serif;font-weight:500;font-size:10.5px;fill:rgb(142,142,134);">→</text>
+        <text x="-44.358px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(142,142,134);">Mar 2026</text>
+    </g>
+    <path d="M395,330L395,400C395,404.415 391.415,408 387,408L48,408C43.585,408 40,404.415 40,400L40,330C40,325.585 43.585,322 48,322L387,322C391.415,322 395,325.585 395,330Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,54,341)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">WIN<tspan x="20.536px " y="0px "> </tspan>RA<tspan x="37.392px 43.847px " y="0px 0px ">TE</tspan> —<tspan x="64.394px " y="0px "> </tspan>CH<tspan x="82.603px " y="0px ">R</tspan>ON<tspan x="106.062px " y="0px ">O</tspan>LO<tspan x="128.362px " y="0px ">G</tspan>IC<tspan x="147.155px 154.2px 159.697px 162.657px " y="0px 0px 0px 0px ">AL L</tspan>EA<tspan x="181.855px 188.9px " y="0px 0px ">VE</tspan>-O<tspan x="207.694px " y="0px ">N</tspan>E-<tspan x="225.902px " y="0px ">O</tspan>UT</text>
+    </g>
+    <g transform="matrix(1,0,0,1,54,365)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(26,26,24);">Model</text>
+    </g>
+    <path d="M126,354L262,354C264.194,354 266,355.806 266,358L266,364C266,366.194 264.194,368 262,368L126,368L126,354Z" style="fill:rgb(31,95,168);fill-rule:nonzero;"/>
+    <g transform="matrix(1,0,0,1,274,365)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">40%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,54,389)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">Reference</text>
+    </g>
+    <path d="M126,378L174.5,378C176.694,378 178.5,379.806 178.5,382L178.5,388C178.5,390.194 176.694,392 174.5,392L126,392L126,378Z" style="fill:rgb(182,182,174);fill-rule:nonzero;"/>
+    <g transform="matrix(1,0,0,1,186.5,389)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(107,107,100);">15%</text>
+    </g>
+    <path d="M760,330L760,400C760,404.415 756.415,408 752,408L413,408C408.585,408 405,404.415 405,400L405,330C405,325.585 408.585,322 413,322L752,322C756.415,322 760,325.585 760,330Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,419,341)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">PRO<tspan x="22.879px " y="0px ">J</tspan>EC<tspan x="42.842px " y="0px ">T</tspan>ED<tspan x="63.968px " y="0px "> </tspan>GA<tspan x="82.181px " y="0px ">I</tspan>NS<tspan x="99.811px " y="0px "> </tspan>OV<tspan x="118.025px " y="0px ">E</tspan>R T<tspan x="141.925px " y="0px ">H</tspan>E <tspan x="159.555px " y="0px ">S</tspan>AM<tspan x="182.434px 189.48px 192.254px 198.71px " y="0px 0px 0px 0px ">E TE</tspan>ND<tspan x="221.005px " y="0px ">E</tspan>RS</text>
+    </g>
+    <g transform="matrix(1,0,0,1,419,365)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(26,26,24);">Model</text>
+    </g>
+    <path d="M491,354L627.8,354C629.994,354 631.8,355.806 631.8,358L631.8,364C631.8,366.194 629.994,368 627.8,368L491,368L491,354Z" style="fill:rgb(14,156,134);fill-rule:nonzero;"/>
+    <g transform="matrix(1,0,0,1,639.8,365)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">3.52 M$</text>
+    </g>
+    <g transform="matrix(1,0,0,1,419,389)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">Reference</text>
+    </g>
+    <path d="M491,378L573.8,378C575.994,378 577.8,379.806 577.8,382L577.8,388C577.8,390.194 575.994,392 573.8,392L491,392L491,378Z" style="fill:rgb(182,182,174);fill-rule:nonzero;"/>
+    <g transform="matrix(1,0,0,1,585.8,389)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(107,107,100);">2.17 M$</text>
+    </g>
+    <path d="M209.5,440L209.5,502C209.5,506.415 205.915,510 201.5,510L48,510C43.585,510 40,506.415 40,502L40,440C40,435.585 43.585,432 48,432L201.5,432C205.915,432 209.5,435.585 209.5,440Z" style="fill:rgb(244,244,241);"/>
+    <path d="M53,446L53,462" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:3px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,64,464)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">1,960</text>
+    </g>
+    <g transform="matrix(1,0,0,1,64,484)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">tender publications</text>
+    </g>
+    <g transform="matrix(1,0,0,1,64,498)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">collected</text>
+    </g>
+    <path d="M393,440L393,502C393,506.415 389.415,510 385,510L231.5,510C227.085,510 223.5,506.415 223.5,502L223.5,440C223.5,435.585 227.085,432 231.5,432L385,432C389.415,432 393,435.585 393,440Z" style="fill:rgb(244,244,241);"/>
+    <path d="M236.5,446L236.5,462" style="fill:none;fill-rule:nonzero;stroke:rgb(109,74,168);stroke-width:3px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,247.5,464)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">94%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,247.5,484)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">of them carry</text>
+    </g>
+    <g transform="matrix(1,0,0,1,247.5,498)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">award data</text>
+    </g>
+    <path d="M576.5,440L576.5,502C576.5,506.415 572.915,510 568.5,510L415,510C410.585,510 407,506.415 407,502L407,440C407,435.585 410.585,432 415,432L568.5,432C572.915,432 576.5,435.585 576.5,440Z" style="fill:rgb(244,244,241);"/>
+    <path d="M420,446L420,462" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:3px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,431,464)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">87 / 98%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,431,484)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">RAG extraction</text>
+    </g>
+    <g transform="matrix(1,0,0,1,431,498)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">precision / recall</text>
+    </g>
+    <path d="M760,440L760,502C760,506.415 756.415,510 752,510L598.5,510C594.085,510 590.5,506.415 590.5,502L590.5,440C590.5,435.585 594.085,432 598.5,432L752,432C756.415,432 760,435.585 760,440Z" style="fill:rgb(244,244,241);"/>
+    <path d="M603.5,446L603.5,462" style="fill:none;fill-rule:nonzero;stroke:rgb(180,83,15);stroke-width:3px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,614.5,464)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">+62%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,614.5,484)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">projected gain</text>
+    </g>
+    <g transform="matrix(1,0,0,1,614.5,498)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">vs. reference bidding</text>
+    </g>
+    <path d="M93.3,555.5C93.3,561.295 88.595,566 82.8,566L50.5,566C44.705,566 40,561.295 40,555.5C40,549.705 44.705,545 50.5,545L82.8,545C88.595,545 93.3,549.705 93.3,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,66.64,559.28)">
+        <text x="-16.345px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Python</text>
+    </g>
+    <path d="M212.38,555.5C212.38,561.295 207.675,566 201.88,566L110.78,566C104.985,566 100.28,561.295 100.28,555.5C100.28,549.705 104.985,545 110.78,545L201.88,545C207.675,545 212.38,549.705 212.38,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,156.32,559.28)">
+        <text x="-40.552px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Hierarchical RAG</text>
+    </g>
+    <path d="M325.56,555.5C325.56,561.295 320.855,566 315.06,566L229.86,566C224.065,566 219.36,561.295 219.36,555.5C219.36,549.705 224.065,545 229.86,545L315.06,545C320.855,545 325.56,549.705 325.56,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,272.46,559.28)">
+        <text x="-35.012px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Ministral 3-14B</text>
+    </g>
+    <path d="M391.76,555.5C391.76,561.295 387.055,566 381.26,566L343.06,566C337.265,566 332.56,561.295 332.56,555.5C332.56,549.705 337.265,545 343.06,545L381.26,545C387.055,545 391.76,549.705 391.76,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,362.14,559.28)">
+        <text x="-20.426px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">RankNet</text>
+    </g>
+    <path d="M469.62,555.5C469.62,561.295 464.915,566 459.12,566L409.22,566C403.425,566 398.72,561.295 398.72,555.5C398.72,549.705 403.425,545 409.22,545L459.12,545C464.915,545 469.62,549.705 469.62,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,434.18,559.28)">
+        <text x="-28.011px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">XGBRanker</text>
+    </g>
+    <path d="M547.54,555.5C547.54,561.295 542.835,566 537.04,566L487.14,566C481.345,566 476.64,561.295 476.64,555.5C476.64,549.705 481.345,545 487.14,545L537.04,545C542.835,545 547.54,549.705 547.54,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,512.1,559.28)">
+        <text x="-20.713px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Streamlit</text>
+    </g>
+    <path d="M601.96,555.5C601.96,561.295 597.255,566 591.46,566L565.06,566C559.265,566 554.56,561.295 554.56,555.5C554.56,549.705 559.265,545 565.06,545L591.46,545C597.255,545 601.96,549.705 601.96,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,578.26,559.28)">
+        <text x="-13.715px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Azure</text>
+    </g>
+</svg>

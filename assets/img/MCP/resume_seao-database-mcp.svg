@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <path d="M799.5,10.5L799.5,589.5C799.5,595.019 795.019,599.5 789.5,599.5L10.5,599.5C4.981,599.5 0.5,595.019 0.5,589.5L0.5,10.5C0.5,4.981 4.981,0.5 10.5,0.5L789.5,0.5C795.019,0.5 799.5,4.981 799.5,10.5Z" style="fill:none;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <g transform="matrix(1,0,0,1,40,58)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:23px;fill:rgb(26,26,24);">SEAO Database MCP</text>
+    </g>
+    <g transform="matrix(1,0,0,1,760,58)">
+        <text x="-139.477px" y="0px" style="font-family:'Helvetica';font-size:13px;fill:rgb(142,142,134);">Open-source tool · 2026</text>
+    </g>
+    <g transform="matrix(1,0,0,1,40,81)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:12.5px;fill:rgb(107,107,100);">A<tspan x="7.654px 11.127px " y="0px 0px "> l</tspan>ocal MCP<tspan x="67.865px 71.338px " y="0px 0px "> s</tspan>erver that answers natural-language questions on Quebec procurement open data.</text>
+    </g>
+    <path d="M40,100L760,100" style="fill:none;fill-rule:nonzero;stroke:rgb(222,222,216);stroke-width:1px;stroke-linecap:round;"/>
+    <path d="M208,127L208,165C208,168.863 204.863,172 201,172L47,172C43.137,172 40,168.863 40,165L40,127C40,123.137 43.137,120 47,120L201,120C204.863,120 208,123.137 208,127Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M40.5,127L40.5,165" style="fill:none;fill-rule:nonzero;stroke:rgb(142,142,134);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,53,142)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">SEAO open data</text>
+    </g>
+    <g transform="matrix(1,0,0,1,53,158)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">OCDS weekly releases</text>
+    </g>
+    <path d="M212.5,141.5L218.5,146L212.5,150.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M392,127L392,165C392,168.863 388.863,172 385,172L231,172C227.137,172 224,168.863 224,165L224,127C224,123.137 227.137,120 231,120L385,120C388.863,120 392,123.137 392,127Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M224.5,127L224.5,165" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,237,142)">
+        <text x="0px" y="0px" style="font-family:'Menlo-Bold', 'Menlo', monospace;font-weight:700;font-size:11.5px;fill:rgb(26,26,24);">fetch_seao_opendata</text>
+    </g>
+    <g transform="matrix(1,0,0,1,237,158)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">download + cache</text>
+    </g>
+    <path d="M396.5,141.5L402.5,146L396.5,150.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M576,127L576,165C576,168.863 572.863,172 569,172L415,172C411.137,172 408,168.863 408,165L408,127C408,123.137 411.137,120 415,120L569,120C572.863,120 576,123.137 576,127Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M408.5,127L408.5,165" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,421,142)">
+        <text x="0px" y="0px" style="font-family:'Menlo-Bold', 'Menlo', monospace;font-weight:700;font-size:11.5px;fill:rgb(26,26,24);">build_raw_json_db</text>
+    </g>
+    <g transform="matrix(1,0,0,1,421,158)">
+        <g transform="matrix(10,0,0,10,0,0)">
+        </g>
+        <g transform="matrix(10,0,0,10,2.77832,0)">
+        </g>
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">ﬁlter: FR keywords, UNSPSC</text>
+    </g>
+    <path d="M580.5,141.5L586.5,146L580.5,150.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M760,127L760,165C760,168.863 756.863,172 753,172L599,172C595.137,172 592,168.863 592,165L592,127C592,123.137 595.137,120 599,120L753,120C756.863,120 760,123.137 760,127Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M592.5,127L592.5,165" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,605,142)">
+        <text x="0px" y="0px" style="font-family:'Menlo-Bold', 'Menlo', monospace;font-weight:700;font-size:11.5px;fill:rgb(26,26,24);">build_work_sqlite_db</text>
+    </g>
+    <g transform="matrix(1,0,0,1,605,158)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">normalise + index</text>
+    </g>
+    <path d="M320,204L320,340C320,344.415 316.415,348 312,348L48,348C43.585,348 40,344.415 40,340L40,204C40,199.585 43.585,196 48,196L312,196C316.415,196 320,199.585 320,204Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,56,220)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13px;fill:rgb(26,26,24);">W<tspan x="12.042px 19.271px " y="0px 0px ">or</tspan>k SQLite database</text>
+    </g>
+    <circle cx="60" cy="238" r="2.4" style="fill:rgb(109,74,168);"/>
+    <g transform="matrix(1,0,0,1,70,242)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">18 normalised tables · 5 views</text>
+    </g>
+    <circle cx="60" cy="256" r="2.4" style="fill:rgb(109,74,168);"/>
+    <g transform="matrix(1,0,0,1,70,260)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">FTS5 full-text index</text>
+    </g>
+    <circle cx="60" cy="274" r="2.4" style="fill:rgb(109,74,168);"/>
+    <g transform="matrix(1,0,0,1,70,278)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">schema_doc data dictionary</text>
+    </g>
+    <circle cx="60" cy="292" r="2.4" style="fill:rgb(109,74,168);"/>
+    <g transform="matrix(1,0,0,1,70,296)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">NEQ as the stable supplier key</text>
+    </g>
+    <circle cx="60" cy="310" r="2.4" style="fill:rgb(109,74,168);"/>
+    <g transform="matrix(1,0,0,1,70,314)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">release-scoped party IDs resolved</text>
+    </g>
+    <circle cx="60" cy="328" r="2.4" style="fill:rgb(109,74,168);"/>
+    <g transform="matrix(1,0,0,1,70,332)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">deduplicated supplier names</text>
+    </g>
+    <path d="M326,272L372,272" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1.6px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,349,262)">
+        <text x="-18.76px" y="0px" style="font-family:'Helvetica';font-size:9px;fill:rgb(14,156,134);">read-only</text>
+    </g>
+    <path d="M760,204L760,340C760,344.415 756.415,348 752,348L388,348C383.585,348 380,344.415 380,340L380,204C380,199.585 383.585,196 388,196L752,196C756.415,196 760,199.585 760,204Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M380.5,204L380.5,340" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,396,220)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13px;fill:rgb(26,26,24);">MCP<tspan x="28.66px 32.271px " y="0px 0px "> t</tspan>ool surface</text>
+    </g>
+    <g transform="matrix(1,0,0,1,744,220)">
+        <text x="-70.952px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(142,142,134);">FastMCP<tspan x="-29.458px -26.68px " y="0px 0px "> ·</tspan> stdio</text>
+    </g>
+    <g transform="matrix(1,0,0,1,396,240)">
+        <g transform="matrix(9.5,0,0,9.5,7.998852,0)">
+        </g>
+        <g transform="matrix(9.5,0,0,9.5,10.655174,0)">
+        </g>
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(109,74,168);">3 ﬂ<tspan x="12.787px " y="0px ">e</tspan>xi<tspan x="25.045px " y="0px ">b</tspan>le</text>
+    </g>
+    <path d="M500.3,253L500.3,262C500.3,264.76 498.06,267 495.3,267L401,267C398.24,267 396,264.76 396,262L396,253C396,250.24 398.24,248 401,248L495.3,248C498.06,248 500.3,250.24 500.3,253Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,448.175,261)">
+        <text x="-42.896px" y="0px" style="font-family:'Menlo-Regular', 'Menlo', monospace;font-size:9.5px;fill:rgb(26,26,24);">describe_schema</text>
+    </g>
+    <path d="M616.55,253L616.55,262C616.55,264.76 614.31,267 611.55,267L511.35,267C508.59,267 506.35,264.76 506.35,262L506.35,253C506.35,250.24 508.59,248 511.35,248L611.55,248C614.31,248 616.55,250.24 616.55,253Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,561.47,261)">
+        <text x="-45.756px" y="0px" style="font-family:'Menlo-Regular', 'Menlo', monospace;font-size:9.5px;fill:rgb(26,26,24);">search_processes</text>
+    </g>
+    <path d="M679.79,253L679.79,262C679.79,264.76 677.55,267 674.79,267L627.59,267C624.83,267 622.59,264.76 622.59,262L622.59,253C622.59,250.24 624.83,248 627.59,248L674.79,248C677.55,248 679.79,250.24 679.79,253Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,651.205,261)">
+        <text x="-20.018px" y="0px" style="font-family:'Menlo-Regular', 'Menlo', monospace;font-size:9.5px;fill:rgb(26,26,24);">run_sql</text>
+    </g>
+    <g transform="matrix(1,0,0,1,396,288)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(14,156,134);">6 c<tspan x="12.787px " y="0px ">u</tspan>ra<tspan x="26.631px " y="0px ">t</tspan>ed<tspan x="39.952px " y="0px "> </tspan>an<tspan x="53.272px " y="0px ">a</tspan>ly<tspan x="65.53px " y="0px ">t</tspan>ic<tspan x="75.144px " y="0px ">s</tspan></text>
+    </g>
+    <path d="M465,301L465,310C465,312.76 462.76,315 460,315L401,315C398.24,315 396,312.76 396,310L396,301C396,298.24 398.24,296 401,296L460,296C462.76,296 465,298.24 465,301Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,430.505,309)">
+        <text x="-25.738px" y="0px" style="font-family:'Menlo-Regular', 'Menlo', monospace;font-size:9.5px;fill:rgb(26,26,24);">incumbent</text>
+    </g>
+    <path d="M575.31,301L575.31,310C575.31,312.76 573.07,315 570.31,315L476.01,315C473.25,315 471.01,312.76 471.01,310L471.01,301C471.01,298.24 473.25,296 476.01,296L570.31,296C573.07,296 575.31,298.24 575.31,301Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,523.185,309)">
+        <text x="-42.896px" y="0px" style="font-family:'Menlo-Regular', 'Menlo', monospace;font-size:9.5px;fill:rgb(26,26,24);">price_benchmark</text>
+    </g>
+    <path d="M691.56,301L691.56,310C691.56,312.76 689.32,315 686.56,315L586.36,315C583.6,315 581.36,312.76 581.36,310L581.36,301C581.36,298.24 583.6,296 586.36,296L686.56,296C689.32,296 691.56,298.24 691.56,301Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,636.48,309)">
+        <g transform="matrix(9.5,0,0,9.5,25.737671,0)">
+        </g>
+        <g transform="matrix(9.5,0,0,9.5,28.597412,0)">
+        </g>
+        <text x="-42.896px" y="0px" style="font-family:'Menlo-Regular', 'Menlo', monospace;font-size:9.5px;fill:rgb(26,26,24);">supplier_proﬁle</text>
+    </g>
+    <path d="M482.7,323L482.7,332C482.7,334.76 480.46,337 477.7,337L401,337C398.24,337 396,334.76 396,332L396,323C396,320.24 398.24,318 401,318L477.7,318C480.46,318 482.7,320.24 482.7,323Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,439.34,331)">
+        <text x="-34.317px" y="0px" style="font-family:'Menlo-Regular', 'Menlo', monospace;font-size:9.5px;fill:rgb(26,26,24);">head_to_head</text>
+    </g>
+    <path d="M581.28,323L581.28,332C581.28,334.76 579.04,337 576.28,337L493.68,337C490.92,337 488.68,334.76 488.68,332L488.68,323C488.68,320.24 490.92,318 493.68,318L576.28,318C579.04,318 581.28,320.24 581.28,323Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,534.965,331)">
+        <g transform="matrix(9.5,0,0,9.5,17.158447,0)">
+        </g>
+        <g transform="matrix(9.5,0,0,9.5,20.018188,0)">
+        </g>
+        <text x="-34.317px" y="0px" style="font-family:'Menlo-Regular', 'Menlo', monospace;font-size:9.5px;fill:rgb(26,26,24);">buyer_proﬁle</text>
+    </g>
+    <path d="M691.55,323L691.55,332C691.55,334.76 689.31,337 686.55,337L592.25,337C589.49,337 587.25,334.76 587.25,332L587.25,323C587.25,320.24 589.49,318 592.25,318L686.55,318C689.31,318 691.55,320.24 691.55,323Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,639.425,331)">
+        <text x="-42.896px" y="0px" style="font-family:'Menlo-Regular', 'Menlo', monospace;font-size:9.5px;fill:rgb(26,26,24);">market_overview</text>
+    </g>
+    <g transform="matrix(1,0,0,1,40,384)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(142,142,134);">QU<tspan x="14.364px " y="0px ">E</tspan>RY <tspan x="36.431px 43.877px 50.795px 57.188px 64.106px " y="0px 0px 0px 0px 0px ">GUARD</tspan>S</text>
+    </g>
+    <path d="M244.2,380C244.2,387.175 238.375,393 231.2,393L155,393C147.825,393 142,387.175 142,380C142,372.825 147.825,367 155,367L231.2,367C238.375,367 244.2,372.825 244.2,380Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M157,381L160.2,384.4L166.6,376.8" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:2px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <g transform="matrix(1,0,0,1,172,384)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">read-only URI</text>
+    </g>
+    <path d="M380.4,380C380.4,387.175 374.575,393 367.4,393L264.2,393C257.025,393 251.2,387.175 251.2,380C251.2,372.825 257.025,367 264.2,367L367.4,367C374.575,367 380.4,372.825 380.4,380Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M266.2,381L269.4,384.4L275.8,376.8" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:2px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <g transform="matrix(1,0,0,1,281.2,384)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">SELECT<tspan x="38.726px 41.504px " y="0px 0px "> /</tspan> WITH only</text>
+    </g>
+    <path d="M489.6,380C489.6,387.175 483.775,393 476.6,393L400.4,393C393.225,393 387.4,387.175 387.4,380C387.4,372.825 393.225,367 400.4,367L476.6,367C483.775,367 489.6,372.825 489.6,380Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M402.4,381L405.6,384.4L412,376.8" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:2px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <g transform="matrix(1,0,0,1,417.4,384)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">LIMIT<tspan x="25.381px 28.159px " y="0px 0px "> ≤</tspan> 2,000</text>
+    </g>
+    <path d="M588,380C588,387.175 582.175,393 575,393L509.6,393C502.425,393 496.6,387.175 496.6,380C496.6,372.825 502.425,367 509.6,367L575,367C582.175,367 588,372.825 588,380Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M511.6,381L514.8,384.4L521.2,376.8" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:2px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <g transform="matrix(1,0,0,1,526.6,384)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">5 s timeout</text>
+    </g>
+    <path d="M713.4,380C713.4,387.175 707.575,393 700.4,393L608,393C600.825,393 595,387.175 595,380C595,372.825 600.825,367 608,367L700.4,367C707.575,367 713.4,372.825 713.4,380Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M610,381L613.2,384.4L619.6,376.8" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:2px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <g transform="matrix(1,0,0,1,625,384)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">fresh connection</text>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M209.5,440L209.5,502C209.5,506.415 205.915,510 201.5,510L48,510C43.585,510 40,506.415 40,502L40,440C40,435.585 43.585,432 48,432L201.5,432C205.915,432 209.5,435.585 209.5,440Z" style="fill:rgb(244,244,241);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M53,446L53,462" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:3px;stroke-linecap:round;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,156,464)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">9</text>
+    </g>
+    <g transform="matrix(1,0,0,1,156,484)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">tools exposed to</text>
+    </g>
+    <g transform="matrix(1,0,0,1,156,498)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">the language model</text>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M393,440L393,502C393,506.415 389.415,510 385,510L231.5,510C227.085,510 223.5,506.415 223.5,502L223.5,440C223.5,435.585 227.085,432 231.5,432L385,432C389.415,432 393,435.585 393,440Z" style="fill:rgb(244,244,241);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M236.5,446L236.5,462" style="fill:none;fill-rule:nonzero;stroke:rgb(109,74,168);stroke-width:3px;stroke-linecap:round;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,339.5,464)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">18 + 5</text>
+    </g>
+    <g transform="matrix(1,0,0,1,339.5,484)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">tables and views,</text>
+    </g>
+    <g transform="matrix(1,0,0,1,339.5,498)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">FTS5-indexed</text>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M576.5,440L576.5,502C576.5,506.415 572.915,510 568.5,510L415,510C410.585,510 407,506.415 407,502L407,440C407,435.585 410.585,432 415,432L568.5,432C572.915,432 576.5,435.585 576.5,440Z" style="fill:rgb(244,244,241);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M420,446L420,462" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:3px;stroke-linecap:round;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,523,464)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:20px;fill:rgb(26,26,24);">2021–2025</text>
+    </g>
+    <g transform="matrix(1,0,0,1,523,484)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">security services</text>
+    </g>
+    <g transform="matrix(1,0,0,1,523,498)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">coverage window</text>
+    </g>
+    <path d="M93.3,555.5C93.3,561.295 88.595,566 82.8,566L50.5,566C44.705,566 40,561.295 40,555.5C40,549.705 44.705,545 50.5,545L82.8,545C88.595,545 93.3,549.705 93.3,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,66.64,559.28)">
+        <text x="-16.345px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Python</text>
+    </g>
+    <path d="M135.88,555.5C135.88,561.295 131.175,566 125.38,566L110.78,566C104.985,566 100.28,561.295 100.28,555.5C100.28,549.705 104.985,545 110.78,545L125.38,545C131.175,545 135.88,549.705 135.88,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,118.1,559.28)">
+        <text x="-11.666px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">MCP</text>
+    </g>
+    <path d="M202.12,555.5C202.12,561.295 197.415,566 191.62,566L153.42,566C147.625,566 142.92,561.295 142.92,555.5C142.92,549.705 147.625,545 153.42,545L191.62,545C197.415,545 202.12,549.705 202.12,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,172.5,559.28)">
+        <text x="-21.877px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">FastMCP</text>
+    </g>
+    <path d="M262.38,555.5C262.38,561.295 257.675,566 251.88,566L219.58,566C213.785,566 209.08,561.295 209.08,555.5C209.08,549.705 213.785,545 219.58,545L251.88,545C257.675,545 262.38,549.705 262.38,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,235.72,559.28)">
+        <text x="-16.05px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">SQLite</text>
+    </g>
+    <path d="M310.86,555.5C310.86,561.295 306.155,566 300.36,566L279.86,566C274.065,566 269.36,561.295 269.36,555.5C269.36,549.705 274.065,545 279.86,545L300.36,545C306.155,545 310.86,549.705 310.86,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,290.12,559.28)">
+        <text x="-12.835px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">FTS5</text>
+    </g>
+    <path d="M359.38,555.5C359.38,561.295 354.675,566 348.88,566L328.38,566C322.585,566 317.88,561.295 317.88,555.5C317.88,549.705 322.585,545 328.38,545L348.88,545C354.675,545 359.38,549.705 359.38,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,338.64,559.28)">
+        <text x="-15.168px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">OCDS</text>
+    </g>
+    <path d="M502,555.5C502,561.295 497.295,566 491.5,566L376.9,566C371.105,566 366.4,561.295 366.4,555.5C366.4,549.705 371.105,545 376.9,545L491.5,545C497.295,545 502,549.705 502,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,434.2,559.28)">
+        <text x="-52.241px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Natural-language SQL</text>
+    </g>
+</svg>

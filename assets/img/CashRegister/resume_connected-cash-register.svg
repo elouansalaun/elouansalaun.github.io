@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <path d="M799.5,10.5L799.5,589.5C799.5,595.019 795.019,599.5 789.5,599.5L10.5,599.5C4.981,599.5 0.5,595.019 0.5,589.5L0.5,10.5C0.5,4.981 4.981,0.5 10.5,0.5L789.5,0.5C795.019,0.5 799.5,4.981 799.5,10.5Z" style="fill:none;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <g transform="matrix(1,0,0,1,40,58)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:18.5px;fill:rgb(26,26,24);">Connected Multi-Point Cash-Register System</text>
+    </g>
+    <g transform="matrix(1,0,0,1,760,58)">
+        <text x="-137.319px" y="0px" style="font-family:'Helvetica';font-size:13px;fill:rgb(142,142,134);">Event operations · 2023</text>
+    </g>
+    <g transform="matrix(1,0,0,1,40,81)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:12.5px;fill:rgb(107,107,100);">Button-grid terminals stream every sale over 4G so restocking is triggered half an hour before a bar runs dry<tspan x="595.886px " y="0px ">.</tspan></text>
+    </g>
+    <path d="M40,100L760,100" style="fill:none;fill-rule:nonzero;stroke:rgb(222,222,216);stroke-width:1px;stroke-linecap:round;"/>
+    <path d="M174.4,129L174.4,177C174.4,180.863 171.263,184 167.4,184L47,184C43.137,184 40,180.863 40,177L40,129C40,125.137 43.137,122 47,122L167.4,122C171.263,122 174.4,125.137 174.4,129Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M40.5,130L40.5,176" style="fill:none;fill-rule:nonzero;stroke:rgb(180,83,15);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,52,147)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">T<tspan x="5.75px 12.146px " y="0px 0px ">er</tspan>minals</text>
+    </g>
+    <g transform="matrix(1,0,0,1,52,163)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(107,107,100);">ESP32 button grid</text>
+    </g>
+    <g transform="matrix(1,0,0,1,52,176)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(107,107,100);">local debounce</text>
+    </g>
+    <path d="M176.9,148.5L182.9,153L176.9,157.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M320.8,129L320.8,177C320.8,180.863 317.663,184 313.8,184L193.4,184C189.537,184 186.4,180.863 186.4,177L186.4,129C186.4,125.137 189.537,122 193.4,122L313.8,122C317.663,122 320.8,125.137 320.8,129Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M186.9,130L186.9,176" style="fill:none;fill-rule:nonzero;stroke:rgb(180,83,15);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,198.4,147)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">4G uplink</text>
+    </g>
+    <g transform="matrix(1,0,0,1,198.4,163)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(107,107,100);">MQTT<tspan x="26.742px 29.381px " y="0px 0px "> Q</tspan>oS 1</text>
+    </g>
+    <g transform="matrix(1,0,0,1,198.4,176)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(107,107,100);">last will, retry</text>
+    </g>
+    <path d="M323.3,148.5L329.3,153L323.3,157.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M467.2,129L467.2,177C467.2,180.863 464.063,184 460.2,184L339.8,184C335.937,184 332.8,180.863 332.8,177L332.8,129C332.8,125.137 335.937,122 339.8,122L460.2,122C464.063,122 467.2,125.137 467.2,129Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M333.3,130L333.3,176" style="fill:none;fill-rule:nonzero;stroke:rgb(180,83,15);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,344.8,147)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">Broker</text>
+    </g>
+    <g transform="matrix(1,0,0,1,344.8,163)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(107,107,100);">private <tspan x="30.634px 36.97px " y="0px 0px ">AP</tspan></text>
+    </g>
+    <g transform="matrix(1,0,0,1,344.8,176)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(107,107,100);">no venue Wi-Fi</text>
+    </g>
+    <path d="M469.7,148.5L475.7,153L469.7,157.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M613.6,129L613.6,177C613.6,180.863 610.463,184 606.6,184L486.2,184C482.337,184 479.2,180.863 479.2,177L479.2,129C479.2,125.137 482.337,122 486.2,122L606.6,122C610.463,122 613.6,125.137 613.6,129Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M479.7,130L479.7,176" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,491.2,147)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">Sheet bridge</text>
+    </g>
+    <g transform="matrix(1,0,0,1,491.2,163)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(107,107,100);">dedup by device</text>
+    </g>
+    <g transform="matrix(1,0,0,1,491.2,176)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(107,107,100);">+ sequence no.</text>
+    </g>
+    <path d="M616.1,148.5L622.1,153L616.1,157.5" style="fill:none;fill-rule:nonzero;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M760,129L760,177C760,180.863 756.863,184 753,184L632.6,184C628.737,184 625.6,180.863 625.6,177L625.6,129C625.6,125.137 628.737,122 632.6,122L753,122C756.863,122 760,125.137 760,129Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M626.1,130L626.1,176" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,637.6,147)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">Restock board</text>
+    </g>
+    <g transform="matrix(1,0,0,1,637.6,163)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(107,107,100);">alert when τ ≤ L</text>
+    </g>
+    <g transform="matrix(1,0,0,1,637.6,176)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(107,107,100);">per bar<tspan x="29.581px 32.22px " y="0px 0px ">, </tspan>item</text>
+    </g>
+    <path d="M376,214L376,360C376,364.415 372.415,368 368,368L48,368C43.585,368 40,364.415 40,360L40,214C40,209.585 43.585,206 48,206L368,206C372.415,206 376,209.585 376,214Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,56,230)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">STO<tspan x="21.557px 29.193px 36.249px 44.468px 52.104px 58.385px 61.355px 67.821px 76.041px 83.676px 90.732px 98.368px 105.423px " y="0px 0px 0px 0px 0px 0px 0px 0px 0px 0px 0px 0px 0px ">CKOUT FORECAS</tspan>T</text>
+    </g>
+    <g transform="matrix(1,0,0,1,56,262)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:20px;fill:rgb(26,26,24);">λ</text>
+    </g>
+    <g transform="matrix(1,0,0,1,68,266)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">b</text>
+    </g>
+    <g transform="matrix(1,0,0,1,74,262)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:17px;fill:rgb(26,26,24);">(t)  =  c̄</text>
+    </g>
+    <g transform="matrix(1,0,0,1,132,266)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">b</text>
+    </g>
+    <g transform="matrix(1,0,0,1,139,262)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:17px;fill:rgb(26,26,24);">· m(t) · w</text>
+    </g>
+    <g transform="matrix(1,0,0,1,227,266)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">b</text>
+    </g>
+    <g transform="matrix(1,0,0,1,58,296)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(109,74,168);">c̄</text>
+    </g>
+    <g transform="matrix(1,0,0,1,92,296)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">last year&apos;s baseline for the item</text>
+    </g>
+    <g transform="matrix(1,0,0,1,58,315)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(180,83,15);">m(t)</text>
+    </g>
+    <g transform="matrix(1,0,0,1,92,315)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">night-segment multiplier</text>
+    </g>
+    <g transform="matrix(1,0,0,1,58,334)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(31,95,168);">w</text>
+    </g>
+    <g transform="matrix(1,0,0,1,92,334)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(107,107,100);">location weight of the bar</text>
+    </g>
+    <g transform="matrix(1,0,0,1,56,352)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(26,26,24);">alert when time-to-stockout τ ≤ round-trip time L</text>
+    </g>
+    <path d="M760,214L760,360C760,364.415 756.415,368 752,368L404,368C399.585,368 396,364.415 396,360L396,214C396,209.585 399.585,206 404,206L752,206C756.415,206 760,209.585 760,214Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <g transform="matrix(1,0,0,1,412,230)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">ON<tspan x="15.855px 22.911px 25.881px 32.937px 39.992px 47.628px 50.597px 53.567px 61.787px 69.422px 76.478px 79.448px 87.083px 90.053px 98.273px " y="0px 0px 0px 0px 0px 0px 0px 0px 0px 0px 0px 0px 0px 0px 0px ">E BAR, ONE NIGH</tspan>T</text>
+    </g>
+    <g transform="matrix(1,0,0,1,744,230)">
+        <text x="-64.422px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(142,142,134);">units remaining</text>
+    </g>
+    <path d="M438,338L728,338" style="fill:none;fill-rule:nonzero;stroke:rgb(222,222,216);stroke-width:1px;stroke-linecap:round;"/>
+    <path d="M438,338L728,338" style="fill:none;fill-rule:nonzero;stroke:rgb(239,239,234);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,430,341.5)">
+        <text x="-4.727px" y="0px" style="font-family:'Helvetica';font-size:8.5px;fill:rgb(142,142,134);">0</text>
+    </g>
+    <path d="M438,292L728,292" style="fill:none;fill-rule:nonzero;stroke:rgb(239,239,234);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,430,295.5)">
+        <text x="-14.182px" y="0px" style="font-family:'Helvetica';font-size:8.5px;fill:rgb(142,142,134);">120</text>
+    </g>
+    <path d="M438,246L728,246" style="fill:none;fill-rule:nonzero;stroke:rgb(239,239,234);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,430,249.5)">
+        <text x="-14.182px" y="0px" style="font-family:'Helvetica';font-size:8.5px;fill:rgb(142,142,134);">240</text>
+    </g>
+    <path d="M438,246L459.3,249.4L480.7,254.2L502,261L523.3,270.9L544.7,283.8L566,298.4L587.3,312.5L608.7,324.6L630,334" style="fill:none;fill-rule:nonzero;stroke:rgb(180,83,15);stroke-width:2.4px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M630,334L639,338" style="fill:none;fill-rule:nonzero;stroke:rgb(180,83,15);stroke-opacity:0.75;stroke-width:2px;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5,4;"/>
+    <path d="M639.004,248L639.004,336C639.004,337.104 638.108,338 637.004,338L619.671,338C618.567,338 617.671,337.104 617.671,336L617.671,248C617.671,246.896 618.567,246 619.671,246L637.004,246C638.108,246 639.004,246.896 639.004,248Z" style="fill:rgb(14,156,134);fill-opacity:0.12;"/>
+    <path d="M617.671,246L617.671,338" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:1.6px;stroke-linecap:round;stroke-dasharray:4,3;"/>
+    <circle cx="617.7" cy="334" r="5" style="fill:rgb(14,156,134);stroke:white;stroke-width:2px;"/>
+    <g transform="matrix(1,0,0,1,609.670996,260)">
+        <text x="-18.48px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(14,156,134);">alert</text>
+    </g>
+    <g transform="matrix(1,0,0,1,628.337662,278)">
+        <text x="-20.815px" y="0px" style="font-family:'Helvetica';font-size:9px;fill:rgb(14,156,134);">L<tspan x="-16.139px -13.638px " y="0px 0px "> ≈</tspan> 30 min</text>
+    </g>
+    <g transform="matrix(1,0,0,1,438,353)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:8.5px;fill:rgb(142,142,134);">20:00</text>
+    </g>
+    <g transform="matrix(1,0,0,1,728,353)">
+        <text x="-21.271px" y="0px" style="font-family:'Helvetica';font-size:8.5px;fill:rgb(142,142,134);">02:00</text>
+    </g>
+    <g transform="matrix(1,0,0,1,474,249.416667)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(180,83,15);">live sales</text>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M209.5,440L209.5,502C209.5,506.415 205.915,510 201.5,510L48,510C43.585,510 40,506.415 40,502L40,440C40,435.585 43.585,432 48,432L201.5,432C205.915,432 209.5,435.585 209.5,440Z" style="fill:rgb(244,244,241);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M53,446L53,462" style="fill:none;fill-rule:nonzero;stroke:rgb(180,83,15);stroke-width:3px;stroke-linecap:round;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,156,464)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">3,000</text>
+    </g>
+    <g transform="matrix(1,0,0,1,156,484)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">guests served over</text>
+    </g>
+    <g transform="matrix(1,0,0,1,156,498)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">a single gala night</text>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M393,440L393,502C393,506.415 389.415,510 385,510L231.5,510C227.085,510 223.5,506.415 223.5,502L223.5,440C223.5,435.585 227.085,432 231.5,432L385,432C389.415,432 393,435.585 393,440Z" style="fill:rgb(244,244,241);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M236.5,446L236.5,462" style="fill:none;fill-rule:nonzero;stroke:rgb(14,156,134);stroke-width:3px;stroke-linecap:round;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,339.5,464)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">~30 min</text>
+    </g>
+    <g transform="matrix(1,0,0,1,339.5,484)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">warning before a bar</text>
+    </g>
+    <g transform="matrix(1,0,0,1,339.5,498)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">runs out of stock</text>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M576.5,440L576.5,502C576.5,506.415 572.915,510 568.5,510L415,510C410.585,510 407,506.415 407,502L407,440C407,435.585 410.585,432 415,432L568.5,432C572.915,432 576.5,435.585 576.5,440Z" style="fill:rgb(244,244,241);"/>
+    </g>
+    <g transform="matrix(1,0,0,1,92,0)">
+        <path d="M420,446L420,462" style="fill:none;fill-rule:nonzero;stroke:rgb(31,95,168);stroke-width:3px;stroke-linecap:round;"/>
+    </g>
+    <g transform="matrix(1,0,0,1,523,464)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">QoS 1</text>
+    </g>
+    <g transform="matrix(1,0,0,1,523,484)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">delivery<tspan x="35.407px 38.324px " y="0px 0px ">, </tspan>deduplicated</text>
+    </g>
+    <g transform="matrix(1,0,0,1,523,498)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">by device + sequence</text>
+    </g>
+    <path d="M87.4,555.5C87.4,561.295 82.695,566 76.9,566L50.5,566C44.705,566 40,561.295 40,555.5C40,549.705 44.705,545 50.5,545L76.9,545C82.695,545 87.4,549.705 87.4,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,63.7,559.28)">
+        <text x="-16.345px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">ESP32</text>
+    </g>
+    <path d="M130,555.5C130,561.295 125.295,566 119.5,566L104.9,566C99.105,566 94.4,561.295 94.4,555.5C94.4,549.705 99.105,545 104.9,545L119.5,545C125.295,545 130,549.705 130,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,112.22,559.28)">
+        <text x="-9.923px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">C++</text>
+    </g>
+    <path d="M178.54,555.5C178.54,561.295 173.835,566 168.04,566L147.54,566C141.745,566 137.04,561.295 137.04,555.5C137.04,549.705 141.745,545 147.54,545L168.04,545C173.835,545 178.54,549.705 178.54,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,157.8,559.28)">
+        <text x="-14.871px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">MQTT</text>
+    </g>
+    <path d="M215.36,555.5C215.36,561.295 210.655,566 204.86,566L196.06,566C190.265,566 185.56,561.295 185.56,555.5C185.56,549.705 190.265,545 196.06,545L204.86,545C210.655,545 215.36,549.705 215.36,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,200.44,559.28)">
+        <text x="-7.003px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">4G</text>
+    </g>
+    <path d="M316.72,555.5C316.72,561.295 312.015,566 306.22,566L232.82,566C227.025,566 222.32,561.295 222.32,555.5C222.32,549.705 227.025,545 232.82,545L306.22,545C312.015,545 316.72,549.705 316.72,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,269.54,559.28)">
+        <text x="-34.733px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Google Sheets</text>
+    </g>
+    <path d="M447.56,555.5C447.56,561.295 442.855,566 437.06,566L334.26,566C328.465,566 323.76,561.295 323.76,555.5C323.76,549.705 328.465,545 334.26,545L437.06,545C442.855,545 447.56,549.705 447.56,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,385.68,559.28)">
+        <text x="-46.983px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Demand forecasting</text>
+    </g>
+</svg>
