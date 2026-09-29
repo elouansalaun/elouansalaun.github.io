@@ -839,6 +839,418 @@
       </div>
     </article>
 
+    <!-- ---------- PROJECT: JET FIGHTER ---------- -->
+    <article class="project" id="p-jetfighter">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-jetfighter-btn" type="button"
+                aria-expanded="false" aria-controls="p-jetfighter-panel">
+          <span class="project-name">Teaching a simulated F-16 to fly with reinforcement learning</span>
+          <span class="project-meta">2026 · Python · 6-DOF flight dynamics · Gymnasium · PPO · Stable-Baselines3 · imitation learning</span>
+          <span class="project-summary">A fighter-jet flight simulator written from the physics up and validated against published F-16 data, then used as the environment for PPO agents that learn to stabilize, turn, navigate and fly aerobatics, judged against a classical autopilot.</span>
+          <img class="project-icon" src="assets/img/icon_project_jet.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-jetfighter-panel" role="region" aria-labelledby="p-jetfighter-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Summary of the jet fighter project" width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Two repositories, one question: can an agent learning by trial and error fly a
+              fighter jet as well as a hand-tuned autopilot? The hypothesis behind the split is that
+              the answer is only worth something if the aircraft is right. An agent trained on buggy
+              physics learns to exploit the bugs, so the simulator comes first and is validated
+              before anything learns on it.</p>
+
+              <p><a href="https://github.com/elouansalaun/jetfighter-sim">jetfighter-sim</a> is the
+              aircraft: 3-DOF and 6-DOF F-16 dynamics on NASA wind-tunnel tables, instruments,
+              fly-by-wire and autopilot. <a href="https://github.com/elouansalaun/jetfighter-rl">jetfighter-rl</a>
+              installs it as a package and turns it into a Gymnasium environment with a curriculum of
+              maneuvers, each one with the classical controller as the benchmark to beat.</p>
+
+              <p>The second hypothesis is about how to learn. Moving the elevator and ailerons directly
+              is the real goal, but also the hardest version of the problem; so the agent first flies
+              <em>through</em> the fly-by-wire, on a fast simplified aircraft, and only then gets the
+              full rigid body and, finally, the raw control surfaces.</p>
+
+              <div class="rk-facts">
+                <div class="rk-fact"><b>596</b><span>tests on the simulator: analytic solutions, published performance, trim, natural modes</span></div>
+                <div class="rk-fact"><b>5 / 5</b><span>curriculum tasks where the agent matches or beats the autopilot</span></div>
+                <div class="rk-fact"><b>79 s</b><span>to fly a 4-waypoint course, against 135 s for the autopilot</span></div>
+                <div class="rk-fact"><b>5</b><span>reward hacks found by replaying flights, none visible on the curves</span></div>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — The simulator</span>
+              <div class="rk-col">
+                <h4>Physics first, checked against the real aircraft</h4>
+                <p>Two models share one interface. A 3-DOF point mass runs about 360× real time and is
+                where agents are prototyped; a 6-DOF rigid body, about 75× real time, is driven by its
+                actual control surfaces through the F-16 aerodynamic and engine tables of NASA TP-1538
+                (Stevens &amp; Lewis). Attitude is a quaternion integrated with RK4 at 100 Hz, so there
+                is no gimbal lock at the top of a loop; Euler angles are only computed for display.</p>
+              </div>
+
+              <div class="rk-blocks">
+                <div class="rk-block">
+                  <div class="rk-nb">core</div>
+                  <div>
+                    <h5>Frames and integration</h5>
+                    <p>NED and body frames, quaternion rotations, the ISA atmosphere, fixed-step RK4. SI units and radians everywhere inside.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">aircraft</div>
+                  <div>
+                    <h5>Dynamics and instruments</h5>
+                    <p>Drag polar and engine model, 3-DOF and 6-DOF equations, trim and linearization, TAS / CAS / Mach, noisy sensors from YAML, an envelope monitor for stall, overspeed, overstress and ground impact.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">control</div>
+                  <div>
+                    <h5>Classical flight control</h5>
+                    <p>PID with anti-windup, gain-scheduled fly-by-wire, cascaded autopilot, longitudinal LQR, scripted evasion maneuvers.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">viz</div>
+                  <div>
+                    <h5>Seeing what flew</h5>
+                    <p>Bit-exact recording and replay, matplotlib dashboards, Tacview 3D export, and manual flight with keyboard or joystick.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table>
+                  <caption>3-DOF model against published F-16 figures.</caption>
+                  <thead>
+                    <tr><th>Quantity</th><th>Model</th><th>Reference</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Max Mach, sea level</td><td>1.18</td><td>≈ 1.2</td></tr>
+                    <tr><td>Max Mach, 11 km</td><td>2.08</td><td>≈ 2.0</td></tr>
+                    <tr><td>Max climb rate, sea level</td><td>275 m/s</td><td>≈ 250 m/s</td></tr>
+                    <tr><td>Ceiling (0.5 m/s climb)</td><td>17.7 km</td><td>15.2 km (operational)</td></tr>
+                    <tr><td>Sustained turn rate, 3 km, Mach 0.8</td><td>18.3 °/s</td><td>≈ 18–20 °/s</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/energy_maneuverability.png" alt="Energy-maneuverability diagram of the model F-16: filled contours of specific excess power against Mach and altitude, peaking above 250 m/s around Mach 0.9 below 4 km, and shrinking to zero at the edge of the envelope near Mach 2 and 17 km; dashed lines of constant energy height from 5 to 30 km." width="945" height="584" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Energy-maneuverability diagram.</b> Specific excess power at full
+                afterburner and 1 g: how fast the aircraft can gain energy, anywhere in its envelope.
+                The zero contour is the flight envelope itself, and the region where it is largest is
+                where a fighter wants to fight.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <p>The 6-DOF model is checked on its natural modes instead: at 3,000 m and 200 m/s it
+                shows a short period at ω = 2.1 rad/s, ζ = 0.56, a 107 s phugoid, a lightly damped
+                Dutch roll (ω = 3.6 rad/s, ζ = 0.12), a 0.28 s roll subsidence and a slow spiral mode.
+                That lightly damped Dutch roll is the signature of a relaxed-stability fighter: the
+                airframe alone is barely flyable, which is why it needs a fly-by-wire.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/loop_then_roll_6dof.png" alt="A loop followed by an aileron roll flown by the 6-DOF F-16: on the left the 3D trajectory climbing from 3,000 to 4,500 m and back; on the right altitude, load factor peaking near 8 g and roll angle against time over 38 seconds." width="1397" height="617" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>A loop then a roll on the 6-DOF model.</b> About 8 g at the entry and
+                exit of the loop; the roll angle flips by 180° at the top, which is exactly where Euler
+                angles would break and the quaternion does not.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — The benchmark</span>
+              <div class="rk-col">
+                <h4>A classical autopilot to beat</h4>
+                <p>The reference every agent is compared to is built from textbook control. The
+                fly-by-wire turns pilot commands, a load factor and a roll rate, into surface
+                deflections, with gains scheduled on dynamic pressure, α and g limiters and a yaw
+                damper. Above it a cascaded autopilot holds altitude, heading and speed: altitude error
+                becomes a flight-path angle, then a load factor; heading error becomes a bank angle,
+                then a roll rate.</p>
+                <p>The same autopilot flies both aircraft models through the same interface, and that
+                interface is exactly the hierarchical action space the agents use later. If the two
+                models behave alike under it, a policy learned on the cheap one has a chance on the
+                expensive one.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/autopilot_mission.png" alt="An autopilot mission flown by the 3-DOF and 6-DOF models, in four panels over 180 seconds: altitude climbing to 4,000 m then descending to 3,000 m, course turning to 90 degrees then a full 360 degree turn, true airspeed tracking 230 then 250 then 200 m/s, and load factor holding 4 g during the level turn. The two models' curves almost overlap." width="1387" height="782" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>One mission, two aircraft models.</b> Climb and turn to a heading, a
+                full 4 g level turn, then descend and turn back. The 3-DOF and 6-DOF curves almost
+                overlap; they differ mainly in how quickly speed bleeds off after the turn.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — The environment</span>
+              <div class="rk-col">
+                <h4>What the agent sees, does and is paid for</h4>
+                <p><code>JetEnv</code> is a standard Gymnasium environment, so any off-the-shelf
+                algorithm can train on it. At each step the agent observes \(o_t\), acts, and receives a
+                reward \(r_t\); it learns the policy that maximizes the discounted return</p>
+              </div>
+
+              $$J(\theta)\;=\;\mathbb E_{\pi_\theta}\Big[\sum_{t=0}^{T}\gamma^t\,r_t\Big],\qquad \gamma=0.99\;\Rightarrow\;\frac{1}{1-\gamma}=100\text{ steps}=10\text{ s of look-ahead}$$
+
+              <div class="rk-col">
+                <p>Three clocks run inside every step: physics at 100 Hz, the fly-by-wire and the
+                envelope monitor at 50 Hz, the agent's decision at 10 Hz.</p>
+
+                <h5>Actions: "zero" means "keep doing what you do"</h5>
+                <p>In hierarchical mode the agent outputs three numbers in [−1, 1]: a load factor
+                (−3 to +9 g), a roll rate (±180°/s) and throttle. The first version mapped a zero action
+                to 1 g, so in a 60° banked turn the agent had to output exactly 2 g just to stop
+                descending, and PPO never learned the heading task. Mapping zero to the load factor
+                that <em>holds the current flight path</em>, \(\cos\gamma/\cos\mu\), fixed it.</p>
+
+                <h5>Observations: no discontinuities</h5>
+                <p>About twenty own-ship features from the measured, optionally noisy, instruments,
+                the previous action, and task features such as the altitude and heading errors. Angles
+                are given as sines and cosines, and attitude as the direction of gravity seen from the
+                aircraft. Rewards and terminations use the true state, so the agent cannot game its
+                sensors.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/gravity_vs_euler_observation.png" alt="Two plots over a 16-second loop. Left: the Euler-based feature cos of bank angle jumps from +1 to −1 at the vertical and back again later. Right: the components of gravity along the velocity and lift axes vary as smooth sinusoids through the whole loop." width="1332" height="408" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>The same loop, two ways to describe attitude.</b> The Euler-based
+                feature jumps by 180° at the vertical: an aerobatics agent climbed to the vertical and
+                stopped, because it "thought it was inverted". The gravity direction is continuous
+                through the whole figure.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <h5>Rewards: named terms, and a crash that never pays</h5>
+                <p>Each task returns a dictionary of named terms, logged separately so one can see
+                which one drives learning. For stabilization, with bank \(\mu\) and flight-path angle \(\gamma\):</p>
+              </div>
+
+              $$r_t\;=\;-0.5\,\frac{|\mu|}{\pi}\;-\;0.5\,\min\!\Big(\frac{|\gamma|}{20^\circ},1\Big)\;-\;0.1\,c_{speed}\;-\;0.1\,c_{smooth}\;+\;0.1\cdot\mathbb 1[\text{level}]$$
+
+              <div class="rk-col">
+                <p>\(c_{smooth}\) penalizes jerky commands. \(c_{speed}\) exists because early agents recovered quickly and then let the speed decay forever, something visible only on the trajectories.</p>
+                <p>The crash penalty was subtler than expected. A fixed −50 was not enough: far from
+                the goal each step costs up to \(c_{max}\), so crashing early was <em>cheaper</em> than
+                flying on, and agents learned to end their episodes. The fix charges the worst cost of
+                every remaining step within the agent's horizon:</p>
+              </div>
+
+              $$r_{crash}\;=\;-50\;-\;c_{max}\cdot\min\!\Big(\frac{T-t}{\Delta t},\;\frac{1}{1-\gamma}\Big)$$
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <caption>The task catalogue. A task defines initial conditions, goal, observation features, reward terms, success criterion and reference policy; the environment only defines how the aircraft flies.</caption>
+                  <thead>
+                    <tr><th>Step</th><th>Task</th><th>Episode</th><th>Success criterion</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>8.1</td><td>Recover wings-level from an unusual attitude</td><td>30 s</td><td>|μ| &lt; 5°, |γ| &lt; 2° within 10 s</td></tr>
+                    <tr><td>8.2</td><td>Reach a random heading, altitude (±1,500 m) and speed</td><td>90 s</td><td>within 30 m / 3° / 5 m/s, limited overshoot</td></tr>
+                    <tr><td>8.3</td><td>Turn at the best <em>sustainable</em> rate</td><td>60 s</td><td>≥ 90% of optimal rate, altitude ±200 m, no energy loss</td></tr>
+                    <tr><td>8.4</td><td>Fly through 4 random 3D waypoints</td><td>300 s</td><td>all 4 captured</td></tr>
+                    <tr><td>8.5</td><td>Loop, aileron roll, Immelmann, Split-S</td><td>45 s</td><td>figure completed, wings level at the right heading</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">04 — Training</span>
+              <div class="rk-col">
+                <h4>PPO, a curriculum, and a transfer between aircraft</h4>
+                <p>Agents are trained with Proximal Policy Optimization (Stable-Baselines3): a Gaussian
+                actor and a critic, two hidden layers of 128 units each. PPO pushes the policy towards
+                actions that did better than expected, but clips the step so one batch cannot move it
+                too far:</p>
+              </div>
+
+              $$L^{CLIP}(\theta)\;=\;\mathbb E_t\Big[\min\big(\rho_t\hat A_t,\;\operatorname{clip}(\rho_t,1-\epsilon,1+\epsilon)\,\hat A_t\big)\Big],\qquad \rho_t=\frac{\pi_\theta(a_t\mid o_t)}{\pi_{\theta_{old}}(a_t\mid o_t)},\quad\epsilon=0.2$$
+
+              <div class="rk-col">
+                <p>A few settings were each learned the hard way. Initial exploration noise is cut to
+                σ ≈ 0.37, since fully random commands crash within seconds and teach nothing. Rewards
+                are normalized by a running estimate of the return's spread, without which the critic
+                could not fit at all. PyTorch runs on a single thread, because the networks are tiny
+                and extra threads fought the 8 simulator processes for CPU (6× throughput). One
+                million steps then take about 5 minutes in 3-DOF and 20 in 6-DOF on a laptop.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/learning_curves_3dof.png" alt="Five learning curves of the 3-DOF hierarchical agents, evaluation return against training steps, each with the autopilot's return as a dashed line: stabilize over 0.2 million steps, heading and altitude over 3 million, sustained turn over 3 million, waypoints over 5 million, and aerobatics with imitation then PPO over 3 million. Every curve ends at or above the dashed line." width="1772" height="386" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>The curriculum, one seed per task.</b> Evaluation return during
+                training against the autopilot on the same episodes (dashed). The aerobatics curve
+                starts high because that agent begins from imitation, not from scratch.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <h5>From 3-DOF to 6-DOF</h5>
+                <p>Both models share the same own-ship observation and the same hierarchical actions,
+                so a 3-DOF policy can be copied into a 6-DOF agent: weights of matching shape are
+                copied, new inputs start at zero, and the exploration noise is reset. It is not free.
+                The 3-DOF stabilization agent alternated its roll command at every step, harmless on a
+                point mass with instant roll response, but a 5 Hz roll oscillation on the rigid body,
+                where it first reached only 20% success. With the smoother gravity-based observation
+                and a million steps of fine-tuning it reached 100%.</p>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">05 — Results</span>
+              <div class="rk-col">
+                <h4>Better than the autopilot through the fly-by-wire, level with it without</h4>
+                <p>With hierarchical control the agents match or beat their reference on every task, by up to
+                61% in return, with 90 to 100% success. They get there by flying harder than a
+                controller tuned for comfort: pulling several g to kill a dive, cutting corners
+                between waypoints because they also observe the next one.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/agents_vs_reference.png" alt="Horizontal bar chart of agent return relative to the reference policy for five tasks and three agent types. Hierarchical 3-DOF: 117, 142, 106, 124 and 101 percent. Hierarchical 6-DOF: 116, 135, 161 and 118 percent, no valid aerobatics result. Direct surfaces 6-DOF: 99, 98, 136, 98 and 100 percent." width="1002" height="562" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Return relative to the reference, one seed per agent.</b> 100% means
+                matching the autopilot or scripted pilot on the same evaluation episodes. The 6-DOF
+                hierarchical aerobatics agent was trained before a reward hack was fixed and is left out.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <p>A higher return is not always a better flight, though. On heading and altitude the
+                agent outscores the autopilot but fails the strict "no overshoot" criterion more often
+                (90% success against 100%): it trades a little precision at the end for a much faster
+                approach, which the shaped reward happens to prefer.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/waypoints_agent_vs_autopilot.png" alt="Ground track and altitude profile of a four-waypoint course flown by the PPO agent and the autopilot: the tracks nearly overlap, but the agent reaches the last waypoint in 79 seconds against 135 for the autopilot." width="1442" height="540" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Same course, same aircraft.</b> The agent anticipates each turn and
+                trades altitude freely; the autopilot flies to one waypoint at a time.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <h5>Where pure RL was not enough</h5>
+                <p>A loop needs about 20 s of coherent inputs before any reward arrives, and random
+                exploration never gets there: pure PPO on aerobatics only discovered the roll, at 35%
+                success. The aerobatics agents therefore start from behavior cloning of the scripted
+                pilot, regressing the policy mean onto its actions, with two additions that made it
+                work:</p>
+                <ul class="rk-plain">
+                  <li><strong>DART noise</strong>: during data collection the executed action is
+                  perturbed but the recorded label stays clean, so the demonstrations include small
+                  mistakes and how to correct them. Without it, a clone drifts off the ideal path and
+                  has never seen how to come back.</li>
+                  <li><strong>Critic warm-up</strong>: after cloning the actor is good but the critic
+                  knows nothing, and the first PPO updates wrecked the clone (return 82 → −28 in 50k
+                  steps). The actor is frozen for the first iterations while the critic learns.</li>
+                </ul>
+                <p>The cloned agent keeps 100% success and, after 3 M steps of cautious PPO, slightly
+                improves on its teacher.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/aerobatics_imitation.png" alt="Side views of four aerobatic figures, loop, aileron roll, Immelmann and Split-S, each flown by the cloned neural policy and by the scripted pilot, with the two trajectories almost superimposed and all eight marked successful." width="1662" height="408" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>A network that was never rewarded, flying aerobatics.</b> Loop, roll,
+                Immelmann and Split-S by the cloned policy against the scripted pilot it learned from.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <h5>Removing the safety net</h5>
+                <p>The last step takes away the fly-by-wire: the agent moves elevator, ailerons, rudder
+                and throttle itself, with no limiter and no yaw damper. It needs 50 Hz decisions (the
+                reference autopilot plus fly-by-wire does not even fly at 10 Hz), rewards scaled per
+                unit of time, extra penalties near the structural limits, and the same recipe as
+                aerobatics: imitate the autopilot's surface commands, warm up the critic, then run PPO
+                with tiny exploration (σ ≈ 0.7° of elevator) and γ = 0.998 so the horizon still spans
+                about 10 s.</p>
+                <p>The direct-surface agents reach 90 to 100% success with no envelope violation, but
+                only 72 to 84% of the hierarchical return on the first four tasks. PPO beats its
+                imitated starting point clearly only on the sustained turn (+36%), and on
+                heading/altitude it slowly <em>degraded</em> the cloned policy after 1–2 M steps while
+                KL divergence, explained variance and exploration noise all looked healthy. Keeping the
+                best evaluated model saved the result.</p>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">06 — Reward hacking</span>
+              <div class="rk-col">
+                <h4>Five times the agent found a shortcut</h4>
+                <p>The most instructive part of the project. None of these showed on the reward
+                curves; all of them were found by replaying the flights.</p>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <caption>Every hack, and the reward change that closed it.</caption>
+                  <thead>
+                    <tr><th>Task</th><th>What the agent did</th><th>Fix</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>8.1</td><td>Recovered quickly, then let the speed decay forever, throttle idle</td><td>Small speed-holding term</td></tr>
+                    <tr class="rk-hero"><td>8.3</td><td>Turned 2.5× faster than the "optimum", in a descending spiral that lost 3 km</td><td>Turn-rate reward multiplied by an altitude and energy quality factor</td></tr>
+                    <tr><td>8.5</td><td>Learned not to do the figure: flying straight cost nothing</td><td>Make progress dominant: 40 points for the figure, 20 at the exit</td></tr>
+                    <tr><td>8.5</td><td>A 6-second "loop": turned 90°, then wiggled so the velocity angle projected on the loop plane spun 360°</td><td>Progress only counts within 30° of the plane; exit heading checked</td></tr>
+                    <tr><td>all</td><td>Far from the target, crashing ended the costs early</td><td>Crash penalty covering all remaining steps</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/reward_hacking_spiral.png" alt="Reward per step against altitude lost in the turn. The additive, saturated penalty falls from 0.5 to 0.2 at 600 m and stays there, so the spiral kept paying. The multiplicative quality factor falls below zero after about 500 m and down to −0.3." width="837" height="430" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Why the spiral paid</b> (illustrative weights). With an additive,
+                saturated altitude penalty, once the agent had lost 600 m every further metre was free
+                and the turn-rate bonus kept coming. A multiplicative factor makes only a
+                <em>sustained</em> turn worth anything.</figcaption>
+              </figure>
+
+              <div class="rk-note rk-warn">
+                <span class="rk-eyebrow">What this project concludes</span>
+                <p>RL can fly this aircraft better than the classical controller when it is given the
+                right interface, but a return curve going up is not evidence of a good flight. Every
+                design decision that mattered, the action neutral, the gravity observation, the crash
+                penalty and all five reward fixes, was found by watching the aircraft, not the metrics.</p>
+              </div>
+            </div>
+
+            <p class="rk-foot">Personal project. Results are the best evaluated model of each
+            experiment on a single seed; more seeds, and regularizing PPO towards the imitated policy,
+            are the obvious next steps.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/jetfighter-sim">Simulator repository ↗</a>
+            <a href="https://github.com/elouansalaun/jetfighter-rl">RL repository ↗</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
     <!-- ---------- PROJECT 2 ---------- -->
     <article class="project" id="p-seao">
       <h3 class="project-heading">
