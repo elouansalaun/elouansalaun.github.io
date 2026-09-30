@@ -839,413 +839,414 @@
       </div>
     </article>
 
-    <!-- ---------- PROJECT: JET FIGHTER ---------- -->
-    <article class="project" id="p-jetfighter">
+    
+
+    <!-- ---------- PROJECT: LIDAR SURVEILLANCE ---------- -->
+    <article class="project" id="p-lidar">
       <h3 class="project-heading">
-        <button class="project-head" id="p-jetfighter-btn" type="button"
-                aria-expanded="false" aria-controls="p-jetfighter-panel">
-          <span class="project-name">Teaching a simulated F-16 to fly with reinforcement learning</span>
-          <span class="project-meta">2026 · Python · 6-DOF flight dynamics · Gymnasium · PPO · Stable-Baselines3 · imitation learning</span>
-          <span class="project-summary">A fighter-jet flight simulator written from the physics up and validated against published F-16 data, then used as the environment for PPO agents that learn to stabilize, turn, navigate and fly aerobatics, judged against a classical autopilot.</span>
-          <img class="project-icon" src="assets/img/icon_project_jet.svg" alt="" aria-hidden="true">
+        <button class="project-head" id="p-lidar-btn" type="button"
+                aria-expanded="false" aria-controls="p-lidar-panel">
+          <span class="project-name">Optimal surveillance of a site from airborne LiDAR</span>
+          <span class="project-meta">2026 · Python · LiDAR · numba · MILP (HiGHS) · NSGA-II · PyTorch · Streamlit</span>
+          <span class="project-summary">Placing cameras and radars from a classified LiDAR point cloud so that an intruder who knows the layout is detected, and detected in time: exact visibility through semi-transparent vegetation, certified optima, and an exact optimiser ↔ intruder loop.</span>
+          <img class="project-icon" src="assets/img/icon_project_lidar.svg" alt="" aria-hidden="true">
           <span class="chevron" aria-hidden="true"></span>
         </button>
       </h3>
 
-      <div class="panel" id="p-jetfighter-panel" role="region" aria-labelledby="p-jetfighter-btn">
+      <div class="panel" id="p-lidar-panel" role="region" aria-labelledby="p-lidar-btn">
         <div class="panel-inner">
 
           <div class="rk">
 
-            <img class="rk-resume" src="assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Summary of the jet fighter project" width="800" height="600" loading="lazy" decoding="async">
+            <img class="rk-resume" src="assets/img/LiDAR/resume_sec-phy-lidar.svg" alt="Summary of the LiDAR surveillance project" width="800" height="600" loading="lazy" decoding="async"> 
 
             <div class="rk-top">
-              <p>Two repositories, one question: can an agent learning by trial and error fly a
-              fighter jet as well as a hand-tuned autopilot? The hypothesis behind the split is that
-              the answer is only worth something if the aircraft is right. An agent trained on buggy
-              physics learns to exploit the bugs, so the simulator comes first and is validated
-              before anything learns on it.</p>
+              <p>A limited budget, candidate positions on masts and roofs, two sensor types: an
+              orientable camera and a 360° radar. The textbook question is <em>how to best cover the
+              site?</em>, a maximal covering location problem. This project argues that the question is
+              not enough, and replaces it in three steps with the one a security engineer asks.</p>
 
-              <p><a href="https://github.com/elouansalaun/jetfighter-sim">jetfighter-sim</a> is the
-              aircraft: 3-DOF and 6-DOF F-16 dynamics on NASA wind-tunnel tables, instruments,
-              fly-by-wire and autopilot. <a href="https://github.com/elouansalaun/jetfighter-rl">jetfighter-rl</a>
-              installs it as a package and turns it into a Gymnasium environment with a curriculum of
-              maneuvers, each one with the classical controller as the benchmark to beat.</p>
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <caption>Three questions, three metrics, and what each one can hide.</caption>
+                  <thead>
+                    <tr><th>Question</th><th>Metric</th><th>What it can hide</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Is the site covered?</td><td>weighted coverage \(F\)</td><td>nothing is said about the worst case</td></tr>
+                    <tr><td>Will the intruder be detected?</td><td>\(p^\star\), guaranteed detection on the least watched corridor</td><td>a blind corridor behind a high coverage</td></tr>
+                    <tr class="rk-hero"><td>Will they be detected <em>in time</em>?</td><td>\(\tilde p^\star\), counting only detections earlier than the response time</td><td>a "robust" layout that only sees the intruder in contact with the target</td></tr>
+                  </tbody>
+                </table>
+              </div>
 
-              <p>The second hypothesis is about how to learn. Moving the elevator and ailerons directly
-              is the real goal, but also the hardest version of the problem; so the agent first flies
-              <em>through</em> the fly-by-wire, on a fast simplified aircraft, and only then gets the
-              full rigid body and, finally, the raw control surfaces.</p>
+              <p>The whole chain rests on one principle: <strong>certify rather than believe</strong>.
+              Every optimum is proven or bracketed between a lower and an upper bound, every heuristic
+              is measured against those bounds, and every engine is checked against analytical
+              solutions or an exact referee.</p>
 
               <div class="rk-facts">
-                <div class="rk-fact"><b>596</b><span>tests on the simulator: analytic solutions, published performance, trim, natural modes</span></div>
-                <div class="rk-fact"><b>5 / 5</b><span>curriculum tasks where the agent matches or beats the autopilot</span></div>
-                <div class="rk-fact"><b>79 s</b><span>to fly a 4-waypoint course, against 135 s for the autopilot</span></div>
-                <div class="rk-fact"><b>5</b><span>reward hacks found by replaying flights, none visible on the curves</span></div>
+                <div class="rk-fact"><b>15.9 pts</b><span>of coverage lost by the greedy at one budget, visible only against the certified bound</span></div>
+                <div class="rk-fact"><b>1%</b><span>of cells falsely visible with a sampled ray, caught by an exact referee</span></div>
+                <div class="rk-fact"><b>50 s</b><span>minimal intrusion time: beyond it, no layout at any budget detects in time</span></div>
+                <div class="rk-fact"><b>×2.2</b><span>certified cost of a guaranteed detection when the response needs 30 s instead of 0</span></div>
               </div>
             </div>
 
             <div class="rk-sec">
-              <span class="rk-eyebrow">01 — The simulator</span>
+              <span class="rk-eyebrow">01 — From point cloud to visibility</span>
               <div class="rk-col">
-                <h4>Physics first, checked against the real aircraft</h4>
-                <p>Two models share one interface. A 3-DOF point mass runs about 360× real time and is
-                where agents are prototyped; a 6-DOF rigid body, about 75× real time, is driven by its
-                actual control surfaces through the F-16 aerodynamic and engine tables of NASA TP-1538
-                (Stevens &amp; Lewis). Attitude is a quaternion integrated with RK4 at 100 Hz, so there
-                is no gimbal lock at the top of a loop; Euler angles are only computed for display.</p>
+                <h4>Use the 3D, not just a surface model</h4>
+                <p>The data are the 2023 LiDAR tiles of the Québec government (MRNF): about 30 points/m²,
+                flown on 21 November, so the deciduous trees have no leaves. The protected site, its zones
+                and its assets are <strong>fictitious</strong>, drawn in QGIS over an arbitrary urban area
+                of Montreal; publishing blind-spot maps of a real sensitive site would be unacceptable.</p>
+                <p>A plain digital surface model treats a tree like a wall. With the classified point
+                cloud, buildings can be opaque and vegetation semi-transparent. The LiDAR even measures
+                the transparency: the share of first returns that reach the ground is the gap fraction of
+                the canopy, which Beer-Lambert's law turns into an extinction coefficient per pixel:</p>
+              </div>
+
+              $$\hat P_{gap}(p)\;=\;\frac{n^{(1)}_{ground}(p)+0.5}{n^{(1)}(p)+1},\qquad k(p)\;=\;\frac{-\ln\hat P_{gap}(p)}{h_{veg}(p)}$$
+
+              <div class="rk-col">
+                <p>A leafless maple lets most of the light through (\(P_{gap}\approx 0.7\)), a conifer
+                almost none, and a parked car, with no ground return under it, blocks the ray without
+                any extra rule.</p>
+
+                <h5>An exact visibility engine</h5>
+                <p>For each (position, height) pair the engine computes once, over 360°, the optical
+                depth of the line of sight towards every cell:</p>
+              </div>
+
+              $$\tau(o\to t)\;=\;\begin{cases}\infty & \text{if the segment goes below an opaque surface}\\[2pt] \sum_c k_c\,\ell_c & \text{otherwise}\end{cases}\qquad T(o\to t)=e^{-\alpha\tau}$$
+
+              <div class="rk-col">
+                <p>where \(\ell_c\) is the 3D length of the segment under the canopy of cell \(c\). The
+                cells are visited by the exact traversal of Amanatides &amp; Woo. A first version sampled
+                the ray every half pixel; an exact referee showed it missed the cells grazed by a corner,
+                making about 1% of the cells falsely visible. The exact traversal replaced it, and turned
+                out faster.</p>
+                <p>Separating the geometry from the sensor is what makes the rest tractable: camera
+                orientations and radar tilts never need a new visibility computation.</p>
               </div>
 
               <div class="rk-blocks">
                 <div class="rk-block">
-                  <div class="rk-nb">core</div>
+                  <div class="rk-nb">site</div>
                   <div>
-                    <h5>Frames and integration</h5>
-                    <p>NED and body frames, quaternion rotations, the ISA atmosphere, fixed-step RK4. SI units and radians everywhere inside.</p>
+                    <h5>Drawn in QGIS, validated in code</h5>
+                    <p>Fence, zones with weights, gates and one intruder target in a GeoPackage; a 15 m approach ring around each asset carries its weight.</p>
                   </div>
                 </div>
                 <div class="rk-block">
-                  <div class="rk-nb">aircraft</div>
+                  <div class="rk-nb">rasters</div>
                   <div>
-                    <h5>Dynamics and instruments</h5>
-                    <p>Drag polar and engine model, 3-DOF and 6-DOF equations, trim and linearization, TAS / CAS / Mach, noisy sensors from YAML, an envelope monitor for stall, overspeed, overstress and ground impact.</p>
+                    <h5>Streaming, constant memory</h5>
+                    <p>Tiles read in chunks of 5 M points into mergeable statistics per pixel: DTM, DSM, building and vegetation heights, gap fraction. Validated against PDAL and the official MRNF terrain model.</p>
                   </div>
                 </div>
                 <div class="rk-block">
-                  <div class="rk-nb">control</div>
+                  <div class="rk-nb">viewshed</div>
                   <div>
-                    <h5>Classical flight control</h5>
-                    <p>PID with anti-windup, gain-scheduled fly-by-wire, cascaded autopilot, longitudinal LQR, scripted evasion maneuvers.</p>
+                    <h5>numba kernel</h5>
+                    <p>Opaque buildings, Beer-Lambert vegetation, checked on analytic walls and vegetation slabs, and against <code>gdal_viewshed</code>.</p>
                   </div>
                 </div>
                 <div class="rk-block">
-                  <div class="rk-nb">viz</div>
+                  <div class="rk-nb">candidates</div>
                   <div>
-                    <h5>Seeing what flew</h5>
-                    <p>Bit-exact recording and replay, matplotlib dashboards, Tacview 3D export, and manual flight with keyboard or joystick.</p>
+                    <h5>Where a sensor can really go</h5>
+                    <p>Fence masts every 20 m, an interior mast grid and roof corners checked against the LiDAR roof, each with its heights and cost.</p>
                   </div>
                 </div>
               </div>
-
-              <div class="rk-tablewrap">
-                <table>
-                  <caption>3-DOF model against published F-16 figures.</caption>
-                  <thead>
-                    <tr><th>Quantity</th><th>Model</th><th>Reference</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Max Mach, sea level</td><td>1.18</td><td>≈ 1.2</td></tr>
-                    <tr><td>Max Mach, 11 km</td><td>2.08</td><td>≈ 2.0</td></tr>
-                    <tr><td>Max climb rate, sea level</td><td>275 m/s</td><td>≈ 250 m/s</td></tr>
-                    <tr><td>Ceiling (0.5 m/s climb)</td><td>17.7 km</td><td>15.2 km (operational)</td></tr>
-                    <tr><td>Sustained turn rate, 3 km, Mach 0.8</td><td>18.3 °/s</td><td>≈ 18–20 °/s</td></tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <figure>
-                <div class="rk-frame rk-frame--img">
-                  <img src="assets/img/JetFighter/energy_maneuverability.png" alt="Energy-maneuverability diagram of the model F-16: filled contours of specific excess power against Mach and altitude, peaking above 250 m/s around Mach 0.9 below 4 km, and shrinking to zero at the edge of the envelope near Mach 2 and 17 km; dashed lines of constant energy height from 5 to 30 km." width="945" height="584" loading="lazy" decoding="async">
-                </div>
-                <figcaption><b>Energy-maneuverability diagram.</b> Specific excess power at full
-                afterburner and 1 g: how fast the aircraft can gain energy, anywhere in its envelope.
-                The zero contour is the flight envelope itself, and the region where it is largest is
-                where a fighter wants to fight.</figcaption>
-              </figure>
-
-              <div class="rk-col">
-                <p>The 6-DOF model is checked on its natural modes instead: at 3,000 m and 200 m/s it
-                shows a short period at ω = 2.1 rad/s, ζ = 0.56, a 107 s phugoid, a lightly damped
-                Dutch roll (ω = 3.6 rad/s, ζ = 0.12), a 0.28 s roll subsidence and a slow spiral mode.
-                That lightly damped Dutch roll is the signature of a relaxed-stability fighter: the
-                airframe alone is barely flyable, which is why it needs a fly-by-wire.</p>
-              </div>
-
-              <figure>
-                <div class="rk-frame rk-frame--img">
-                  <img src="assets/img/JetFighter/loop_then_roll_6dof.png" alt="A loop followed by an aileron roll flown by the 6-DOF F-16: on the left the 3D trajectory climbing from 3,000 to 4,500 m and back; on the right altitude, load factor peaking near 8 g and roll angle against time over 38 seconds." width="1397" height="617" loading="lazy" decoding="async">
-                </div>
-                <figcaption><b>A loop then a roll on the 6-DOF model.</b> About 8 g at the entry and
-                exit of the loop; the roll angle flips by 180° at the top, which is exactly where Euler
-                angles would break and the quaternion does not.</figcaption>
-              </figure>
             </div>
 
             <div class="rk-sec">
-              <span class="rk-eyebrow">02 — The benchmark</span>
+              <span class="rk-eyebrow">02 — Sensors</span>
               <div class="rk-col">
-                <h4>A classical autopilot to beat</h4>
-                <p>The reference every agent is compared to is built from textbook control. The
-                fly-by-wire turns pilot commands, a load factor and a roll rate, into surface
-                deflections, with gains scheduled on dynamic pressure, α and g limiters and a yaw
-                damper. Above it a cascaded autopilot holds altitude, heading and speed: altitude error
-                becomes a flight-path angle, then a load factor; heading error becomes a bank angle,
-                then a roll rate.</p>
-                <p>The same autopilot flies both aircraft models through the same interface, and that
-                interface is exactly the hierarchical action space the agents use later. If the two
-                models behave alike under it, a policy learned on the cheap one has a chance on the
-                expensive one.</p>
+                <h4>From optical depth to a detection probability</h4>
+                <p>Each sensor multiplies the transmittance by its own detection law. Light crosses the
+                vegetation once, a radar wave twice:</p>
               </div>
 
-              <figure>
-                <div class="rk-frame rk-frame--img">
-                  <img src="assets/img/JetFighter/autopilot_mission.png" alt="An autopilot mission flown by the 3-DOF and 6-DOF models, in four panels over 180 seconds: altitude climbing to 4,000 m then descending to 3,000 m, course turning to 90 degrees then a full 360 degree turn, true airspeed tracking 230 then 250 then 200 m/s, and load factor holding 4 g during the level turn. The two models' curves almost overlap." width="1387" height="782" loading="lazy" decoding="async">
-                </div>
-                <figcaption><b>One mission, two aircraft models.</b> Climb and turn to a heading, a
-                full 4 g level turn, then descend and turn back. The 3-DOF and 6-DOF curves almost
-                overlap; they differ mainly in how quickly speed bleeds off after the turn.</figcaption>
-              </figure>
-            </div>
-
-            <div class="rk-sec">
-              <span class="rk-eyebrow">03 — The environment</span>
-              <div class="rk-col">
-                <h4>What the agent sees, does and is paid for</h4>
-                <p><code>JetEnv</code> is a standard Gymnasium environment, so any off-the-shelf
-                algorithm can train on it. At each step the agent observes \(o_t\), acts, and receives a
-                reward \(r_t\); it learns the policy that maximizes the discounted return</p>
-              </div>
-
-              $$J(\theta)\;=\;\mathbb E_{\pi_\theta}\Big[\sum_{t=0}^{T}\gamma^t\,r_t\Big],\qquad \gamma=0.99\;\Rightarrow\;\frac{1}{1-\gamma}=100\text{ steps}=10\text{ s of look-ahead}$$
-
-              <div class="rk-col">
-                <p>Three clocks run inside every step: physics at 100 Hz, the fly-by-wire and the
-                envelope monitor at 50 Hz, the agent's decision at 10 Hz.</p>
-
-                <h5>Actions: "zero" means "keep doing what you do"</h5>
-                <p>In hierarchical mode the agent outputs three numbers in [−1, 1]: a load factor
-                (−3 to +9 g), a roll rate (±180°/s) and throttle. The first version mapped a zero action
-                to 1 g, so in a 60° banked turn the agent had to output exactly 2 g just to stop
-                descending, and PPO never learned the heading task. Mapping zero to the load factor
-                that <em>holds the current flight path</em>, \(\cos\gamma/\cos\mu\), fixed it.</p>
-
-                <h5>Observations: no discontinuities</h5>
-                <p>About twenty own-ship features from the measured, optionally noisy, instruments,
-                the previous action, and task features such as the altitude and heading errors. Angles
-                are given as sines and cosines, and attitude as the direction of gravity seen from the
-                aircraft. Rewards and terminations use the true state, so the agent cannot game its
-                sensors.</p>
-              </div>
-
-              <figure>
-                <div class="rk-frame rk-frame--img">
-                  <img src="assets/img/JetFighter/gravity_vs_euler_observation.png" alt="Two plots over a 16-second loop. Left: the Euler-based feature cos of bank angle jumps from +1 to −1 at the vertical and back again later. Right: the components of gravity along the velocity and lift axes vary as smooth sinusoids through the whole loop." width="1332" height="408" loading="lazy" decoding="async">
-                </div>
-                <figcaption><b>The same loop, two ways to describe attitude.</b> The Euler-based
-                feature jumps by 180° at the vertical: an aerobatics agent climbed to the vertical and
-                stopped, because it "thought it was inverted". The gravity direction is continuous
-                through the whole figure.</figcaption>
-              </figure>
-
-              <div class="rk-col">
-                <h5>Rewards: named terms, and a crash that never pays</h5>
-                <p>Each task returns a dictionary of named terms, logged separately so one can see
-                which one drives learning. For stabilization, with bank \(\mu\) and flight-path angle \(\gamma\):</p>
-              </div>
-
-              $$r_t\;=\;-0.5\,\frac{|\mu|}{\pi}\;-\;0.5\,\min\!\Big(\frac{|\gamma|}{20^\circ},1\Big)\;-\;0.1\,c_{speed}\;-\;0.1\,c_{smooth}\;+\;0.1\cdot\mathbb 1[\text{level}]$$
-
-              <div class="rk-col">
-                <p>\(c_{smooth}\) penalizes jerky commands. \(c_{speed}\) exists because early agents recovered quickly and then let the speed decay forever, something visible only on the trajectories.</p>
-                <p>The crash penalty was subtler than expected. A fixed −50 was not enough: far from
-                the goal each step costs up to \(c_{max}\), so crashing early was <em>cheaper</em> than
-                flying on, and agents learned to end their episodes. The fix charges the worst cost of
-                every remaining step within the agent's horizon:</p>
-              </div>
-
-              $$r_{crash}\;=\;-50\;-\;c_{max}\cdot\min\!\Big(\frac{T-t}{\Delta t},\;\frac{1}{1-\gamma}\Big)$$
+              $$P_{det}(x)\;=\;T(x)\times P_{sensor}(\text{distance, angles}),\qquad T=\begin{cases}e^{-\alpha_c\tau} & \text{camera}\\ e^{-2\alpha_r\tau} & \text{radar}\end{cases}$$
 
               <div class="rk-tablewrap">
                 <table class="rk-prose">
-                  <caption>The task catalogue. A task defines initial conditions, goal, observation features, reward terms, success criterion and reference policy; the environment only defines how the aircraft flies.</caption>
+                  <caption>The two sensor models.</caption>
                   <thead>
-                    <tr><th>Step</th><th>Task</th><th>Episode</th><th>Success criterion</th></tr>
+                    <tr><th></th><th>Camera</th><th>Radar</th></tr>
                   </thead>
                   <tbody>
-                    <tr><td>8.1</td><td>Recover wings-level from an unusual attitude</td><td>30 s</td><td>|μ| &lt; 5°, |γ| &lt; 2° within 10 s</td></tr>
-                    <tr><td>8.2</td><td>Reach a random heading, altitude (±1,500 m) and speed</td><td>90 s</td><td>within 30 m / 3° / 5 m/s, limited overshoot</td></tr>
-                    <tr><td>8.3</td><td>Turn at the best <em>sustainable</em> rate</td><td>60 s</td><td>≥ 90% of optimal rate, altitude ±200 m, no energy loss</td></tr>
-                    <tr><td>8.4</td><td>Fly through 4 random 3D waypoints</td><td>300 s</td><td>all 4 captured</td></tr>
-                    <tr><td>8.5</td><td>Loop, aileron roll, Immelmann, Split-S</td><td>45 s</td><td>figure completed, wings level at the right heading</td></tr>
+                    <tr><td>Criterion</td><td>pixel density on the target, 25 px/m to detect a person (EN 62676-4)</td><td>signal-to-noise ratio, radar equation calibrated on a 90% range</td></tr>
+                    <tr><td>Detection law</td><td>Johnson TTPF: \(P=x^E/(1+x^E)\), \(x=\text{ppm}/25\)</td><td>Swerling I: \(P_d=P_{fa}^{1/(1+\text{SNR})}\)</td></tr>
+                    <tr><td>Field</td><td>exact pinhole, trapezoidal footprint, 8 azimuths</td><td>360°, ±15° beam, 4 tilts, blind cone under the mast</td></tr>
+                    <tr><td>Vegetation</td><td>\(\alpha_c=1\), geometric optics</td><td>\(\alpha_r=0.3\), an assumption tested later</td></tr>
                   </tbody>
                 </table>
               </div>
-            </div>
-
-            <div class="rk-sec">
-              <span class="rk-eyebrow">04 — Training</span>
-              <div class="rk-col">
-                <h4>PPO, a curriculum, and a transfer between aircraft</h4>
-                <p>Agents are trained with Proximal Policy Optimization (Stable-Baselines3): a Gaussian
-                actor and a critic, two hidden layers of 128 units each. PPO pushes the policy towards
-                actions that did better than expected, but clips the step so one batch cannot move it
-                too far:</p>
-              </div>
-
-              $$L^{CLIP}(\theta)\;=\;\mathbb E_t\Big[\min\big(\rho_t\hat A_t,\;\operatorname{clip}(\rho_t,1-\epsilon,1+\epsilon)\,\hat A_t\big)\Big],\qquad \rho_t=\frac{\pi_\theta(a_t\mid o_t)}{\pi_{\theta_{old}}(a_t\mid o_t)},\quad\epsilon=0.2$$
 
               <div class="rk-col">
-                <p>A few settings were each learned the hard way. Initial exploration noise is cut to
-                σ ≈ 0.37, since fully random commands crash within seconds and teach nothing. Rewards
-                are normalized by a running estimate of the return's spread, without which the critic
-                could not fit at all. PyTorch runs on a single thread, because the networks are tiny
-                and extra threads fought the 8 simulator processes for CPU (6× throughput). One
-                million steps then take about 5 minutes in 3-DOF and 20 in 6-DOF on a laptop.</p>
-              </div>
-
-              <figure>
-                <div class="rk-frame rk-frame--img">
-                  <img src="assets/img/JetFighter/learning_curves_3dof.png" alt="Five learning curves of the 3-DOF hierarchical agents, evaluation return against training steps, each with the autopilot's return as a dashed line: stabilize over 0.2 million steps, heading and altitude over 3 million, sustained turn over 3 million, waypoints over 5 million, and aerobatics with imitation then PPO over 3 million. Every curve ends at or above the dashed line." width="1772" height="386" loading="lazy" decoding="async">
-                </div>
-                <figcaption><b>The curriculum, one seed per task.</b> Evaluation return during
-                training against the autopilot on the same episodes (dashed). The aerobatics curve
-                starts high because that agent begins from imitation, not from scratch.</figcaption>
-              </figure>
-
-              <div class="rk-col">
-                <h5>From 3-DOF to 6-DOF</h5>
-                <p>Both models share the same own-ship observation and the same hierarchical actions,
-                so a 3-DOF policy can be copied into a 6-DOF agent: weights of matching shape are
-                copied, new inputs start at zero, and the exploration noise is reset. It is not free.
-                The 3-DOF stabilization agent alternated its roll command at every step, harmless on a
-                point mass with instant roll response, but a 5 Hz roll oscillation on the rigid body,
-                where it first reached only 20% success. With the smoother gravity-based observation
-                and a million steps of fine-tuning it reached 100%.</p>
+                <p>On a flat plane the telephoto lens covers the most ground; on the real site the
+                obstacles reverse the ranking, because its long rays hit the neighbouring roofs and trees.
+                <strong>The best sensor depends on the location</strong>, so the optimiser has to choose
+                them together. Every (position, height, sensor, orientation) becomes a configuration \(j\),
+                and the sparse matrix \(P_{ij}\) of its detection on each cell \(i\) feeds every
+                optimisation that follows.</p>
               </div>
             </div>
 
             <div class="rk-sec">
-              <span class="rk-eyebrow">05 — Results</span>
+              <span class="rk-eyebrow">03 — Coverage</span>
               <div class="rk-col">
-                <h4>Better than the autopilot through the fly-by-wire, level with it without</h4>
-                <p>With hierarchical control the agents match or beat their reference on every task, by up to
-                61% in return, with 90 to 100% success. They get there by flying harder than a
-                controller tuned for comfort: pulling several g to kill a dive, cutting corners
-                between waypoints because they also observe the next one.</p>
+                <h4>A greedy is fast, only a certificate says when it is wrong</h4>
+                <p>With independent detections an intruder at cell \(i\) escapes only if every installed
+                sensor misses them. The expected weighted coverage is maximised under a budget, a support
+                (mast, roof mount) being paid once, one height per location, and at most one radar and four
+                cameras per support:</p>
+              </div>
+
+              $$\max_x\;F(x)\;=\;\sum_i w_i\Big(1-\prod_j(1-P_{ij})^{x_j}\Big)$$
+
+              <div class="rk-col">
+                <p>\(F\) is monotone and submodular, so a greedy is the natural baseline. But the classic
+                \((1-1/e)\) guarantee holds for a cardinality constraint only: with shared support costs
+                and the height lock-in, no guarantee survives. The compact linearisation of \(F\) is
+                exact but intractable here (3.3 M non-zeros, a relaxation 36% above the best known
+                solution). Instead the cells are grouped into spatial blocks \(g\), and each block
+                function, being submodular, is bounded by cuts generated on demand:</p>
+              </div>
+
+              $$\eta_g\;\le\;F_g(S_k)\;+\;\sum_{j\notin S_k}\rho_{gj}(S_k)\,x_j,\qquad \rho_{gj}(S)=\sum_{i\in g}w_i\,q_i(S)\,P_{ij}$$
+
+              <div class="rk-col">
+                <p>The master MILP (HiGHS) gives an upper bound, each solution evaluated exactly a lower
+                bound, and the loop runs until the gap closes. The optimum ends up certified within 0.5%
+                on most budgets below 22 units, and bracketed within 2.6% everywhere.</p>
               </div>
 
               <figure>
                 <div class="rk-frame rk-frame--img">
-                  <img src="assets/img/JetFighter/agents_vs_reference.png" alt="Horizontal bar chart of agent return relative to the reference policy for five tasks and three agent types. Hierarchical 3-DOF: 117, 142, 106, 124 and 101 percent. Hierarchical 6-DOF: 116, 135, 161 and 118 percent, no valid aerobatics result. Direct surfaces 6-DOF: 99, 98, 136, 98 and 100 percent." width="1002" height="562" loading="lazy" decoding="async">
+                  <img src="assets/img/LiDAR/front.png" alt="Expected weighted coverage against budget from 2 to 40 cost units, as a step curve. The certified best solution and the ratio greedy mostly overlap, rising by radar steps from 0 to 5 radars up to about 99%, except between budgets 13 and 17 where the best solution jumps to 88% while the greedy stays near 72 to 78%. A thin shaded band shows the certified interval between lower and upper bound." width="1200" height="720" loading="lazy" decoding="async">
                 </div>
-                <figcaption><b>Return relative to the reference, one seed per agent.</b> 100% means
-                matching the autopilot or scripted pilot on the same evaluation episodes. The 6-DOF
-                hierarchical aerobatics agent was trained before a reward hack was fixed and is left out.</figcaption>
+                <figcaption><b>Coverage against budget.</b> The front rises by radar steps. The greedy
+                is close to the optimum almost everywhere, except where a second radar only pays off if
+                the first one is placed differently.</figcaption>
               </figure>
 
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/LiDAR/gaps.png" alt="Two bar charts against budget. Top: greedy loss in percent, proven against the best solution, up to 18% around budgets 13 and 14 and 11 to 12% at budgets 3 and 5, a few percent elsewhere. Bottom: certified gap of the optimum, below the 0.5% target for most budgets under 22, rising to about 2.5% around budget 25 and back under 0.5% at 40." width="1200" height="780" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>What the heuristic costs, and what remains to be proven.</b> Top: the
+                greedy's loss, proven (dark) and possible up to the upper bound (light). Bottom: the gap
+                left on the optimum itself.</figcaption>
+              </figure>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/LiDAR/solutions_map.png" alt="Three maps of the site with the certified optimal layouts. Budget 4: two roof cameras, coverage 23.7%. Budget 13: two radars on masts, coverage 88.4%. Budget 30: four radars and one camera, coverage 97.7%, the camera filling the shadow behind the buildings." width="2068" height="659" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Certified optimal layouts.</b> Cameras at small budgets, then radars, with
+                a camera filling the shadow the radars leave behind the buildings.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">04 — The intruder</span>
               <div class="rk-col">
-                <p>A higher return is not always a better flight, though. On heading and altitude the
-                agent outscores the autopilot but fails the strict "no overshoot" criterion more often
-                (90% success against 100%): it trades a little precision at the end for a much faster
-                approach, which the shaped reward happens to prefer.</p>
+                <h4>Covering is not protecting</h4>
+                <p>Coverage is an average; an intruder who knows the layout does not walk at random.
+                The intruder moves on an 8-connected grid of the cells inside the fence plus a 30 m outer
+                band, and crosses the fence on its edges. Two profiles: a <em>determined</em> intruder who
+                can climb the fence anywhere (10 s), and an <em>opportunistic</em> one who uses the gates
+                (3 s). Every path of the second is a path of the first, so the determined intruder is
+                always the worst case.</p>
+                <p>The obvious formulations are wrong: a shortest path on "cost = P" adds probabilities,
+                and \(1-\prod(1-P)\) along a path counts one observation per cell, so it depends on the
+                grid resolution. The design metric is instead the detection at the best watched point of
+                the least watched corridor:</p>
+              </div>
+
+              $$p^\star\;=\;\min_{\gamma:\,\text{start}\to\text{target}}\;\max_{v\in\gamma}\;P_v$$
+
+              <div class="rk-col">
+                <p>It is a guaranteed lower bound whatever the correlation between detections along the
+                path, and it is computed exactly by percolation: nodes are added by increasing \(P\) to a
+                union-find until the outside connects to the target.</p>
+                <p>Re-evaluated this way, the coverage optima can leave a corridor almost unwatched at
+                small budgets. NSGA-II (pymoo) then searches the three-objective front cost ↓, \(F\) ↑,
+                \(p^\star\) ↑, with set-based crossover and mutation for solutions that are a few bits out
+                of thousands, seeded with the certified solutions and validated against their upper bound.
+                Its lesson: robustness has a <strong>threshold, not a cost</strong>. Below some budget no
+                layout guarantees \(p^\star\ge 0.9\); above it, requiring it costs little coverage.</p>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">05 — Detected in time</span>
+              <div class="rk-col">
+                <h4>Detecting is not interrupting</h4>
+                <p>A detection only helps if the response arrives before the intruder reaches the target
+                (the EASI model). With \(d(v)\) the minimal time from cell \(v\) to the target, one Dijkstra
+                that does not depend on the sensors, detections that come too late are masked and the
+                corridor threshold is applied again:</p>
+              </div>
+
+              $$\tilde P_v\;=\;P_v\cdot\mathbb 1\big[d(v)\ge T_R\big],\qquad \tilde p^\star=p^\star(\tilde P),\qquad T_{min}=\min_{s\,\in\,\text{starts}}d(s)$$
+
+              <div class="rk-col">
+                <p>A direct consequence: if the response time \(T_R\) exceeds \(T_{min}\), then
+                \(\tilde p^\star=0\) <strong>for every layout</strong>, since every node of the fastest path
+                is too close. On this site \(T_{min}=50\) s. Beyond it, only delay (fence and gates) or
+                earlier detection can help; sensors cannot.</p>
               </div>
 
               <figure>
                 <div class="rk-frame rk-frame--img">
-                  <img src="assets/img/JetFighter/waypoints_agent_vs_autopilot.png" alt="Ground track and altitude profile of a four-waypoint course flown by the PPO agent and the autopilot: the tracks nearly overlap, but the agent reaches the last waypoint in 79 seconds against 135 for the autopilot." width="1442" height="540" loading="lazy" decoding="async">
+                  <img src="assets/img/LiDAR/time_remaining.png" alt="Two maps of the time left to reach the target, from 0 s at the target to about 100 s far outside, with contour lines every 10 to 15 s. For both the determined and the opportunistic intruder the fastest path comes from the north and the minimal intrusion time is 50 s." width="1533" height="752" loading="lazy" decoding="async">
                 </div>
-                <figcaption><b>Same course, same aircraft.</b> The agent anticipates each turn and
-                trades altitude freely; the autopilot flies to one waypoint at a time.</figcaption>
+                <figcaption><b>Time left to reach the target.</b> For both profiles the fastest path
+                takes 50 s: a response slower than that cannot be saved by any number of sensors.</figcaption>
+              </figure>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/LiDAR/streamlit_demo.png" alt="The Streamlit demo on a layout from the NSGA-II front: cost 10.8, coverage 68.4%, guaranteed detection 0.70 for the determined intruder but only 0.05 when counting detections early enough for a 10 s response. The map shows a dotted corridor from the west where the intruder is not detected in time." width="2000" height="1061" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>The three metrics disagreeing on one layout.</b> 68% coverage and
+                \(p^\star=0.70\), yet \(\tilde p^\star=0.05\) with a 10 s response: the dotted corridor is
+                watched, but only too close to the target.</figcaption>
               </figure>
 
               <div class="rk-col">
-                <h5>Where pure RL was not enough</h5>
-                <p>A loop needs about 20 s of coherent inputs before any reward arrives, and random
-                exploration never gets there: pure PPO on aerobatics only discovered the roll, at 35%
-                success. The aerobatics agents therefore start from behavior cloning of the scripted
-                pilot, regressing the policy mean onto its actions, with two additions that made it
-                work:</p>
+                <h5>An adversarial loop that converges and certifies</h5>
+                <p>The loop the brief asked for, "the optimiser places the sensors, the intruder finds the
+                flaw, the optimiser corrects", oscillates when written naively. Here it is written as
+                constraint generation. With \(s_{vj}=-\ln(1-P_{vj})\) and \(s_\theta=-\ln(1-\theta)\), the
+                requirement at a node is linear:</p>
+              </div>
+
+              $$P_v(x)\ge\theta\;\iff\;\sum_j C_{vj}\,x_j\ge 1,\qquad C_{vj}=\min\!\Big(\frac{s_{vj}}{s_\theta},\,1\Big)$$
+
+              <div class="rk-col">
+                <p>and \(\tilde p^\star\ge\theta\) if and only if every path contains a node that is both
+                timely and watched. Each corridor the intruder finds becomes a cut
+                \(\sum_{v\in\gamma,\,d(v)\ge T_R} z_v\ge 1\) for the master:</p>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <caption>The exact adversarial loop. Validated against an exhaustive enumeration on a toy site, then re-checked independently on every result.</caption>
+                  <thead>
+                    <tr><th>Role</th><th>Content</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Master (MILP)</td><td>minimal cost under the placement constraints and the cuts of every corridor found so far; a relaxation, so its bound is valid at each iteration</td></tr>
+                    <tr><td>Intruder (oracle)</td><td>the union-find on the master's layout; returns open corridors, each one a new cut</td></tr>
+                    <tr><td>Stop</td><td>the intruder finds no corridor, and the master proves nothing cheaper exists</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/LiDAR/loop_convergence.png" alt="Lower bound and best solution of the loop against iterations, for θ = 0.9 and response times 0, 10, 20 and 30 s. Each case ends when the two meet at a certified optimum: 5.8 after 9 iterations for 0 s, 6.8 after 3 for 10 s, 11.3 after 9 for 20 s, 12.6 after 2 for 30 s." width="1006" height="587" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>The loop closing its gap.</b> Solid: the master's lower bound; dashed:
+                the best layout found; star: certified optimum.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <p>The certified layouts <strong>look outside</strong> the fence, where the coverage
+                weight is zero, because a detection at the foot of the target comes too late. A coverage
+                optimiser can never find them: the cheapest point of the NSGA-II front meeting the same
+                requirement costs 12.4 at \(T_R=10\) s against 6.8 certified, and about 20 against 11.3 at
+                20 s, because it never optimised the timing.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/LiDAR/robust_cost.png" alt="Minimal cost against response time from 0 to 30 s, for guaranteed timely detection levels 0.5, 0.9 and 0.95. Certified optima rise from about 2 to 6 at 0 s up to 12 to 15 at 30 s. The best points of the NSGA-II front are close at 0 s but much more expensive beyond, up to 26 at 30 s. Beyond 50 s the requirement is impossible." width="1036" height="647" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>The price of a timely detection.</b> Certified optima (solid) against the
+                best NSGA-II point that meets the same requirement (dotted).</figcaption>
+              </figure>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/LiDAR/delay_frontier.png" alt="Grid of certified minimal cost for a guaranteed timely detection of at least 0.9, by fence and gate delays and response time. With the default delays of 10 and 3 s the cost is 5.8, 6.8 and 12.6 for responses of 0, 10 and 30 s, and 60 s is impossible. Raising only the fence delay to 30 s changes nothing. Raising both to 30 s makes 60 s possible at 13.8, and both at 120 s makes a 120 s response possible at 13.8." width="1007" height="527" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Delay, the lever sensors do not replace.</b> Reinforcing the fence alone
+                does nothing: the determined intruder switches to the gates. Delaying both turns
+                impossible response times into affordable ones.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">06 — Sensitivity and deep learning</span>
+              <div class="rk-col">
+                <h4>What if an assumption is wrong?</h4>
+                <p>The sensitivity analysis follows a protocol fixed in the config before computation. It
+                does not ask how a metric moves, but what a decision would <em>cost</em>: each nominal
+                layout is re-evaluated under each alternative scenario, and the certified optimum of that
+                scenario says either how much was overspent (regret) or how much more is needed.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/LiDAR/regret.png" alt="Two panels of scenarios for the decisions certified at 0 s (cost 5.8) and 10 s (cost 6.8) of response time. The 0 s decision holds under every delay, speed and band scenario and under foliage ×2, and fails only under foliage ×4 with a timely detection of 0.87. The 10 s decision holds for the delays and band widths, but drops to 0 for a running intruder at 3 m/s and under foliage ×2 and ×4, which would need a cost of 9 to 11.3." width="1337" height="647" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Sensitivity by decision regret.</b> Green: the nominal layout still holds.
+                Red: it does not, and the gap is the extra cost needed. The 10 s layout is fragile to
+                exactly what a single November acquisition cannot see: summer foliage and a running
+                intruder.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <h5>Deep learning, where it actually helps</h5>
+                <p>The brief planned a U-Net to speed up the viewsheds. Measured first, that bottleneck did
+                not exist: with the geometry / sensor separation the whole catalogue needs one computation
+                per (position, height), and a U-Net is not faster than the exact engine at equal
+                resolution. The exact cost only explodes for the <em>total viewshed</em>, the visibility
+                from every position of an area, where a fully convolutional network gets a structural
+                advantage.</p>
+                <p>The target became a placement potential: visible ground per distance ring and 45°
+                sector, 80 outputs per position. Two findings outlasted the models:</p>
                 <ul class="rk-plain">
-                  <li><strong>DART noise</strong>: during data collection the executed action is
-                  perturbed but the recorded label stays clean, so the demonstrations include small
-                  mistakes and how to correct them. Without it, a clone drifts off the ideal path and
-                  has never seen how to come back.</li>
-                  <li><strong>Critic warm-up</strong>: after cloning the actor is good but the critic
-                  knows nothing, and the first PPO updates wrecked the clone (return 82 → −28 in 50k
-                  steps). The actor is frozen for the first iterations while the critic learns.</li>
+                  <li><strong>Exact augmentation</strong>: the 8 rotations and mirrors of the grid
+                  (group D4) permute the sectors exactly, a data augmentation with no approximation.</li>
+                  <li><strong>A log-polar pyramid</strong>: horizon angles read on max-pooled blocks
+                  whose size grows with distance, like the angular size of an obstacle. As features for a
+                  boosting model they match the exact horizons at a fraction of the 70,680 cell reads per
+                  position.</li>
                 </ul>
-                <p>The cloned agent keeps 100% success and, after 3 M steps of cautious PPO, slightly
-                improves on its teacher.</p>
+                <p>A limit remains whatever the model: coverage is submodular, so choosing a set of
+                positions is not ranking them one by one. That is the job of the greedy and the certified
+                optimum, from the exact matrix.</p>
               </div>
-
-              <figure>
-                <div class="rk-frame rk-frame--img">
-                  <img src="assets/img/JetFighter/aerobatics_imitation.png" alt="Side views of four aerobatic figures, loop, aileron roll, Immelmann and Split-S, each flown by the cloned neural policy and by the scripted pilot, with the two trajectories almost superimposed and all eight marked successful." width="1662" height="408" loading="lazy" decoding="async">
-                </div>
-                <figcaption><b>A network that was never rewarded, flying aerobatics.</b> Loop, roll,
-                Immelmann and Split-S by the cloned policy against the scripted pilot it learned from.</figcaption>
-              </figure>
-
-              <div class="rk-col">
-                <h5>Removing the safety net</h5>
-                <p>The last step takes away the fly-by-wire: the agent moves elevator, ailerons, rudder
-                and throttle itself, with no limiter and no yaw damper. It needs 50 Hz decisions (the
-                reference autopilot plus fly-by-wire does not even fly at 10 Hz), rewards scaled per
-                unit of time, extra penalties near the structural limits, and the same recipe as
-                aerobatics: imitate the autopilot's surface commands, warm up the critic, then run PPO
-                with tiny exploration (σ ≈ 0.7° of elevator) and γ = 0.998 so the horizon still spans
-                about 10 s.</p>
-                <p>The direct-surface agents reach 90 to 100% success with no envelope violation, but
-                only 72 to 84% of the hierarchical return on the first four tasks. PPO beats its
-                imitated starting point clearly only on the sustained turn (+36%), and on
-                heading/altitude it slowly <em>degraded</em> the cloned policy after 1–2 M steps while
-                KL divergence, explained variance and exploration noise all looked healthy. Keeping the
-                best evaluated model saved the result.</p>
-              </div>
-            </div>
-
-            <div class="rk-sec">
-              <span class="rk-eyebrow">06 — Reward hacking</span>
-              <div class="rk-col">
-                <h4>Five times the agent found a shortcut</h4>
-                <p>The most instructive part of the project. None of these showed on the reward
-                curves; all of them were found by replaying the flights.</p>
-              </div>
-
-              <div class="rk-tablewrap">
-                <table class="rk-prose">
-                  <caption>Every hack, and the reward change that closed it.</caption>
-                  <thead>
-                    <tr><th>Task</th><th>What the agent did</th><th>Fix</th></tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>8.1</td><td>Recovered quickly, then let the speed decay forever, throttle idle</td><td>Small speed-holding term</td></tr>
-                    <tr class="rk-hero"><td>8.3</td><td>Turned 2.5× faster than the "optimum", in a descending spiral that lost 3 km</td><td>Turn-rate reward multiplied by an altitude and energy quality factor</td></tr>
-                    <tr><td>8.5</td><td>Learned not to do the figure: flying straight cost nothing</td><td>Make progress dominant: 40 points for the figure, 20 at the exit</td></tr>
-                    <tr><td>8.5</td><td>A 6-second "loop": turned 90°, then wiggled so the velocity angle projected on the loop plane spun 360°</td><td>Progress only counts within 30° of the plane; exit heading checked</td></tr>
-                    <tr><td>all</td><td>Far from the target, crashing ended the costs early</td><td>Crash penalty covering all remaining steps</td></tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <figure>
-                <div class="rk-frame rk-frame--img">
-                  <img src="assets/img/JetFighter/reward_hacking_spiral.png" alt="Reward per step against altitude lost in the turn. The additive, saturated penalty falls from 0.5 to 0.2 at 600 m and stays there, so the spiral kept paying. The multiplicative quality factor falls below zero after about 500 m and down to −0.3." width="837" height="430" loading="lazy" decoding="async">
-                </div>
-                <figcaption><b>Why the spiral paid</b> (illustrative weights). With an additive,
-                saturated altitude penalty, once the agent had lost 600 m every further metre was free
-                and the turn-rate bonus kept coming. A multiplicative factor makes only a
-                <em>sustained</em> turn worth anything.</figcaption>
-              </figure>
 
               <div class="rk-note rk-warn">
                 <span class="rk-eyebrow">What this project concludes</span>
-                <p>RL can fly this aircraft better than the classical controller when it is given the
-                right interface, but a return curve going up is not evidence of a good flight. Every
-                design decision that mattered, the action neutral, the gravity observation, the crash
-                penalty and all five reward fixes, was found by watching the aircraft, not the metrics.</p>
+                <p>A layout can cover 68% of a site, guarantee a 0.70 detection on its worst corridor,
+                and still detect a determined intruder in time with probability 0.05. The metric decides
+                the layout, and only the last one matches the engineer's question. Past the minimal
+                intrusion time no budget helps; delay does.</p>
               </div>
             </div>
 
-            <p class="rk-foot">Personal project. Results are the best evaluated model of each
-            experiment on a single seed; more seeds, and regularizing PPO towards the imitated policy,
-            are the obvious next steps.</p>
+            <p class="rk-foot">Personal project. Limits: a single leaf-off acquisition date, a standing
+            omniscient intruder at constant speed with a deterministic response time, relative costs not
+            calibrated on real prices, and vegetation transparency validated analytically rather than in
+            the field. LiDAR data © Gouvernement du Québec (MRNF), CC BY 4.0.</p>
 
           </div>
 
           <p class="project-links">
-            <a href="https://github.com/elouansalaun/jetfighter-sim">Simulator repository ↗</a>
-            <a href="https://github.com/elouansalaun/jetfighter-rl">RL repository ↗</a>
+            <a href="https://github.com/elouansalaun/Sec_Phy_Lidar">Repository ↗</a>
           </p>
         </div>
       </div>
@@ -1805,6 +1806,418 @@
 
           <p class="project-links">
             <a href="https://github.com/elouansalaun/SEAO_MCP">Repository ↗</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- PROJECT: JET FIGHTER ---------- -->
+    <article class="project" id="p-jetfighter">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-jetfighter-btn" type="button"
+                aria-expanded="false" aria-controls="p-jetfighter-panel">
+          <span class="project-name">Teaching a simulated F-16 to fly with reinforcement learning</span>
+          <span class="project-meta">2025 · Python · 6-DOF flight dynamics · Gymnasium · PPO · Stable-Baselines3 · imitation learning</span>
+          <span class="project-summary">A fighter-jet flight simulator written from the physics up and validated against published F-16 data, then used as the environment for PPO agents that learn to stabilize, turn, navigate and fly aerobatics, judged against a classical autopilot.</span>
+          <img class="project-icon" src="assets/img/icon_project_jet.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-jetfighter-panel" role="region" aria-labelledby="p-jetfighter-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Summary of the jet fighter project" width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Two repositories, one question: can an agent learning by trial and error fly a
+              fighter jet as well as a hand-tuned autopilot? The hypothesis behind the split is that
+              the answer is only worth something if the aircraft is right. An agent trained on buggy
+              physics learns to exploit the bugs, so the simulator comes first and is validated
+              before anything learns on it.</p>
+
+              <p><a href="https://github.com/elouansalaun/jetfighter-sim">jetfighter-sim</a> is the
+              aircraft: 3-DOF and 6-DOF F-16 dynamics on NASA wind-tunnel tables, instruments,
+              fly-by-wire and autopilot. <a href="https://github.com/elouansalaun/jetfighter-rl">jetfighter-rl</a>
+              installs it as a package and turns it into a Gymnasium environment with a curriculum of
+              maneuvers, each one with the classical controller as the benchmark to beat.</p>
+
+              <p>The second hypothesis is about how to learn. Moving the elevator and ailerons directly
+              is the real goal, but also the hardest version of the problem; so the agent first flies
+              <em>through</em> the fly-by-wire, on a fast simplified aircraft, and only then gets the
+              full rigid body and, finally, the raw control surfaces.</p>
+
+              <div class="rk-facts">
+                <div class="rk-fact"><b>596</b><span>tests on the simulator: analytic solutions, published performance, trim, natural modes</span></div>
+                <div class="rk-fact"><b>5 / 5</b><span>curriculum tasks where the agent matches or beats the autopilot</span></div>
+                <div class="rk-fact"><b>79 s</b><span>to fly a 4-waypoint course, against 135 s for the autopilot</span></div>
+                <div class="rk-fact"><b>5</b><span>reward hacks found by replaying flights, none visible on the curves</span></div>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — The simulator</span>
+              <div class="rk-col">
+                <h4>Physics first, checked against the real aircraft</h4>
+                <p>Two models share one interface. A 3-DOF point mass runs about 360× real time and is
+                where agents are prototyped; a 6-DOF rigid body, about 75× real time, is driven by its
+                actual control surfaces through the F-16 aerodynamic and engine tables of NASA TP-1538
+                (Stevens &amp; Lewis). Attitude is a quaternion integrated with RK4 at 100 Hz, so there
+                is no gimbal lock at the top of a loop; Euler angles are only computed for display.</p>
+              </div>
+
+              <div class="rk-blocks">
+                <div class="rk-block">
+                  <div class="rk-nb">core</div>
+                  <div>
+                    <h5>Frames and integration</h5>
+                    <p>NED and body frames, quaternion rotations, the ISA atmosphere, fixed-step RK4. SI units and radians everywhere inside.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">aircraft</div>
+                  <div>
+                    <h5>Dynamics and instruments</h5>
+                    <p>Drag polar and engine model, 3-DOF and 6-DOF equations, trim and linearization, TAS / CAS / Mach, noisy sensors from YAML, an envelope monitor for stall, overspeed, overstress and ground impact.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">control</div>
+                  <div>
+                    <h5>Classical flight control</h5>
+                    <p>PID with anti-windup, gain-scheduled fly-by-wire, cascaded autopilot, longitudinal LQR, scripted evasion maneuvers.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">viz</div>
+                  <div>
+                    <h5>Seeing what flew</h5>
+                    <p>Bit-exact recording and replay, matplotlib dashboards, Tacview 3D export, and manual flight with keyboard or joystick.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table>
+                  <caption>3-DOF model against published F-16 figures.</caption>
+                  <thead>
+                    <tr><th>Quantity</th><th>Model</th><th>Reference</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Max Mach, sea level</td><td>1.18</td><td>≈ 1.2</td></tr>
+                    <tr><td>Max Mach, 11 km</td><td>2.08</td><td>≈ 2.0</td></tr>
+                    <tr><td>Max climb rate, sea level</td><td>275 m/s</td><td>≈ 250 m/s</td></tr>
+                    <tr><td>Ceiling (0.5 m/s climb)</td><td>17.7 km</td><td>15.2 km (operational)</td></tr>
+                    <tr><td>Sustained turn rate, 3 km, Mach 0.8</td><td>18.3 °/s</td><td>≈ 18–20 °/s</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/energy_maneuverability.png" alt="Energy-maneuverability diagram of the model F-16: filled contours of specific excess power against Mach and altitude, peaking above 250 m/s around Mach 0.9 below 4 km, and shrinking to zero at the edge of the envelope near Mach 2 and 17 km; dashed lines of constant energy height from 5 to 30 km." width="945" height="584" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Energy-maneuverability diagram.</b> Specific excess power at full
+                afterburner and 1 g: how fast the aircraft can gain energy, anywhere in its envelope.
+                The zero contour is the flight envelope itself, and the region where it is largest is
+                where a fighter wants to fight.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <p>The 6-DOF model is checked on its natural modes instead: at 3,000 m and 200 m/s it
+                shows a short period at ω = 2.1 rad/s, ζ = 0.56, a 107 s phugoid, a lightly damped
+                Dutch roll (ω = 3.6 rad/s, ζ = 0.12), a 0.28 s roll subsidence and a slow spiral mode.
+                That lightly damped Dutch roll is the signature of a relaxed-stability fighter: the
+                airframe alone is barely flyable, which is why it needs a fly-by-wire.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/loop_then_roll_6dof.png" alt="A loop followed by an aileron roll flown by the 6-DOF F-16: on the left the 3D trajectory climbing from 3,000 to 4,500 m and back; on the right altitude, load factor peaking near 8 g and roll angle against time over 38 seconds." width="1397" height="617" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>A loop then a roll on the 6-DOF model.</b> About 8 g at the entry and
+                exit of the loop; the roll angle flips by 180° at the top, which is exactly where Euler
+                angles would break and the quaternion does not.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — The benchmark</span>
+              <div class="rk-col">
+                <h4>A classical autopilot to beat</h4>
+                <p>The reference every agent is compared to is built from textbook control. The
+                fly-by-wire turns pilot commands, a load factor and a roll rate, into surface
+                deflections, with gains scheduled on dynamic pressure, α and g limiters and a yaw
+                damper. Above it a cascaded autopilot holds altitude, heading and speed: altitude error
+                becomes a flight-path angle, then a load factor; heading error becomes a bank angle,
+                then a roll rate.</p>
+                <p>The same autopilot flies both aircraft models through the same interface, and that
+                interface is exactly the hierarchical action space the agents use later. If the two
+                models behave alike under it, a policy learned on the cheap one has a chance on the
+                expensive one.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/autopilot_mission.png" alt="An autopilot mission flown by the 3-DOF and 6-DOF models, in four panels over 180 seconds: altitude climbing to 4,000 m then descending to 3,000 m, course turning to 90 degrees then a full 360 degree turn, true airspeed tracking 230 then 250 then 200 m/s, and load factor holding 4 g during the level turn. The two models' curves almost overlap." width="1387" height="782" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>One mission, two aircraft models.</b> Climb and turn to a heading, a
+                full 4 g level turn, then descend and turn back. The 3-DOF and 6-DOF curves almost
+                overlap; they differ mainly in how quickly speed bleeds off after the turn.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — The environment</span>
+              <div class="rk-col">
+                <h4>What the agent sees, does and is paid for</h4>
+                <p><code>JetEnv</code> is a standard Gymnasium environment, so any off-the-shelf
+                algorithm can train on it. At each step the agent observes \(o_t\), acts, and receives a
+                reward \(r_t\); it learns the policy that maximizes the discounted return</p>
+              </div>
+
+              $$J(\theta)\;=\;\mathbb E_{\pi_\theta}\Big[\sum_{t=0}^{T}\gamma^t\,r_t\Big],\qquad \gamma=0.99\;\Rightarrow\;\frac{1}{1-\gamma}=100\text{ steps}=10\text{ s of look-ahead}$$
+
+              <div class="rk-col">
+                <p>Three clocks run inside every step: physics at 100 Hz, the fly-by-wire and the
+                envelope monitor at 50 Hz, the agent's decision at 10 Hz.</p>
+
+                <h5>Actions: "zero" means "keep doing what you do"</h5>
+                <p>In hierarchical mode the agent outputs three numbers in [−1, 1]: a load factor
+                (−3 to +9 g), a roll rate (±180°/s) and throttle. The first version mapped a zero action
+                to 1 g, so in a 60° banked turn the agent had to output exactly 2 g just to stop
+                descending, and PPO never learned the heading task. Mapping zero to the load factor
+                that <em>holds the current flight path</em>, \(\cos\gamma/\cos\mu\), fixed it.</p>
+
+                <h5>Observations: no discontinuities</h5>
+                <p>About twenty own-ship features from the measured, optionally noisy, instruments,
+                the previous action, and task features such as the altitude and heading errors. Angles
+                are given as sines and cosines, and attitude as the direction of gravity seen from the
+                aircraft. Rewards and terminations use the true state, so the agent cannot game its
+                sensors.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/gravity_vs_euler_observation.png" alt="Two plots over a 16-second loop. Left: the Euler-based feature cos of bank angle jumps from +1 to −1 at the vertical and back again later. Right: the components of gravity along the velocity and lift axes vary as smooth sinusoids through the whole loop." width="1332" height="408" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>The same loop, two ways to describe attitude.</b> The Euler-based
+                feature jumps by 180° at the vertical: an aerobatics agent climbed to the vertical and
+                stopped, because it "thought it was inverted". The gravity direction is continuous
+                through the whole figure.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <h5>Rewards: named terms, and a crash that never pays</h5>
+                <p>Each task returns a dictionary of named terms, logged separately so one can see
+                which one drives learning. For stabilization, with bank \(\mu\) and flight-path angle \(\gamma\):</p>
+              </div>
+
+              $$r_t\;=\;-0.5\,\frac{|\mu|}{\pi}\;-\;0.5\,\min\!\Big(\frac{|\gamma|}{20^\circ},1\Big)\;-\;0.1\,c_{speed}\;-\;0.1\,c_{smooth}\;+\;0.1\cdot\mathbb 1[\text{level}]$$
+
+              <div class="rk-col">
+                <p>\(c_{smooth}\) penalizes jerky commands. \(c_{speed}\) exists because early agents recovered quickly and then let the speed decay forever, something visible only on the trajectories.</p>
+                <p>The crash penalty was subtler than expected. A fixed −50 was not enough: far from
+                the goal each step costs up to \(c_{max}\), so crashing early was <em>cheaper</em> than
+                flying on, and agents learned to end their episodes. The fix charges the worst cost of
+                every remaining step within the agent's horizon:</p>
+              </div>
+
+              $$r_{crash}\;=\;-50\;-\;c_{max}\cdot\min\!\Big(\frac{T-t}{\Delta t},\;\frac{1}{1-\gamma}\Big)$$
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <caption>The task catalogue. A task defines initial conditions, goal, observation features, reward terms, success criterion and reference policy; the environment only defines how the aircraft flies.</caption>
+                  <thead>
+                    <tr><th>Step</th><th>Task</th><th>Episode</th><th>Success criterion</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>8.1</td><td>Recover wings-level from an unusual attitude</td><td>30 s</td><td>|μ| &lt; 5°, |γ| &lt; 2° within 10 s</td></tr>
+                    <tr><td>8.2</td><td>Reach a random heading, altitude (±1,500 m) and speed</td><td>90 s</td><td>within 30 m / 3° / 5 m/s, limited overshoot</td></tr>
+                    <tr><td>8.3</td><td>Turn at the best <em>sustainable</em> rate</td><td>60 s</td><td>≥ 90% of optimal rate, altitude ±200 m, no energy loss</td></tr>
+                    <tr><td>8.4</td><td>Fly through 4 random 3D waypoints</td><td>300 s</td><td>all 4 captured</td></tr>
+                    <tr><td>8.5</td><td>Loop, aileron roll, Immelmann, Split-S</td><td>45 s</td><td>figure completed, wings level at the right heading</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">04 — Training</span>
+              <div class="rk-col">
+                <h4>PPO, a curriculum, and a transfer between aircraft</h4>
+                <p>Agents are trained with Proximal Policy Optimization (Stable-Baselines3): a Gaussian
+                actor and a critic, two hidden layers of 128 units each. PPO pushes the policy towards
+                actions that did better than expected, but clips the step so one batch cannot move it
+                too far:</p>
+              </div>
+
+              $$L^{CLIP}(\theta)\;=\;\mathbb E_t\Big[\min\big(\rho_t\hat A_t,\;\operatorname{clip}(\rho_t,1-\epsilon,1+\epsilon)\,\hat A_t\big)\Big],\qquad \rho_t=\frac{\pi_\theta(a_t\mid o_t)}{\pi_{\theta_{old}}(a_t\mid o_t)},\quad\epsilon=0.2$$
+
+              <div class="rk-col">
+                <p>A few settings were each learned the hard way. Initial exploration noise is cut to
+                σ ≈ 0.37, since fully random commands crash within seconds and teach nothing. Rewards
+                are normalized by a running estimate of the return's spread, without which the critic
+                could not fit at all. PyTorch runs on a single thread, because the networks are tiny
+                and extra threads fought the 8 simulator processes for CPU (6× throughput). One
+                million steps then take about 5 minutes in 3-DOF and 20 in 6-DOF on a laptop.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/learning_curves_3dof.png" alt="Five learning curves of the 3-DOF hierarchical agents, evaluation return against training steps, each with the autopilot's return as a dashed line: stabilize over 0.2 million steps, heading and altitude over 3 million, sustained turn over 3 million, waypoints over 5 million, and aerobatics with imitation then PPO over 3 million. Every curve ends at or above the dashed line." width="1772" height="386" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>The curriculum, one seed per task.</b> Evaluation return during
+                training against the autopilot on the same episodes (dashed). The aerobatics curve
+                starts high because that agent begins from imitation, not from scratch.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <h5>From 3-DOF to 6-DOF</h5>
+                <p>Both models share the same own-ship observation and the same hierarchical actions,
+                so a 3-DOF policy can be copied into a 6-DOF agent: weights of matching shape are
+                copied, new inputs start at zero, and the exploration noise is reset. It is not free.
+                The 3-DOF stabilization agent alternated its roll command at every step, harmless on a
+                point mass with instant roll response, but a 5 Hz roll oscillation on the rigid body,
+                where it first reached only 20% success. With the smoother gravity-based observation
+                and a million steps of fine-tuning it reached 100%.</p>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">05 — Results</span>
+              <div class="rk-col">
+                <h4>Better than the autopilot through the fly-by-wire, level with it without</h4>
+                <p>With hierarchical control the agents match or beat their reference on every task, by up to
+                61% in return, with 90 to 100% success. They get there by flying harder than a
+                controller tuned for comfort: pulling several g to kill a dive, cutting corners
+                between waypoints because they also observe the next one.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/agents_vs_reference.png" alt="Horizontal bar chart of agent return relative to the reference policy for five tasks and three agent types. Hierarchical 3-DOF: 117, 142, 106, 124 and 101 percent. Hierarchical 6-DOF: 116, 135, 161 and 118 percent, no valid aerobatics result. Direct surfaces 6-DOF: 99, 98, 136, 98 and 100 percent." width="1002" height="562" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Return relative to the reference, one seed per agent.</b> 100% means
+                matching the autopilot or scripted pilot on the same evaluation episodes. The 6-DOF
+                hierarchical aerobatics agent was trained before a reward hack was fixed and is left out.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <p>A higher return is not always a better flight, though. On heading and altitude the
+                agent outscores the autopilot but fails the strict "no overshoot" criterion more often
+                (90% success against 100%): it trades a little precision at the end for a much faster
+                approach, which the shaped reward happens to prefer.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/waypoints_agent_vs_autopilot.png" alt="Ground track and altitude profile of a four-waypoint course flown by the PPO agent and the autopilot: the tracks nearly overlap, but the agent reaches the last waypoint in 79 seconds against 135 for the autopilot." width="1442" height="540" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Same course, same aircraft.</b> The agent anticipates each turn and
+                trades altitude freely; the autopilot flies to one waypoint at a time.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <h5>Where pure RL was not enough</h5>
+                <p>A loop needs about 20 s of coherent inputs before any reward arrives, and random
+                exploration never gets there: pure PPO on aerobatics only discovered the roll, at 35%
+                success. The aerobatics agents therefore start from behavior cloning of the scripted
+                pilot, regressing the policy mean onto its actions, with two additions that made it
+                work:</p>
+                <ul class="rk-plain">
+                  <li><strong>DART noise</strong>: during data collection the executed action is
+                  perturbed but the recorded label stays clean, so the demonstrations include small
+                  mistakes and how to correct them. Without it, a clone drifts off the ideal path and
+                  has never seen how to come back.</li>
+                  <li><strong>Critic warm-up</strong>: after cloning the actor is good but the critic
+                  knows nothing, and the first PPO updates wrecked the clone (return 82 → −28 in 50k
+                  steps). The actor is frozen for the first iterations while the critic learns.</li>
+                </ul>
+                <p>The cloned agent keeps 100% success and, after 3 M steps of cautious PPO, slightly
+                improves on its teacher.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/aerobatics_imitation.png" alt="Side views of four aerobatic figures, loop, aileron roll, Immelmann and Split-S, each flown by the cloned neural policy and by the scripted pilot, with the two trajectories almost superimposed and all eight marked successful." width="1662" height="408" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>A network that was never rewarded, flying aerobatics.</b> Loop, roll,
+                Immelmann and Split-S by the cloned policy against the scripted pilot it learned from.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <h5>Removing the safety net</h5>
+                <p>The last step takes away the fly-by-wire: the agent moves elevator, ailerons, rudder
+                and throttle itself, with no limiter and no yaw damper. It needs 50 Hz decisions (the
+                reference autopilot plus fly-by-wire does not even fly at 10 Hz), rewards scaled per
+                unit of time, extra penalties near the structural limits, and the same recipe as
+                aerobatics: imitate the autopilot's surface commands, warm up the critic, then run PPO
+                with tiny exploration (σ ≈ 0.7° of elevator) and γ = 0.998 so the horizon still spans
+                about 10 s.</p>
+                <p>The direct-surface agents reach 90 to 100% success with no envelope violation, but
+                only 72 to 84% of the hierarchical return on the first four tasks. PPO beats its
+                imitated starting point clearly only on the sustained turn (+36%), and on
+                heading/altitude it slowly <em>degraded</em> the cloned policy after 1–2 M steps while
+                KL divergence, explained variance and exploration noise all looked healthy. Keeping the
+                best evaluated model saved the result.</p>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">06 — Reward hacking</span>
+              <div class="rk-col">
+                <h4>Five times the agent found a shortcut</h4>
+                <p>The most instructive part of the project. None of these showed on the reward
+                curves; all of them were found by replaying the flights.</p>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <caption>Every hack, and the reward change that closed it.</caption>
+                  <thead>
+                    <tr><th>Task</th><th>What the agent did</th><th>Fix</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>8.1</td><td>Recovered quickly, then let the speed decay forever, throttle idle</td><td>Small speed-holding term</td></tr>
+                    <tr class="rk-hero"><td>8.3</td><td>Turned 2.5× faster than the "optimum", in a descending spiral that lost 3 km</td><td>Turn-rate reward multiplied by an altitude and energy quality factor</td></tr>
+                    <tr><td>8.5</td><td>Learned not to do the figure: flying straight cost nothing</td><td>Make progress dominant: 40 points for the figure, 20 at the exit</td></tr>
+                    <tr><td>8.5</td><td>A 6-second "loop": turned 90°, then wiggled so the velocity angle projected on the loop plane spun 360°</td><td>Progress only counts within 30° of the plane; exit heading checked</td></tr>
+                    <tr><td>all</td><td>Far from the target, crashing ended the costs early</td><td>Crash penalty covering all remaining steps</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/JetFighter/reward_hacking_spiral.png" alt="Reward per step against altitude lost in the turn. The additive, saturated penalty falls from 0.5 to 0.2 at 600 m and stays there, so the spiral kept paying. The multiplicative quality factor falls below zero after about 500 m and down to −0.3." width="837" height="430" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Why the spiral paid</b> (illustrative weights). With an additive,
+                saturated altitude penalty, once the agent had lost 600 m every further metre was free
+                and the turn-rate bonus kept coming. A multiplicative factor makes only a
+                <em>sustained</em> turn worth anything.</figcaption>
+              </figure>
+
+              <div class="rk-note rk-warn">
+                <span class="rk-eyebrow">What this project concludes</span>
+                <p>RL can fly this aircraft better than the classical controller when it is given the
+                right interface, but a return curve going up is not evidence of a good flight. Every
+                design decision that mattered, the action neutral, the gravity observation, the crash
+                penalty and all five reward fixes, was found by watching the aircraft, not the metrics.</p>
+              </div>
+            </div>
+
+            <p class="rk-foot">Personal project. Results are the best evaluated model of each
+            experiment on a single seed; more seeds, and regularizing PPO towards the imitated policy,
+            are the obvious next steps.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/jetfighter-sim">Simulator repository ↗</a>
+            <a href="https://github.com/elouansalaun/jetfighter-rl">RL repository ↗</a>
           </p>
         </div>
       </div>

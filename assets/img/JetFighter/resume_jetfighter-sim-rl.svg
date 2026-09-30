@@ -1,130 +1,299 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="100%" height="100%" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;">
-<rect x="0.5" y="0.5" width="799" height="599" rx="10" ry="10" style="fill:none;stroke:rgb(222,222,216);stroke-width:1px;"/>
-<text x="40" y="58" style="font-family:'Helvetica', Arial, sans-serif;font-size:23px;fill:rgb(26,26,24);">Teaching a Simulated F-16 to Fly</text>
-<text x="760" y="58" text-anchor="end" style="font-family:'Helvetica', Arial, sans-serif;font-size:13px;fill:rgb(142,142,134);">Personal project · 2026</text>
-<text x="40" y="81" style="font-family:'Helvetica', Arial, sans-serif;font-size:12.5px;fill:rgb(107,107,100);">A flight simulator built from the physics up, then PPO agents that learn to fly it and beat its autopilot.</text>
-<path d="M40,100L760,100" style="fill:none;stroke:rgb(222,222,216);stroke-width:1px;stroke-linecap:round;"/>
-<rect x="40" y="120" width="110" height="52" rx="7" ry="7" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
-<path d="M40.5,127L40.5,165" style="fill:none;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
-<text x="53" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(31,95,168);">1</text>
-<text x="65" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:13.5px;fill:rgb(26,26,24);">Physics</text>
-<text x="53" y="159" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">frames · ISA · RK4</text>
-<path d="M153.5,141.5L158.5,146L153.5,150.5" style="fill:none;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
-<rect x="162" y="120" width="110" height="52" rx="7" ry="7" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
-<path d="M162.5,127L162.5,165" style="fill:none;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
-<text x="175" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(31,95,168);">2</text>
-<text x="187" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:13.5px;fill:rgb(26,26,24);">Aircraft</text>
-<text x="175" y="159" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">3-DOF &amp; 6-DOF</text>
-<path d="M275.5,141.5L280.5,146L275.5,150.5" style="fill:none;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
-<rect x="284" y="120" width="110" height="52" rx="7" ry="7" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
-<path d="M284.5,127L284.5,165" style="fill:none;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
-<text x="297" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(31,95,168);">3</text>
-<text x="309" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:13.5px;fill:rgb(26,26,24);">Sensors</text>
-<text x="297" y="159" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">gauges · envelope</text>
-<path d="M397.5,141.5L402.5,146L397.5,150.5" style="fill:none;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
-<rect x="406" y="120" width="110" height="52" rx="7" ry="7" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
-<path d="M406.5,127L406.5,165" style="fill:none;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
-<text x="419" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(31,95,168);">4</text>
-<text x="431" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:13.5px;fill:rgb(26,26,24);">Control</text>
-<text x="419" y="159" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">FBW · autopilot</text>
-<path d="M519.5,141.5L524.5,146L519.5,150.5" style="fill:none;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
-<rect x="528" y="120" width="110" height="52" rx="7" ry="7" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
-<path d="M528.5,127L528.5,165" style="fill:none;stroke:rgb(14,156,134);stroke-width:1px;stroke-linecap:round;"/>
-<text x="541" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(14,156,134);">5</text>
-<text x="553" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:13.5px;fill:rgb(26,26,24);">Environment</text>
-<text x="541" y="159" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">Gymnasium env</text>
-<path d="M641.5,141.5L646.5,146L641.5,150.5" style="fill:none;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
-<rect x="650" y="120" width="110" height="52" rx="7" ry="7" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
-<path d="M650.5,127L650.5,165" style="fill:none;stroke:rgb(14,156,134);stroke-width:1px;stroke-linecap:round;"/>
-<text x="663" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(14,156,134);">6</text>
-<text x="675" y="143" style="font-family:'Helvetica', Arial, sans-serif;font-size:13.5px;fill:rgb(26,26,24);">Agents</text>
-<text x="663" y="159" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">PPO · imitation</text>
-<path d="M40.5,180L40.5,186L515.5,186L515.5,180" style="fill:none;stroke:rgb(31,95,168);stroke-width:1.5px;stroke-linecap:round;stroke-linejoin:round;"/>
-<path d="M528.5,180L528.5,186L759.5,186L759.5,180" style="fill:none;stroke:rgb(14,156,134);stroke-width:1.5px;stroke-linecap:round;stroke-linejoin:round;"/>
-<text x="40" y="202" style="font-family:'Helvetica', Arial, sans-serif;font-size:10px;fill:rgb(31,95,168);font-weight:bold;">jetfighter-sim</text>
-<text x="105.8084" y="202" style="font-family:'Helvetica', Arial, sans-serif;font-size:10px;fill:rgb(31,95,168);">· the jetsim package, validated by 596 tests</text>
-<text x="528" y="202" style="font-family:'Helvetica', Arial, sans-serif;font-size:10px;fill:rgb(14,156,134);font-weight:bold;">jetfighter-rl</text>
-<text x="583.0084" y="202" style="font-family:'Helvetica', Arial, sans-serif;font-size:10px;fill:rgb(14,156,134);">· learns on top of it</text>
-<rect x="40" y="220" width="720" height="46" rx="8" ry="8" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
-<path d="M40.5,228L40.5,258" style="fill:none;stroke:rgb(109,74,168);stroke-width:1px;stroke-linecap:round;"/>
-<path d="M56,243 A8,8 0 0 1 69.6,237.32" style="fill:none;stroke:black;stroke-width:1.3px;stroke-linecap:round;"/>
-<path d="M66.39999999999999,234.92L69.6,237.32L68.39999999999999,240.51999999999998" style="fill:none;stroke:black;stroke-width:1.3px;stroke-linecap:round;stroke-linejoin:round;"/>
-<path d="M72,243 A8,8 0 0 1 58.4,248.68" style="fill:none;stroke:black;stroke-width:1.3px;stroke-linecap:round;"/>
-<path d="M61.6,251.08L58.4,248.68L59.6,245.48000000000002" style="fill:none;stroke:black;stroke-width:1.3px;stroke-linecap:round;stroke-linejoin:round;"/>
-<text x="82" y="239" style="font-family:'Helvetica', Arial, sans-serif;font-size:13px;fill:rgb(26,26,24);">Agent–simulator loop</text>
-<text x="82" y="255" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">commands g, roll rate, throttle via fly-by-wire, or moves the control surfaces directly</text>
-<text x="746" y="247" text-anchor="end" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(142,142,134);">100 Hz physics · 50 Hz FBW · 10 Hz agent</text>
-<rect x="40" y="288" width="355" height="122" rx="8" ry="8" style="fill:rgb(244,244,241);"/>
-<text x="54" y="307" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);letter-spacing:0.2px;">RETURN · AGENT VIA FLY-BY-WIRE</text>
-<text x="54" y="336" style="font-family:'Helvetica', Arial, sans-serif;font-size:11px;fill:rgb(107,107,100);">Recover attitude</text>
-<path d="M168,326L280.0,326C282.2,326 284.0,327.8 284.0,330L284.0,335C284.0,337.2 282.2,339 280.0,339L168,339Z" style="fill:rgb(14,156,134);"/>
-<text x="291.0" y="336.5" style="font-family:'Helvetica', Arial, sans-serif;font-size:11.5px;fill:rgb(26,26,24);">116%</text>
-<text x="54" y="355" style="font-family:'Helvetica', Arial, sans-serif;font-size:11px;fill:rgb(107,107,100);">Heading &amp; altitude</text>
-<path d="M168,345L299.0,345C301.2,345 303.0,346.8 303.0,349L303.0,354C303.0,356.2 301.2,358 299.0,358L168,358Z" style="fill:rgb(14,156,134);"/>
-<text x="310.0" y="355.5" style="font-family:'Helvetica', Arial, sans-serif;font-size:11.5px;fill:rgb(26,26,24);">135%</text>
-<text x="54" y="374" style="font-family:'Helvetica', Arial, sans-serif;font-size:11px;fill:rgb(26,26,24);">Sustained turn</text>
-<path d="M168,364L325.0,364C327.2,364 329.0,365.8 329.0,368L329.0,373C329.0,375.2 327.2,377 325.0,377L168,377Z" style="fill:rgb(14,156,134);"/>
-<text x="336.0" y="374.5" style="font-family:'Helvetica', Arial, sans-serif;font-size:11.5px;fill:rgb(26,26,24);">161%</text>
-<text x="54" y="393" style="font-family:'Helvetica', Arial, sans-serif;font-size:11px;fill:rgb(107,107,100);">3D waypoints</text>
-<path d="M168,383L282.0,383C284.2,383 286.0,384.8 286.0,387L286.0,392C286.0,394.2 284.2,396 282.0,396L168,396Z" style="fill:rgb(14,156,134);"/>
-<text x="293.0" y="393.5" style="font-family:'Helvetica', Arial, sans-serif;font-size:11.5px;fill:rgb(26,26,24);">118%</text>
-<path d="M268.0,320L268.0,402" style="fill:none;stroke:rgb(142,142,134);stroke-width:1px;stroke-linecap:round;stroke-dasharray:2.5,2.5;"/>
-<text x="381" y="307" text-anchor="end" style="font-family:'Helvetica', Arial, sans-serif;font-size:9.5px;fill:rgb(142,142,134);">autopilot = 100%</text>
-<path d="M302.9685,298L302.9685,308" style="fill:none;stroke:rgb(142,142,134);stroke-width:1px;stroke-linecap:round;stroke-dasharray:2.5,2.5;"/>
-<rect x="405" y="288" width="355" height="122" rx="8" ry="8" style="fill:rgb(244,244,241);"/>
-<text x="419" y="307" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);letter-spacing:0.2px;">RETURN · AGENT ON RAW SURFACES</text>
-<text x="419" y="336" style="font-family:'Helvetica', Arial, sans-serif;font-size:11px;fill:rgb(107,107,100);">Recover attitude</text>
-<path d="M533,326L628.0,326C630.2,326 632.0,327.8 632.0,330L632.0,335C632.0,337.2 630.2,339 628.0,339L533,339Z" style="fill:rgb(109,74,168);"/>
-<text x="639.0" y="336.5" style="font-family:'Helvetica', Arial, sans-serif;font-size:11.5px;fill:rgb(26,26,24);">99%</text>
-<text x="419" y="355" style="font-family:'Helvetica', Arial, sans-serif;font-size:11px;fill:rgb(107,107,100);">Heading &amp; altitude</text>
-<path d="M533,345L627.0,345C629.2,345 631.0,346.8 631.0,349L631.0,354C631.0,356.2 629.2,358 627.0,358L533,358Z" style="fill:rgb(109,74,168);"/>
-<text x="638.0" y="355.5" style="font-family:'Helvetica', Arial, sans-serif;font-size:11.5px;fill:rgb(26,26,24);">98%</text>
-<text x="419" y="374" style="font-family:'Helvetica', Arial, sans-serif;font-size:11px;fill:rgb(26,26,24);">Sustained turn</text>
-<path d="M533,364L665.0,364C667.2,364 669.0,365.8 669.0,368L669.0,373C669.0,375.2 667.2,377 665.0,377L533,377Z" style="fill:rgb(109,74,168);"/>
-<text x="676.0" y="374.5" style="font-family:'Helvetica', Arial, sans-serif;font-size:11.5px;fill:rgb(26,26,24);">136%</text>
-<text x="419" y="393" style="font-family:'Helvetica', Arial, sans-serif;font-size:11px;fill:rgb(107,107,100);">3D waypoints</text>
-<path d="M533,383L627.0,383C629.2,383 631.0,384.8 631.0,387L631.0,392C631.0,394.2 629.2,396 627.0,396L533,396Z" style="fill:rgb(109,74,168);"/>
-<text x="638.0" y="393.5" style="font-family:'Helvetica', Arial, sans-serif;font-size:11.5px;fill:rgb(26,26,24);">98%</text>
-<path d="M633.0,320L633.0,402" style="fill:none;stroke:rgb(142,142,134);stroke-width:1px;stroke-linecap:round;stroke-dasharray:2.5,2.5;"/>
-<text x="746" y="307" text-anchor="end" style="font-family:'Helvetica', Arial, sans-serif;font-size:9.5px;fill:rgb(142,142,134);">autopilot = 100%</text>
-<path d="M667.9685,298L667.9685,308" style="fill:none;stroke:rgb(142,142,134);stroke-width:1px;stroke-linecap:round;stroke-dasharray:2.5,2.5;"/>
-<rect x="40.0" y="434" width="169.5" height="78" rx="8" ry="8" style="fill:rgb(244,244,241);"/>
-<path d="M53.0,448L53.0,464" style="fill:none;stroke:rgb(31,95,168);stroke-width:3px;stroke-linecap:round;"/>
-<text x="64.0" y="466" style="font-family:'Helvetica', Arial, sans-serif;font-size:24px;fill:rgb(26,26,24);">596</text>
-<text x="64.0" y="486" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">tests validating</text>
-<text x="64.0" y="500" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">the flight physics</text>
-<rect x="223.5" y="434" width="169.5" height="78" rx="8" ry="8" style="fill:rgb(244,244,241);"/>
-<path d="M236.5,448L236.5,464" style="fill:none;stroke:rgb(14,156,134);stroke-width:3px;stroke-linecap:round;"/>
-<text x="247.5" y="466" style="font-family:'Helvetica', Arial, sans-serif;font-size:24px;fill:rgb(26,26,24);">360× / 75×</text>
-<text x="247.5" y="486" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">faster than real time,</text>
-<text x="247.5" y="500" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">3-DOF / 6-DOF model</text>
-<rect x="407.0" y="434" width="169.5" height="78" rx="8" ry="8" style="fill:rgb(244,244,241);"/>
-<path d="M420.0,448L420.0,464" style="fill:none;stroke:rgb(109,74,168);stroke-width:3px;stroke-linecap:round;"/>
-<text x="431.0" y="466" style="font-family:'Helvetica', Arial, sans-serif;font-size:24px;fill:rgb(26,26,24);">5</text>
-<text x="431.0" y="486" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">reward hacks caught</text>
-<text x="431.0" y="500" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">by replaying flights</text>
-<rect x="590.5" y="434" width="169.5" height="78" rx="8" ry="8" style="fill:rgb(244,244,241);"/>
-<path d="M603.5,448L603.5,464" style="fill:none;stroke:rgb(180,83,15);stroke-width:3px;stroke-linecap:round;"/>
-<text x="614.5" y="466" style="font-family:'Helvetica', Arial, sans-serif;font-size:24px;fill:rgb(26,26,24);">+61%</text>
-<text x="614.5" y="486" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">return vs. autopilot,</text>
-<text x="614.5" y="500" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">sustained turn (6-DOF)</text>
-<rect x="40" y="545" width="53.69" height="21" rx="10.5" ry="10.5" style="fill:rgb(244,244,241);"/>
-<text x="66.84" y="559.28" text-anchor="middle" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">Python</text>
-<rect x="100.6865" y="545" width="55.42" height="21" rx="10.5" ry="10.5" style="fill:rgb(244,244,241);"/>
-<text x="128.4" y="559.28" text-anchor="middle" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">NumPy</text>
-<rect x="163.1055" y="545" width="77.01" height="21" rx="10.5" ry="10.5" style="fill:rgb(244,244,241);"/>
-<text x="201.61" y="559.28" text-anchor="middle" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">Gymnasium</text>
-<rect x="247.1125" y="545" width="105.62" height="21" rx="10.5" ry="10.5" style="fill:rgb(244,244,241);"/>
-<text x="299.92" y="559.28" text-anchor="middle" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">Stable-Baselines3</text>
-<rect x="359.732" y="545" width="60.09" height="21" rx="10.5" ry="10.5" style="fill:rgb(244,244,241);"/>
-<text x="389.78" y="559.28" text-anchor="middle" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">PyTorch</text>
-<rect x="426.8235" y="545" width="43.18" height="21" rx="10.5" ry="10.5" style="fill:rgb(244,244,241);"/>
-<text x="448.41" y="559.28" text-anchor="middle" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">PPO</text>
-<rect x="476.9995" y="545" width="98.62" height="21" rx="10.5" ry="10.5" style="fill:rgb(244,244,241);"/>
-<text x="526.31" y="559.28" text-anchor="middle" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">Behavior cloning</text>
-<rect x="582.6155" y="545" width="42.59" height="21" rx="10.5" ry="10.5" style="fill:rgb(244,244,241);"/>
-<text x="603.91" y="559.28" text-anchor="middle" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">LQR</text>
-<rect x="632.2035" y="545" width="59.5" height="21" rx="10.5" ry="10.5" style="fill:rgb(244,244,241);"/>
-<text x="661.96" y="559.28" text-anchor="middle" style="font-family:'Helvetica', Arial, sans-serif;font-size:10.5px;fill:rgb(107,107,100);">Tacview</text>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;">
+    <path d="M799.5,10.5L799.5,589.5C799.5,595.019 795.019,599.5 789.5,599.5L10.5,599.5C4.981,599.5 0.5,595.019 0.5,589.5L0.5,10.5C0.5,4.981 4.981,0.5 10.5,0.5L789.5,0.5C795.019,0.5 799.5,4.981 799.5,10.5Z" style="fill:none;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <g transform="matrix(1,0,0,1,40,58)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:23px;fill:rgb(26,26,24);">T<tspan x="11.5px 24.292px " y="0px 0px ">ea</tspan>ching a Simulated F-16 to Fly</text>
+    </g>
+    <g transform="matrix(1,0,0,1,760,58)">
+        <g transform="matrix(13,0,0,13,0,0)">
+        </g>
+        <text x="-133.694px" y="0px" style="font-family:'Helvetica';font-size:13px;fill:rgb(142,142,134);">Personal project · 2025</text>
+    </g>
+    <g transform="matrix(1,0,0,1,40,81)">
+        <g transform="matrix(12.5,0,0,12.5,11.126709,0)">
+        </g>
+        <g transform="matrix(12.5,0,0,12.5,14.599609,0)">
+        </g>
+        <g transform="matrix(12.5,0,0,12.5,405.078125,0)">
+        </g>
+        <g transform="matrix(12.5,0,0,12.5,408.551025,0)">
+        </g>
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:12.5px;fill:rgb(107,107,100);">A<tspan x="7.654px 11.127px " y="0px 0px "> ﬂ</tspan>ight simulator built from the physics up, then PPO agents that learn to ﬂy it and beat its autopilot.</text>
+    </g>
+    <path d="M40,100L760,100" style="fill:none;stroke:rgb(222,222,216);stroke-width:1px;stroke-linecap:round;"/>
+    <path d="M150,127L150,165C150,168.863 146.863,172 143,172L47,172C43.137,172 40,168.863 40,165L40,127C40,123.137 43.137,120 47,120L143,120C146.863,120 150,123.137 150,127Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M40.5,127L40.5,165" style="fill:none;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,53,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(31,95,168);">1</text>
+    </g>
+    <g transform="matrix(1,0,0,1,65,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Physics</text>
+    </g>
+    <g transform="matrix(1,0,0,1,53,159)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">frames · ISA<tspan x="57.191px 60.108px " y="0px 0px "> ·</tspan> RK4</text>
+    </g>
+    <path d="M153.5,141.5L158.5,146L153.5,150.5" style="fill:none;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M272,127L272,165C272,168.863 268.863,172 265,172L169,172C165.137,172 162,168.863 162,165L162,127C162,123.137 165.137,120 169,120L265,120C268.863,120 272,123.137 272,127Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M162.5,127L162.5,165" style="fill:none;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,175,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(31,95,168);">2</text>
+    </g>
+    <g transform="matrix(1,0,0,1,187,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Aircraft</text>
+    </g>
+    <g transform="matrix(1,0,0,1,175,159)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">3-DOF &amp; 6-DOF</text>
+    </g>
+    <path d="M275.5,141.5L280.5,146L275.5,150.5" style="fill:none;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M394,127L394,165C394,168.863 390.863,172 387,172L291,172C287.137,172 284,168.863 284,165L284,127C284,123.137 287.137,120 291,120L387,120C390.863,120 394,123.137 394,127Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M284.5,127L284.5,165" style="fill:none;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,297,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(31,95,168);">3</text>
+    </g>
+    <g transform="matrix(1,0,0,1,309,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Sensors</text>
+    </g>
+    <g transform="matrix(1,0,0,1,297,159)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">gauges · envelope</text>
+    </g>
+    <path d="M397.5,141.5L402.5,146L397.5,150.5" style="fill:none;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M516,127L516,165C516,168.863 512.863,172 509,172L413,172C409.137,172 406,168.863 406,165L406,127C406,123.137 409.137,120 413,120L509,120C512.863,120 516,123.137 516,127Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M406.5,127L406.5,165" style="fill:none;stroke:rgb(31,95,168);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,419,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(31,95,168);">4</text>
+    </g>
+    <g transform="matrix(1,0,0,1,431,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Control</text>
+    </g>
+    <g transform="matrix(1,0,0,1,419,159)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">FBW · autopilot</text>
+    </g>
+    <path d="M519.5,141.5L524.5,146L519.5,150.5" style="fill:none;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M638,127L638,165C638,168.863 634.863,172 631,172L535,172C531.137,172 528,168.863 528,165L528,127C528,123.137 531.137,120 535,120L631,120C634.863,120 638,123.137 638,127Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M528.5,127L528.5,165" style="fill:none;stroke:rgb(14,156,134);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,541,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(14,156,134);">5</text>
+    </g>
+    <g transform="matrix(1,0,0,1,553,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Environment</text>
+    </g>
+    <g transform="matrix(1,0,0,1,541,159)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Gymnasium env</text>
+    </g>
+    <path d="M641.5,141.5L646.5,146L641.5,150.5" style="fill:none;stroke:rgb(182,182,174);stroke-width:1.8px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M760,127L760,165C760,168.863 756.863,172 753,172L657,172C653.137,172 650,168.863 650,165L650,127C650,123.137 653.137,120 657,120L753,120C756.863,120 760,123.137 760,127Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M650.5,127L650.5,165" style="fill:none;stroke:rgb(14,156,134);stroke-width:1px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,663,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(14,156,134);">6</text>
+    </g>
+    <g transform="matrix(1,0,0,1,675,143)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13.5px;fill:rgb(26,26,24);">Agents</text>
+    </g>
+    <g transform="matrix(1,0,0,1,663,159)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">PPO · imitation</text>
+    </g>
+    <path d="M40.5,180L40.5,186L515.5,186L515.5,180" style="fill:none;stroke:rgb(31,95,168);stroke-width:1.5px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M528.5,180L528.5,186L759.5,186L759.5,180" style="fill:none;stroke:rgb(14,156,134);stroke-width:1.5px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <g transform="matrix(1,0,0,1,40,202)">
+        <g transform="matrix(10,0,0,10,10.561523,0)">
+        </g>
+        <g transform="matrix(10,0,0,10,13.339844,0)">
+        </g>
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(31,95,168);">jetﬁghter-sim</text>
+    </g>
+    <g transform="matrix(1,0,0,1,105.8084,202)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(31,95,168);">· the jetsim package, validated by 596 tests</text>
+    </g>
+    <g transform="matrix(1,0,0,1,528,202)">
+        <g transform="matrix(10,0,0,10,10.561523,0)">
+        </g>
+        <g transform="matrix(10,0,0,10,13.339844,0)">
+        </g>
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(14,156,134);">jetﬁghter-rl</text>
+    </g>
+    <g transform="matrix(1,0,0,1,583.0084,202)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10px;fill:rgb(14,156,134);">· learns on top of it</text>
+    </g>
+    <path d="M760,228L760,258C760,262.415 756.415,266 752,266L48,266C43.585,266 40,262.415 40,258L40,228C40,223.585 43.585,220 48,220L752,220C756.415,220 760,223.585 760,228Z" style="fill:white;stroke:rgb(222,222,216);stroke-width:1px;"/>
+    <path d="M40.5,228L40.5,258" style="fill:none;stroke:rgb(109,74,168);stroke-width:1px;stroke-linecap:round;"/>
+    <path d="M56,243C56.018,238.624 59.624,235.033 64,235.033C66.093,235.033 68.105,235.855 69.6,237.32" style="fill:none;stroke:black;stroke-width:1.3px;stroke-linecap:round;"/>
+    <path d="M66.4,234.92L69.6,237.32L68.4,240.52" style="fill:none;stroke:black;stroke-width:1.3px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <path d="M72,243C71.982,247.376 68.376,250.967 64,250.967C61.907,250.967 59.895,250.145 58.4,248.68" style="fill:none;stroke:black;stroke-width:1.3px;stroke-linecap:round;"/>
+    <path d="M61.6,251.08L58.4,248.68L59.6,245.48" style="fill:none;stroke:black;stroke-width:1.3px;stroke-linecap:round;stroke-linejoin:round;"/>
+    <g transform="matrix(1,0,0,1,82,239)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:13px;fill:rgb(26,26,24);">Agent–simulator loop</text>
+    </g>
+    <g transform="matrix(1,0,0,1,82,255)">
+        <g transform="matrix(10.5,0,0,10.5,158.145996,0)">
+        </g>
+        <g transform="matrix(10.5,0,0,10.5,161.063232,0)">
+        </g>
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">commands g, roll rate, throttle via ﬂy-by-wire, or moves the control surfaces directly</text>
+    </g>
+    <g transform="matrix(1,0,0,1,746,247)">
+        <text x="-198.998px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(142,142,134);">100 Hz physics · 50 Hz FBW · 10 Hz agent</text>
+    </g>
+    <path d="M395,296L395,402C395,406.415 391.415,410 387,410L48,410C43.585,410 40,406.415 40,402L40,296C40,291.585 43.585,288 48,288L387,288C391.415,288 395,291.585 395,296Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,54,307)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">RETUR<tspan x="36.271px " y="0px ">N</tspan> · <tspan x="52.115px 59.139px " y="0px 0px ">AG</tspan>ENT<tspan x="88.206px 91.144px " y="0px 0px "> V</tspan>IA<tspan x="107.557px 110.495px 116.93px 122.016px 128.077px 131.595px 138.619px 144.68px 148.197px " y="0px 0px 0px 0px 0px 0px 0px 0px 0px "> FLY-BY-W</tspan>IRE</text>
+    </g>
+    <g transform="matrix(1,0,0,1,54,336)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">Recover attitude</text>
+    </g>
+    <path d="M168,326L280,326C282.2,326 284,327.8 284,330L284,335C284,337.2 282.2,339 280,339L168,339L168,326Z" style="fill:rgb(14,156,134);"/>
+    <g transform="matrix(1,0,0,1,291,336.5)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">1<tspan x="5.548px 11.944px " y="0px 0px ">16</tspan>%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,54,355)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">Heading &amp; altitude</text>
+    </g>
+    <path d="M168,345L299,345C301.2,345 303,346.8 303,349L303,354C303,356.2 301.2,358 299,358L168,358L168,345Z" style="fill:rgb(14,156,134);"/>
+    <g transform="matrix(1,0,0,1,310,355.5)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">135%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,54,374)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(26,26,24);">Sustained turn</text>
+    </g>
+    <path d="M168,364L325,364C327.2,364 329,365.8 329,368L329,373C329,375.2 327.2,377 325,377L168,377L168,364Z" style="fill:rgb(14,156,134);"/>
+    <g transform="matrix(1,0,0,1,336,374.5)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">161%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,54,393)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">3D waypoints</text>
+    </g>
+    <path d="M168,383L282,383C284.2,383 286,384.8 286,387L286,392C286,394.2 284.2,396 282,396L168,396L168,383Z" style="fill:rgb(14,156,134);"/>
+    <g transform="matrix(1,0,0,1,293,393.5)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">1<tspan x="5.548px 11.944px " y="0px 0px ">18</tspan>%</text>
+    </g>
+    <path d="M268,320L268,402" style="fill:none;stroke:rgb(142,142,134);stroke-width:1px;stroke-linecap:round;stroke-dasharray:2.5,2.5;"/>
+    <g transform="matrix(1,0,0,1,381,307)">
+        <text x="-71.041px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(142,142,134);">autopilot = 100%</text>
+    </g>
+    <path d="M302.969,298L302.969,308" style="fill:none;stroke:rgb(142,142,134);stroke-width:1px;stroke-linecap:round;stroke-dasharray:2.5,2.5;"/>
+    <path d="M760,296L760,402C760,406.415 756.415,410 752,410L413,410C408.585,410 405,406.415 405,402L405,296C405,291.585 408.585,288 413,288L752,288C756.415,288 760,291.585 760,296Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,419,307)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">RETUR<tspan x="36.271px " y="0px ">N</tspan> · <tspan x="52.115px 59.139px " y="0px 0px ">AG</tspan>ENT<tspan x="88.206px 91.144px " y="0px 0px "> O</tspan>N RA<tspan x="124.118px 134.049px " y="0px 0px ">W </tspan>SURF<tspan x="165.08px 172.105px " y="0px 0px ">AC</tspan>ES</text>
+    </g>
+    <g transform="matrix(1,0,0,1,419,336)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">Recover attitude</text>
+    </g>
+    <path d="M533,326L628,326C630.2,326 632,327.8 632,330L632,335C632,337.2 630.2,339 628,339L533,339L533,326Z" style="fill:rgb(109,74,168);"/>
+    <g transform="matrix(1,0,0,1,639,336.5)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">99%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,419,355)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">Heading &amp; altitude</text>
+    </g>
+    <path d="M533,345L627,345C629.2,345 631,346.8 631,349L631,354C631,356.2 629.2,358 627,358L533,358L533,345Z" style="fill:rgb(109,74,168);"/>
+    <g transform="matrix(1,0,0,1,638,355.5)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">98%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,419,374)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(26,26,24);">Sustained turn</text>
+    </g>
+    <path d="M533,364L665,364C667.2,364 669,365.8 669,368L669,373C669,375.2 667.2,377 665,377L533,377L533,364Z" style="fill:rgb(109,74,168);"/>
+    <g transform="matrix(1,0,0,1,676,374.5)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">136%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,419,393)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11px;fill:rgb(107,107,100);">3D waypoints</text>
+    </g>
+    <path d="M533,383L627,383C629.2,383 631,384.8 631,387L631,392C631,394.2 629.2,396 627,396L533,396L533,383Z" style="fill:rgb(109,74,168);"/>
+    <g transform="matrix(1,0,0,1,638,393.5)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:11.5px;fill:rgb(26,26,24);">98%</text>
+    </g>
+    <path d="M633,320L633,402" style="fill:none;stroke:rgb(142,142,134);stroke-width:1px;stroke-linecap:round;stroke-dasharray:2.5,2.5;"/>
+    <g transform="matrix(1,0,0,1,746,307)">
+        <text x="-71.041px" y="0px" style="font-family:'Helvetica';font-size:9.5px;fill:rgb(142,142,134);">autopilot = 100%</text>
+    </g>
+    <path d="M667.968,298L667.968,308" style="fill:none;stroke:rgb(142,142,134);stroke-width:1px;stroke-linecap:round;stroke-dasharray:2.5,2.5;"/>
+    <path d="M209.5,442L209.5,504C209.5,508.415 205.915,512 201.5,512L48,512C43.585,512 40,508.415 40,504L40,442C40,437.585 43.585,434 48,434L201.5,434C205.915,434 209.5,437.585 209.5,442Z" style="fill:rgb(244,244,241);"/>
+    <path d="M53,448L53,464" style="fill:none;stroke:rgb(31,95,168);stroke-width:3px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,64,466)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">596</text>
+    </g>
+    <g transform="matrix(1,0,0,1,64,486)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">tests validating</text>
+    </g>
+    <g transform="matrix(1,0,0,1,64,500)">
+        <g transform="matrix(10.5,0,0,10.5,17.513672,0)">
+        </g>
+        <g transform="matrix(10.5,0,0,10.5,20.430908,0)">
+        </g>
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">the ﬂight physics</text>
+    </g>
+    <path d="M393,442L393,504C393,508.415 389.415,512 385,512L231.5,512C227.085,512 223.5,508.415 223.5,504L223.5,442C223.5,437.585 227.085,434 231.5,434L385,434C389.415,434 393,437.585 393,442Z" style="fill:rgb(244,244,241);"/>
+    <path d="M236.5,448L236.5,464" style="fill:none;stroke:rgb(14,156,134);stroke-width:3px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,247.5,466)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">360× / 75×</text>
+    </g>
+    <g transform="matrix(1,0,0,1,247.5,486)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">faster than real time,</text>
+    </g>
+    <g transform="matrix(1,0,0,1,247.5,500)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">3-DOF / 6-DOF model</text>
+    </g>
+    <path d="M576.5,442L576.5,504C576.5,508.415 572.915,512 568.5,512L415,512C410.585,512 407,508.415 407,504L407,442C407,437.585 410.585,434 415,434L568.5,434C572.915,434 576.5,437.585 576.5,442Z" style="fill:rgb(244,244,241);"/>
+    <path d="M420,448L420,464" style="fill:none;stroke:rgb(109,74,168);stroke-width:3px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,431,466)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">5</text>
+    </g>
+    <g transform="matrix(1,0,0,1,431,486)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">reward hacks caught</text>
+    </g>
+    <g transform="matrix(1,0,0,1,431,500)">
+        <g transform="matrix(10.5,0,0,10.5,59.53418,0)">
+        </g>
+        <g transform="matrix(10.5,0,0,10.5,62.451416,0)">
+        </g>
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">by replaying ﬂights</text>
+    </g>
+    <path d="M760,442L760,504C760,508.415 756.415,512 752,512L598.5,512C594.085,512 590.5,508.415 590.5,504L590.5,442C590.5,437.585 594.085,434 598.5,434L752,434C756.415,434 760,437.585 760,442Z" style="fill:rgb(244,244,241);"/>
+    <path d="M603.5,448L603.5,464" style="fill:none;stroke:rgb(180,83,15);stroke-width:3px;stroke-linecap:round;"/>
+    <g transform="matrix(1,0,0,1,614.5,466)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:24px;fill:rgb(26,26,24);">+61%</text>
+    </g>
+    <g transform="matrix(1,0,0,1,614.5,486)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">return vs. autopilot,</text>
+    </g>
+    <g transform="matrix(1,0,0,1,614.5,500)">
+        <text x="0px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">sustained turn (6-DOF)</text>
+    </g>
+    <path d="M93.69,555.5C93.69,561.295 88.985,566 83.19,566L50.5,566C44.705,566 40,561.295 40,555.5C40,549.705 44.705,545 50.5,545L83.19,545C88.985,545 93.69,549.705 93.69,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,66.84,559.28)">
+        <text x="-16.345px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Python</text>
+    </g>
+    <path d="M156.106,555.5C156.106,561.295 151.402,566 145.606,566L111.187,566C105.391,566 100.686,561.295 100.686,555.5C100.686,549.705 105.391,545 111.187,545L145.606,545C151.402,545 156.106,549.705 156.106,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,128.4,559.28)">
+        <text x="-17.211px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">NumPy</text>
+    </g>
+    <path d="M240.115,555.5C240.115,561.295 235.411,566 229.616,566L173.605,566C167.81,566 163.106,561.295 163.106,555.5C163.106,549.705 167.81,545 173.605,545L229.616,545C235.411,545 240.115,549.705 240.115,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,201.61,559.28)">
+        <text x="-28.006px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Gymnasium</text>
+    </g>
+    <path d="M352.733,555.5C352.733,561.295 348.028,566 342.232,566L257.613,566C251.817,566 247.113,561.295 247.113,555.5C247.113,549.705 251.817,545 257.613,545L342.232,545C348.028,545 352.733,549.705 352.733,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,299.92,559.28)">
+        <text x="-42.318px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Stable-Baselines3</text>
+    </g>
+    <path d="M419.822,555.5C419.822,561.295 415.117,566 409.322,566L370.232,566C364.437,566 359.732,561.295 359.732,555.5C359.732,549.705 364.437,545 370.232,545L409.322,545C415.117,545 419.822,549.705 419.822,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,389.78,559.28)">
+        <text x="-18.965px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">PyT<tspan x="-1.461px 4.378px " y="0px 0px ">or</tspan>ch</text>
+    </g>
+    <path d="M470.004,555.5C470.004,561.295 465.299,566 459.504,566L437.323,566C431.528,566 426.824,561.295 426.824,555.5C426.824,549.705 431.528,545 437.323,545L459.504,545C465.299,545 470.004,549.705 470.004,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,448.41,559.28)">
+        <text x="-11.087px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">PPO</text>
+    </g>
+    <path d="M575.62,555.5C575.62,561.295 570.915,566 565.12,566L487.499,566C481.704,566 477,561.295 477,555.5C477,549.705 481.704,545 487.499,545L565.12,545C570.915,545 575.62,549.705 575.62,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,526.31,559.28)">
+        <text x="-38.816px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">Behavior cloning</text>
+    </g>
+    <path d="M625.206,555.5C625.206,561.295 620.501,566 614.705,566L593.116,566C587.32,566 582.615,561.295 582.615,555.5C582.615,549.705 587.32,545 593.116,545L614.705,545C620.501,545 625.206,549.705 625.206,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,603.91,559.28)">
+        <text x="-10.795px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">LQR</text>
+    </g>
+    <path d="M691.703,555.5C691.703,561.295 686.999,566 681.203,566L642.704,566C636.908,566 632.203,561.295 632.203,555.5C632.203,549.705 636.908,545 642.704,545L681.203,545C686.999,545 691.703,549.705 691.703,555.5Z" style="fill:rgb(244,244,241);"/>
+    <g transform="matrix(1,0,0,1,661.96,559.28)">
+        <text x="-18.672px" y="0px" style="font-family:'Helvetica';font-size:10.5px;fill:rgb(107,107,100);">T<tspan x="-13.422px -7.583px " y="0px 0px ">ac</tspan>view</text>
+    </g>
 </svg>
