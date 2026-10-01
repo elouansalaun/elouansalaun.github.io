@@ -1252,6 +1252,293 @@
       </div>
     </article>
 
+    <!-- ---------- PROJECT: LIDAR AGENT ---------- -->
+    <article class="project" id="p-lidar-agent">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-lidar-agent-btn" type="button"
+                aria-expanded="false" aria-controls="p-lidar-agent-panel">
+          <span class="project-name">LiDAR AI agent: asking a point cloud in plain English</span>
+          <span class="project-meta">2026 · Python · LiDAR · Random Forest · Claude API · LangGraph · GeoPandas · Streamlit</span>
+          <span class="project-summary">Ask a question about Montreal in plain English: an LLM agent plans and runs a deterministic LiDAR → ML → GIS pipeline, a rule-based validator checks every result, and you get an answer, a table and a map.</span>
+          <img class="project-icon" src="assets/img/icon_project_lidar_agent.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-lidar-agent-panel" role="region" aria-labelledby="p-lidar-agent-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="assets/img/LiDARAgent/resume_lidar-agent.svg" alt="Summary of the LiDAR AI agent project" width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>"Which buildings around Saint Joseph's Oratory are taller than 20 m?" Answering it from
+              airborne LiDAR takes a chain of GIS steps: crop the tiles, subtract the terrain, classify
+              127 million points, segment the buildings, measure them. This project puts an LLM agent in
+              front of that chain, with one rule: <strong>the LLM only plans and explains, it never
+              computes</strong>. Every number in the answer comes from a deterministic tool, and a
+              validator sees every tool result before the LLM does.</p>
+
+              <div class="rk-facts">
+                <div class="rk-fact"><b>0.914</b><span>building F1 of the point classifier, on held-out 200 m blocks</span></div>
+                <div class="rk-fact"><b>0.04 m</b><span>median roof-height difference against the vendor classification, 36 / 36 buildings matched</span></div>
+                <div class="rk-fact"><b>≈35 s</b><span>from raw tiles to a map for a 500 m × 500 m area, on a laptop</span></div>
+                <div class="rk-fact"><b>instant</b><span>follow-up questions, which reuse the cached intermediate files</span></div>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — The data</span>
+              <div class="rk-col">
+                <h4>Altitude is not height</h4>
+                <p>The area is 2 km × 2 km of Côte-des-Neiges in Montreal: the Université de Montréal,
+                Saint Joseph's Oratory and the west slope of Mount Royal. Four airborne LiDAR tiles
+                (<code>.laz</code>, about 127 M points, 28 to 35 points/m², EPSG:2950). The vendor
+                classes cover ground, building, unclassified and noise, but <strong>no vegetation
+                class</strong>.</p>
+                <p>The ground climbs from about 105 m to over 200 m across the area, so a roof at
+                \(Z = 210\) m on the mountain and one at \(Z = 130\) m below can both be 25 m tall
+                buildings. "Taller than 20 m" only makes sense after subtracting a terrain model: the
+                ground points are rasterised into a 1 m DTM, holes under buildings are filled with the
+                nearest ground value, and every point gets</p>
+              </div>
+
+              $$h(p)\;=\;Z(p)\;-\;\mathrm{DTM}(x_p, y_p),$$
+
+              <div class="rk-col">
+                <p>with a bilinear interpolation of the DTM. Only the requested area is streamed from
+                the tiles, so a question never loads more than it needs.</p>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Classification</span>
+              <div class="rk-col">
+                <h4>Telling a roof from a tree crown</h4>
+                <p>A Random Forest labels every point as ground, vegetation, building or other. Height
+                and intensity alone struggle to separate a flat roof from a tree crown when both stand
+                15 m high, so four geometric features were added. They come from the eigenvalues
+                \(\lambda_1\ge\lambda_2\ge\lambda_3\) of the covariance of each point's 16 nearest
+                neighbours (KD-tree):</p>
+              </div>
+
+              $$\text{linearity}=\frac{\lambda_1-\lambda_2}{\lambda_1},\qquad \text{planarity}=\frac{\lambda_2-\lambda_3}{\lambda_1},\qquad \text{scattering}=\frac{\lambda_3}{\lambda_1},\qquad \text{verticality}=1-|n_z|$$
+
+              <div class="rk-col">
+                <p>A roof is a <strong>plane</strong>, a tree crown a <strong>volume</strong>, a façade
+                a <strong>wall</strong>. Since the vendor did not classify trees, vegetation training
+                labels are derived by rule (unclassified and more than 2 m above ground). The evaluation
+                uses 480,000 points from 8 <strong>held-out 200 m blocks</strong>: a spatial split, so
+                the neighbours of training points never leak into the test set.</p>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table>
+                  <caption>Point classification on the held-out blocks.</caption>
+                  <thead>
+                    <tr><th>Features</th><th>Accuracy</th><th>mIoU</th><th>Building F1</th><th>Building IoU</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>5 baseline (height, intensity, returns, density)</td><td>0.919</td><td>0.771</td><td>0.880</td><td>0.786</td></tr>
+                    <tr class="rk-hero"><td>+ 4 geometric (deployed)</td><td>0.929</td><td>0.796</td><td>0.914</td><td>0.842</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="rk-shots">
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="assets/img/LiDARAgent/oratory_classes.png" alt="Top view of a 500 m by 500 m area around Saint Joseph's Oratory with every point coloured by its predicted class: blue rectangular buildings, green tree canopy on the east and south, orange ground over the large open area, and a few pink 'other' points." width="910" height="910" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Predicted classes around the Oratory.</b> Roofs, canopy and open
+                  ground come out as coherent patches.</figcaption>
+                </figure>
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="assets/img/LiDARAgent/confusion_geometric.png" alt="Row-normalised confusion matrix of the deployed model. Ground 0.95 correct, 0.05 confused with other. Vegetation 0.97, 0.03 confused with building. Building 0.91, 0.09 confused with vegetation. Other 0.67, 0.33 confused with ground." width="600" height="540" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Where the model hesitates.</b> Buildings are mostly confused with
+                  vegetation, and "other" (cars, low objects) with the ground.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Buildings</span>
+              <div class="rk-col">
+                <h4>From points to measured footprints</h4>
+                <p>Seen from above, a building is a connected patch of roof. The building points are
+                rasterised on a 1 m grid, cleaned by a morphological opening and closing, split into
+                connected components and vectorised into polygons. Each one gets a robust roof height
+                (98th percentile of its points above ground, which ignores antennas), its highest point,
+                an area and a centroid. A purity filter then drops the components where building points
+                are a minority, which are tree blobs mislabelled as roof.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/LiDARAgent/oratory_buildings.png" alt="Building footprints around Saint Joseph's Oratory. Buildings under 20 m in grey; those of at least 20 m coloured by height: B001, the Oratory, 83 m; B002 60 m; B003, B004 and B005 48 m, plus two lower ones." width="988" height="910" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Buildings of at least 20 m around the Oratory.</b> The basilica (B001)
+                has an 83 m roof height and a highest point at 106 m.</figcaption>
+              </figure>
+
+              <div class="rk-col">
+                <p>To check the whole chain, the same segmentation is run on the vendor's professional
+                building class and compared, on the held-out blocks, with the result obtained from the
+                predicted classes:</p>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table>
+                  <caption>Buildings from the predicted classes against the vendor classification.</caption>
+                  <thead>
+                    <tr><th>Buildings ≥ 100 m² matched</th><th>Height diff. median</th><th>Height diff. p90</th><th>Footprint IoU</th><th>Buildings ≥ 20 m found</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>36 / 36</td><td>0.04 m</td><td>0.33 m</td><td>0.944</td><td>9 / 9</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">04 — The agent</span>
+              <div class="rk-col">
+                <h4>Seven tools, three nodes, two brains</h4>
+                <p>The agent is a LangGraph state machine with three nodes, and only one of them involves
+                an LLM: <code>agent</code> asks the model what to do next, <code>tools</code> runs the
+                requested Python functions, <code>validator</code> checks their outputs and sends them
+                back. The conversation is kept in the Anthropic Messages format, so the agent node is a
+                single API call with no conversion layer.</p>
+                <p>Each tool is a typed Python function. A small decorator (about 80 lines, instead of a
+                framework) generates the JSON schema sent to the LLM from the type hints, validates the
+                arguments with pydantic before the call, and turns exceptions into messages the agent
+                can act on.</p>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <caption>The tools, in the order of the standard plan.</caption>
+                  <thead>
+                    <tr><th>Tool</th><th>Returns</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>find_lidar_tiles</code></td><td>tile extents and density</td></tr>
+                    <tr><td><code>load_point_cloud</code></td><td>cropped <code>.laz</code> (place, bounding box, or centre + size)</td></tr>
+                    <tr><td><code>normalize_height</code></td><td><code>.laz</code> with height above ground + DTM GeoTIFF</td></tr>
+                    <tr><td><code>classify_lidar_points</code></td><td>classified <code>.laz</code> + class percentages</td></tr>
+                    <tr><td><code>extract_buildings</code></td><td>GeoJSON footprints with heights and areas</td></tr>
+                    <tr><td><code>filter_buildings</code></td><td>buildings within a height range</td></tr>
+                    <tr><td><code>create_map</code></td><td>interactive HTML map</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="rk-col">
+                <p>Tools pass <strong>file paths, not objects</strong>. Every intermediate result can be
+                opened in QGIS and is cached, which makes follow-up questions cheap: "And above 50 m?"
+                after a 20 m query only reruns <code>filter_buildings</code> and <code>create_map</code>
+                on the existing buildings file.</p>
+                <p>Behind the same <code>llm(system, messages, tools)</code> call sit two
+                interchangeable brains. Claude understands any phrasing and plans by itself. Without an
+                API key, a rule-based <em>offline demo planner</em> parses building-height and coverage
+                questions with regular expressions and follows a fixed plan; the tools, the validator
+                and the map stay real, and the interface labels it clearly as not an LLM.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="assets/img/LiDARAgent/Demo_terminal.png" alt="Terminal session: the question 'Find buildings taller than 20 m around Saint Joseph's Oratory', followed by one narrated line and one tool call per step, from load_point_cloud to create_map, each marked ok with its duration. The answer states that 7 buildings are taller than 20 m, with a table of building id, height, highest point, footprint and location, the average and maximum height, the map path, a coverage note and a limitations line." width="1307" height="524" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>The agent from the command line.</b> Seven tool calls, a direct answer,
+                a table, and a note that only 86% of the requested square is inside the LiDAR
+                coverage.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">05 — The validator</span>
+              <div class="rk-col">
+                <h4>An LLM cannot tell that a 648 m building is absurd</h4>
+                <p>It will report whatever a tool returns. The validator sits between the tools and the
+                agent and applies plain physical and geometric rules, with no LLM involved. It checks
+                <strong>every</strong> building in the output file, not only the 25 the LLM gets to
+                see.</p>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <caption>Two severities, two behaviours.</caption>
+                  <thead>
+                    <tr><th>Outcome</th><th>What the agent receives</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>valid</td><td>the tool results</td></tr>
+                    <tr><td>warning</td><td>the results plus notes to mention, e.g. a point at 160 m above a 40 m roof: probably an antenna, a crane or noise</td></tr>
+                    <tr class="rk-hero"><td>error</td><td>"do not report these numbers as-is", the likely causes and a suggested fix, then a retry (at most 2)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="rk-col">
+                <p>Among the rules: \(0 &lt; \text{building height} &lt; 150\) m, positive areas, valid
+                geometries, a defined CRS, class percentages summing to 100, and heights above ground
+                between −2 m and 150 m. A too-tall building, for instance, comes back with its probable
+                causes (heights measured from sea level, vegetation classified as building) and a concrete
+                next step: check that the cloud came from <code>normalize_height</code>, or re-extract
+                with a lower height percentile.</p>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">06 — The interface</span>
+              <div class="rk-col">
+                <h4>A chat with a live trace</h4>
+                <p>The Streamlit app has two modes. <em>AI agent</em>: chat with Claude or the offline
+                planner, with a live trace of every tool call and validator message. <em>Pipeline</em>:
+                pick a place, a size and a height threshold with sliders, no agent. The results panel
+                shows metric tiles, an interactive map (OpenStreetMap or satellite), the building table
+                with a GeoJSON download, and a rotatable 3D point cloud.</p>
+                <p>The tests run without an API key: scripted fake LLMs drive the real graph, tools and
+                validator on a synthetic point cloud.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img rk-frame--scroll" tabindex="0" role="group" aria-label="Scrollable screenshot of the Streamlit app">
+                  <img src="assets/img/LiDARAgent/streamlit_demo.jpg" alt="The Streamlit app, dark theme. The question about buildings taller than 20 m around the Oratory, the expanded trace 'Done in 7 steps', the answer table with 7 buildings, then the results: 7 buildings, average 48.8 m, maximum 82.9 m, total footprint 9,869 m², a satellite map with the footprints in blue, the building table with a GeoJSON download, and a 3D point cloud coloured by class. Below, the follow-up 'And above 50 m?' is answered in 3 steps with 2 buildings and a new map." width="1100" height="4088" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>A question and its follow-up</b> (scroll inside the frame). The second
+                answer takes 3 steps instead of 7, because it reuses the buildings file of the
+                first.</figcaption>
+              </figure>
+
+              <div class="rk-note rk-warn">
+                <span class="rk-eyebrow">Known limits</span>
+                <ul class="rk-plain">
+                  <li>Adjoining buildings (row houses, university wings) merge into one footprint, so
+                  counts are lower than a cadastre's.</li>
+                  <li>Vegetation training labels are derived by rule, so they are weak labels.</li>
+                  <li>The 150 m height limit of the validator must be raised before analysing downtown
+                  Montreal.</li>
+                </ul>
+              </div>
+            </div>
+
+            <p class="rk-foot">Personal project. Runtimes measured on a MacBook (Apple Silicon): about
+            35 s for 500 m × 500 m (≈10 M points), about 130 s for a full 1 km² tile; the model weighs
+            62 MB and trains in 24 s.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/LiDAR_Agent">Repository ↗</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
     <!-- ---------- PROJECT 2 ---------- -->
     <article class="project" id="p-seao">
       <h3 class="project-heading">
