@@ -652,6 +652,153 @@
       </div>
     </article>
 
+    <!-- ---------- PROJECT: LLM RTS ---------- -->
+    <article class="project" id="p-llm-rts">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-llm-rts-btn" type="button"
+                aria-expanded="false" aria-controls="p-llm-rts-panel">
+          <span class="project-name">A local LLM plays a real-time strategy game with agents and knowledge base</span>
+          <span class="project-meta">2026 · TypeScript · Node.js · Qwen 3.5 9B · LM Studio · JSON Schema · RAG · Vitest</span>
+          <span class="project-summary">A small LLM running on a laptop plays OpenFront against the game's own AI: it reads the game as a graph, draws on a tested knowledge base, plans as a strategist and orders as a commander, while the code enforces the plan. It won a full match with 80.9% of the land.</span>
+          <img class="project-icon" src="assets/img/icon_project_rts.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-llm-rts-panel" role="region" aria-labelledby="p-llm-rts-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="assets/img/LLMRTS/resume_llm-rts.svg" alt="One-page summary of the LLM RTS project: a six-step pipeline (headless engine, player graph, knowledge retrieval, LLM strategist, LLM commander, troop rules enforced by code); the principle that the LLM chooses what to do and the code chooses where and how much; the land held in the winning match rising from 4.3% to 80.9% at 8:49; peak land share of successive versions on the same seed, from 5.8% for scripted bots to 80.9% and a win for the final agent; 130 LLM calls with 0 errors, 0 invalid orders possible and 39 tests." width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Can a <strong>9-billion-parameter model running locally</strong> (Qwen 3.5 9B in LM
+              Studio, on a MacBook Air) play a real-time strategy game well? Not by looking at
+              328,000 map tiles. This agent reduces <a href="https://github.com/openfrontio/OpenFrontIO">OpenFront</a>
+              to a graph of about 30 players, gives the model a short situation text and a menu of
+              legal options, and splits it into two roles: a <strong>strategist</strong> that plans and
+              a <strong>commander</strong> that gives orders. The code enforces the plan between calls.</p>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — How it works</span>
+              <div class="rk-col">
+                <h4>The LLM chooses what, the code chooses where</h4>
+                <p>The unmodified OpenFront engine runs headless in the same process, and game time
+                pauses while the model thinks. Each change becomes a sentence ("Queensland started
+                attacking you with 46,040 troops"). The strategist, called every 20 s or on major
+                events, gets the core rules plus the 6 most relevant of 37 knowledge sections and
+                writes a plan: priorities, a focus, the troop reserve to keep and the size of expansion
+                waves. The commander, called only when something changes, turns it into at most two
+                orders as JSON. The schema is rebuilt every turn and its enum is the current list of
+                legal option ids, so an invalid order cannot be written.</p>
+              </div>
+
+<pre class="rk-code"><code><span class="c">// a real commander turn from the winning match, at 3:15</span>
+{
+  "reason": "Carolinian Republic eliminated; attack Carolinian
+             Commonwealth to secure west, then build city for
+             growth. Keep 35% reserve (682,942 troops) ...",
+  "actions": [
+    { "id": "attack_carolinian_commonwealth", "troops_percent": 30 },
+    { "id": "build_city", "troops_percent": 0 }
+  ]
+}</code></pre>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Skills</span>
+              <ul class="rk-plain">
+                <li><b>LLM agent design.</b> A planner/executor split, event-driven calls, and a
+                self-check that sends a rule-breaking answer back once with the numbers.</li>
+                <li><b>Structured output.</b> A JSON schema whose enum is the menu of legal options,
+                with <code>maxLength</code> on every text field so an answer can never be cut off
+                mid-JSON.</li>
+                <li><b>Retrieval without embeddings.</b> 37 tagged knowledge sections; the situation
+                picks 6, deterministically, and every factual section is checked against the real
+                engine by a test.</li>
+                <li><b>State abstraction.</b> 328,000 tiles → a graph of ~30 players (borders, attacks,
+                alliances) → a short text a 9B model can reason about.</li>
+                <li><b>Integrating a large codebase.</b> The OpenFront engine at a pinned commit,
+                fetched with a sparse checkout (7 MB instead of 1.3 GB).</li>
+                <li><b>Evaluation and reproducibility.</b> Scripted baselines on the same seed, offline
+                reproductions of failures without the LLM, every prompt and answer logged to
+                <code>turns.jsonl</code>, and 39 Vitest tests, including a full match with a mock LLM
+                that runs a 30-minute game in seconds.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Results</span>
+              <div class="rk-col">
+                <p>On the Australia map against 7 AI nations and 20 tribes (Easy, seed
+                <code>australia-1</code>), <strong>the LLM won outright after 8 min 49 s with 80.9% of
+                the land</strong>, ranked first from the first minute. 130 LLM calls (29 strategist,
+                101 commander), 0 errors, 8.0 s mean latency, no cloud API.</p>
+              </div>
+
+              <div class="rk-shots">
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="assets/img/LLMRTS/map-03min.png" alt="Map of Australia at minute 3: the LLM in gold holds a wide band across the centre; around it, nations in red, green, blue, cyan, pink, purple and brown, and grey tribes left in the gaps." width="1000" height="750" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Minute 3, 37.8% of the land.</b> The LLM (gold) spawned in the central
+                  plains as the knowledge base advises, ate the tribes around it and allied with its
+                  neighbours.</figcaption>
+                </figure>
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="assets/img/LLMRTS/final.png" alt="Final map of Australia: gold covers almost the whole continent and Tasmania; only a red nation in the west and a green one in the south-west remain. White squares mark buildings." width="1000" height="750" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>8:49, 80.9%, the game declares the LLM the winner.</b> Once its
+                  alliances expired, Victoria and New South Wales fell, then Queensland.</figcaption>
+                </figure>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table>
+                  <caption>Iterating from the logs, on the same seed. Each failure was diagnosed by
+                  reading <code>turns.jsonl</code> and fixed in the interface or the code.</caption>
+                  <thead>
+                    <tr><th>Version</th><th>Setting</th><th>Result</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Scripted players, no LLM</td><td>Medium</td><td class="rk-bad">peak 5.8%, eliminated 6:21</td></tr>
+                    <tr><td>Strategist + commander, the LLM controls every troop</td><td>Medium</td><td class="rk-bad">peak 10.2%, eliminated 3:50</td></tr>
+                    <tr><td>Same model, the code enforces reserve and waves</td><td>Medium, 3 min</td><td>24.1%, rank 1 of 11</td></tr>
+                    <tr class="rk-hero"><td>Same agent, full game</td><td>Easy</td><td class="rk-good">won at 8:49, 80.9%</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <ul class="rk-plain">
+                <li><b>"Send troops to defend."</b> The model kept attacking a stronger nation "to
+                defend", draining its army from 111,000 to 27,000. In OpenFront, troops kept at home
+                <em>are</em> the defence: a core rule now says so, and each attack option shows the
+                strength comparison next to its id.</li>
+                <li><b>Faster is not more reactive.</b> A 1 s cadence repeated "expand 30%" and drained
+                the army in 10 s; a script with no LLM reproduced it. A troop budget per 5 s and a
+                reserve chosen by the plan took the same cadence from eliminated to first place.</li>
+                <li><b>Main takeaway:</b> most of the improvement came from the interface (wording,
+                menu, schema, troop rules), not from the model.</li>
+              </ul>
+            </div>
+
+            <p class="rk-foot">Personal project. Limits: the winning match was on Easy and on a single
+            seed; multi-seed runs and ablations (knowledge base off, troop rules off) are the next
+            step. AGPL-3.0; independent of OpenFront.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/LLM_RTS2">Repository ↗</a>
+          </p>
+
+        </div>
+      </div>
+    </article>
+
     <!-- ---------- PROJECT 2 ---------- -->
     <article class="project" id="p-seao">
       <h3 class="project-heading">

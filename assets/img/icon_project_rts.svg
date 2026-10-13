@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 300 100" version="1.1" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+    <!-- laptop running the local model -->
+    <rect x="14" y="24" width="62" height="42" rx="3" style="fill:none;stroke:black;stroke-width:2.2px;"/>
+    <path d="M6,74L84,74L80,68L10,68Z" style="fill:none;stroke:black;stroke-width:2.2px;"/>
+    <path d="M32,34C28,34 28,36 28,39L28,42C28,44 26,45 25,45C26,45 28,46 28,48L28,51C28,54 28,56 32,56" style="fill:none;stroke:black;stroke-width:1.8px;"/>
+    <path d="M58,34C62,34 62,36 62,39L62,42C62,44 64,45 65,45C64,45 62,46 62,48L62,51C62,54 62,56 58,56" style="fill:none;stroke:black;stroke-width:1.8px;"/>
+    <path d="M36,40L54,40M36,45L50,45M36,50L52,50" style="fill:none;stroke:black;stroke-width:1.4px;"/>
+
+    <!-- arrow -->
+    <path d="M89,51L109,51" style="fill:none;stroke:black;stroke-width:1.67px;"/>
+    <path d="M108,47.25L113,51L108,54.75Z"/>
+
+    <!-- menu of legal options, one picked -->
+    <rect x="124" y="24" width="62" height="56" rx="4" style="fill:none;stroke:black;stroke-width:2.2px;"/>
+    <rect x="132" y="32" width="9" height="9" rx="1.5" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <path d="M134,36.5L136,38.5L139.5,34.5" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <path d="M147,36.5L177,36.5" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <rect x="132" y="47" width="9" height="9" rx="1.5" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <path d="M147,51.5L172,51.5" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <rect x="132" y="62" width="9" height="9" rx="1.5" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <path d="M147,66.5L175,66.5" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+
+    <!-- arrow -->
+    <path d="M197,51L217,51" style="fill:none;stroke:black;stroke-width:1.67px;"/>
+    <path d="M216,47.25L221,51L216,54.75Z"/>
+
+    <!-- conquered territory with a flag -->
+    <path d="M234,58L240,50L238,44L248,42L254,36L262,40L270,36L276,42L286,44L284,52L292,58L288,66L290,74L280,76L274,82L264,78L256,82L250,76L240,76L238,68Z" style="fill:none;stroke:black;stroke-width:2.2px;"/>
+    <path d="M247,64L262,58M262,58L276,66M262,58L262,74" style="fill:none;stroke:black;stroke-width:1.1px;stroke-dasharray:2.5,2.5;"/>
+    <path d="M262,58L262,20" style="fill:none;stroke:black;stroke-width:2px;"/>
+    <path d="M262,21L280,26L262,32Z"/>
+</svg>
