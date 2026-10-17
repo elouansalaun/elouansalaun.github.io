@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 300 100" version="1.1" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+    <!-- a single neuron: inputs, weighted sum, output -->
+    <path d="M10,34L36,48M10,50L36,50M10,66L36,52" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <circle cx="10" cy="34" r="2.6"/>
+    <circle cx="10" cy="50" r="2.6"/>
+    <circle cx="10" cy="66" r="2.6"/>
+    <circle cx="50" cy="50" r="14" style="fill:none;stroke:black;stroke-width:2.2px;"/>
+    <path d="M55,44L45,44L50,50L45,56L55,56" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <path d="M64,50L74,50" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+
+    <!-- arrow -->
+    <path d="M86,51L106,51" style="fill:none;stroke:black;stroke-width:1.67px;"/>
+    <path d="M105,47.25L110,51L105,54.75Z"/>
+
+    <!-- a network of layers -->
+    <path d="M124,32L152,24M124,32L152,50M124,32L152,76M124,68L152,24M124,68L152,50M124,68L152,76M152,24L180,36M152,50L180,36M152,76L180,36M152,24L180,64M152,50L180,64M152,76L180,64" style="fill:none;stroke:black;stroke-width:1.1px;"/>
+    <circle cx="124" cy="32" r="5" style="fill:white;stroke:black;stroke-width:2px;"/>
+    <circle cx="124" cy="68" r="5" style="fill:white;stroke:black;stroke-width:2px;"/>
+    <circle cx="152" cy="24" r="5" style="fill:white;stroke:black;stroke-width:2px;"/>
+    <circle cx="152" cy="50" r="5" style="fill:white;stroke:black;stroke-width:2px;"/>
+    <circle cx="152" cy="76" r="5" style="fill:white;stroke:black;stroke-width:2px;"/>
+    <circle cx="180" cy="36" r="5" style="fill:white;stroke:black;stroke-width:2px;"/>
+    <circle cx="180" cy="64" r="5" style="fill:white;stroke:black;stroke-width:2px;"/>
+
+    <!-- arrow -->
+    <path d="M194,51L214,51" style="fill:none;stroke:black;stroke-width:1.67px;"/>
+    <path d="M213,47.25L218,51L213,54.75Z"/>
+
+    <!-- an agent: a chat bubble with a terminal prompt -->
+    <path d="M232,22L276,22C280,22 282,24 282,28L282,58C282,62 280,64 276,64L250,64L238,76L240,64L232,64C228,64 226,62 226,58L226,28C226,24 228,22 232,22Z" style="fill:none;stroke:black;stroke-width:2.2px;"/>
+    <path d="M238,36L246,43L238,50" style="fill:none;stroke:black;stroke-width:2px;"/>
+    <path d="M252,50L270,50" style="fill:none;stroke:black;stroke-width:2px;"/>
+</svg>

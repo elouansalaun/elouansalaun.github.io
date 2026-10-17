@@ -375,7 +375,171 @@
       </div>
     </article>
 
-    
+    <!-- ---------- PROJECT: FROM NEURON TO AGI ---------- -->
+    <article class="project" id="p-neuron-agi">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-neuron-agi-btn" type="button"
+                aria-expanded="false" aria-controls="p-neuron-agi-panel">
+          <span class="project-name">From Neuron to AGI: deep learning, LLMs and agents built from scratch</span>
+          <span class="project-meta">2026 · Python · NumPy · PyTorch · Transformers · LoRA · DPO · GRPO · PPO · RAG · MCP</span>
+          <span class="project-summary">27 notebooks that retrace the path from a single perceptron to a GPT, a chatbot, a reasoning model and a coding agent. Every piece is written by hand, checked against the reference library, and only then reused, all on a laptop.</span>
+          <img class="project-icon" src="assets/img/icon_project_neuron_agi.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-neuron-agi-panel" role="region" aria-labelledby="p-neuron-agi-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="assets/img/NeuronAGI/resume_from-neuron-to-agi.svg" alt="One-page summary of the From Neuron to AGI project: ten parts in sequence (foundations, the neuron, multilayer networks, deep learning, language, GPT, reinforcement learning, post-training, agents, toward AGI) grouped into how networks learn, sequences to GPT, and from models to agents; the rule that a library feature is used only after it has been built from scratch and checked against it; four before/after results on the same model (chain of thought 3.2 to 91.5 percent, tools 1 to 7 of 8, RAG 1 to 15 of 16, a test harness 4 to 6 of 8); TinyStories validation loss of 1.93 for our 18M-parameter GPT against 2.63 for GPT-2; 27 notebooks, 96 percent LunarLander landings, LoRA on 1.9 percent of the weights, one laptop." width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>The same few principles (a weighted sum, the chain rule, attention, a loss, a
+              feedback loop) are enough to go from the first artificial neuron to today's language-model
+              agents. This project proves it by <strong>building every step by hand</strong>, in 27
+              notebooks that each add one idea, implement it, check it against a reference library and
+              only then use the library. Everything runs on a MacBook Air M5, and every notebook is
+              saved with its outputs, so it can be read on GitHub without running anything.</p>
+
+              <div class="rk-facts">
+                <div class="rk-fact"><b>1.93</b><span>TinyStories loss of an 18M-parameter GPT trained in 14 min, against 2.63 for GPT-2</span></div>
+                <div class="rk-fact"><b>3.2 → 91.5%</b><span>3-digit × 2-digit multiplication, same tiny Transformer, without and with a chain of thought</span></div>
+                <div class="rk-fact"><b>4 → 6 of 8</b><span>bugs fixed by a coding agent once the harness runs the tests instead of trusting the model</span></div>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — How it works</span>
+              <div class="rk-col">
+                <h4>Build it, check it, then use the library</h4>
+                <p>Backpropagation is derived by hand before an autograd engine is written; that engine
+                is checked against PyTorch before PyTorch is used. Attention comes before
+                <code>nn.MultiheadAttention</code>, a GPT before Hugging Face's, LoRA before
+                <code>peft</code>, PPO before any RL library, an agent loop before any framework and an
+                MCP server before the official SDK. Later modules import earlier ones: the coding agent
+                of module 24 runs on the agent loop of 22, which reuses the chat template of 19, which
+                fine-tunes the GPT of 14.</p>
+              </div>
+
+              <div class="rk-blocks">
+                <div class="rk-block">
+                  <div class="rk-nb">00 – 07</div>
+                  <div>
+                    <h5>How networks learn</h5>
+                    <p>A numerical gradient checker, the perceptron and why XOR defeats it, softmax regression on MNIST in pure NumPy, a hand-derived MLP, a scalar then tensor autograd engine, optimisers from SGD to AdamW, and a small ResNet on CIFAR-10.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">08 – 16</div>
+                  <div>
+                    <h5>Language and Transformers</h5>
+                    <p>n-grams and perplexity, word2vec, LSTMs, attention, a BPE tokenizer compared with GPT-2's, a Transformer up to RoPE, a GPT that loads OpenAI's GPT-2 weights, a scaling sweep, a KV cache, mixture of experts, and a small ViT and CLIP.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">17 – 21</div>
+                  <div>
+                    <h5>Reinforcement learning and post-training</h5>
+                    <p>Q-learning, DQN, REINFORCE and PPO up to LunarLander; then GPT-2 fine-tuned into a chatbot (fully and with LoRA), a reward model, best-of-N and DPO, and GRPO with verifiable rewards on arithmetic.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">22 – 26</div>
+                  <div>
+                    <h5>Agents and the road to AGI</h5>
+                    <p>A tool-using agent loop with no framework, BM25 and embedding retrieval over the project's own notebooks, a coding agent and MCP from scratch, an evaluation harness, a sycophancy test, a sparse autoencoder, and measured open problems (continual learning, ARC).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Skills</span>
+              <ul class="rk-plain">
+                <li><b>Deep-learning fundamentals.</b> Backpropagation, initialisation, normalisation,
+                residual connections and optimisers implemented by hand and verified with a gradient
+                checker.</li>
+                <li><b>Transformers and LLMs.</b> A GPT written from scratch that reproduces Hugging
+                Face's GPT-2 logits, plus scaling laws, mixed precision, a KV cache and
+                FlashAttention's online softmax.</li>
+                <li><b>Post-training.</b> SFT, LoRA, reward models, DPO and GRPO, on models small enough
+                to train on a laptop.</li>
+                <li><b>Reinforcement learning.</b> Value iteration, DQN, REINFORCE, GAE and PPO, with the
+                ablations that show why each ingredient is there.</li>
+                <li><b>LLM agents.</b> Function calling, RAG, long-term memory, a coding agent and an
+                MCP client and server, on a 4B-parameter open model (Qwen3-4B).</li>
+                <li><b>Evaluation and interpretability.</b> A benchmark harness with confidence intervals,
+                reward-hacking and sycophancy tests, and a sparse autoencoder on our own GPT.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Results</span>
+              <div class="rk-col">
+                <p>Every number is measured in the notebooks, on a laptop. The notebooks also report
+                what did not work, and why: DQN without a target network, PPO without clipping, GRPO at
+                too high a learning rate, agents that claim fixes they never made.</p>
+              </div>
+
+              <div class="rk-shots">
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="assets/img/NeuronAGI/scaling_tinystories.png" alt="Log-log plot of validation loss against training compute for six GPT sizes from 0.61M to 7.97M parameters on TinyStories; the curves form a frontier fitted by a dashed line, loss proportional to compute to the power minus 0.175." width="718" height="472" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Module 15, a scaling law on a laptop.</b> Six GPT sizes trained on
+                  TinyStories; the compute-optimal frontier is a power law, L ∝ C<sup>−0.175</sup>, as in
+                  Kaplan et al.</figcaption>
+                </figure>
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="assets/img/NeuronAGI/ppo_vs_no_clip.png" alt="Two panels on CartPole over 100,000 environment steps. Left, return: PPO runs climb to 500 and stay there, while runs without clipping repeatedly collapse. Right, KL divergence per iteration on a log scale: PPO stays around 0.005, unclipped runs reach 0.1 to 1." width="1169" height="354" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Module 18, why PPO clips.</b> CartPole, 10 epochs per batch: without
+                  clipping, each update moves the policy one to two orders of magnitude further and the
+                  return collapses again and again.</figcaption>
+                </figure>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table>
+                  <caption>Selected results. Each pair is the same model, with and without one idea.</caption>
+                  <thead>
+                    <tr><th>Module</th><th>Without</th><th>With</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>19 · LoRA on 1.9% of the parameters</td><td>full fine-tuning, loss 2.077</td><td>loss 2.086</td></tr>
+                    <tr><td>21 · Chain of thought, tiny Transformer</td><td class="rk-bad">3.2%</td><td class="rk-good">91.5%</td></tr>
+                    <tr><td>22 · Tools for a 4B model</td><td class="rk-bad">1 of 8</td><td class="rk-good">7 of 8</td></tr>
+                    <tr><td>23 · RAG over the project's notebooks</td><td class="rk-bad">1 of 16</td><td class="rk-good">15 of 16</td></tr>
+                    <tr><td>24 · Harness that runs the tests</td><td>4 of 8 bugs</td><td class="rk-good">6 of 8 bugs</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <ul class="rk-plain">
+                <li><b>PPO from scratch</b> lands LunarLander in 96% of new episodes.</li>
+                <li><b>Interpretability.</b> A sparse autoencoder finds a "dog" feature in our TinyStories
+                GPT; adding it while generating puts a dog in every story.</li>
+                <li><b>Main takeaway:</b> on the agent side, every gain came from the loop around the same
+                model (tools, retrieval, a harness that checks), not from a bigger one.</li>
+              </ul>
+            </div>
+
+            <p class="rk-foot">Personal project. The models are scaled down to fit a laptop: a full
+            GPT-2 (124M) reproduction would take more than a month on it, as module 14 measures. MIT
+            licence; datasets and pretrained models keep their own licences.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/from_neuron_to_AGI">Repository ↗</a>
+          </p>
+
+        </div>
+      </div>
+    </article>
 
     <!-- ---------- PROJECT: LIDAR SURVEILLANCE ---------- -->
     <article class="project" id="p-lidar">
