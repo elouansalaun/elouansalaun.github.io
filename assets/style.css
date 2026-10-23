@@ -298,6 +298,85 @@ main { max-width: var(--measure); margin: 0 auto; padding: 0 var(--pad) 5rem; }
   margin-top: 1.75rem !important; font-size: .875rem;
 }
 
+/* ---------- category carousel ----------
+   Without JS the categories simply stack, each under its own label.
+   With JS they sit side by side on a horizontal scroll-snap track; the track
+   takes the height of the visible category (set in main.js). */
+
+.cat-bar { display: none; }
+.cat-label {
+  font-family: var(--mono); font-size: .74rem; color: var(--faint);
+  margin: 2rem 0 .75rem !important;
+}
+.cat-slide:first-child .cat-label { margin-top: 0 !important; }
+
+.js .cat-label { display: none; }
+.js .cat-bar {
+  display: flex; align-items: center; gap: .4rem;
+  margin: 0 0 1.25rem;
+}
+
+.cat-tabs {
+  display: flex; gap: .4rem; flex: 1; min-width: 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+.cat-tabs::-webkit-scrollbar { display: none; }
+
+.cat-tab {
+  flex: none;
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: none; border: 1px solid var(--border); border-radius: 999px;
+  height: 32px; padding: 0 .85rem; line-height: 1;
+  font: inherit; font-size: .85rem; color: var(--muted);
+  white-space: nowrap; cursor: pointer;
+  transition: color .15s ease, border-color .15s ease, background-color .15s ease;
+}
+.cat-tab:hover { color: var(--text); border-color: var(--border-strong); }
+.cat-tab[aria-selected="true"] {
+  color: var(--accent); border-color: var(--accent); background: var(--accent-soft);
+}
+.cat-count { font-family: var(--mono); font-size: .72rem; color: var(--faint); }
+.cat-tab[aria-selected="true"] .cat-count { color: inherit; }
+
+.cat-arrow {
+  flex: none; position: relative;
+  width: 32px; height: 32px; padding: 0;
+  background: none; border: 1px solid var(--border); border-radius: 999px;
+  cursor: pointer;
+  transition: border-color .15s ease, opacity .15s ease;
+}
+.cat-arrow:hover:not(:disabled) { border-color: var(--border-strong); }
+.cat-arrow:disabled { opacity: .35; cursor: default; }
+/* Same stroke as the project chevron, pointing left / right. */
+.cat-arrow span {
+  position: absolute; left: 50%; top: 50%;
+  width: 7px; height: 7px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+}
+.cat-prev span { transform: translate(-30%, -50%) rotate(135deg); }
+.cat-next span { transform: translate(-70%, -50%) rotate(-45deg); }
+.cat-arrow:hover:not(:disabled) span { border-color: var(--accent); }
+
+.js .cat-track {
+  display: flex; align-items: flex-start;
+  position: relative;               /* offsetParent for the slides */
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.js .cat-track::-webkit-scrollbar { display: none; }
+.js .cat-slide {
+  flex: 0 0 100%; min-width: 0;
+  scroll-snap-align: start; scroll-snap-stop: always;
+}
+
+@media (max-width: 34rem) {
+  .cat-arrow { display: none; }
+  .cat-tab { padding: 0 .7rem; font-size: .8rem; }
+}
+
 /* ---------- figures, tables, equations ---------- */
 
 .fig {

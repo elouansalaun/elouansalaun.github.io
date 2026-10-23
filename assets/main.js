@@ -39,11 +39,88 @@
     }
   }
 
+  /* ---------- category carousel ---------- */
+
+  // Replaced below when the carousel is present; lets the hash handler
+  // bring a project's category into view before opening it.
+  var showCategoryOf = function () {};
+
+  var carousel = document.querySelector('.cats');
+  if (carousel) {
+    var track  = carousel.querySelector('.cat-track');
+    var tabs   = Array.prototype.slice.call(carousel.querySelectorAll('.cat-tab'));
+    var slides = Array.prototype.slice.call(carousel.querySelectorAll('.cat-slide'));
+    var prev   = carousel.querySelector('.cat-prev');
+    var next   = carousel.querySelector('.cat-next');
+    var active = 0;
+    var settle;
+
+    var syncHeight = function () {
+      track.style.height = slides[active].offsetHeight + 'px';
+    };
+
+    var setActive = function (i) {
+      active = i;
+      tabs.forEach(function (tab, k) {
+        tab.setAttribute('aria-selected', String(k === i));
+        tab.tabIndex = k === i ? 0 : -1;
+      });
+      slides.forEach(function (slide, k) { slide.inert = k !== i; });
+      prev.disabled = i === 0;
+      next.disabled = i === slides.length - 1;
+      syncHeight();
+    };
+
+    var go = function (i, smooth) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      setActive(i);
+      track.scrollTo({ left: slides[i].offsetLeft, behavior: smooth ? 'smooth' : 'auto' });
+    };
+
+    tabs.forEach(function (tab, k) {
+      tab.addEventListener('click', function () { go(k, true); });
+      tab.addEventListener('keydown', function (e) {
+        var to = { ArrowLeft: k - 1, ArrowRight: k + 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (to === undefined) return;
+        e.preventDefault();
+        to = (to + tabs.length) % tabs.length;
+        go(to, true);
+        tabs[to].focus();
+      });
+    });
+    prev.addEventListener('click', function () { go(active - 1, true); });
+    next.addEventListener('click', function () { go(active + 1, true); });
+
+    // Swipes and trackpad scrolls: pick up the new category once the track settles.
+    track.addEventListener('scroll', function () {
+      clearTimeout(settle);
+      settle = setTimeout(function () {
+        var i = Math.round(track.scrollLeft / track.clientWidth);
+        if (i !== active && slides[i]) setActive(i);
+      }, 90);
+    }, { passive: true });
+
+    // Follow the visible category as its projects open and close.
+    if ('ResizeObserver' in window) {
+      var ro = new ResizeObserver(syncHeight);
+      slides.forEach(function (slide) { ro.observe(slide); });
+    }
+    window.addEventListener('resize', function () { track.scrollLeft = slides[active].offsetLeft; });
+
+    showCategoryOf = function (el) {
+      var i = slides.indexOf(el.closest('.cat-slide'));
+      if (i !== -1 && i !== active) go(i, false);
+    };
+
+    setActive(0);
+  }
+
   function openFromHash() {
     var id = location.hash.slice(1);
     if (!id) return;
     var target = document.getElementById(id);
     if (target && target.classList.contains('project') && !target.classList.contains('open')) {
+      showCategoryOf(target);
       setOpen(target, true);
       target.scrollIntoView({ block: 'start' });
     }
