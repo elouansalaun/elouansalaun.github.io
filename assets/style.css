@@ -133,10 +133,27 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 .theme-toggle:hover { color: var(--text); border-color: var(--border-strong); }
 
+.lang-switch {
+  border: 1px solid var(--border); border-radius: 999px;
+  height: 30px; padding: 0 .6rem; line-height: 1;
+  display: inline-flex; align-items: center;
+  font-size: .75rem; font-weight: 600; letter-spacing: .04em;
+  color: var(--muted);
+  transition: color .15s ease, border-color .15s ease;
+}
+.lang-switch:hover { color: var(--text); border-color: var(--border-strong); text-decoration: none; }
+
 @media (max-width: 34rem) {
-  .nav-links { gap: 1rem; font-size: .8rem; }
-  .nav { gap: .75rem; }
+  .nav-links { gap: .8rem; font-size: .78rem; }
+  .nav { gap: .55rem; }
   .cv-button { padding: .28rem .55rem; font-size: .75rem; }
+  .lang-switch { padding: 0 .45rem; }
+}
+/* Very narrow phones: links drop to their own row instead of overflowing. */
+@media (max-width: 25rem) {
+  .nav { flex-wrap: wrap; row-gap: .35rem; }
+  .nav-home { margin-right: auto; }
+  .nav-links { order: 3; width: 100%; margin: 0; justify-content: space-between; }
 }
 
 /* ---------- layout ---------- */
@@ -144,6 +161,17 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 main { max-width: var(--measure); margin: 0 auto; padding: 0 var(--pad) 5rem; }
 
 .intro { padding: clamp(3.5rem, 12vw, 6.5rem) 0 0; }
+.intro-head {
+  display: flex; align-items: center;
+  gap: clamp(1rem, 4vw, 1.6rem);
+  margin-bottom: 1.6rem;
+}
+.intro-head .tagline { margin-bottom: 0; }
+.avatar {
+  flex: none;
+  width: clamp(4.5rem, 18vw, 7rem); height: auto;
+  border-radius: 50%;
+}
 .intro h1 {
   font-family: var(--serif);
   font-size: clamp(2.2rem, 7vw, 3.1rem);

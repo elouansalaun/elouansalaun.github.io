@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elouan Salaun — Portfolio</title>
+<meta name="description" content="Portfolio d'Elouan Salaun — projets en science des données, apprentissage automatique et recherche appliquée.">
+<link rel="alternate" hreflang="en" href="../">
+<link rel="alternate" hreflang="fr" href="./">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231b1b1a'/><text x='50' y='68' font-family='Georgia,serif' font-size='52' fill='%23fbfbfa' text-anchor='middle'>ES</text></svg>">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="../assets/style.css?v=2">
+
+<script>
+  /* Runs before paint: avoids a flash of the wrong theme or of open panels. */
+  document.documentElement.classList.add('js');
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+</head>
+
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Principale">
+    <a class="nav-home" href="#top">ES</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#education">Formation</a></li>
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <!-- <a class="cv-button" href="../assets/CV_SALAUN_QC_EN_2026.pdf" download title="Download CV (PDF)">
+      <span aria-hidden="true">↓</span> Resume
+    </a> -->
+    <a class="lang-switch" href="../" hreflang="en" lang="en" title="English version">EN</a>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Changer de thème" title="Changer de thème">
+      <span aria-hidden="true">◐</span>
+    </button>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============================================================
+       INTRO
+       ============================================================ -->
+  <section id="top" class="intro">
+    <div class="intro-head">
+      <img class="avatar" src="../assets/img/memoji-320.webp" alt="" width="160" height="160" decoding="async">
+      <div>
+        <h1>Elouan Salaun</h1>
+        <p class="tagline">Data scientist et ingénieur</p>
+      </div>
+    </div>
+    <ul class="intro-links">
+      <li><a href="https://github.com/elouansalaun">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/elouan-salaun">LinkedIn</a></li>
+      <li><a href="mailto:elouan.salaun1909@gmail.com">Courriel</a></li>
+      <!-- 
+      <li><a href="../assets/cv.pdf">CV</a></li> -->
+    </ul>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section id="about" class="section">
+    <h2>À propos</h2>
+    <p>Fort d'une formation d'ingénieur généraliste et en science des données, je résous des problèmes concrets en collectant puis en exploitant les données grâce à l'intelligence artificielle et aux technologies de données adaptées.</p>
+    <p>Je développe des solutions intégrées qui répondent aux besoins des utilisateurs finaux. L'intégration de l'intelligence artificielle agentique est actuellement l'un de mes centres d'intérêt.</p>
+    
+  </section>
+
+  <!-- ============================================================
+       PROJECTS  —  click a card to expand it
+       ------------------------------------------------------------
+       To add a project, copy one <article class="project"> block and
+       change: the id, the button id, the aria-controls / aria-labelledby
+       pair, and the content. Inside .panel-inner you can write anything:
+       paragraphs, <figure> with images, inline SVG schemes, tables and
+       LaTeX ( $$ ... $$ for display, \( ... \) inline ).
+       ============================================================ -->
+  <section id="projects" class="section">
+    <h2>Projets</h2>
+    <p class="section-note">Cliquez sur un projet pour le déplier.</p>
+
+    <!-- ---------- PROJECT 1 ---------- -->
+    <article class="project" id="p-forecasting">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-forecasting-btn" type="button"
+                aria-expanded="false" aria-controls="p-forecasting-panel">
+          <span class="project-name">Processus de réponse aux appels d'offres exploitant les données</span>
+          <span class="project-meta">2026 · Python · LLM · RAG hiérarchique · RankNet · XGBRanker · Docker · Azure · Streamlit</span>
+          <span class="project-summary">Mémoire de maîtrise avec un partenaire industriel : un outil d'IA de bout en bout qui repère les appels d'offres publics, lit leurs PDF avec un LLM local, retrouve les contrats passés comparables et recommande un prix de soumission gagnant et rentable.</span>
+          <img class="project-icon" src="../assets/img/icon_project_MSc.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-forecasting-panel" role="region" aria-labelledby="p-forecasting-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="../assets/img/MSc/resume_tender-response-process.svg" alt="Résumé en une page du mémoire : les cinq modules — surveiller le fil SEAO, lire les documents par RAG hiérarchique, comparer les contrats par un classement RankNet, fixer le prix avec un XGBRanker, afficher le résultat dans Streamlit — écrivent et lisent tous dans une même base de données couvrant janvier 2015 à mars 2026 ; à côté, le taux de victoire en validation chronologique leave-one-out, de 40 % contre 15 % pour la référence, et des gains projetés de 3,52 M$ contre 2,17 M$, avec les chiffres clés : 1 960 publications, 94 % avec des données d'adjudication, et 87 / 98 % de précision et de rappel à l'extraction." width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Dans les services de gardiennage et de patrouille, presque tous les contrats se gagnent par appel d'offres public ; pourtant, les soumissions étaient chiffrées de mémoire alors que le marché publie presque tout ce qu'il faut pour faire mieux. Pour ma maîtrise à Polytechnique Montréal, avec une entreprise québécoise de premier plan en services de sécurité, j'ai conçu, développé et évalué un <strong>outil d'aide à la décision de bout en bout</strong> : il repère l'appel d'offres, lit son devis de 100 à 200 pages, retrouve les contrats passés comparables et recommande la marge la plus élevée qui permet encore de gagner.</p>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — Fonctionnement</span>
+              <div class="rk-col">
+                <h4>Cinq modules autour d'une base de données partagée</h4>
+                <p>Chaque module lit ou écrit dans une base unique couvrant janvier 2015 à mars 2026. Les modules sont enchaînés : une erreur d'extraction se propage jusqu'au prix recommandé, c'est pourquoi chacun est validé séparément.</p>
+              </div>
+
+              <div class="rk-blocks">
+                <div class="rk-block">
+                  <div class="rk-nb">01</div>
+                  <div>
+                    <h5>Surveiller</h5>
+                    <p>Extraire les données du système électronique d'appel d'offres du Québec (SEAO) et relier chaque nouvel appel d'offres à ses versions passées par résolution d'entités, pour repérer les renouvellements avant leur annonce.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">02</div>
+                  <div>
+                    <h5>Lire</h5>
+                    <p>Un RAG hiérarchique et un LLM local transforment le PDF du devis en exigences structurées (uniformes, équipements, véhicules), puis en scores en dollars.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">03</div>
+                  <div>
+                    <h5>Comparer</h5>
+                    <p>Un score de similarité dont les poids sont appris à partir d'environ 300 classements réalisés par un expert en soumissions.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">04</div>
+                  <div>
+                    <h5>Chiffrer</h5>
+                    <p>Classer une grille de marges candidates au lieu d'en prédire une seule par régression, pour que le modèle optimise ce qui compte pour l'entreprise.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">05</div>
+                  <div>
+                    <h5>Afficher</h5>
+                    <p>Une application Streamlit pour les responsables des soumissions : opportunités, analyse des contrats, profils des concurrents et marge recommandée.</p>
+                  </div>
+                </div>
+              </div>
+
+              <figure>
+                <div class="rk-frame">
+                  <svg viewBox="0 0 940 330" role="img" aria-label="Un PDF d'appel d'offres est analysé par PyMuPDF en une structure étiquetée, transformée en arbre de segments hiérarchiques, interrogée avec BM25 et un filtre hiérarchique, puis transmise avec un schéma JSON au modèle de langage Ministral, dont la sortie JSON est appariée à un dictionnaire de coûts avec spaCy pour produire des scores de ressources.">
+                    <defs>
+                      <marker id="tb-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                      </marker>
+                      <marker id="tb-bh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="var(--hedge)"/>
+                      </marker>
+                    </defs>
+
+                    <g font-family="IBM Plex Mono, monospace">
+                      <rect x="10" y="86" width="150" height="60" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".9"/>
+                      <text x="86" y="110" text-anchor="middle" fill="currentColor" font-size="11.5">PDF du devis</text>
+                      <text x="86" y="128" text-anchor="middle" fill="currentColor" font-size="10" opacity=".65">clauses · addenda</text>
+
+                      <rect x="170" y="86" width="175" height="60" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/>
+                      <text x="258" y="110" text-anchor="middle" fill="currentColor" font-size="11.5">analyse PyMuPDF</text>
+                      <text x="258" y="128" text-anchor="middle" fill="currentColor" font-size="10" opacity=".65">titres · listes · texte</text>
+                    </g>
+
+                    <!-- hierarchical chunk tree -->
+                    <rect x="364" y="52" width="164" height="128" rx="3" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" opacity=".55"/>
+                    <text x="446" y="44" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="currentColor" opacity=".6">segments hiérarchiques</text>
+                    <g stroke="currentColor" stroke-width="1.1" opacity=".5" fill="none">
+                      <path d="M446,84 L404,112"/><path d="M446,84 L488,112"/>
+                      <path d="M404,124 L382,152"/><path d="M404,124 L426,152"/>
+                      <path d="M488,124 L488,152"/>
+                    </g>
+                    <g fill="currentColor">
+                      <rect x="424" y="72" width="44" height="12" rx="2" opacity=".8"/>
+                      <rect x="384" y="112" width="40" height="12" rx="2" opacity=".6"/>
+                      <rect x="468" y="112" width="40" height="12" rx="2" opacity=".6"/>
+                      <rect x="366" y="152" width="32" height="12" rx="2" opacity=".38"/>
+                      <rect x="410" y="152" width="32" height="12" rx="2" opacity=".38"/>
+                      <rect x="472" y="152" width="32" height="12" rx="2" opacity=".38"/>
+                    </g>
+
+                    <g font-family="IBM Plex Mono, monospace">
+                      <rect x="560" y="80" width="164" height="72" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                      <text x="642" y="104" text-anchor="middle" fill="currentColor" font-size="11.5">recherche BM25</text>
+                      <text x="642" y="122" text-anchor="middle" fill="currentColor" font-size="10" opacity=".65">creuse + lexique sécurité</text>
+                      <text x="642" y="138" text-anchor="middle" fill="currentColor" font-size="10" opacity=".65">filtre hiérarchique</text>
+
+                      <rect x="756" y="80" width="164" height="72" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                      <text x="838" y="104" text-anchor="middle" fill="currentColor" font-size="11.5">Ministral-3-14B</text>
+                      <text x="838" y="122" text-anchor="middle" fill="currentColor" font-size="10" opacity=".65">règles d'extraction</text>
+                      <text x="838" y="138" text-anchor="middle" fill="currentColor" font-size="10" opacity=".65">+ schéma JSON</text>
+                    </g>
+
+                    <g stroke="currentColor" stroke-width="1.4" fill="none" opacity=".6" marker-end="url(#tb-b)">
+                      <line x1="160" y1="116" x2="170" y2="116"/>
+                      <line x1="345" y1="116" x2="365" y2="116"/>
+                      <line x1="528" y1="116" x2="556" y2="116"/>
+                      <line x1="724" y1="116" x2="752" y2="116"/>
+                    </g>
+                    <text x="642" y="66" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="10.5" fill="currentColor" opacity=".55">une requête par attribut</text>
+
+                    <!-- output row, right to left -->
+                    <g font-family="IBM Plex Mono, monospace">
+                      <rect x="756" y="212" width="164" height="64" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                      <text x="838" y="236" text-anchor="middle" fill="var(--hedge)" font-size="11.5">fiche JSON</text>
+                      <text x="838" y="254" text-anchor="middle" fill="var(--hedge)" font-size="10" opacity=".85">uniformes · équipements</text>
+                      <text x="838" y="268" text-anchor="middle" fill="var(--hedge)" font-size="10" opacity=".85">véhicules</text>
+
+                      <rect x="504" y="212" width="196" height="64" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.2"/>
+                      <text x="602" y="236" text-anchor="middle" fill="var(--hedge)" font-size="11.5">dictionnaire de coûts</text>
+                      <text x="602" y="254" text-anchor="middle" fill="var(--hedge)" font-size="10" opacity=".85">spaCy exact / partiel</text>
+                      <text x="602" y="268" text-anchor="middle" fill="var(--hedge)" font-size="10" opacity=".85">appariement d'entités</text>
+
+                      <rect x="252" y="212" width="196" height="64" rx="2" fill="none" stroke="var(--hedge)" stroke-width="2.2"/>
+                      <text x="350" y="240" text-anchor="middle" fill="var(--hedge)" font-size="12">scores de ressources</text>
+                      <text x="350" y="260" text-anchor="middle" fill="var(--hedge)" font-size="10" opacity=".85">$ par catégorie, par contrat</text>
+                    </g>
+                    <g stroke="var(--hedge)" stroke-width="1.5" fill="none" marker-end="url(#tb-bh)">
+                      <path d="M838,152 L838,208"/>
+                      <line x1="752" y1="244" x2="704" y2="244"/>
+                      <line x1="500" y1="244" x2="452" y2="244"/>
+                    </g>
+                    <text x="252" y="300" font-family="Source Sans 3, sans-serif" font-size="11" fill="currentColor" opacity=".55">→ devient une variable d'entrée des modules 3 et 4</text>
+                  </svg>
+                </div>
+                <figcaption><b>Le pipeline d'extraction (module 2).</b> La structure du document est conservée lors de la segmentation, la recherche est lexicale et spécialisée, et le LLM répond dans un schéma JSON fixe ; un dictionnaire de coûts transforme ensuite le texte en nombres comparables.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Compétences</span>
+              <ul class="rk-plain">
+                <li><b>LLM et RAG.</b> Recherche hiérarchique dans des PDF de contrats : analyse de la mise en page avec PyMuPDF, segmentation par section, BM25 avec un vocabulaire propre à la sécurité, et extraction JSON contrainte par schéma par un LLM quantifié <em>local</em> (Ministral-3-14B), pour que les documents confidentiels ne quittent jamais l'entreprise.</li>
+                <li><b>Apprentissage à partir de retours humains.</b> Un petit réseau de neurones entraîné avec une perte par paires RankNet sur des classements d'experts, pour apprendre ce que signifie « contrat comparable ».</li>
+                <li><b>Learning to Rank.</b> La fixation du prix reformulée comme le classement de marges candidates avec XGBRanker (objectif par paires, NDCG), mieux adapté que la régression à une perte métier asymétrique et à un petit volume de données.</li>
+                <li><b>TALN et résolution d'entités.</b> Appariement spaCy avec un dictionnaire de coûts ; Levenshtein et SequenceMatcher pour relier des contrats rédigés différemment à chaque fois.</li>
+                <li><b>Ingénierie des données et déploiement.</b> Extraction web avec Selenium, une base de données partagée, Streamlit, Docker sur Azure (ADLS Gen2).</li>
+                <li><b>Recherche appliquée.</b> Design Research Methodology, refonte des processus en BPMN avec les responsables des soumissions du partenaire, évaluation chronologique sans fuite de données.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Résultats</span>
+              <ul class="rk-plain">
+                <li><b>87 % de précision / 98 % de rappel</b> pour l'extraction RAG, sur 50 contrats annotés.</li>
+                <li><b>92 % de concordance</b> pour relier 60 appels d'offres de 2025 à leurs contrats passés.</li>
+                <li><b>Taux de victoire de 40 % contre 15 %</b> pour les prix fixés par l'entreprise, et <b>3,52 M$ contre 2,17 M$</b> de gains projetés (+62 %), en leave-one-out chronologique sur 54 appels d'offres.</li>
+                <li>Sur une seconde série de 57 appels d'offres, classé <b>premier dans 59 %</b> des cas et dans le <b>top trois dans 83 %</b>.</li>
+              </ul>
+
+              <figure>
+                <div class="rk-frame">
+                  <svg viewBox="0 0 940 330" role="img" aria-label="Deux panneaux de barres pour les mêmes cinq modèles. En taux de victoire, la régression et le modèle learning-to-rank atteignent tous deux 40 % contre 15 % pour la référence du secteur. En gains projetés, le modèle learning-to-rank atteint 3,52 millions de dollars, bien au-dessus de la régression à 1,59 et de la référence du secteur à 2,17.">
+                    <g stroke="currentColor" opacity=".12" stroke-width="1">
+                      <line x1="227.8" y1="56" x2="227.8" y2="292"/>
+                      <line x1="285.6" y1="56" x2="285.6" y2="292"/>
+                      <line x1="343.3" y1="56" x2="343.3" y2="292"/>
+                      <line x1="401.1" y1="56" x2="401.1" y2="292"/>
+                      <line x1="655.0" y1="56" x2="655.0" y2="292"/>
+                      <line x1="730.0" y1="56" x2="730.0" y2="292"/>
+                      <line x1="805.0" y1="56" x2="805.0" y2="292"/>
+                    </g>
+                    <line x1="170" y1="56" x2="170" y2="292" stroke="currentColor" opacity=".45" stroke-width="1.2"/>
+                    <line x1="580" y1="56" x2="580" y2="292" stroke="currentColor" opacity=".45" stroke-width="1.2"/>
+
+                    <g font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">
+                      <text x="170" y="40">taux de victoire</text>
+                      <text x="580" y="40">gains projetés, M$ sur la période de test</text>
+                    </g>
+
+                    <text x="150" y="77" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" font-weight="400">Référence du secteur</text>
+                      <rect x="170" y="62" width="86.7" height="22" rx="2" fill="currentColor" opacity=".38"/>
+                      <text x="264.7" y="77" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">15 %</text>
+                      <rect x="580" y="62" width="162.8" height="22" rx="2" fill="currentColor" opacity=".38"/>
+                      <text x="750.8" y="77" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">2,17</text>
+                      <text x="150" y="125" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" font-weight="400">Gates / Friedman</text>
+                      <rect x="170" y="110" width="98.2" height="22" rx="2" fill="currentColor" opacity=".38"/>
+                      <text x="276.2" y="125" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">17 %</text>
+                      <rect x="580" y="110" width="54.0" height="22" rx="2" fill="currentColor" opacity=".38"/>
+                      <text x="642.0" y="125" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">0,72</text>
+                      <text x="150" y="173" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" font-weight="400">Moyennes</text>
+                      <rect x="170" y="158" width="144.4" height="22" rx="2" fill="currentColor" opacity=".38"/>
+                      <text x="322.4" y="173" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">25 %</text>
+                      <rect x="580" y="158" width="112.5" height="22" rx="2" fill="currentColor" opacity=".38"/>
+                      <text x="700.5" y="173" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">1,50</text>
+                      <text x="150" y="221" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" font-weight="400">Régression</text>
+                      <rect x="170" y="206" width="231.1" height="22" rx="2" fill="currentColor" opacity=".38"/>
+                      <text x="409.1" y="221" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">40 %</text>
+                      <rect x="580" y="206" width="119.2" height="22" rx="2" fill="currentColor" opacity=".38"/>
+                      <text x="707.2" y="221" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">1,59</text>
+                      <text x="150" y="269" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" font-weight="600">LTR (ce travail)</text>
+                      <rect x="170" y="254" width="231.1" height="22" rx="2" fill="var(--hedge)" opacity="1"/>
+                      <text x="409.1" y="269" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">40 %</text>
+                      <rect x="580" y="254" width="264.0" height="22" rx="2" fill="var(--hedge)" opacity="1"/>
+                      <text x="852.0" y="269" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">3,52</text>
+
+                    <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".6">
+                      <text x="170.0" y="308" text-anchor="middle">0 %</text>
+                      <text x="227.8" y="308" text-anchor="middle">10 %</text>
+                      <text x="285.6" y="308" text-anchor="middle">20 %</text>
+                      <text x="343.3" y="308" text-anchor="middle">30 %</text>
+                      <text x="401.1" y="308" text-anchor="middle">40 %</text>
+                      <text x="580.0" y="308" text-anchor="middle">0</text>
+                      <text x="655.0" y="308" text-anchor="middle">1</text>
+                      <text x="730.0" y="308" text-anchor="middle">2</text>
+                      <text x="805.0" y="308" text-anchor="middle">3</text>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><b>Même taux de victoire, deux fois plus d'argent.</b> La régression gagne aussi souvent que le modèle de classement, mais minimiser l'erreur tire chaque soumission vers le bas ; le classement préserve la marge.</figcaption>
+              </figure>
+
+              <div class="rk-shots">
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/MSc/Page1_MSC.svg" alt="Vue de surveillance de l'application Streamlit : un tableau des avis d'appel d'offres SEAO en cours avec le donneur d'ouvrage, la date de clôture, la région, la durée, le dernier montant adjugé et le concurrent sortant, un avis sélectionné avec un bouton pour lancer son analyse et, en dessous, un tableau des renouvellements à venir filtré par un curseur d'horizon." width="1558" height="1449" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Surveillance.</b> Appels d'offres en cours et renouvellements à venir ; un clic ouvre l'analyse.</figcaption>
+                </figure>
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/MSc/Page2_MSC.svg" alt="Vue contrat de l'application Streamlit, en trois panneaux : les contrats passés correspondants avec l'analyse des soumissions de chaque soumissionnaire et leurs marges, les dix contrats les plus similaires retrouvés par le module de similarité, et une analyse générale avec des graphiques des marges du marché, le profil des concurrents par participation et taux de victoire, et la marge recommandée." width="1948" height="2154" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Analyse de contrat.</b> Versions passées, contrats similaires et vue du marché aboutissant à une marge recommandée.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <p class="rk-foot">Publié sous la référence E. Salaun, M. Belmouadden, R. Pellerin, A. Neumann, C. Vasseur, « Leveraging artificial intelligence and strategic data for tender response processes », CENTERIS 2026, <em>Procedia Computer Science</em>, Elsevier. Polytechnique Montréal et CIRRELT, avec les Commissionnaires du Québec ; financé par Mitacs. Les résultats sont rétrospectifs et portent sur un petit jeu de données, et chaque recommandation est revue par un expert. Les données contractuelles sont confidentielles ; les figures ont été redessinées pour cette page.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/MSc.A_Integrating_AI_to_tender_response_process">Résumé et mémoire complet ↗</a>
+          </p>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- PROJECT: FROM NEURON TO AGI ---------- -->
+    <article class="project" id="p-neuron-agi">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-neuron-agi-btn" type="button"
+                aria-expanded="false" aria-controls="p-neuron-agi-panel">
+          <span class="project-name">Du neurone à l'AGI : deep learning, LLM et agents construits de zéro</span>
+          <span class="project-meta">2026 · Python · NumPy · PyTorch · Transformers · LoRA · DPO · GRPO · PPO · RAG · MCP</span>
+          <span class="project-summary">27 notebooks qui retracent le chemin d'un simple perceptron jusqu'à un GPT, un chatbot, un modèle de raisonnement et un agent de programmation. Chaque brique est écrite à la main, vérifiée par rapport à la bibliothèque de référence, et seulement ensuite réutilisée, le tout sur un ordinateur portable.</span>
+          <img class="project-icon" src="../assets/img/icon_project_neuron_agi.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-neuron-agi-panel" role="region" aria-labelledby="p-neuron-agi-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="../assets/img/NeuronAGI/resume_from-neuron-to-agi.svg" alt="Résumé en une page du projet Du neurone à l'AGI : dix parties successives (fondations, le neurone, réseaux multicouches, deep learning, langage, GPT, apprentissage par renforcement, post-entraînement, agents, vers l'AGI) regroupées en trois blocs : comment les réseaux apprennent, des séquences au GPT, et des modèles aux agents ; la règle selon laquelle une fonctionnalité d'une bibliothèque n'est utilisée qu'après avoir été construite de zéro et vérifiée par rapport à elle ; quatre résultats avant/après sur le même modèle (chaîne de pensée de 3,2 à 91,5 %, outils de 1 à 7 sur 8, RAG de 1 à 15 sur 16, un harnais de tests de 4 à 6 sur 8) ; une perte de validation sur TinyStories de 1,93 pour notre GPT de 18 M de paramètres contre 2,63 pour GPT-2 ; 27 notebooks, 96 % d'atterrissages réussis sur LunarLander, LoRA sur 1,9 % des poids, un seul ordinateur portable." width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Les mêmes quelques principes (une somme pondérée, la dérivation en chaîne, l'attention, une fonction de perte, une boucle de rétroaction) suffisent pour aller du premier neurone artificiel aux agents fondés sur les modèles de langage d'aujourd'hui. Ce projet le démontre en <strong>construisant chaque étape à la main</strong>, dans 27 notebooks qui ajoutent chacun une idée, l'implémentent, la vérifient par rapport à une bibliothèque de référence et seulement ensuite utilisent cette bibliothèque. Tout tourne sur un MacBook Air M5, et chaque notebook est enregistré avec ses sorties : on peut donc le lire sur GitHub sans rien exécuter.</p>
+
+              <div class="rk-facts">
+                <div class="rk-fact"><b>1,93</b><span>perte sur TinyStories d'un GPT de 18 M de paramètres entraîné en 14 min, contre 2,63 pour GPT-2</span></div>
+                <div class="rk-fact"><b>3,2 → 91,5 %</b><span>multiplication à 3 chiffres × 2 chiffres, même petit Transformer, sans puis avec chaîne de pensée</span></div>
+                <div class="rk-fact"><b>4 → 6 sur 8</b><span>bogues corrigés par un agent de programmation une fois que le harnais exécute les tests au lieu de faire confiance au modèle</span></div>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — Fonctionnement</span>
+              <div class="rk-col">
+                <h4>Le construire, le vérifier, puis utiliser la bibliothèque</h4>
+                <p>La rétropropagation est dérivée à la main avant d'écrire un moteur autograd ; ce moteur est vérifié par rapport à PyTorch avant d'utiliser PyTorch. L'attention vient avant <code>nn.MultiheadAttention</code>, un GPT avant celui de Hugging Face, LoRA avant <code>peft</code>, PPO avant toute bibliothèque de RL, une boucle d'agent avant tout framework et un serveur MCP avant le SDK officiel. Les modules suivants importent les précédents : l'agent de programmation du module 24 s'appuie sur la boucle d'agent du 22, qui réutilise le gabarit de conversation du 19, lequel affine le GPT du 14.</p>
+              </div>
+
+              <div class="rk-blocks">
+                <div class="rk-block">
+                  <div class="rk-nb">00 – 07</div>
+                  <div>
+                    <h5>Comment les réseaux apprennent</h5>
+                    <p>Un vérificateur de gradient numérique, le perceptron et la raison pour laquelle XOR le met en échec, une régression softmax sur MNIST en NumPy pur, un MLP dérivé à la main, un moteur autograd scalaire puis tensoriel, les optimiseurs de SGD à AdamW, et un petit ResNet sur CIFAR-10.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">08 – 16</div>
+                  <div>
+                    <h5>Langage et Transformers</h5>
+                    <p>Les n-grammes et la perplexité, word2vec, les LSTM, l'attention, un tokenizer BPE comparé à celui de GPT-2, un Transformer jusqu'à RoPE, un GPT qui charge les poids GPT-2 d'OpenAI, un balayage de lois d'échelle, un cache KV, un mélange d'experts, ainsi qu'un petit ViT et un petit CLIP.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">17 – 21</div>
+                  <div>
+                    <h5>Apprentissage par renforcement et post-entraînement</h5>
+                    <p>Q-learning, DQN, REINFORCE et PPO jusqu'à LunarLander ; puis GPT-2 affiné en chatbot (entièrement et avec LoRA), un modèle de récompense, best-of-N et DPO, et GRPO avec des récompenses vérifiables sur de l'arithmétique.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">22 – 26</div>
+                  <div>
+                    <h5>Les agents et la route vers l'AGI</h5>
+                    <p>Une boucle d'agent qui utilise des outils, sans framework, une recherche BM25 et par embeddings dans les notebooks du projet lui-même, un agent de programmation et MCP construits de zéro, un harnais d'évaluation, un test de complaisance, un autoencodeur parcimonieux, et des problèmes ouverts mesurés (apprentissage continu, ARC).</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Compétences</span>
+              <ul class="rk-plain">
+                <li><b>Fondamentaux du deep learning.</b> Rétropropagation, initialisation, normalisation, connexions résiduelles et optimiseurs implémentés à la main et vérifiés avec un vérificateur de gradient.</li>
+                <li><b>Transformers et LLM.</b> Un GPT écrit de zéro qui reproduit les logits du GPT-2 de Hugging Face, ainsi que les lois d'échelle, la précision mixte, un cache KV et le softmax en ligne de FlashAttention.</li>
+                <li><b>Post-entraînement.</b> SFT, LoRA, modèles de récompense, DPO et GRPO, sur des modèles assez petits pour être entraînés sur un ordinateur portable.</li>
+                <li><b>Apprentissage par renforcement.</b> Itération sur les valeurs, DQN, REINFORCE, GAE et PPO, avec les ablations qui montrent à quoi sert chaque ingrédient.</li>
+                <li><b>Agents LLM.</b> Appel de fonctions, RAG, mémoire à long terme, un agent de programmation ainsi qu'un client et un serveur MCP, sur un modèle ouvert de 4 milliards de paramètres (Qwen3-4B).</li>
+                <li><b>Évaluation et interprétabilité.</b> Un harnais de benchmark avec intervalles de confiance, des tests de reward hacking et de complaisance, et un autoencodeur parcimonieux sur notre propre GPT.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Résultats</span>
+              <div class="rk-col">
+                <p>Chaque chiffre est mesuré dans les notebooks, sur un ordinateur portable. Les notebooks rapportent aussi ce qui n'a pas fonctionné, et pourquoi : DQN sans réseau cible, PPO sans clipping, GRPO avec un taux d'apprentissage trop élevé, des agents qui annoncent des corrections qu'ils n'ont jamais faites.</p>
+              </div>
+
+              <div class="rk-shots">
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/NeuronAGI/scaling_tinystories.png" alt="Graphique log-log de la perte de validation en fonction du calcul d'entraînement pour six tailles de GPT, de 0,61 M à 7,97 M de paramètres, sur TinyStories ; les courbes forment une frontière ajustée par une droite en tirets, la perte étant proportionnelle au calcul à la puissance moins 0,175." width="718" height="472" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Module 15, une loi d'échelle sur un portable.</b> Six tailles de GPT entraînées sur TinyStories ; la frontière optimale en calcul est une loi de puissance, L ∝ C<sup>−0,175</sup>, comme chez Kaplan et al.</figcaption>
+                </figure>
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/NeuronAGI/ppo_vs_no_clip.png" alt="Deux panneaux sur CartPole, sur 100 000 pas d'environnement. À gauche, le retour : les exécutions PPO montent à 500 et y restent, tandis que les exécutions sans clipping s'effondrent à répétition. À droite, la divergence KL par itération en échelle logarithmique : PPO reste autour de 0,005, les exécutions sans clipping atteignent 0,1 à 1." width="1169" height="354" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Module 18, pourquoi PPO écrête.</b> CartPole, 10 époques par lot : sans clipping, chaque mise à jour déplace la politique d'un à deux ordres de grandeur plus loin et le retour s'effondre encore et encore.</figcaption>
+                </figure>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table>
+                  <caption>Résultats choisis. Chaque paire correspond au même modèle, avec et sans une idée.</caption>
+                  <thead>
+                    <tr><th>Module</th><th>Sans</th><th>Avec</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>19 · LoRA sur 1,9 % des paramètres</td><td>affinage complet, perte 2,077</td><td>perte 2,086</td></tr>
+                    <tr><td>21 · Chaîne de pensée, petit Transformer</td><td class="rk-bad">3,2 %</td><td class="rk-good">91,5 %</td></tr>
+                    <tr><td>22 · Outils pour un modèle 4B</td><td class="rk-bad">1 sur 8</td><td class="rk-good">7 sur 8</td></tr>
+                    <tr><td>23 · RAG sur les notebooks du projet</td><td class="rk-bad">1 sur 16</td><td class="rk-good">15 sur 16</td></tr>
+                    <tr><td>24 · Harnais qui exécute les tests</td><td>4 bogues sur 8</td><td class="rk-good">6 bogues sur 8</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <ul class="rk-plain">
+                <li><b>PPO construit de zéro</b> fait atterrir LunarLander dans 96 % des nouveaux épisodes.</li>
+                <li><b>Interprétabilité.</b> Un autoencodeur parcimonieux trouve une caractéristique « chien » dans notre GPT TinyStories ; l'ajouter pendant la génération met un chien dans chaque histoire.</li>
+                <li><b>Principal enseignement :</b> côté agents, chaque gain est venu de la boucle autour du même modèle (outils, recherche, un harnais qui vérifie), pas d'un modèle plus gros.</li>
+              </ul>
+            </div>
+
+            <p class="rk-foot">Projet personnel. Les modèles sont réduits pour tenir sur un portable : une reproduction complète de GPT-2 (124 M) y prendrait plus d'un mois, comme le mesure le module 14. Licence MIT ; les jeux de données et les modèles préentraînés conservent leurs propres licences.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/from_neuron_to_AGI">Dépôt ↗</a>
+          </p>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- PROJECT: LIDAR SURVEILLANCE ---------- -->
+    <article class="project" id="p-lidar">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-lidar-btn" type="button"
+                aria-expanded="false" aria-controls="p-lidar-panel">
+          <span class="project-name">Surveillance optimale d'un site à partir de LiDAR aéroporté</span>
+          <span class="project-meta">2026 · Python · LiDAR · numba · MILP (HiGHS) · NSGA-II · PyTorch · Streamlit</span>
+          <span class="project-summary">Placer caméras et radars à partir d'un nuage de points LiDAR classifié pour qu'un intrus qui connaît le dispositif soit détecté, et détecté à temps : visibilité exacte à travers une végétation semi-transparente, optimums certifiés et boucle exacte optimiseur ↔ intrus.</span>
+          <img class="project-icon" src="../assets/img/icon_project_lidar.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-lidar-panel" role="region" aria-labelledby="p-lidar-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="../assets/img/LiDAR/resume_sec-phy-lidar.svg" alt="Résumé du projet de surveillance par LiDAR" width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Avec un budget limité, où placer caméras et radars pour protéger un site ? La réponse classique maximise la couverture. Ce projet montre que la couverture n'est pas le bon objectif et la remplace, en trois étapes, par la question que se pose réellement un ingénieur en sécurité : <strong>un intrus qui connaît le dispositif sera-t-il détecté à temps ?</strong> Tout repose sur un modèle 3D construit à partir du LiDAR aéroporté du gouvernement du Québec (le site lui-même est fictif).</p>
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <thead>
+                    <tr><th>Question</th><th>Métrique</th><th>Ce qu'elle peut masquer</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Le site est-il couvert ?</td><td>couverture pondérée</td><td>le pire cas</td></tr>
+                    <tr><td>L'intrus sera-t-il détecté ?</td><td>détection sur le corridor le moins surveillé</td><td>un corridor aveugle derrière une forte couverture</td></tr>
+                    <tr class="rk-hero"><td>Détecté <em>à temps</em> ?</td><td>seules les détections antérieures à l'intervention</td><td>rien : c'est la métrique de conception</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — Fonctionnement</span>
+              <div class="rk-blocks">
+                <div class="rk-block">
+                  <div class="rk-nb">modèle 3D</div>
+                  <div>
+                    <p>Les tuiles LiDAR (30 points/m²) sont traitées en flux pour produire des rasters de terrain, de bâtiments et de canopée. Les bâtiments sont opaques ; les arbres sont semi-transparents, avec une transparence mesurée à partir du LiDAR lui-même.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">visibilité</div>
+                  <div>
+                    <p>Un moteur de lancer de rayons exact (numba) calcule ce que voit chaque position candidate, puis les lois de détection des caméras et des radars donnent une matrice de détection pour 2 290 configurations de capteurs.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">optimiser</div>
+                  <div>
+                    <p>Une heuristique gloutonne comme référence, un MILP avec des coupes générées à la demande qui certifie l'écart à l'optimum de chaque dispositif, et NSGA-II pour le compromis coût / couverture / robustesse.</p>
+                  </div>
+                </div>
+                <div class="rk-block">
+                  <div class="rk-nb">adversaire</div>
+                  <div>
+                    <p>Un intrus trouve le corridor le plus faible ; chaque corridor devient une nouvelle contrainte pour l'optimiseur, jusqu'à ce qu'il n'en reste aucun et que le dispositif soit prouvé optimal.</p>
+                  </div>
+                </div>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="../assets/img/LiDAR/streamlit_demo.png" alt="La démo Streamlit sur un dispositif du front NSGA-II : coût 10,8, couverture 68,4 %, détection garantie de 0,70 face à l'intrus déterminé, mais seulement 0,05 en ne comptant que les détections assez précoces pour une intervention en 10 s. La carte montre un corridor en pointillés venant de l'ouest, où l'intrus n'est pas détecté à temps." width="2000" height="1061" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Trois métriques, un dispositif, trois verdicts.</b> 68 % de couverture et 0,70 de détection sur le pire corridor, mais seulement 0,05 de chance de détecter l'intrus à temps avec une intervention en 10 s.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Compétences</span>
+              <ul class="rk-plain">
+                <li><b>Traitement de nuages de points 3D.</b> LiDAR classifié transformé en rasters de terrain, de bâtiments et de végétation à mémoire constante (PDAL, laspy, rasterio), vérifiés par rapport à PDAL et au modèle de terrain officiel.</li>
+                <li><b>Géométrie haute performance.</b> Parcours exact des rayons dans un noyau numba, vérifié par rapport à <code>gdal_viewshed</code> ; un arbitre exact a repéré 1 % de cellules marquées à tort comme visibles par la première version, échantillonnée.</li>
+                <li><b>Optimisation.</b> Couverture sous-modulaire résolue par un algorithme glouton et par un MILP (HiGHS) avec des coupes générées paresseusement, donnant des bornes certifiées ; recherche multiobjectif avec NSGA-II (pymoo).</li>
+                <li><b>Modélisation adverse.</b> Une métrique du pire corridor calculée exactement par percolation (union-find), dans une boucle maître / oracle qui converge avec un certificat.</li>
+                <li><b>Deep learning, uniquement là où il est plus rapide.</b> Un U-Net prévu a été évalué puis abandonné là où le moteur exact était déjà plus rapide ; un substitut PyTorch a été conservé pour la visibilité sur toute la zone, avec une augmentation de données exacte par symétrie.</li>
+                <li><b>Analyse décisionnelle.</b> Sensibilité mesurée comme un regret décisionnel (feuillage estival, intrus qui court), avec un protocole fixé avant tout calcul.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Résultats</span>
+              <ul class="rk-plain">
+                <li>L'heuristique gloutonne perd jusqu'à <b>15,9 points de couverture</b> pour un budget donné, une perte visible uniquement face à la borne certifiée (optimum prouvé à 0,5 % près pour la plupart des budgets).</li>
+                <li>Pour une détection à temps avec une intervention en 10 s, le dispositif certifié coûte <b>6,8 unités contre 12,4</b> pour le meilleur dispositif trouvé par NSGA-II, qui n'optimise pas le temps.</li>
+                <li>L'intrusion la plus rapide dure <b>50 s</b> : avec une intervention plus lente, aucun nombre de capteurs n'y change rien, seul un retard physique (clôture, portails) le peut.</li>
+              </ul>
+
+              <div class="rk-shots">
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/LiDAR/solutions_map.png" alt="Trois cartes du site avec les dispositifs optimaux certifiés. Budget 4 : deux caméras sur des toits, couverture 23,7 %. Budget 13 : deux radars sur mâts, couverture 88,4 %. Budget 30 : quatre radars et une caméra, couverture 97,7 %, la caméra comblant l'ombre derrière les bâtiments." width="2068" height="659" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Dispositifs optimaux certifiés.</b> Des caméras pour les petits budgets, puis des radars, avec une caméra couvrant l'ombre des radars.</figcaption>
+                </figure>
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/LiDAR/robust_cost.png" alt="Coût minimal en fonction du temps d'intervention, de 0 à 30 s, pour des niveaux de détection à temps garantie de 0,5, 0,9 et 0,95. Les optimums certifiés passent d'environ 2 à 6 à 0 s jusqu'à 12 à 15 à 30 s. Les meilleurs points du front NSGA-II sont proches à 0 s mais beaucoup plus chers au-delà, jusqu'à 26 à 30 s. Au-delà de 50 s, l'exigence est impossible à satisfaire." width="1036" height="647" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Le prix d'une détection à temps.</b> Optimums certifiés (trait plein) contre le meilleur point NSGA-II satisfaisant la même exigence (pointillés).</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <p class="rk-foot">Projet personnel. Limites : une seule acquisition sans feuillage, un intrus omniscient à vitesse constante, des coûts relatifs plutôt que réels. Données LiDAR © Gouvernement du Québec (MRNF), CC BY 4.0.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/Sec_Phy_Lidar">Dépôt ↗</a>
+          </p>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- PROJECT: LIDAR AGENT ---------- -->
+    <article class="project" id="p-lidar-agent">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-lidar-agent-btn" type="button"
+                aria-expanded="false" aria-controls="p-lidar-agent-panel">
+          <span class="project-name">Agent IA LiDAR : interroger un nuage de points en langage naturel</span>
+          <span class="project-meta">2026 · Python · LiDAR · Random Forest · Claude API · LangGraph · GeoPandas · Streamlit</span>
+          <span class="project-summary">Posez une question sur Montréal en langage naturel : un agent LLM planifie et exécute un pipeline déterministe LiDAR → ML → SIG, un validateur à base de règles vérifie chaque résultat, et vous obtenez une réponse, un tableau et une carte.</span>
+          <img class="project-icon" src="../assets/img/icon_project_lidar_agent.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-lidar-agent-panel" role="region" aria-labelledby="p-lidar-agent-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="../assets/img/LiDARAgent/resume_lidar-agent.svg" alt="Résumé du projet d'agent IA LiDAR" width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>« Quels bâtiments autour de l'oratoire Saint-Joseph dépassent 20 m ? » Répondre à cette question à partir de LiDAR aéroporté demande une chaîne d'étapes SIG et d'apprentissage automatique sur 127 millions de points. Ce projet place un agent LLM devant cette chaîne avec une règle : <strong>le LLM planifie et explique, il ne calcule jamais</strong>. Chaque chiffre provient d'un outil déterministe, et un validateur vérifie chaque résultat avant que le LLM le voie.</p>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — Fonctionnement</span>
+              <div class="rk-col">
+                <h4>Trois nœuds, sept outils, un validateur</h4>
+                <p>L'agent est une machine à états LangGraph. Le nœud <code>agent</code> est un simple appel à l'API Claude qui choisit l'outil suivant ; <code>tools</code> exécute des fonctions Python typées ; <code>validator</code> applique des règles physiques et géométriques (sans LLM) et renvoie les erreurs avec leurs causes probables et une correction suggérée, avec au plus deux nouvelles tentatives. Les outils s'échangent des chemins de fichiers : chaque résultat intermédiaire est mis en cache et peut être ouvert dans QGIS, et une question de suivi réutilise les fichiers précédents au lieu de tout recommencer.</p>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <caption>Les outils, dans l'ordre du plan standard.</caption>
+                  <thead>
+                    <tr><th>Outil</th><th>Renvoie</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>find_lidar_tiles</code></td><td>l'emprise et la densité des tuiles</td></tr>
+                    <tr><td><code>load_point_cloud</code></td><td>la zone demandée, découpée dans les tuiles</td></tr>
+                    <tr><td><code>normalize_height</code></td><td>la hauteur au-dessus du sol et un modèle de terrain</td></tr>
+                    <tr><td><code>classify_lidar_points</code></td><td>une classe pour chaque point</td></tr>
+                    <tr><td><code>extract_buildings</code></td><td>les emprises avec hauteurs et surfaces (GeoJSON)</td></tr>
+                    <tr><td><code>filter_buildings</code></td><td>les bâtiments dans une plage de hauteurs</td></tr>
+                    <tr><td><code>create_map</code></td><td>une carte interactive</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img rk-frame--scroll" tabindex="0" role="group" aria-label="Capture d'écran défilante de l'application Streamlit">
+                  <img src="../assets/img/LiDARAgent/streamlit_demo.jpg" alt="L'application Streamlit, thème sombre. La question sur les bâtiments de plus de 20 m autour de l'Oratoire, la trace dépliée « Done in 7 steps », le tableau de réponse avec 7 bâtiments, puis les résultats : 7 bâtiments, moyenne de 48,8 m, maximum de 82,9 m, emprise totale de 9 869 m², une carte satellite avec les emprises en bleu, le tableau des bâtiments avec un téléchargement GeoJSON, et un nuage de points 3D coloré par classe. En dessous, la question de suivi « And above 50 m? » reçoit une réponse en 3 étapes avec 2 bâtiments et une nouvelle carte." width="1100" height="4088" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Une question et sa question de suivi</b> (faites défiler dans le cadre), avec la trace en direct de chaque appel d'outil. La question de suivi prend 3 étapes au lieu de 7, car elle réutilise le fichier des bâtiments de la première réponse.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Compétences</span>
+              <ul class="rk-plain">
+                <li><b>Agents LLM et utilisation d'outils.</b> Appel de fonctions Claude orchestré par LangGraph ; un décorateur de 80 lignes transforme les annotations de type en schémas JSON et valide les arguments avec pydantic.</li>
+                <li><b>Garde-fous.</b> Un validateur à base de règles entre les outils et le LLM, qui vérifie chaque bâtiment d'un résultat et pas seulement ceux que voit le LLM, ainsi qu'un planificateur hors ligne quand aucune clé d'API n'est disponible.</li>
+                <li><b>Apprentissage automatique sur données 3D.</b> Un classifieur de points Random Forest avec des descripteurs géométriques (linéarité, planarité, dispersion, verticalité) issus de la covariance locale ; évaluation avec séparation spatiale, pour que les points de test ne soient jamais voisins des points d'entraînement.</li>
+                <li><b>SIG.</b> Normalisation du terrain, morphologie raster et emprises vectorisées avec GeoPandas et rasterio ; cartes Folium et vue 3D dans Streamlit.</li>
+                <li><b>Tests de systèmes LLM.</b> 25 tests s'exécutent sans clé d'API : de faux LLM scriptés pilotent le vrai graphe, les vrais outils et le vrai validateur.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Résultats</span>
+              <ul class="rk-plain">
+                <li><b>F1 de 0,914 sur les bâtiments</b> (0,880 sans les descripteurs géométriques), exactitude de 0,929, sur 480 000 points mis de côté.</li>
+                <li>Bâtiments trouvés à partir des classes prédites, comparés à la classification professionnelle du fournisseur : <b>36 / 36 appariés</b>, écart de hauteur médian de <b>0,04 m</b>, IoU des emprises de 0,944.</li>
+                <li><b>Environ 35 s</b> des tuiles brutes à la carte pour une zone de 500 m × 500 m, sur un ordinateur portable.</li>
+              </ul>
+
+              <div class="rk-shots">
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/LiDARAgent/oratory_classes.png" alt="Vue de dessus d'une zone de 500 m sur 500 m autour de l'oratoire Saint-Joseph, chaque point étant coloré selon sa classe prédite : bâtiments rectangulaires en bleu, canopée en vert à l'est et au sud, sol en orange sur la grande zone dégagée, et quelques points « autre » en rose." width="910" height="910" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Classes prédites autour de l'Oratoire.</b> Toits, canopée et sol dégagé forment des zones cohérentes.</figcaption>
+                </figure>
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/LiDARAgent/oratory_buildings.png" alt="Emprises des bâtiments autour de l'oratoire Saint-Joseph. Les bâtiments de moins de 20 m en gris ; ceux d'au moins 20 m colorés selon leur hauteur : B001, l'Oratoire, 83 m ; B002, 60 m ; B003, B004 et B005, 48 m, plus deux plus bas." width="988" height="910" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Bâtiments d'au moins 20 m autour de l'Oratoire.</b> La basilique (B001) a une hauteur de toit de 83 m et un point culminant à 106 m.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <p class="rk-foot">Projet personnel. Limites connues : les bâtiments contigus fusionnent en une seule emprise, les étiquettes d'entraînement de la végétation sont dérivées par règles, et la limite de 150 m du validateur doit être relevée pour le centre-ville de Montréal.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/LiDAR_Agent">Dépôt ↗</a>
+          </p>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- PROJECT: LLM RTS ---------- -->
+    <article class="project" id="p-llm-rts">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-llm-rts-btn" type="button"
+                aria-expanded="false" aria-controls="p-llm-rts-panel">
+          <span class="project-name">Un LLM local joue à un jeu de stratégie en temps réel, avec des agents et une base de connaissances</span>
+          <span class="project-meta">2026 · TypeScript · Node.js · Qwen 3.5 9B · LM Studio · JSON Schema · RAG · Vitest</span>
+          <span class="project-summary">Un petit LLM qui tourne sur un ordinateur portable joue à OpenFront contre l'IA du jeu : il lit la partie sous forme de graphe, puise dans une base de connaissances testée, planifie en stratège et donne les ordres en commandant, tandis que le code fait respecter le plan. Il a remporté une partie complète avec 80,9 % du territoire.</span>
+          <img class="project-icon" src="../assets/img/icon_project_rts.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-llm-rts-panel" role="region" aria-labelledby="p-llm-rts-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="../assets/img/LLMRTS/resume_llm-rts.svg" alt="Résumé en une page du projet LLM RTS : un pipeline en six étapes (moteur sans interface, graphe des joueurs, recherche dans la base de connaissances, stratège LLM, commandant LLM, règles de troupes imposées par le code) ; le principe selon lequel le LLM choisit quoi faire et le code choisit où et combien ; le territoire détenu lors de la partie gagnante, qui passe de 4,3 % à 80,9 % à 8:49 ; la part maximale de territoire des versions successives sur la même graine, de 5,8 % pour les bots scriptés à 80,9 % et une victoire pour l'agent final ; 130 appels au LLM avec 0 erreur, 0 ordre invalide possible et 39 tests." width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Un <strong>modèle de 9 milliards de paramètres exécuté localement</strong> (Qwen 3.5 9B dans LM Studio, sur un MacBook Air) peut-il bien jouer à un jeu de stratégie en temps réel ? Pas en regardant 328 000 cases de carte. Cet agent réduit <a href="https://github.com/openfrontio/OpenFrontIO">OpenFront</a> à un graphe d'environ 30 joueurs, donne au modèle un court texte décrivant la situation et un menu d'options légales, et le divise en deux rôles : un <strong>stratège</strong> qui planifie et un <strong>commandant</strong> qui donne les ordres. Le code fait respecter le plan entre les appels.</p>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — Fonctionnement</span>
+              <div class="rk-col">
+                <h4>Le LLM choisit quoi, le code choisit où</h4>
+                <p>Le moteur OpenFront, non modifié, tourne sans interface dans le même processus, et le temps de jeu se met en pause pendant que le modèle réfléchit. Chaque changement devient une phrase (« Queensland started attacking you with 46,040 troops »). Le stratège, appelé toutes les 20 s ou lors d'événements majeurs, reçoit les règles essentielles ainsi que les 6 sections les plus pertinentes parmi les 37 de la base de connaissances, et rédige un plan : priorités, cible principale, réserve de troupes à conserver et taille des vagues d'expansion. Le commandant, appelé uniquement quand quelque chose change, le traduit en au plus deux ordres au format JSON. Le schéma est reconstruit à chaque tour et son enum est la liste courante des identifiants d'options légales : un ordre invalide ne peut donc pas être écrit.</p>
+              </div>
+
+<pre class="rk-code"><code><span class="c">// un vrai tour du commandant pendant la partie gagnante, à 3:15</span>
+{
+  "reason": "Carolinian Republic eliminated; attack Carolinian
+             Commonwealth to secure west, then build city for
+             growth. Keep 35% reserve (682,942 troops) ...",
+  "actions": [
+    { "id": "attack_carolinian_commonwealth", "troops_percent": 30 },
+    { "id": "build_city", "troops_percent": 0 }
+  ]
+}</code></pre>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Compétences</span>
+              <ul class="rk-plain">
+                <li><b>Conception d'agents LLM.</b> Séparation planificateur/exécutant, appels déclenchés par les événements, et une auto-vérification qui renvoie une fois, chiffres à l'appui, une réponse qui enfreint les règles.</li>
+                <li><b>Sortie structurée.</b> Un schéma JSON dont l'enum est le menu des options légales, avec <code>maxLength</code> sur chaque champ texte pour qu'une réponse ne puisse jamais être coupée au milieu du JSON.</li>
+                <li><b>Recherche sans embeddings.</b> 37 sections de connaissances étiquetées ; la situation en sélectionne 6, de façon déterministe, et chaque section factuelle est vérifiée par un test sur le vrai moteur.</li>
+                <li><b>Abstraction de l'état.</b> 328 000 cases → un graphe d'environ 30 joueurs (frontières, attaques, alliances) → un court texte sur lequel un modèle 9B peut raisonner.</li>
+                <li><b>Intégration d'une grosse base de code.</b> Le moteur OpenFront à un commit figé, récupéré par sparse checkout (7 Mo au lieu de 1,3 Go).</li>
+                <li><b>Évaluation et reproductibilité.</b> Des références scriptées sur la même graine, des reproductions hors ligne des échecs sans le LLM, chaque prompt et chaque réponse journalisés dans <code>turns.jsonl</code>, et 39 tests Vitest, dont une partie complète avec un LLM simulé qui joue une partie de 30 minutes en quelques secondes.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Résultats</span>
+              <div class="rk-col">
+                <p>Sur la carte de l'Australie, face à 7 nations IA et 20 tribus (Facile, graine <code>australia-1</code>), <strong>le LLM a gagné la partie après 8 min 49 s avec 80,9 % du territoire</strong>, classé premier dès la première minute. 130 appels au LLM (29 au stratège, 101 au commandant), 0 erreur, 8,0 s de latence moyenne, aucune API cloud.</p>
+              </div>
+
+              <div class="rk-shots">
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/LLMRTS/map-03min.png" alt="Carte de l'Australie à la minute 3 : le LLM, en or, tient une large bande au centre ; autour, des nations en rouge, vert, bleu, cyan, rose, violet et brun, et des tribus grises restées dans les interstices." width="1000" height="750" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Minute 3, 37,8 % du territoire.</b> Le LLM (en or) est apparu dans les plaines centrales, comme le conseille la base de connaissances, a absorbé les tribus autour de lui et s'est allié à ses voisins.</figcaption>
+                </figure>
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/LLMRTS/final.png" alt="Carte finale de l'Australie : l'or couvre presque tout le continent et la Tasmanie ; seules subsistent une nation rouge à l'ouest et une verte au sud-ouest. Les carrés blancs indiquent des bâtiments." width="1000" height="750" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>8:49, 80,9 %, le jeu déclare le LLM vainqueur.</b> Une fois ses alliances expirées, Victoria et la Nouvelle-Galles du Sud sont tombées, puis le Queensland.</figcaption>
+                </figure>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table>
+                  <caption>Itérations à partir des journaux, sur la même graine. Chaque échec a été diagnostiqué en lisant <code>turns.jsonl</code> et corrigé dans l'interface ou dans le code.</caption>
+                  <thead>
+                    <tr><th>Version</th><th>Niveau</th><th>Résultat</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Joueurs scriptés, sans LLM</td><td>Moyen</td><td class="rk-bad">pic à 5,8 %, éliminé à 6:21</td></tr>
+                    <tr><td>Stratège + commandant, le LLM contrôle chaque troupe</td><td>Moyen</td><td class="rk-bad">pic à 10,2 %, éliminé à 3:50</td></tr>
+                    <tr><td>Même modèle, le code impose la réserve et les vagues</td><td>Moyen, 3 min</td><td>24,1 %, 1<sup>er</sup> sur 11</td></tr>
+                    <tr class="rk-hero"><td>Même agent, partie complète</td><td>Facile</td><td class="rk-good">victoire à 8:49, 80,9 %</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <ul class="rk-plain">
+                <li><b>« Envoyer des troupes pour défendre. »</b> Le modèle continuait d'attaquer une nation plus forte « pour se défendre », faisant fondre son armée de 111 000 à 27 000 troupes. Dans OpenFront, les troupes gardées chez soi <em>sont</em> la défense : une règle essentielle le dit désormais, et chaque option d'attaque affiche le rapport de forces à côté de son identifiant.</li>
+                <li><b>Plus rapide ne veut pas dire plus réactif.</b> Une cadence de 1 s répétait « s'étendre de 30 % » et vidait l'armée en 10 s ; un script sans LLM a reproduit le problème. Un budget de troupes par tranche de 5 s et une réserve choisie par le plan ont fait passer la même cadence de l'élimination à la première place.</li>
+                <li><b>Principal enseignement :</b> l'essentiel de l'amélioration est venu de l'interface (formulation, menu, schéma, règles de troupes), pas du modèle.</li>
+              </ul>
+            </div>
+
+            <p class="rk-foot">Projet personnel. Limites : la partie gagnante était en mode Facile et sur une seule graine ; des exécutions sur plusieurs graines et des ablations (sans base de connaissances, sans règles de troupes) sont la prochaine étape. AGPL-3.0 ; indépendant d'OpenFront.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/LLM_RTS2">Dépôt ↗</a>
+          </p>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- PROJECT 2 ---------- -->
+    <article class="project" id="p-seao">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-seao-btn" type="button"
+                aria-expanded="false" aria-controls="p-seao-panel">
+          <span class="project-name">Outil MCP sur la base de données SEAO pour Claude/GPT</span>
+          <span class="project-meta">2026 · Python · MCP · FastMCP · SQLite · FTS5 · OCDS</span>
+          <span class="project-summary">Un serveur MCP local qui permet à un LLM analyste d'interroger en langage naturel les données ouvertes des marchés publics québécois du SEAO. Un petit pipeline télécharge le flux OCDS brut, le filtre et le normalise en une base SQLite prête à interroger.</span>
+          <img class="project-icon" src="../assets/img/icon_project_Mcp.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-seao-panel" role="region" aria-labelledby="p-seao-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="../assets/img/MCP/resume_seao-database-mcp.svg" alt="Résumé en une page du dépôt : les publications hebdomadaires OCDS des données ouvertes du SEAO passent par trois scripts — téléchargement, filtrage sur des mots-clés français et des codes UNSPSC, puis normalisation et indexation — pour former une base SQLite de travail de 18 tables normalisées, 5 vues et un index FTS5, avec le NEQ comme clé ; cette base est exposée en lecture seule par une interface d'outils FastMCP comprenant 3 outils flexibles et 6 analyses préconçues, derrière des garde-fous qui limitent les appels aux instructions SELECT ou WITH, à 2 000 lignes et à un délai de 5 secondes." width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Le Québec publie chaque appel d'offres public, chaque soumission et chaque adjudication en données ouvertes, mais sous forme de JSON imbriqué de plusieurs gigaoctets, incapable de répondre à une question simple. Ce projet transforme ce flux en une base SQLite prête à interroger et l'expose à Claude ou à ChatGPT par un serveur <a href="https://modelcontextprotocol.io">MCP</a> en lecture seule. L'objectif n'est pas de donner au modèle un accès SQL, ce que fait déjà un serveur générique, mais de lui donner <strong>le bon SQL</strong>, intégré dans des outils, pour les questions où la requête évidente renvoie un chiffre plausible mais faux.</p>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — Fonctionnement</span>
+              <div class="rk-col">
+                <h4>Trois scripts de construction, un serveur, neuf outils</h4>
+                <p>Trois scripts idempotents téléchargent, filtrent et normalisent le flux en 18 tables et 5 vues, avec un index plein texte insensible aux accents et un dictionnaire de données stocké dans la base elle-même. Un serveur FastMCP propose ensuite six outils d'analyse préconçus pour les questions où l'exactitude compte, et trois outils flexibles (<code>describe_schema</code>, <code>search_processes</code>, <code>run_sql</code>) pour tout le reste.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame">
+                  <svg viewBox="0 0 940 460" role="img" aria-label="Une question d'analyste est dirigée soit vers le noyau flexible formé de describe_schema, run_sql et search_processes, soit vers quatre groupes d'outils d'analyse préconçus ; les deux passent par un unique utilitaire connect() en lecture seule qui ouvre DATA/seao.db en mode=ro avec une interruption au bout de cinq secondes.">
+                    <defs>
+                      <marker id="sm-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                      </marker>
+                    </defs>
+
+                    <g font-family="IBM Plex Mono, monospace">
+                      <rect x="16" y="176" width="150" height="76" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                      <text x="91" y="208" text-anchor="middle" fill="currentColor" font-size="11">question d'analyste</text>
+                      <text x="91" y="228" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".6">langage naturel</text>
+
+                      <rect x="230" y="40" width="286" height="120" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.6"/>
+                      <text x="248" y="68" fill="var(--perf)" font-size="11.5" font-family="Source Sans 3, sans-serif" font-weight="600">noyau flexible</text>
+                      <text x="248" y="94" fill="var(--perf)" font-size="10.5">describe_schema(table?)</text>
+                      <text x="248" y="116" fill="var(--perf)" font-size="10.5">search_processes(…)</text>
+                      <text x="248" y="138" fill="var(--perf)" font-size="10.5">run_sql(sql, limit?)</text>
+                      <g font-family="Source Sans 3, sans-serif" font-size="9.5" fill="var(--perf)" opacity=".65" text-anchor="end">
+                        <text x="502" y="94">la carte</text>
+                        <text x="502" y="116">le point d'entrée</text>
+                        <text x="502" y="138">l'issue de secours</text>
+                      </g>
+
+                      <rect x="230" y="188" width="286" height="240" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
+                      <text x="248" y="214" fill="var(--hedge)" font-size="11.5" font-family="Source Sans 3, sans-serif" font-weight="600">analyses préconçues</text>
+                      <text x="248" y="231" fill="var(--hedge)" font-size="9" font-family="Source Sans 3, sans-serif" opacity=".7">noms résolus en NEQ · gré à gré exclus</text>
+
+                      <g font-family="Source Sans 3, sans-serif" font-size="9.5" fill="var(--hedge)" opacity=".6">
+                        <text x="248" y="256">1 · évaluer un appel d'offres</text>
+                        <text x="248" y="300">2 · analyse des concurrents</text>
+                        <text x="248" y="344">3 · comportement des acheteurs</text>
+                        <text x="248" y="388">4 · tendances du marché</text>
+                      </g>
+                      <g fill="var(--hedge)" font-size="10">
+                        <text x="248" y="272">incumbent · price_benchmark</text>
+                        <text x="248" y="316">supplier_profile · head_to_head</text>
+                        <text x="248" y="360">buyer_profile</text>
+                        <text x="248" y="404">market_overview</text>
+                      </g>
+
+                      <rect x="580" y="170" width="190" height="118" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                      <text x="675" y="196" text-anchor="middle" fill="currentColor" font-size="11.5">connect()</text>
+                      <text x="596" y="220" fill="currentColor" font-size="9.5" opacity=".8">mode=ro (SQLite URI)</text>
+                      <text x="596" y="238" fill="currentColor" font-size="9.5" opacity=".8">SELECT / WITH seulement</text>
+                      <text x="596" y="256" fill="currentColor" font-size="9.5" opacity=".8">LIMIT auto · une instruction</text>
+                      <text x="596" y="274" fill="currentColor" font-size="9.5" opacity=".8">interruption après 5 s</text>
+
+                      <path d="M810,196 L810,262 A58,9 0 0 0 926,262 L926,196" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                      <ellipse cx="868" cy="196" rx="58" ry="9" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                      <text x="868" y="232" text-anchor="middle" fill="currentColor" font-size="11">DATA/seao.db</text>
+                      <text x="868" y="248" text-anchor="middle" fill="currentColor" font-size="9" opacity=".6">lecture seule</text>
+                    </g>
+
+                    <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".5">
+                      <line x1="166" y1="214" x2="196" y2="214"/>
+                      <line x1="196" y1="100" x2="196" y2="300"/>
+                      <line x1="196" y1="100" x2="224" y2="100" marker-end="url(#sm-c)" marker-start="url(#sm-c)"/>
+                      <line x1="196" y1="300" x2="224" y2="300" marker-end="url(#sm-c)" marker-start="url(#sm-c)"/>
+                    </g>
+                    <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#sm-c)">
+                      <line x1="516" y1="100" x2="574" y2="200"/>
+                      <line x1="516" y1="300" x2="574" y2="256"/>
+                      <line x1="770" y1="229" x2="804" y2="229"/>
+                    </g>
+                    <g font-family="Source Sans 3, sans-serif" font-size="9.5" fill="currentColor" opacity=".6">
+                      <text x="91" y="272" text-anchor="middle">appel d'outil ⇄ markdown</text>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><b>Neuf outils, une seule porte.</b> Chaque question va soit vers un outil préconçu, soit vers le noyau flexible, par la même connexion en lecture seule.</figcaption>
+              </figure>
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <caption>Trois pièges dans lesquels tombe un modèle qui écrit son propre SQL, et que les outils gèrent à sa place.</caption>
+                  <thead>
+                    <tr><th>Piège</th><th>Ce qui se passe mal</th><th>Comment les outils le gèrent</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Identité du fournisseur</td><td>Une entreprise, de nombreuses graphies : Garda compte à elle seule 9 entités juridiques sous 6 noms</td><td>Les noms sont résolus vers tous leurs numéros d'entreprise avant l'agrégation</td></tr>
+                    <tr><td>Victoire et défaite</td><td>Non stockées ; compter les lignes de soumission compte les lots en double</td><td>Déduites de l'appartenance à l'adjudication, comptées par appel d'offres</td></tr>
+                    <tr><td>Contrats de gré à gré</td><td>Aucune soumission : une entreprise qui reçoit 3 contrats obtient donc 100 %</td><td>Exclus des taux de victoire, toujours rapportés à côté</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Compétences</span>
+              <ul class="rk-plain">
+                <li><b>Conception d'outils pour LLM (MCP).</b> Des outils conçus à rebours, à partir des questions des analystes ; ils renvoient de courts rapports dans le vocabulaire de l'analyste plutôt que des lignes brutes, et les instructions transmises à la connexion du serveur donnent au modèle les règles sur les données avant son premier appel.</li>
+                <li><b>Garde-fous pour LLM.</b> <code>run_sql</code> est en lecture seule par construction plutôt que par consigne : une connexion à la base en lecture seule, une seule instruction SELECT avec une liste noire de commandes d'écriture, un plafond de 2 000 lignes et un délai de 5 secondes.</li>
+                <li><b>Modélisation des données.</b> Les publications imbriquées Open Contracting (OCDS) normalisées en un schéma relationnel, avec résolution d'entités des fournisseurs.</li>
+                <li><b>Ingénierie des données.</b> Un téléchargement incrémental, un filtre qu'on peut réorienter vers un autre secteur en modifiant deux listes, un normaliseur qui n'utilise que la bibliothèque standard.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Résultats</span>
+              <div class="rk-col">
+                <p>Une question en langage naturel comme « Le taux de victoire de Garda sur les appels d'offres ouverts ? » devient un seul appel d'outil. Le serveur fonctionne dans Claude Code et Claude Desktop, et dans ChatGPT par l'intermédiaire d'un proxy. Un test de fumée appelle les neuf outils avec les exemples de questions du README, dont un <code>DELETE</code> qui doit être refusé. Ci-dessous, une requête de trois mots produit une analyse complète d'un concurrent dans laquelle chaque chiffre provient d'un appel d'outil.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img rk-frame--scroll" tabindex="0" role="group"
+                     aria-label="Capture d'écran défilante d'une conversation Claude utilisant le serveur MCP SEAO">
+                  <img src="../assets/img/MCP/MCP_claude_answer.svg" alt="Une conversation Claude répondant à la requête « Analyse charco industries » avec l'intégration seao : chiffres clés de Charco Industries (19 966 481 $ adjugés, 9 processus et 40 lots remportés, un taux de victoire concurrentiel de 9,8 %, le ministère de la Sécurité publique comme principal acheteur), un historique des contrats remportés, un tableau du taux de victoire par année de 2020 à 2026, un tableau des soumissions concurrentes classant les entreprises rivales selon la fréquence à laquelle elles soumissionnent contre Charco, et une lecture stratégique finale des forces de l'entreprise et de sa faiblesse récente." width="1082" height="4069" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>« Analyse charco industries »</b> (faites défiler dans le cadre) : chiffres clés, historique des contrats, taux de victoire par année et rivaux les plus fréquents, puis la lecture qu'en fait Claude.</figcaption>
+              </figure>
+            </div>
+
+            <p class="rk-foot">Outil open source, licence MIT. Données : données ouvertes du SEAO (OCDS) via open.canada.ca, services de sécurité uniquement ; la couverture est concentrée sur 2021–2025, les chiffres sont donc indicatifs.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/SEAO_MCP">Dépôt ↗</a>
+          </p>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- PROJECT: JET FIGHTER ---------- -->
+    <article class="project" id="p-jetfighter">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-jetfighter-btn" type="button"
+                aria-expanded="false" aria-controls="p-jetfighter-panel">
+          <span class="project-name">Apprendre à voler à un F-16 simulé par apprentissage par renforcement</span>
+          <span class="project-meta">2025 · Python · dynamique du vol à 6 DDL · Gymnasium · PPO · Stable-Baselines3 · apprentissage par imitation</span>
+          <span class="project-summary">Un simulateur de vol d'avion de chasse écrit à partir de la physique et validé sur des données publiées du F-16, puis utilisé comme environnement pour des agents PPO qui apprennent à se stabiliser, virer, naviguer et faire de la voltige, comparés à un pilote automatique classique.</span>
+          <img class="project-icon" src="../assets/img/icon_project_jet.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-jetfighter-panel" role="region" aria-labelledby="p-jetfighter-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="../assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Résumé du projet d'avion de chasse" width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Un agent qui apprend par essais et erreurs peut-il piloter un avion de chasse aussi bien qu'un pilote automatique réglé à la main ? Un agent entraîné sur une physique fausse apprend à en exploiter les bogues ; le projet est donc divisé en deux : <a href="https://github.com/elouansalaun/jetfighter-sim">jetfighter-sim</a>, un simulateur de vol de F-16 écrit à partir de la physique et validé sur des données publiées, et <a href="https://github.com/elouansalaun/jetfighter-rl">jetfighter-rl</a>, qui le transforme en environnement d'apprentissage par renforcement et entraîne des agents sur un curriculum de manœuvres, chacune évaluée face au pilote automatique classique.</p>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — Fonctionnement</span>
+              <div class="rk-col">
+                <h4>Un curriculum, du plus simple au plus réaliste</h4>
+                <p>L'agent pilote d'abord à travers les commandes de vol électriques (il commande le facteur de charge, le taux de roulis et la poussée) sur un avion simplifié et rapide à simuler, puis sur le modèle complet de corps rigide, et enfin actionne lui-même les gouvernes. Chaque tâche définit ses propres observations, ses termes de récompense et son critère de réussite.</p>
+              </div>
+
+              <div class="rk-tablewrap">
+                <table class="rk-prose">
+                  <thead>
+                    <tr><th>Tâche</th><th>Critère de réussite</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Revenir ailes à plat depuis une attitude inhabituelle</td><td>à plat en moins de 10 s</td></tr>
+                    <tr><td>Atteindre un cap, une altitude et une vitesse</td><td>à 30 m / 3° / 5 m/s près, dépassement limité</td></tr>
+                    <tr><td>Virer au meilleur taux soutenable</td><td>≥ 90 % de l'optimum, sans perte d'énergie</td></tr>
+                    <tr><td>Passer par 4 points de cheminement 3D aléatoires</td><td>les 4 atteints</td></tr>
+                    <tr><td>Looping, tonneau, Immelmann, Split-S</td><td>figure accomplie, bon cap de sortie</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Compétences</span>
+              <ul class="rk-plain">
+                <li><b>Apprentissage par renforcement.</b> PPO (Stable-Baselines3, PyTorch) sur un environnement Gymnasium sur mesure, avec apprentissage par curriculum et façonnage de la récompense à partir de termes nommés et journalisés séparément.</li>
+                <li><b>Apprentissage par imitation.</b> Clonage comportemental avec bruit DART et préchauffage du critique, nécessaire là où le RL pur ne trouve jamais une manœuvre de 20 secondes comme un looping.</li>
+                <li><b>Apprentissage par transfert.</b> Les politiques entraînées sur l'avion simplifié sont copiées dans le modèle complet puis affinées (20 % → 100 % de réussite).</li>
+                <li><b>Conception d'environnement.</b> Des observations sans discontinuités (direction de la gravité au lieu des angles d'Euler), une action neutre qui maintient la trajectoire, et trois horloges par pas (physique à 100 Hz, commandes de vol électriques à 50 Hz, agent à 10 Hz).</li>
+                <li><b>Simulation et commande.</b> Corps rigide à 6 DDL sur des données de soufflerie de la NASA, quaternions et RK4, commandes de vol électriques à gains séquencés, pilote automatique en cascade, LQR ; 596 tests par rapport à des solutions analytiques et à des données publiées du F-16.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Résultats</span>
+              <ul class="rk-plain">
+                <li>Avec les commandes de vol électriques, les agents <b>égalent ou dépassent le pilote automatique sur les 5 tâches</b>, jusqu'à 61 % de retour en plus, avec 90 à 100 % de réussite ; un parcours de 4 points de cheminement est effectué en <b>79 s contre 135 s</b>.</li>
+                <li>Voltige apprise par imitation puis par PPO : <b>100 % de réussite</b>, légèrement mieux que le pilote scripté dont elle a été apprise.</li>
+                <li>Sans commandes de vol électriques, en actionnant directement les gouvernes : 90 à 100 % de réussite sans sortie du domaine de vol, à 72–84 % du retour des agents qui passent par les commandes de vol électriques.</li>
+              </ul>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="../assets/img/JetFighter/agents_vs_reference.png" alt="Diagramme en barres horizontales du retour des agents rapporté à la politique de référence, pour cinq tâches et trois types d'agents. Hiérarchique 3 DDL : 117, 142, 106, 124 et 101 %. Hiérarchique 6 DDL : 116, 135, 161 et 118 %, aucun résultat valide en voltige. Gouvernes directes 6 DDL : 99, 98, 136, 98 et 100 %." width="1002" height="562" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Retour rapporté à la référence, une graine par agent.</b> 100 % signifie égaler le pilote automatique ou le pilote scripté sur les mêmes épisodes d'évaluation. L'agent de voltige hiérarchique 6 DDL a été entraîné avant la correction d'un reward hack ; il n'est pas présenté.</figcaption>
+              </figure>
+
+              <div class="rk-shots">
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/JetFighter/waypoints_agent_vs_autopilot.png" alt="Trace au sol et profil d'altitude d'un parcours de quatre points de cheminement effectué par l'agent PPO et par le pilote automatique : les traces se superposent presque, mais l'agent atteint le dernier point en 79 secondes contre 135 pour le pilote automatique." width="1442" height="540" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Même parcours, même avion.</b> L'agent anticipe chaque virage et échange librement de l'altitude ; le pilote automatique vise un point de cheminement à la fois.</figcaption>
+                </figure>
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/JetFighter/aerobatics_imitation.png" alt="Vues de côté de quatre figures de voltige (looping, tonneau, Immelmann et Split-S), chacune effectuée par la politique neuronale clonée et par le pilote scripté ; les deux trajectoires sont presque superposées et les huit sont marquées comme réussies." width="1662" height="408" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Un réseau qui n'a jamais été récompensé, en pleine voltige.</b> Looping, tonneau, Immelmann et Split-S par la politique clonée, face au pilote scripté dont elle a appris.</figcaption>
+                </figure>
+              </div>
+
+              <div class="rk-note rk-warn">
+                <span class="rk-eyebrow">Cinq reward hacks, aucun visible sur les courbes d'apprentissage</span>
+                <p>En rejouant les vols, on a vu des agents virer 2,5 fois plus vite que l'optimum dans une spirale descendante qui perdait 3 km, simuler un looping par un tortillement de 6 secondes, ou s'écraser tôt pour ne plus payer de pénalités. Chaque cas a été corrigé dans la récompense ; c'est pourquoi les vols ont été vérifiés visuellement, et pas seulement sur les métriques.</p>
+              </div>
+            </div>
+
+            <p class="rk-foot">Projet personnel. Les résultats correspondent au meilleur modèle évalué de chaque expérience, sur une seule graine ; davantage de graines est la prochaine étape évidente.</p>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/jetfighter-sim">Dépôt du simulateur ↗</a>
+            <a href="https://github.com/elouansalaun/jetfighter-rl">Dépôt RL ↗</a>
+          </p>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- PROJECT 3 ---------- -->
+    <article class="project" id="p-causal">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-causal-btn" type="button"
+                aria-expanded="false" aria-controls="p-causal-panel">
+          <span class="project-name">Optimisation de portefeuille avec Python</span>
+          <span class="project-meta">2025 · Python · portefeuille · Markowitz · Monte Carlo · CPPI</span>
+          <span class="project-summary">Une boîte à outils Python de gestion des risques, de l'optimisation de Markowitz à l'allocation CPPI guidée par le passif, testée sur 5 000 scénarios Monte Carlo et 28 ans de données de marché.</span>
+          <img class="project-icon" src="../assets/img/icon_project_Finance.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-causal-panel" role="region" aria-labelledby="p-causal-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="../assets/img/PortfolioFi/resume_portfolio-optimization.svg" alt="Résumé en une page du dépôt : à gauche, la frontière efficiente calculée par SLSQP sans vente à découvert, avec les actifs individuels et les portefeuilles de variance minimale globale et de ratio de Sharpe maximal ; à droite, les trajectoires de richesse CPPI sur un horizon de dix ans avec un multiplicateur de trois, avec les trajectoires simulées, leur médiane et le plancher ; en dessous, les trois couches de la bibliothèque : des chargeurs qui renvoient des rendements mensuels indexés par PeriodIndex, des moteurs d'optimisation, de mesure du risque et de simulation GBM et CIR, et des backtests qui exécutent le CPPI et des combinaisons d'allocateurs face à trois définitions du plancher." width="803" height="459" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Une série de 18 notebooks qui construit une boîte à outils Python unique de gestion des risques, de la mesure des rendements à l'allocation dynamique. Elle commence par l'optimisation de Markowitz et montre pourquoi elle est fragile, puis passe à la question que se pose réellement un investisseur ayant un engagement futur : <strong>comment prendre du risque de marché tout en garantissant un plancher</strong>. Chaque stratégie est testée sur 5 000 scénarios simulés et sur 28 ans de données du marché américain.</p>
+
+              <div class="rk-facts">
+                <div class="rk-fact"><b>0 %</b><span>de franchissements du plancher pour l'allocateur à plancher, contre 3,6 % pour 100 % actions</span></div>
+                <div class="rk-fact"><b>−22 %</b><span>de perte maximale (drawdown) pour la stratégie contrainte, contre −50 % pour le marché, 1990–2018</span></div>
+                <div class="rk-fact"><b>0,55</b><span>de ratio de Sharpe, contre 0,46 pour le marché sur la même période</span></div>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — Fonctionnement</span>
+              <div class="rk-col">
+                <h4>Un moteur d'allocation, plusieurs définitions du plancher</h4>
+                <p>Les stratégies sont écrites comme des fonctions d'allocation branchées sur un moteur de backtest qui ne sait rien d'elles. Le moteur central est le CPPI : à chaque pas, on investit un multiple du coussin au-dessus du plancher dans l'actif risqué et le reste dans l'actif sans risque, de sorte que l'exposition tombe à zéro avant que le plancher soit atteint.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame">
+                  <svg viewBox="0 0 940 268" role="img" aria-label="Boucle CPPI : à chaque pas, le coussin est calculé à partir de la valeur du compte et du plancher, multiplié par m et borné entre zéro et un pour donner le poids risqué, la valeur du compte est recalculée, puis le plancher est mis à jour selon la variante choisie.">
+                    <defs>
+                      <marker id="rk-a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                      </marker>
+                      <marker id="rk-a4r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="var(--risk)"/>
+                      </marker>
+                    </defs>
+
+                    <g font-family="IBM Plex Mono, monospace" font-size="11.5">
+                      <rect x="24" y="70" width="150" height="54" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                      <text x="99" y="93" text-anchor="middle" fill="currentColor" font-size="12">coussin</text>
+                      <text x="99" y="111" text-anchor="middle" fill="currentColor" font-size="10.5" opacity=".7">(V − F) / V</text>
+
+                      <rect x="234" y="70" width="150" height="54" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                      <text x="309" y="93" text-anchor="middle" fill="currentColor" font-size="12">w = m × coussin</text>
+                      <text x="309" y="111" text-anchor="middle" fill="currentColor" font-size="10.5" opacity=".7">clip(0, 1)</text>
+
+                      <rect x="444" y="70" width="170" height="54" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                      <text x="529" y="93" text-anchor="middle" fill="currentColor" font-size="12">allouer</text>
+                      <text x="529" y="111" text-anchor="middle" fill="currentColor" font-size="10.5" opacity=".7">w·PSP + (1−w)·GHP</text>
+
+                      <rect x="674" y="70" width="150" height="54" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+                      <text x="749" y="93" text-anchor="middle" fill="currentColor" font-size="12">V ← V(1+r)</text>
+                      <text x="749" y="111" text-anchor="middle" fill="currentColor" font-size="10.5" opacity=".7">pas suivant</text>
+                    </g>
+
+                    <g stroke="currentColor" stroke-width="1.5" fill="none" marker-end="url(#rk-a4)">
+                      <line x1="174" y1="97" x2="230" y2="97"/>
+                      <line x1="384" y1="97" x2="440" y2="97"/>
+                      <line x1="614" y1="97" x2="670" y2="97"/>
+                    </g>
+
+                    <path d="M749,124 L749,180 L99,180 L99,128" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#rk-a4)"/>
+                    <text x="424" y="174" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".7">rétroaction : la nouvelle valeur du compte redéfinit le coussin</text>
+
+                    <rect x="180" y="206" width="590" height="46" rx="2" fill="none" stroke="var(--risk)" stroke-width="1.3"/>
+                    <text x="200" y="224" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--risk)" font-weight="600">Le plancher F :</text>
+                    <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--risk)">
+                      <text x="200" y="242">fixe : départ × 0,8</text>
+                      <text x="380" y="242">actualisé : plancher × P_ZC(t)</text>
+                      <text x="596" y="242">à cliquet : (1−dd) × pic</text>
+                    </g>
+                    <path d="M445,206 L445,186 L200,186 L200,182" fill="none" stroke="var(--risk)" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#rk-a4r)"/>
+                    <text x="212" y="200" font-family="Source Sans 3, sans-serif" font-size="10.5" fill="var(--risk)" opacity=".85">recalculé à chaque pas</text>
+
+                    <text x="24" y="48" font-family="Source Sans 3, sans-serif" font-size="12.5" fill="currentColor" opacity=".65">Un pas de temps de <tspan font-family="IBM Plex Mono, monospace" font-size="11.5">run_cppi</tspan> / <tspan font-family="IBM Plex Mono, monospace" font-size="11.5">floor_allocator</tspan> / <tspan font-family="IBM Plex Mono, monospace" font-size="11.5">drawdown_allocator</tspan></text>
+                  </svg>
+                </div>
+                <figcaption><b>Un moteur, trois définitions du plancher.</b> Les trois fonctions dynamiques partagent exactement cette boucle et ne diffèrent que par la ligne qui met à jour <span class="rk-mono">F</span>, ce qui rend le passage du CPPI classique à l'allocation guidée par le passif presque gratuit.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Compétences</span>
+              <ul class="rk-plain">
+                <li><b>Optimisation numérique.</b> Frontière efficiente, portefeuilles de Sharpe maximal et de variance minimale avec SciPy SLSQP sous contraintes, et une démonstration de la façon dont une erreur d'un point sur les rendements espérés envoie l'optimiseur dans un coin.</li>
+                <li><b>Monte Carlo et processus stochastiques.</b> Mouvement brownien géométrique vectorisé pour les actions et modèle CIR pour les taux d'intérêt, avec prix d'obligations analytiques ; détection d'un biais d'environ 2 % dans une discrétisation naïve.</li>
+                <li><b>Mesure du risque.</b> VaR historique, gaussienne et de Cornish-Fisher, CVaR, drawdown, asymétrie et kurtosis.</li>
+                <li><b>Conception de backtests.</b> Stratégies jugées sur leur distribution complète (probabilité et ampleur d'un déficit), et non sur le résultat moyen.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Résultats</span>
+              <ul class="rk-plain">
+                <li>L'allocateur à plancher <b>élimine tous les franchissements</b> en ne renonçant qu'à 0,03 de richesse terminale moyenne ; un mélange fixe 70/30 renonce à 0,21 et passe encore sous le plancher sur 0,8 % des trajectoires.</li>
+                <li>Faire passer le levier de 3 à 10 rapporte 0,02 de richesse espérée et brise la garantie sur 2,8 % des trajectoires : c'est le risque de gap.</li>
+                <li>Sur données réelles, la stratégie contrainte en drawdown <b>divise par deux la pire perte</b> et améliore le ratio de Sharpe, au prix de 2,2 points de rendement annuel.</li>
+              </ul>
+
+              <figure>
+                <div class="rk-frame">
+                  <svg viewBox="0 0 940 430" role="img" aria-label="Distribution de la richesse terminale par dollar sur 5 000 scénarios pour trois stratégies : 100 % actions s'étale largement, y compris sous le plancher, le mélange fixe 70-30 est étroit et centré plus bas, et l'allocateur à plancher conserve le potentiel haussier des actions tout en concentrant la masse juste au-dessus du plancher de 0,75, sans rien en dessous.">
+                    <g stroke="currentColor" opacity=".14" stroke-width="1">
+                      <line x1="184.3" y1="48" x2="184.3" y2="360"/>
+                      <line x1="358.3" y1="48" x2="358.3" y2="360"/>
+                      <line x1="532.2" y1="48" x2="532.2" y2="360"/>
+                      <line x1="706.1" y1="48" x2="706.1" y2="360"/>
+                    </g>
+                    <line x1="80" y1="360" x2="880" y2="360" stroke="currentColor" opacity=".45" stroke-width="1.2"/>
+
+                    <line x1="140.9" y1="48" x2="140.9" y2="360" stroke="var(--risk)" stroke-width="1.5" stroke-dasharray="5 4"/>
+                    <text x="146" y="62" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--risk)" font-weight="600">plancher = 0,75</text>
+
+                    <polyline points="88.7,360 88.7,344.2 106.1,332.1 123.5,303.5 140.9,280.9 158.3,253.0 175.7,201.0 193.0,202.5 210.4,164.1 227.8,178.4 245.2,164.1 262.6,136.2 280.0,144.5 297.4,163.3 314.8,170.8 332.2,205.5 349.6,187.4 367.0,225.1 384.3,243.2 401.7,244.7 419.1,256.8 436.5,256.0 453.9,277.1 471.3,289.2 488.7,277.1 506.1,298.2 523.5,293.7 540.9,307.2 558.3,307.2 575.7,320.1 593.0,322.3 610.4,325.3 627.8,331.4 645.2,335.9 662.6,336.6 680.0,339.7 697.4,337.4 714.8,345.7 732.2,344.9 749.6,342.7 767.0,346.4 784.3,347.9 801.7,347.9 819.1,347.9 836.5,355.5 853.9,353.2 853.9,360"
+                      fill="none" stroke="var(--risk)" stroke-width="2" opacity=".85"/>
+                    <polyline points="88.7,360 88.7,360.0 106.1,357.0 123.5,346.4 140.9,323.1 158.3,296.7 175.7,243.9 193.0,185.2 210.4,152.0 227.8,118.1 245.2,83.4 262.6,48.0 280.0,57.0 297.4,74.4 314.8,109.0 332.2,138.4 349.6,181.4 367.0,195.0 384.3,206.3 401.7,228.1 419.1,237.9 436.5,269.6 453.9,280.1 471.3,299.0 488.7,308.0 506.1,322.3 523.5,324.6 540.9,326.1 558.3,332.1 575.7,336.6 593.0,350.2 610.4,347.9 627.8,351.0 645.2,354.0 662.6,356.2 680.0,355.5 697.4,359.2 714.8,352.5 732.2,356.2 749.6,358.5 767.0,358.5 784.3,358.5 801.7,357.7 819.1,360.0 836.5,359.2 853.9,359.2 853.9,360"
+                      fill="none" stroke="currentColor" stroke-width="2" opacity=".6"/>
+                    <polyline points="88.7,360 88.7,360.0 106.1,360.0 123.5,360.0 140.9,278.6 158.3,94.0 175.7,115.8 193.0,188.9 210.4,195.7 227.8,197.2 245.2,178.4 262.6,148.2 280.0,165.6 297.4,162.6 314.8,195.7 332.2,202.5 349.6,196.5 367.0,238.7 384.3,238.7 401.7,251.5 419.1,259.0 436.5,258.3 453.9,276.3 471.3,288.4 488.7,280.1 506.1,298.2 523.5,299.0 540.9,304.2 558.3,311.0 575.7,321.6 593.0,323.1 610.4,323.1 627.8,334.4 645.2,334.4 662.6,338.1 680.0,338.1 697.4,339.7 714.8,344.9 732.2,344.2 749.6,341.9 767.0,347.9 784.3,347.2 801.7,349.4 819.1,347.9 836.5,355.5 853.9,353.2 853.9,360"
+                      fill="none" stroke="var(--hedge)" stroke-width="2.6"/>
+
+                    <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".65">
+                      <text x="184.3" y="378" text-anchor="middle">1,0</text>
+                      <text x="358.3" y="378" text-anchor="middle">2,0</text>
+                      <text x="532.2" y="378" text-anchor="middle">3,0</text>
+                      <text x="706.1" y="378" text-anchor="middle">4,0</text>
+                      <text x="871" y="378" text-anchor="middle">5,0+</text>
+                    </g>
+                    <text x="480" y="400" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">richesse terminale par dollar investi, après 10 ans</text>
+
+                    <g font-family="Source Sans 3, sans-serif" font-size="12">
+                      <line x1="600" y1="118" x2="628" y2="118" stroke="var(--risk)" stroke-width="2" opacity=".85"/>
+                      <text x="636" y="122" fill="currentColor">100 % actions — 3,6 % sous le plancher</text>
+                      <line x1="600" y1="140" x2="628" y2="140" stroke="currentColor" stroke-width="2" opacity=".6"/>
+                      <text x="636" y="144" fill="currentColor">fixe 70/30 — plus étroit, encore 0,8 % dessous</text>
+                      <line x1="600" y1="162" x2="628" y2="162" stroke="var(--hedge)" stroke-width="2.6"/>
+                      <text x="636" y="166" fill="currentColor">plancher 75 %, m = 3 — rien sous le plancher</text>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><b>5 000 scénarios, 10 ans, richesse terminale par classes.</b> Le mélange fixe achète la sécurité en coupant les deux queues de distribution. L'allocateur à plancher fait tout autre chose : il empile les échecs en un pic juste <em>au-dessus</em> de 0,75 et laisse la queue droite intacte ; son 95<sup>e</sup> centile et son maximum sont les mêmes que ceux du 100 % actions.</figcaption>
+              </figure>
+            </div>
+
+          </div>
+
+          <p class="project-links">
+            <a href="https://github.com/elouansalaun/Portfolio-Construction-and-Analysis">Dépôt ↗</a>
+          </p>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- PROJECT 4 ---------- -->
+    <article class="project" id="p-caisse">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-caisse-btn" type="button"
+                aria-expanded="false" aria-controls="p-caisse-panel">
+          <span class="project-name">Système de caisses connectées multipoints</span>
+          <span class="project-meta">2023 · ESP32 · C++ · MQTT · 4G · Google Sheets</span>
+          <span class="project-summary">Conception et réalisation d'un dispositif d'enregistrement des ventes en temps réel (ESP32) connecté à un serveur central, permettant le suivi, l'analyse et la prévision des ventes en temps réel pour un gala de 3 000 personnes.</span>
+          <img class="project-icon" src="../assets/img/icon_project_caisse.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-caisse-panel" role="region" aria-labelledby="p-caisse-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="../assets/img/CashRegister/resume_connected-cash-register.svg" alt="Résumé en une page du système : des terminaux ESP32 à grille de boutons, avec anti-rebond local, publient chaque vente par une liaison 4G en MQTT QoS 1 vers un broker, via un point d'accès privé indépendant du wifi du lieu ; un pont supprime les doublons par appareil et numéro de séquence et ajoute des lignes à une feuille Google Sheets, qui alimente un tableau de réassort envoyant des alertes par bar et par article ; à côté, la prévision de rupture construite à partir de la référence de l'année précédente, d'un multiplicateur par moment de la soirée et d'un poids par emplacement, et un graphique des unités restantes d'un bar au cours d'une soirée, avec l'alerte déclenchée environ trente minutes avant l'épuisement." width="800" height="600" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Lors d'un gala étudiant de 3 000 invités, le stock des bars était suivi à coups de bâtonnets et d'estimations. J'ai conçu et déployé un système connecté : un pavé de boutons ESP32 à chaque bar enregistre chaque vente, les données arrivent en temps réel dans une feuille Google Sheets partagée grâce à la 4G, et une prévision légère avertit <strong>environ 30 minutes avant qu'un bar soit à court</strong>, soit le temps qu'il faut à un coursier pour le réapprovisionner.</p>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — Fonctionnement</span>
+              <div class="rk-col">
+                <p>Chaque appui sur un bouton est horodaté et mis en file d'attente sur l'appareil, puis publié en MQTT par un routeur 4G privé, indépendant du wifi du lieu. Un pont logiciel ajoute une ligne par vente à la feuille Google Sheets en supprimant les doublons par numéro de séquence, et la prévision lit cette même feuille.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame">
+                  <svg viewBox="0 0 940 430" role="img" aria-label="Une grille de boutons sur un ESP32 à chaque point de vente publie un message de vente vers un routeur 8devices qui sert de point d'accès wifi avec liaison 4G ; le routeur le transmet en MQTT à un broker, un pont ajoute chaque message comme ligne d'une feuille Google Sheets et, en dessous, la feuille alimente un modèle de prévision dont l'alerte de réapprovisionnement est renvoyée aux coursiers et aux bars.">
+                    <defs>
+                      <marker id="cs-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                      </marker>
+                    </defs>
+
+                    <g font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".55">
+                      <text x="16" y="30">capture et transport — un chemin par vente</text>
+                      <text x="120" y="272">décider — mêmes données, relues</text>
+                    </g>
+
+                    <!-- row 1 : capture -->
+                    <g font-family="IBM Plex Mono, monospace">
+                      <!-- stacked devices -->
+                      <rect x="28" y="42" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1" opacity=".3"/>
+                      <rect x="22" y="48" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1" opacity=".5"/>
+                      <rect x="16" y="54" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
+                      <text x="94" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">point de vente</text>
+                      <text x="94" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">ESP32 · grille de boutons</text>
+                      <text x="94" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">anti-rebond · accusé LED</text>
+                      <text x="94" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">file locale hors ligne</text>
+
+                      <rect x="238" y="54" width="170" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
+                      <text x="323" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">passerelle</text>
+                      <text x="323" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">8devices router</text>
+                      <text x="323" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">AP privé pour les bars</text>
+                      <text x="323" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">4G · sans le wifi du lieu</text>
+
+                      <rect x="462" y="54" width="160" height="96" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                      <text x="542" y="82" text-anchor="middle" fill="currentColor" font-size="11.5">broker MQTT</text>
+                      <text x="542" y="101" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">topic par point de vente</text>
+                      <text x="542" y="117" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">QoS 1 · last will</text>
+                      <text x="542" y="133" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">hébergé, hors site</text>
+
+                      <rect x="676" y="54" width="140" height="96" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                      <text x="746" y="86" text-anchor="middle" fill="var(--hedge)" font-size="11.5">pont</text>
+                      <text x="746" y="105" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">abonnement → ajout</text>
+                      <text x="746" y="121" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">dédoublonnage (id, seq)</text>
+
+                      <path d="M838,72 L838,136 A46,9 0 0 0 930,136 L930,72" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
+                      <ellipse cx="884" cy="72" rx="46" ry="9" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
+                      <text x="884" y="104" text-anchor="middle" fill="var(--hedge)" font-size="10.5">Google Sheet</text>
+                      <text x="884" y="120" text-anchor="middle" fill="var(--hedge)" font-size="8.5" opacity=".7">1 ligne / vente</text>
+                    </g>
+
+                    <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cs-a)">
+                      <line x1="190" y1="102" x2="234" y2="102"/>
+                      <line x1="408" y1="102" x2="458" y2="102"/>
+                      <line x1="622" y1="102" x2="672" y2="102"/>
+                      <line x1="816" y1="102" x2="834" y2="102"/>
+                    </g>
+                    <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
+                      <text x="212" y="94" text-anchor="middle">wifi</text>
+                      <text x="433" y="94" text-anchor="middle">4G</text>
+                      <text x="647" y="94" text-anchor="middle">abo</text>
+                    </g>
+
+                    <!-- row 2 : decide -->
+                    <g font-family="IBM Plex Mono, monospace">
+                      <rect x="640" y="292" width="208" height="88" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                      <text x="744" y="320" text-anchor="middle" fill="var(--hedge)" font-size="11.5">prévision par bar</text>
+                      <text x="744" y="339" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">a priori × programme × lieu</text>
+                      <text x="744" y="355" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">temps avant rupture</text>
+
+                      <rect x="356" y="292" width="208" height="88" rx="2" fill="none" stroke="var(--risk)" stroke-width="1.5"/>
+                      <text x="460" y="320" text-anchor="middle" fill="var(--risk)" font-size="11.5">tableau des réassorts</text>
+                      <text x="460" y="339" text-anchor="middle" fill="var(--risk)" font-size="9.5" opacity=".9">quoi apporter, à quel bar</text>
+                      <text x="460" y="355" text-anchor="middle" fill="var(--risk)" font-size="9" opacity=".75">déclenché selon le délai</text>
+
+                      <rect x="72" y="292" width="200" height="88" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                      <text x="172" y="326" text-anchor="middle" fill="currentColor" font-size="11.5">coursier</text>
+                      <text x="172" y="346" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">réserve → bar</text>
+                      <text x="172" y="362" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">≈ 30 min aller-retour</text>
+                    </g>
+
+                    <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cs-a)">
+                      <path d="M884,150 L884,336 L852,336"/>
+                      <line x1="640" y1="336" x2="568" y2="336"/>
+                      <line x1="356" y1="336" x2="276" y2="336"/>
+                      <path d="M94,292 L94,158"/>
+                    </g>
+                    <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
+                      <text x="604" y="328" text-anchor="middle">τ &lt; L</text>
+                      <text x="106" y="232">réassorti</text>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><b>Une boucle, refermée à la réserve.</b> La colonne de gauche est la seule partie qui se trouve sur place ; tout ce qui est à droite de la liaison 4G est hors site, ce qui permet à la feuille de survivre à une coupure de courant dans un bar ou à un appareil débranché en pleine soirée.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Compétences</span>
+              <ul class="rk-plain">
+                <li><b>Embarqué et IoT.</b> Micrologiciel ESP32 en C++, une matrice de boutons et une file d'attente locale pour que le barman n'attende jamais le réseau.</li>
+                <li><b>Messagerie fiable.</b> MQTT sur 4G avec numéros de séquence, pour qu'un appareil puisse renvoyer librement ses messages après une reconnexion sans gonfler les ventes.</li>
+                <li><b>Prévision en temps réel.</b> Le profil de consommation de l'année précédente, ajusté selon le moment de la soirée et l'emplacement du bar, recalé sur les ventes en direct ; l'alerte se déclenche quand le temps projeté avant épuisement atteint le temps de réapprovisionnement.</li>
+                <li><b>Conception centrée sur l'utilisateur.</b> Une feuille Google Sheets comme tableau de bord, parce que toute l'équipe l'avait déjà sur son téléphone.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Résultats</span>
+              <div class="rk-col">
+                <p>Utilisé pendant une soirée dans plusieurs bars et pour 3 000 invités, avec des alertes de rupture environ 30 minutes à l'avance. La soirée se termine avec un enregistrement à la seconde de ce qui a été vendu et où, sur lequel est ajustée la prévision de l'année suivante.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame">
+                  <svg viewBox="0 0 940 440" role="img" aria-label="Stock restant d'un bar au cours de la soirée. Une courbe en tirets montre le même bar l'année précédente, une courbe pleine montre l'épuisement mesuré ce soir jusqu'à l'heure actuelle, et une projection en pointillés la prolonge. La projection franchit le seuil de réapprovisionnement vers 1 h 20 et atteint zéro vers 2 h 10 : l'alerte se déclenche donc pendant que le coursier a encore le temps.">
+                    <!-- programme bands -->
+                    <g opacity=".07" fill="currentColor">
+                      <rect x="280" y="50" width="130" height="330"/>
+                      <rect x="430" y="50" width="250" height="330"/>
+                    </g>
+                    <g font-family="Source Sans 3, sans-serif" font-size="10.5" fill="currentColor" opacity=".55">
+                      <text x="345" y="44" text-anchor="middle">dîner</text>
+                      <text x="555" y="44" text-anchor="middle">DJ set</text>
+                    </g>
+
+                    <!-- grid -->
+                    <g stroke="currentColor" opacity=".14" stroke-width="1">
+                      <line x1="80" y1="135" x2="880" y2="135"/>
+                      <line x1="80" y1="210" x2="880" y2="210"/>
+                      <line x1="80" y1="285" x2="880" y2="285"/>
+                      <line x1="180" y1="50" x2="180" y2="380"/>
+                      <line x1="280" y1="50" x2="280" y2="380"/>
+                      <line x1="380" y1="50" x2="380" y2="380"/>
+                      <line x1="480" y1="50" x2="480" y2="380"/>
+                      <line x1="580" y1="50" x2="580" y2="380"/>
+                      <line x1="680" y1="50" x2="680" y2="380"/>
+                      <line x1="780" y1="50" x2="780" y2="380"/>
+                    </g>
+                    <g stroke="currentColor" opacity=".45" stroke-width="1.2">
+                      <line x1="80" y1="360" x2="880" y2="360"/>
+                      <line x1="80" y1="50" x2="80" y2="380"/>
+                    </g>
+
+                    <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".65">
+                      <text x="80" y="378" text-anchor="middle">20:00</text>
+                      <text x="180" y="378" text-anchor="middle">21:00</text>
+                      <text x="280" y="378" text-anchor="middle">22:00</text>
+                      <text x="380" y="378" text-anchor="middle">23:00</text>
+                      <text x="480" y="378" text-anchor="middle">00:00</text>
+                      <text x="580" y="378" text-anchor="middle">01:00</text>
+                      <text x="680" y="378" text-anchor="middle">02:00</text>
+                      <text x="780" y="378" text-anchor="middle">03:00</text>
+                      <text x="880" y="378" text-anchor="middle">04:00</text>
+                      <text x="72" y="364" text-anchor="end">0</text>
+                      <text x="72" y="289" text-anchor="end">25 %</text>
+                      <text x="72" y="214" text-anchor="end">50 %</text>
+                      <text x="72" y="139" text-anchor="end">75 %</text>
+                      <text x="72" y="64" text-anchor="end">100 %</text>
+                    </g>
+                    <text x="480" y="404" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">heure</text>
+                    <text x="24" y="40" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">stock restant au bar</text>
+
+                    <!-- last year -->
+                    <polyline points="80,60 180,90 280,126 380,153 480,186 580,231 680,270 780,300 880,318"
+                      fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="6 4" opacity=".5"/>
+                    <text x="792" y="294" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".6">l'an dernier, même bar</text>
+
+                    <!-- restock threshold -->
+                    <line x1="80" y1="285" x2="880" y2="285" stroke="var(--risk)" stroke-width="1.4" stroke-dasharray="5 4"/>
+                    <text x="88" y="278" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--risk)">seuil de réapprovisionnement</text>
+
+                    <!-- measured -->
+                    <polyline points="80,60 130,72 180,84 230,99 280,114 330,126 380,138 430,150 480,180 520,213"
+                      fill="none" stroke="var(--hedge)" stroke-width="2.6"/>
+                    <text x="300" y="106" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--hedge)" font-weight="600">mesuré ce soir</text>
+
+                    <!-- projection -->
+                    <polyline points="520,213 570,252 612,285 645,311 680,338 700,360"
+                      fill="none" stroke="var(--perf)" stroke-width="2.2" stroke-dasharray="3 4"/>
+                    <text x="640" y="212" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--perf)" font-weight="600">projection</text>
+                    <text x="640" y="228" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--perf)" opacity=".85">λ(t) recalculé à chaque message</text>
+
+                    <!-- now -->
+                    <line x1="520" y1="50" x2="520" y2="360" stroke="var(--hedge)" stroke-width="1.2" opacity=".55"/>
+                    <circle cx="520" cy="213" r="5" fill="var(--hedge)"/>
+                    <text x="514" y="70" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--hedge)">maintenant · 00:40</text>
+
+                    <!-- alert -->
+                    <circle cx="612" cy="285" r="6" fill="var(--risk)"/>
+                    <line x1="612" y1="285" x2="612" y2="360" stroke="var(--risk)" stroke-width="1" opacity=".45"/>
+                    <text x="602" y="310" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--risk)" font-weight="600">alerte 01:20</text>
+                    <text x="602" y="326" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--risk)" opacity=".85">τ = 50 min ≈ L</text>
+                    <text x="712" y="352" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--perf)" opacity=".85">rupture prévue 02:10</text>
+                  </svg>
+                </div>
+                <figcaption><b>Un bar, une soirée, reconstitués pour cette page.</b> La courbe en tirets est l'a priori, la courbe pleine ce que disent réellement les appuis sur les boutons, et l'alerte n'est pas déclenchée quand le stock est bas, mais quand le temps projeté avant épuisement tombe à la durée de l'aller-retour du coursier.</figcaption>
+              </figure>
+            </div>
+
+            <p class="rk-foot">Conçu pour un gala étudiant, 2023. Le micrologiciel, le pont et la feuille de prévision ont été écrits pour l'événement et ne sont pas publics ; les figures sont redessinées à partir des journaux de la soirée.</p>
+
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- PROJECT 5 ---------- -->
+    <article class="project" id="p-perseus">
+      <h3 class="project-heading">
+        <button class="project-head" id="p-perseus-btn" type="button"
+                aria-expanded="false" aria-controls="p-perseus-panel">
+          <span class="project-name">Fabrication d'une coiffe de fusée par enroulement filamentaire</span>
+          <span class="project-meta">2023 · Python · NumPy · SciPy · géométrie différentielle · RK4 · G-code</span>
+          <span class="project-summary">Projet de semestre avec le Centre National d'Études Spatiales (CNES). Modélisation mathématique et simulation des procédés d'enroulement. Programmation de la machine d'enroulement 4 axes.</span>
+          <img class="project-icon" src="../assets/img/icon_project_perseus.svg" alt="" aria-hidden="true">
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h3>
+
+      <div class="panel" id="p-perseus-panel" role="region" aria-labelledby="p-perseus-btn">
+        <div class="panel-inner">
+
+          <div class="rk">
+
+            <img class="rk-resume" src="../assets/img/Perseus/resume_filament-winding-nose-cone.svg" alt="Résumé en une page de l'étude : le profil de mandrin en ogive tangente avec son ouverture polaire de 26,27 mm et la relation de Clairaut, un angle de départ de 25 degrés et un paramètre de frottement lambda ; l'équation différentielle ordinaire à trois états en z, thêta et alpha, paramétrée par l'abscisse curviligne et intégrée par un schéma de Runge-Kutta d'ordre quatre par pas d'un demi-millimètre, avec un ordre de convergence de 3,98 à 3,99 et des retournements localisés par dichotomie ; et les cinq étapes de la chaîne : géométrie, intégration, fermeture du motif, cinématique 4 axes et G-code décimé de façon adaptative." width="803" height="457" loading="lazy" decoding="async">
+
+            <div class="rk-top">
+              <p>Un projet de semestre pour le programme PERSEUS du CNES à Arts et Métiers : une coiffe de fusée enroulée en fibre de lin sur une machine d'enroulement à quatre axes. Une fibre posée selon une mauvaise trajectoire glisse le long du cône avant que la résine ne durcisse, comme l'ont montré les premiers essais. Ma partie était la chaîne mathématique et logicielle : <strong>modéliser la trajectoire de la fibre, simuler tout l'enroulement et générer le programme machine</strong>.</p>
+
+              <div class="rk-facts">
+                <div class="rk-fact"><b>3,99</b><span>ordre de convergence mesuré du solveur RK4 (4 attendu)</span></div>
+                <div class="rk-fact"><b>26,2708 mm</b><span>ouverture polaire trouvée par le solveur, contre 26,271 mm en forme close</span></div>
+                <div class="rk-fact"><b>×9,7</b><span>10 597 points de trajectoire compressés en 1 095 blocs G-code, à 0,05 mm près</span></div>
+              </div>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">01 — Fonctionnement</span>
+              <div class="rk-col">
+                <p>La trajectoire de la fibre est la solution d'une EDO à trois équations construite à partir de la géométrie de la surface et d'un paramètre de frottement. Tout ce qui suit (motif, couverture, axes de la machine, temps de cycle, G-code) est calculé à partir de cette seule trajectoire.</p>
+              </div>
+
+              <figure>
+                <div class="rk-frame">
+                  <svg viewBox="0 0 940 380" role="img" aria-label="Un profil de mandrin, donné soit comme nuage de points CSV, soit comme quadratique analytique, est ajusté en une représentation C2 qui fournit r, r prime et r seconde. Celle-ci alimente l'équation différentielle de l'enroulement, intégrée par un pas de Runge-Kutta d'ordre quatre avec localisation des événements par dichotomie. Les segments libres et les retournements à angle prescrit alternent pour former une trajectoire continue ; la règle de fermeture du motif fixe l'avance du mandrin par circuit. La trajectoire obtenue alimente d'un côté une analyse de couverture et, de l'autre, la cinématique inverse 4 axes, la loi horaire avec anticipation et l'export G-code décimé.">
+                    <defs>
+                      <marker id="fw-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                      </marker>
+                    </defs>
+
+                    <g font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".55">
+                      <text x="16" y="28">la géométrie et le modèle</text>
+                      <text x="16" y="228">l'assemblage, puis la machine</text>
+                    </g>
+
+                    <g font-family="IBM Plex Mono, monospace">
+                      <rect x="16" y="42" width="158" height="86" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                      <text x="95" y="68" text-anchor="middle" fill="currentColor" font-size="11.5">profil</text>
+                      <text x="95" y="86" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">pointsmandrin.csv</text>
+                      <text x="95" y="102" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">ou fit quadratique</text>
+                      <text x="95" y="118" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">colonnes z ; y</text>
+
+                      <rect x="216" y="42" width="176" height="86" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
+                      <text x="304" y="68" text-anchor="middle" fill="var(--perf)" font-size="11.5">Mandrin</text>
+                      <text x="304" y="86" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">spline de lissage quartique</text>
+                      <text x="304" y="102" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".75">r(z), r′(z), r″(z)</text>
+                      <text x="304" y="118" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".6">C² donc κₙ est lisse</text>
+
+                      <rect x="434" y="42" width="186" height="86" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.8"/>
+                      <text x="527" y="68" text-anchor="middle" fill="var(--hedge)" font-size="11.5">winding_rhs</text>
+                      <text x="527" y="86" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">dz, dθ, dα / ds</text>
+                      <text x="527" y="102" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".75">Euler + Liouville</text>
+                      <text x="527" y="118" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".6">λ = κ_g / κ_n</text>
+
+                      <rect x="662" y="42" width="176" height="86" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                      <text x="750" y="68" text-anchor="middle" fill="var(--hedge)" font-size="11.5">_rk4_step</text>
+                      <text x="750" y="86" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">Δs fixe en mm de fibre</text>
+                      <text x="750" y="102" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".75">événements par dichotomie</text>
+                      <text x="750" y="118" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".6">tombe pile sur α = 90°</text>
+                    </g>
+
+                    <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".5" marker-end="url(#fw-a)">
+                      <line x1="174" y1="85" x2="212" y2="85"/>
+                      <line x1="392" y1="85" x2="430" y2="85"/>
+                      <line x1="620" y1="85" x2="658" y2="85"/>
+                      <path d="M750,128 L750,168 L120,168 L120,242"/>
+                    </g>
+
+                    <g font-family="IBM Plex Mono, monospace">
+                      <rect x="16" y="242" width="196" height="94" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
+                      <text x="114" y="268" text-anchor="middle" fill="var(--perf)" font-size="11.5">build_path</text>
+                      <text x="114" y="286" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">aller → retour → aller → retour</text>
+                      <text x="114" y="302" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".75">retournements à α prescrit</text>
+                      <text x="114" y="318" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".6">fermeture du motif fixe Δθ</text>
+
+                      <rect x="254" y="242" width="164" height="94" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                      <text x="336" y="272" text-anchor="middle" fill="currentColor" font-size="11.5">coverage_profile</text>
+                      <text x="336" y="292" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">comptage des croisements</text>
+                      <text x="336" y="308" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">Φ(z), épaisseur</text>
+
+                      <rect x="460" y="242" width="164" height="94" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                      <text x="542" y="272" text-anchor="middle" fill="var(--hedge)" font-size="11.5">four_axis_ik</text>
+                      <text x="542" y="292" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">déport de l'œillet + avance</text>
+                      <text x="542" y="308" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".75">A, Z, Y, B</text>
+
+                      <rect x="666" y="242" width="120" height="94" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                      <text x="726" y="272" text-anchor="middle" fill="var(--hedge)" font-size="11.5">time_law</text>
+                      <text x="726" y="292" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">limites des axes</text>
+                      <text x="726" y="308" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".75">anticipation</text>
+
+                      <rect x="828" y="242" width="108" height="94" rx="2" fill="none" stroke="var(--risk)" stroke-width="1.5"/>
+                      <text x="882" y="272" text-anchor="middle" fill="var(--risk)" font-size="11.5">export_x4g</text>
+                      <text x="882" y="292" text-anchor="middle" fill="var(--risk)" font-size="9.5" opacity=".9">décimation</text>
+                      <text x="882" y="308" text-anchor="middle" fill="var(--risk)" font-size="9.5" opacity=".75">blocs .X4G</text>
+                    </g>
+
+                    <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".5" marker-end="url(#fw-a)">
+                      <line x1="212" y1="289" x2="250" y2="289"/>
+                      <path d="M212,266 L436,266 L436,289 L456,289"/>
+                      <line x1="624" y1="289" x2="662" y2="289"/>
+                      <line x1="786" y1="289" x2="824" y2="289"/>
+                    </g>
+                    <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
+                      <text x="231" y="282" text-anchor="middle">Φ</text>
+                      <text x="436" y="258" text-anchor="middle">(s, z, θ, α)</text>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><b>Un modèle, deux consommateurs.</b> Tout ce qui est au-dessus de la ligne relève de la géométrie et de l'EDO ; tout ce qui est en dessous n'est que de la comptabilité sur la solution. La branche couverture et la branche machine lisent la même trajectoire, ce qui permet de transformer directement une exigence de couverture en un motif et un temps de cycle.</figcaption>
+              </figure>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">02 — Compétences</span>
+              <ul class="rk-plain">
+                <li><b>Modélisation mathématique.</b> Géométrie différentielle du mandrin et un critère de non-glissement qui indique quand le frottement peut maintenir une fibre en place.</li>
+                <li><b>Calcul scientifique.</b> Intégration RK4 en abscisse curviligne, qui supprime la singularité de la formulation classique au retournement ; retournements localisés par dichotomie ; une quantité conservée utilisée comme contrôle d'erreur gratuit.</li>
+                <li><b>Conception d'algorithmes.</b> L'algèbre des motifs, qui explique pourquoi un circuit supplémentaire peut presque doubler la quantité de fibre utilisée, et une compression du G-code par recherche exponentielle et dichotomique.</li>
+                <li><b>Robotique et CN.</b> Cinématique inverse à quatre axes, planification de la vitesse dans les limites des axes, et génération du G-code pour la vraie machine.</li>
+              </ul>
+            </div>
+
+            <div class="rk-sec">
+              <span class="rk-eyebrow">03 — Résultats</span>
+              <ul class="rk-plain">
+                <li>Explication du glissement et de l'accumulation de fibre observés lors des essais : à la petite extrémité, la trajectoire demandait plus de frottement que ce qui était disponible.</li>
+                <li>Une recette de conception pour une couche fermée, <b>30 circuits avec un nombre de motif de 7</b>, prédite par l'algèbre puis confirmée par une simulation qu'elle n'avait jamais vue (couverture de 1,016 pour une cible de 1).</li>
+                <li>Un programme machine qui tient compte du déport de l'œillet de dépose de la fibre, lequel décalerait sinon la broche jusqu'à 20,9°.</li>
+              </ul>
+
+              <div class="rk-shots">
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/Perseus/mandrin2.jpg" alt="Le mandrin en bois nu de la coiffe, monté entre les mandrins de serrage de la machine XWinder à quatre axes, sur son châssis en profilés d'aluminium." width="282" height="199" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Le mandrin nu.</b> Le profil de coiffe tourné, monté entre les mandrins de serrage du XWinder avant la pose de toute fibre.</figcaption>
+                </figure>
+                <figure>
+                  <div class="rk-frame rk-frame--img">
+                    <img src="../assets/img/Perseus/mandrin_fil.jpg" alt="Le même mandrin après quelques passes d'enroulement : la mèche de lin croise le cône selon un motif en losanges, avec l'œillet de dépose et le chariot de la machine d'enroulement à droite de l'image." width="1240" height="754" loading="lazy" decoding="async">
+                  </div>
+                  <figcaption><b>Après quelques passes.</b> Les croisements de la mèche de lin forment le motif de bandes que prédit l'algèbre de la section 09, posé sur la vraie surface.</figcaption>
+                </figure>
+              </div>
+
+              <figure>
+                <div class="rk-frame rk-frame--img">
+                  <img src="../assets/img/Perseus/winding2.png" alt="Vue tridimensionnelle de l'enroulement simulé : la surface de la coiffe, croisée par douze circuits continus de fibre, et le chariot, l'œillet de dépose et la mèche libre dessinés à côté du mandrin." width="1143" height="793" loading="lazy" decoding="async">
+                </div>
+                <figcaption><b>Douze circuits, posés sans s'arrêter.</b> 10,50 m de mèche en 1,4 min. Le chariot, l'œillet de dépose et la longueur libre de mèche entre eux sont simulés avec la trajectoire, puisque l'avance de l'œillet est précisément ce que la cinématique inverse doit résoudre.</figcaption>
+              </figure>
+            </div>
+
+            <p class="rk-foot">Projet de semestre pour le programme CNES/PERSEUS, démonstrateur ASTREOS, à Arts et Métiers. Le rapport du projet couvre aussi les matériaux lin/Elium, la machine et la campagne expérimentale ; cette page couvre les parties mathématique et logicielle.</p>
+
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    
+
+  </section>
+
+  <!-- ============================================================
+       EDUCATION
+       ============================================================ -->
+  <section id="education" class="section">
+    <h2>Formation</h2>
+
+    <ol class="timeline">
+      <li>
+        <div class="tl-when">
+          <span class="tl-date">2024 — 2026</span>
+          <img class="tl-logo tl-logo--invert" src="../assets/img/logo_Polytechnique_Montreal.svg" alt="Polytechnique Montréal" width="235" height="93" loading="lazy" decoding="async">
+        </div>
+        <div class="tl-what">
+          <h3>Maîtrise (M. Sc. A.)</h3>
+          <p class="tl-where">Polytechnique Montréal · Montréal</p>
+          <p>Mémoire : <em>Processus de réponse aux appels d'offres : utiliser l'intelligence artificielle pour exploiter les données contractuelles et concurrentielles</em></p>
+          <p>Moyenne : 4,0/4,0, prix d'excellence, article de conférence @ Centeris2026 Procedia Computer Science</p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-when">
+          <span class="tl-date">2022 — 2026</span>
+          <img class="tl-logo tl-logo--wide" src="../assets/img/arts-et-metiers-seeklogo.png" alt="Arts et Métiers ParisTech" width="601" height="123" loading="lazy" decoding="async">
+        </div>
+        <div class="tl-what">
+          <h3>Diplôme d'ingénieur</h3>
+          <p class="tl-where">Arts et Métiers ParisTech · Paris</p>
+          <p>Grande école d'ingénieurs française, fortement axée sur le génie mécanique et le génie industriel.</p>
+          <p>Dans les 10 % meilleurs de la promotion, lauréat d'une bourse des alumni</p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-when">
+          <span class="tl-date">2020 — 2022</span>
+          <img class="tl-logo tl-logo--square" src="../assets/img/logo_livet.svg" alt="Lycée Livet" width="1456" height="1456" loading="lazy" decoding="async">
+        </div>
+        <div class="tl-what">
+          <h3>Classes préparatoires PTSI/PT*</h3>
+          <p class="tl-where">Lycée Livet · Angers</p>
+          <p>Deux années d'études intensives en mathématiques et en physique pour préparer les concours d'entrée des grandes écoles d'ingénieurs françaises.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============================================================
+       SKILLS
+       ============================================================ -->
+  <section id="skills" class="section">
+    <h2>Compétences</h2>
+    <dl class="skills">
+      <div>
+        <dt>Langues</dt>
+        <dd>Français (langue maternelle) · Anglais (courant)</dd>
+      </div>
+      <div>
+        <dt>Programmation</dt>
+        <dd>Python · SQL · VBA · MATLAB · G-Code · C/C++ (embarqué)</dd>
+      </div>
+      <div>
+        <dt>Apprentissage automatique</dt>
+        <dd>Apprentissage supervisé et gradient boosting · Learning-to-Rank · réseaux de neurones avec retours humains · TALN · séries temporelles</dd>
+      </div>
+      <div>
+        <dt>Systèmes LLM</dt>
+        <dd>RAG (hiérarchique) · MCP · LLM locaux · prompt et context engineering</dd>
+      </div>
+      <div>
+        <dt>Données et cloud</dt>
+        <dd>Azure (ADLS Gen 2, Functions, App Services, Containers) · SQLite · Docker · Git · Streamlit · API · Web scraping</dd>
+      </div>
+      <div>
+        <dt>Recherche opérationnelle</dt>
+        <dd>Optimisation mathématique · optimisation convexe et stochastique · méthodes de Monte Carlo · simulation numérique</dd>
+      </div>
+      <div>
+        <dt>Certifications</dt>
+        <dd><a href="https://www.coursera.org/account/accomplishments/specialization/certificate/QJYRKJUJGPRS">IBM Data Science (160H)</a> · <a href="https://www.coursera.org/account/accomplishments/specialization/5B8GGTTRE6DC">Stanford Machine Learning (80H)</a></dd>
+      </div>
+      <div>
+        <dt>Cours en ligne</dt>
+        <dd>Stanford CS229 Machine Learning ·  Stanford CS224n NLP with Deep Learning · Stanford CS230 Deep Learning</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>N'hésitez pas à me contacter si vous avez des questions ou si vous souhaitez collaborer !</p>
+    <ul class="contact-list">
+      <li><span>Courriel</span><a href="mailto:elouan.salaun1909@gmail.com">elouan.salaun1909@gmail.com</a></li>
+      <li><span>GitHub</span><a href="https://github.com/elouansalaun">github.com/elouansalaun</a></li>
+      <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/elouan-salaun">linkedin.com/in/elouan-salaun</a></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year">2026</span> Elouan Salaun</p>
+</footer>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<script defer src="../assets/main.js?v=2"></script>
+</body>
+</html>
