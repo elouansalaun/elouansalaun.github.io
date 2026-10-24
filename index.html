@@ -95,7 +95,7 @@
         <div class="cat-tabs" role="tablist" aria-label="Project categories">
           <button class="cat-tab" id="cat-data-tab" type="button" role="tab" aria-selected="true" aria-controls="cat-data">Data science <span class="cat-count">2</span></button>
           <button class="cat-tab" id="cat-llm-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-llm">LLMs &amp; agents <span class="cat-count">4</span></button>
-          <button class="cat-tab" id="cat-eng-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-eng">Engineering <span class="cat-count">4</span></button>
+          <button class="cat-tab" id="cat-eng-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-eng">ML-OR-Engineering <span class="cat-count">4</span></button>
         </div>
         <button class="cat-arrow cat-prev" type="button" aria-label="Previous category"><span aria-hidden="true"></span></button>
         <button class="cat-arrow cat-next" type="button" aria-label="Next category"><span aria-hidden="true"></span></button>
@@ -114,7 +114,7 @@
                       aria-expanded="false" aria-controls="p-forecasting-panel">
                 <span class="project-name">Tender response process leveraging data</span>
                 <span class="project-meta">2026 · Python · LLM · Hierarchical RAG · RankNet · XGBRanker · Docker · Azure · Streamlit</span>
-                <span class="project-summary">MSc thesis with an industry partner: an end-to-end AI tool that finds public tenders, reads their PDFs with a local LLM, finds comparable past contracts and recommends a winning, profitable bid price.</span>
+                <span class="project-summary">MSc.A thesis with an industry partner: Five-module Python bid-support tool: scraping and database consolidation, RAG extraction from PDF specifications with a local LLM, contract similarity (RankNet) and margin recommendation through learning-to-rank (XGBRanker). In a retrospective backtest, the simulated win rate reaches 40%, versus 15% for actual decisions, with +10% profits.</span>
                 <img class="project-icon" src="assets/img/icon_project_MSc.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -406,7 +406,7 @@
                       aria-expanded="false" aria-controls="p-jetfighter-panel">
                 <span class="project-name">Teaching a simulated F-16 to fly with reinforcement learning</span>
                 <span class="project-meta">2025 · Python · 6-DOF flight dynamics · Gymnasium · PPO · Stable-Baselines3 · imitation learning</span>
-                <span class="project-summary">A fighter-jet flight simulator written from the physics up and validated against published F-16 data, then used as the environment for PPO agents that learn to stabilize, turn, navigate and fly aerobatics, judged against a classical autopilot.</span>
+                <span class="project-summary">A fighter-jet flight simulator written from the physics up and validated against published F-16 data, then used as the environment for PPO reinforcement learning agents that learn to stabilize, turn, navigate and fly aerobatics, judged against a classical autopilot.</span>
                 <img class="project-icon" src="assets/img/icon_project_jet.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -547,7 +547,7 @@
                       aria-expanded="false" aria-controls="p-neuron-agi-panel">
                 <span class="project-name">From Neuron to AGI: deep learning, LLMs and agents built from scratch</span>
                 <span class="project-meta">2026 · Python · NumPy · PyTorch · Transformers · LoRA · DPO · GRPO · PPO · RAG · MCP</span>
-                <span class="project-summary">27 notebooks that retrace the path from a single perceptron to a GPT, a chatbot, a reasoning model and a coding agent. Every piece is written by hand, checked against the reference library, and only then reused, all on a laptop.</span>
+                <span class="project-summary">Rebuilt AI from the perceptron to LLM agents in 27 hand-coded modules checked against PyTorch and Hugging Face (GPT, LoRA, PPO, DPO, GRPO, RAG). All on a laptop.</span>
                 <img class="project-icon" src="assets/img/icon_project_neuron_agi.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -860,7 +860,7 @@
                       aria-expanded="false" aria-controls="p-lidar-agent-panel">
                 <span class="project-name">LiDAR AI agent: asking a point cloud in plain English</span>
                 <span class="project-meta">2026 · Python · LiDAR · Random Forest · Claude API · LangGraph · GeoPandas · Streamlit</span>
-                <span class="project-summary">Ask a question about Montreal in plain English: an LLM agent plans and runs a deterministic LiDAR → ML → GIS pipeline, a rule-based validator checks every result, and you get an answer, a table and a map.</span>
+                <span class="project-summary">Ask a question about Montreal in plain English: an LLM agent plans and runs a deterministic LiDAR → Machine Learning Model → GIS pipeline, a rule-based validator checks every result, and you get an answer, a table and a map.</span>
                 <img class="project-icon" src="assets/img/icon_project_lidar_agent.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -990,7 +990,7 @@
                       aria-expanded="false" aria-controls="p-seao-panel">
                 <span class="project-name">SEAO Database MCP tool for Claude/GPT</span>
                 <span class="project-meta">2026 · Python · MCP · FastMCP · SQLite · FTS5 · OCDS</span>
-                <span class="project-summary">A local MCP server that lets an LLM analyst interrogate Quebec's SEAO public-procurement open data in plain language. A small pipeline downloads the raw OCDS feed, filters it, and normalizes it into a query-ready SQLite database. </span>
+              <span class="project-summary">A local MCP (Model Context Protocol, FastMCP) server that lets an LLM (CLAUDE or GPT) analyst interrogate Quebec's SEAO public-procurement open data in plain language. A small pipeline downloads the raw OCDS feed, filters it, and normalizes it into a query-ready SQLite database. </span>
                 <img class="project-icon" src="assets/img/icon_project_Mcp.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -1167,7 +1167,7 @@
 
         <!-- ==================== CATEGORY: ENGINEERING ==================== -->
         <div class="cat-slide" id="cat-eng" role="tabpanel" aria-labelledby="cat-eng-tab">
-          <p class="cat-label">Engineering</p>
+          <p class="cat-label">ML/OR/Engineering</p>
 
           <!-- ---------- PROJECT 4 ---------- -->
           <article class="project" id="p-caisse">
@@ -1176,7 +1176,7 @@
                       aria-expanded="false" aria-controls="p-caisse-panel">
                 <span class="project-name">Connected multi-point cash-register system</span>
                 <span class="project-meta">2023 · ESP32 · C++ · MQTT · 4G · Google Sheets</span>
-                <span class="project-summary">Design and implementation of real-time sales-recording device (ESP32) connected to a central server to enable real-time tracking, analysis and forecasting of sales data for a 3000-person gala.</span>
+                <span class="project-summary">Design and implementation of real-time multi-point sales-recording device (ESP32) connected to a central server to enable real-time tracking, analysis and forecasting of sales data for a 3000-person gala.</span>
                 <img class="project-icon" src="assets/img/icon_project_caisse.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -1432,7 +1432,7 @@
                       aria-expanded="false" aria-controls="p-lidar-panel">
                 <span class="project-name">Optimal surveillance of a site from airborne LiDAR</span>
                 <span class="project-meta">2026 · Python · LiDAR · numba · MILP (HiGHS) · NSGA-II · PyTorch · Streamlit</span>
-                <span class="project-summary">Placing cameras and radars from a classified LiDAR point cloud so that an intruder who knows the layout is detected, and detected in time: exact visibility through semi-transparent vegetation, certified optima, and an exact optimiser ↔ intruder loop.</span>
+                <span class="project-summary">This project optimizes camera and radar placement on a fictitious site from 3D LiDAR point clouds. It combines an exact visibility engine (ray traversal, Beer-Lambert vegetation), operations research (MCLP as MILP, submodular cuts, NSGA-II) and a U-Net surrogate model. It goes beyond coverage: an exact adversarial loop guarantees timely detection of an intruder who knows the layout (EASI model). Every optimum is certified by bounds or proof, and both NSGA-II and the adversarial loop are validated against these bounds and by exhaustive enumeration.</span>
                 <img class="project-icon" src="assets/img/icon_project_lidar.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -1577,7 +1577,7 @@
                       aria-expanded="false" aria-controls="p-causal-panel">
                 <span class="project-name">Portfolio Optimization with Python</span>
                 <span class="project-meta">2025 · Python · portfolio · Markowitz · Monte Carlo · CPPI</span>
-                <span class="project-summary">A Python risk toolkit, from Markowitz optimisation to liability-driven CPPI allocation, tested on 5,000 Monte Carlo scenarios and 28 years of market data.</span>
+                <span class="project-summary">A comprehensive portfolio management toolkit. It covers risk metrics (VaR, CVaR, drawdown), Markowitz optimization, CPPI and Monte Carlo simulation (GBM, CIR rates) for allocating capital between a performance-seeking and a liability-hedging portfolio.</span>
                 <img class="project-icon" src="assets/img/icon_project_Finance.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
