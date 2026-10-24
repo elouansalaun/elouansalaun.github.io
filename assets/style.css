@@ -274,6 +274,16 @@ main { max-width: var(--measure); margin: 0 auto; padding: 0 var(--pad) 5rem; }
   .project-icon { display: none; }
 }
 
+/* Animated schematic shown under a project heading, outside the panel, so it
+   is visible before the project is opened. It carries its own opaque
+   background, so it is left as is under the dark theme. */
+.project-preview {
+  display: block;
+  width: 100%; height: auto;
+  margin: -.2rem 0 1.4rem;
+  border-radius: 4px;
+}
+
 /* Collapse animation: 0fr -> 1fr on a grid row.
    Panels are open by default so the page still works without JS;
    the .js class (set inline in <head>) closes them. */

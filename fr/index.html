@@ -12,7 +12,7 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
-<link rel="stylesheet" href="../assets/style.css?v=3">
+<link rel="stylesheet" href="../assets/style.css?v=4">
 
 <script>
   /* Runs before paint: avoids a flash of the wrong theme or of open panels. */
@@ -121,12 +121,12 @@
               </button>
             </h3>
 
+            <img class="project-preview" src="../assets/img/MSc/thesis_schematic.gif" alt="Schéma animé de l'outil de réponse aux appels d'offres du mémoire : les cinq modules — surveiller, lire, comparer, fixer le prix, afficher — autour d'une même base de données." width="1200" height="675" loading="lazy" decoding="async">
+
             <div class="panel" id="p-forecasting-panel" role="region" aria-labelledby="p-forecasting-btn">
               <div class="panel-inner">
 
                 <div class="rk">
-
-                  <img class="rk-resume" src="../assets/img/MSc/resume_tender-response-process.svg" alt="Résumé en une page du mémoire : les cinq modules — surveiller le fil SEAO, lire les documents par RAG hiérarchique, comparer les contrats par un classement RankNet, fixer le prix avec un XGBRanker, afficher le résultat dans Streamlit — écrivent et lisent tous dans une même base de données couvrant janvier 2015 à mars 2026 ; à côté, le taux de victoire en validation chronologique leave-one-out, de 40 % contre 15 % pour la référence, et des gains projetés de 3,52 M$ contre 2,17 M$, avec les chiffres clés : 1 960 publications, 94 % avec des données d'adjudication, et 87 / 98 % de précision et de rappel à l'extraction." width="800" height="600" loading="lazy" decoding="async">
 
                   <div class="rk-top">
                     <p>Dans les services de gardiennage et de patrouille, presque tous les contrats se gagnent par appel d'offres public ; pourtant, les soumissions étaient chiffrées de mémoire alors que le marché publie presque tout ce qu'il faut pour faire mieux. Pour ma maîtrise à Polytechnique Montréal, avec une entreprise québécoise de premier plan en services de sécurité, j'ai conçu, développé et évalué un <strong>outil d'aide à la décision de bout en bout</strong> : il repère l'appel d'offres, lit son devis de 100 à 200 pages, retrouve les contrats passés comparables et recommande la marge la plus élevée qui permet encore de gagner.</p>
@@ -500,12 +500,12 @@
               </button>
             </h3>
 
+            <img class="project-preview" src="../assets/img/NeuronAGI/from_neuron_to_agi_overview.gif" alt="Aperçu animé du projet Du neurone à l'AGI : du neurone seul au deep learning, à GPT, à l'apprentissage par renforcement et aux agents." width="1200" height="675" loading="lazy" decoding="async">
+
             <div class="panel" id="p-neuron-agi-panel" role="region" aria-labelledby="p-neuron-agi-btn">
               <div class="panel-inner">
 
                 <div class="rk">
-
-                  <img class="rk-resume" src="../assets/img/NeuronAGI/resume_from-neuron-to-agi.svg" alt="Résumé en une page du projet Du neurone à l'AGI : dix parties successives (fondations, le neurone, réseaux multicouches, deep learning, langage, GPT, apprentissage par renforcement, post-entraînement, agents, vers l'AGI) regroupées en trois blocs : comment les réseaux apprennent, des séquences au GPT, et des modèles aux agents ; la règle selon laquelle une fonctionnalité d'une bibliothèque n'est utilisée qu'après avoir été construite de zéro et vérifiée par rapport à elle ; quatre résultats avant/après sur le même modèle (chaîne de pensée de 3,2 à 91,5 %, outils de 1 à 7 sur 8, RAG de 1 à 15 sur 16, un harnais de tests de 4 à 6 sur 8) ; une perte de validation sur TinyStories de 1,93 pour notre GPT de 18 M de paramètres contre 2,63 pour GPT-2 ; 27 notebooks, 96 % d'atterrissages réussis sur LunarLander, LoRA sur 1,9 % des poids, un seul ordinateur portable." width="800" height="600" loading="lazy" decoding="async">
 
                   <div class="rk-top">
                     <p>Les mêmes quelques principes (une somme pondérée, la dérivation en chaîne, l'attention, une fonction de perte, une boucle de rétroaction) suffisent pour aller du premier neurone artificiel aux agents fondés sur les modèles de langage d'aujourd'hui. Ce projet le démontre en <strong>construisant chaque étape à la main</strong>, dans 27 notebooks qui ajoutent chacun une idée, l'implémentent, la vérifient par rapport à une bibliothèque de référence et seulement ensuite utilisent cette bibliothèque. Tout tourne sur un MacBook Air M5, et chaque notebook est enregistré avec ses sorties : on peut donc le lire sur GitHub sans rien exécuter.</p>
@@ -637,12 +637,12 @@
               </button>
             </h3>
 
+            <img class="project-preview" src="../assets/img/LLMRTS/llm_rts_explained.gif" alt="Explication animée du projet LLM RTS : un LLM local stratège et commandant pilote un jeu de stratégie en temps réel, les règles des troupes étant appliquées par le code." width="1200" height="675" loading="lazy" decoding="async">
+
             <div class="panel" id="p-llm-rts-panel" role="region" aria-labelledby="p-llm-rts-btn">
               <div class="panel-inner">
 
                 <div class="rk">
-
-                  <img class="rk-resume" src="../assets/img/LLMRTS/resume_llm-rts.svg" alt="Résumé en une page du projet LLM RTS : un pipeline en six étapes (moteur sans interface, graphe des joueurs, recherche dans la base de connaissances, stratège LLM, commandant LLM, règles de troupes imposées par le code) ; le principe selon lequel le LLM choisit quoi faire et le code choisit où et combien ; le territoire détenu lors de la partie gagnante, qui passe de 4,3 % à 80,9 % à 8:49 ; la part maximale de territoire des versions successives sur la même graine, de 5,8 % pour les bots scriptés à 80,9 % et une victoire pour l'agent final ; 130 appels au LLM avec 0 erreur, 0 ordre invalide possible et 39 tests." width="800" height="600" loading="lazy" decoding="async">
 
                   <div class="rk-top">
                     <p>Un <strong>modèle de 9 milliards de paramètres exécuté localement</strong> (Qwen 3.5 9B dans LM Studio, sur un MacBook Air) peut-il bien jouer à un jeu de stratégie en temps réel ? Pas en regardant 328 000 cases de carte. Cet agent réduit <a href="https://github.com/openfrontio/OpenFrontIO">OpenFront</a> à un graphe d'environ 30 joueurs, donne au modèle un court texte décrivant la situation et un menu d'options légales, et le divise en deux rôles : un <strong>stratège</strong> qui planifie et un <strong>commandant</strong> qui donne les ordres. Le code fait respecter le plan entre les appels.</p>
@@ -747,12 +747,12 @@
               </button>
             </h3>
 
+            <img class="project-preview" src="../assets/img/LiDARAgent/lidar_agent_explained.gif" alt="Explication animée de l'agent IA LiDAR : une question en langage naturel traduite en appels d'outils sur un nuage de points." width="1200" height="675" loading="lazy" decoding="async">
+
             <div class="panel" id="p-lidar-agent-panel" role="region" aria-labelledby="p-lidar-agent-btn">
               <div class="panel-inner">
 
                 <div class="rk">
-
-                  <img class="rk-resume" src="../assets/img/LiDARAgent/resume_lidar-agent.svg" alt="Résumé du projet d'agent IA LiDAR" width="800" height="600" loading="lazy" decoding="async">
 
                   <div class="rk-top">
                     <p>« Quels bâtiments autour de l'oratoire Saint-Joseph dépassent 20 m ? » Répondre à cette question à partir de LiDAR aéroporté demande une chaîne d'étapes SIG et d'apprentissage automatique sur 127 millions de points. Ce projet place un agent LLM devant cette chaîne avec une règle : <strong>le LLM planifie et explique, il ne calcule jamais</strong>. Chaque chiffre provient d'un outil déterministe, et un validateur vérifie chaque résultat avant que le LLM le voie.</p>
@@ -851,12 +851,12 @@
               </button>
             </h3>
 
+            <img class="project-preview" src="../assets/img/MCP/seao_mcp_explained.gif" alt="Explication animée de l'outil MCP SEAO : les données ouvertes du SEAO chargées dans une base SQLite et exposées en lecture seule à Claude ou GPT par des outils MCP." width="1200" height="675" loading="lazy" decoding="async">
+
             <div class="panel" id="p-seao-panel" role="region" aria-labelledby="p-seao-btn">
               <div class="panel-inner">
 
                 <div class="rk">
-
-                  <img class="rk-resume" src="../assets/img/MCP/resume_seao-database-mcp.svg" alt="Résumé en une page du dépôt : les publications hebdomadaires OCDS des données ouvertes du SEAO passent par trois scripts — téléchargement, filtrage sur des mots-clés français et des codes UNSPSC, puis normalisation et indexation — pour former une base SQLite de travail de 18 tables normalisées, 5 vues et un index FTS5, avec le NEQ comme clé ; cette base est exposée en lecture seule par une interface d'outils FastMCP comprenant 3 outils flexibles et 6 analyses préconçues, derrière des garde-fous qui limitent les appels aux instructions SELECT ou WITH, à 2 000 lignes et à un délai de 5 secondes." width="800" height="600" loading="lazy" decoding="async">
 
                   <div class="rk-top">
                     <p>Le Québec publie chaque appel d'offres public, chaque soumission et chaque adjudication en données ouvertes, mais sous forme de JSON imbriqué de plusieurs gigaoctets, incapable de répondre à une question simple. Ce projet transforme ce flux en une base SQLite prête à interroger et l'expose à Claude ou à ChatGPT par un serveur <a href="https://modelcontextprotocol.io">MCP</a> en lecture seule. L'objectif n'est pas de donner au modèle un accès SQL, ce que fait déjà un serveur générique, mais de lui donner <strong>le bon SQL</strong>, intégré dans des outils, pour les questions où la requête évidente renvoie un chiffre plausible mais faux.</p>
@@ -1248,12 +1248,12 @@
               </button>
             </h3>
 
+            <img class="project-preview" src="../assets/img/LiDAR/sec_phy_lidar_overview.gif" alt="Aperçu animé du projet de surveillance par LiDAR aéroporté : placer des caméras sur le nuage de points d'un site pour le couvrir de façon optimale." width="1200" height="675" loading="lazy" decoding="async">
+
             <div class="panel" id="p-lidar-panel" role="region" aria-labelledby="p-lidar-btn">
               <div class="panel-inner">
 
                 <div class="rk">
-
-                  <img class="rk-resume" src="../assets/img/LiDAR/resume_sec-phy-lidar.svg" alt="Résumé du projet de surveillance par LiDAR" width="800" height="600" loading="lazy" decoding="async">
 
                   <div class="rk-top">
                     <p>Avec un budget limité, où placer caméras et radars pour protéger un site ? La réponse classique maximise la couverture. Ce projet montre que la couverture n'est pas le bon objectif et la remplace, en trois étapes, par la question que se pose réellement un ingénieur en sécurité : <strong>un intrus qui connaît le dispositif sera-t-il détecté à temps ?</strong> Tout repose sur un modèle 3D construit à partir du LiDAR aéroporté du gouvernement du Québec (le site lui-même est fictif).</p>
