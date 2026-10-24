@@ -36,7 +36,7 @@
       <li><a href="#skills">Compétences</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a class="cv-button" href="../assets/CV_SALAUN_FR.pdf" download title="Download CV (PDF)">
+    <a class="cv-button" href="../assets/CV_SALAUN_FR.pdf" download title="Télécharger le CV (PDF)">
       <span aria-hidden="true">↓</span> CV
     </a> 
     <a class="lang-switch" href="../" hreflang="en" lang="en" title="English version">EN</a>
@@ -56,7 +56,7 @@
       <img class="avatar" src="../assets/img/memoji-320.webp" alt="" width="160" height="160" decoding="async">
       <div>
         <h1>Elouan Salaun</h1>
-        <p class="tagline">Data scientist et ingénieur</p>
+        <p class="tagline">Data scientist et Ingénieur</p>
         <p class="tagline" style="font-style: italic; font-size: 16px;">Montréal, Paris</p>
       </div>
     </div>
@@ -96,7 +96,7 @@
         <div class="cat-tabs" role="tablist" aria-label="Catégories de projets">
           <button class="cat-tab" id="cat-data-tab" type="button" role="tab" aria-selected="true" aria-controls="cat-data">Data science <span class="cat-count">2</span></button>
           <button class="cat-tab" id="cat-llm-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-llm">LLM et agents <span class="cat-count">4</span></button>
-          <button class="cat-tab" id="cat-eng-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-eng">ML-OR-Engineering <span class="cat-count">4</span></button>
+          <button class="cat-tab" id="cat-eng-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-eng">ML-RO-Ingénierie <span class="cat-count">4</span></button>
         </div>
         <button class="cat-arrow cat-prev" type="button" aria-label="Catégorie précédente"><span aria-hidden="true"></span></button>
         <button class="cat-arrow cat-next" type="button" aria-label="Catégorie suivante"><span aria-hidden="true"></span></button>
@@ -115,13 +115,13 @@
                       aria-expanded="false" aria-controls="p-forecasting-panel">
                 <span class="project-name">Processus de réponse aux appels d'offres exploitant les données</span>
                 <span class="project-meta">2026 · Python · LLM · RAG hiérarchique · RankNet · XGBRanker · Docker · Azure · Streamlit</span>
-                <span class="project-summary">Mémoire de maîtrise avec un partenaire industriel : un outil d'IA de bout en bout qui repère les appels d'offres publics, lit leurs PDF avec un LLM local, retrouve les contrats passés comparables et recommande un prix de soumission gagnant et rentable.</span>
+                <span class="project-summary">Mémoire de maîtrise (M. Sc. A.) avec un partenaire industriel : un outil Python d'aide à la soumission en cinq modules : extraction web, <b>pipeline de données</b> et consolidation en base de données, extraction <b>RAG</b> des devis PDF avec un <b>LLM local</b>, similarité entre contrats (RankNet) et recommandation de marge par <b>learning-to-rank (XGBRanker)</b>. En backtest rétrospectif, le <b>taux de victoire simulé atteint 40 %, contre 15 %</b> pour les décisions réelles, avec <b>+10 % de profits</b>.</span>
                 <img class="project-icon" src="../assets/img/icon_project_MSc.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
             </h3>
 
-            <img class="project-preview" src="../assets/img/MSc/thesis_schematic.gif" alt="Schéma animé de l'outil de réponse aux appels d'offres du mémoire : les cinq modules — surveiller, lire, comparer, fixer le prix, afficher — autour d'une même base de données." width="1200" height="675" loading="lazy" decoding="async">
+            <img class="project-preview" src="../assets/img/MSc/thesis_schematic_fr.gif" alt="Schéma animé de l'outil de réponse aux appels d'offres du mémoire : les cinq modules — surveiller, lire, comparer, fixer le prix, afficher — autour d'une même base de données." width="1200" height="675" loading="lazy" decoding="async">
 
             <div class="panel" id="p-forecasting-panel" role="region" aria-labelledby="p-forecasting-btn">
               <div class="panel-inner">
@@ -129,7 +129,7 @@
                 <div class="rk">
 
                   <div class="rk-top">
-                    <p>Dans les services de gardiennage et de patrouille, presque tous les contrats se gagnent par appel d'offres public ; pourtant, les soumissions étaient chiffrées de mémoire alors que le marché publie presque tout ce qu'il faut pour faire mieux. Pour ma maîtrise à Polytechnique Montréal, avec une entreprise québécoise de premier plan en services de sécurité, j'ai conçu, développé et évalué un <strong>outil d'aide à la décision de bout en bout</strong> : il repère l'appel d'offres, lit son devis de 100 à 200 pages, retrouve les contrats passés comparables et recommande la marge la plus élevée qui permet encore de gagner.</p>
+                    <p>Dans les services de gardiennage et de patrouille, presque tous les contrats se gagnent par appel d'offres public ; pourtant, les soumissions étaient chiffrées intuitivement alors que des données disponibles pourraient améliorer le processus de réponse. Pour ma maîtrise de recherche à Polytechnique Montréal, avec une entreprise québécoise de premier plan en services de sécurité, j'ai conçu, développé et évalué un <strong>outil d'aide à la décision de bout en bout</strong> : il repère l'appel d'offres, lit son devis de 100 à 200 pages, retrouve les contrats passés comparables et recommande la marge la plus élevée qui permet encore de gagner.</p>
                   </div>
 
                   <div class="rk-sec">
@@ -158,7 +158,7 @@
                         <div class="rk-nb">03</div>
                         <div>
                           <h5>Comparer</h5>
-                          <p>Un score de similarité dont les poids sont appris à partir d'environ 300 classements réalisés par un expert en soumissions.</p>
+                          <p>Un score de similarité dont les poids sont réajustés à partir de classements réalisés par des experts en soumissions.</p>
                         </div>
                       </div>
                       <div class="rk-block">
@@ -268,9 +268,9 @@
                     <span class="rk-eyebrow">02 — Compétences</span>
                     <ul class="rk-plain">
                       <li><b>LLM et RAG.</b> Recherche hiérarchique dans des PDF de contrats : analyse de la mise en page avec PyMuPDF, segmentation par section, BM25 avec un vocabulaire propre à la sécurité, et extraction JSON contrainte par schéma par un LLM quantifié <em>local</em> (Ministral-3-14B), pour que les documents confidentiels ne quittent jamais l'entreprise.</li>
-                      <li><b>Apprentissage à partir de retours humains.</b> Un petit réseau de neurones entraîné avec une perte par paires RankNet sur des classements d'experts, pour apprendre ce que signifie « contrat comparable ».</li>
+                      <li><b>Apprentissage à partir de retours humains.</b> Un petit réseau de neurones réentraîné avec une perte par paires RankNet sur des classements d'experts, pour apprendre ce que signifie « contrat comparable ».</li>
                       <li><b>Learning to Rank.</b> La fixation du prix reformulée comme le classement de marges candidates avec XGBRanker (objectif par paires, NDCG), mieux adapté que la régression à une perte métier asymétrique et à un petit volume de données.</li>
-                      <li><b>TALN et résolution d'entités.</b> Appariement spaCy avec un dictionnaire de coûts ; Levenshtein et SequenceMatcher pour relier des contrats rédigés différemment à chaque fois.</li>
+                      <li><b>TALN (NLP) et résolution d'entités.</b> Appariement spaCy avec un dictionnaire de coûts ; Levenshtein et SequenceMatcher pour relier des contrats rédigés différemment à chaque fois.</li>
                       <li><b>Ingénierie des données et déploiement.</b> Extraction web avec Selenium, une base de données partagée, Streamlit, Docker sur Azure (ADLS Gen2).</li>
                       <li><b>Recherche appliquée.</b> Design Research Methodology, refonte des processus en BPMN avec les responsables des soumissions du partenaire, évaluation chronologique sans fuite de données.</li>
                     </ul>
@@ -281,13 +281,13 @@
                     <ul class="rk-plain">
                       <li><b>87 % de précision / 98 % de rappel</b> pour l'extraction RAG, sur 50 contrats annotés.</li>
                       <li><b>92 % de concordance</b> pour relier 60 appels d'offres de 2025 à leurs contrats passés.</li>
-                      <li><b>Taux de victoire de 40 % contre 15 %</b> pour les prix fixés par l'entreprise, et <b>3,52 M$ contre 2,17 M$</b> de gains projetés (+62 %), en leave-one-out chronologique sur 54 appels d'offres.</li>
+                      <li><b>Taux de victoire de 40 % contre 15 %</b> pour les prix fixés par l'entreprise, et <b>+10% de profits</b> projetés, en leave-one-out chronologique sur 54 appels d'offres.</li>
                       <li>Sur une seconde série de 57 appels d'offres, classé <b>premier dans 59 %</b> des cas et dans le <b>top trois dans 83 %</b>.</li>
                     </ul>
 
                     <figure>
                       <div class="rk-frame">
-                        <svg viewBox="0 0 940 330" role="img" aria-label="Deux panneaux de barres pour les mêmes cinq modèles. En taux de victoire, la régression et le modèle learning-to-rank atteignent tous deux 40 % contre 15 % pour la référence du secteur. En gains projetés, le modèle learning-to-rank atteint 3,52 millions de dollars, bien au-dessus de la régression à 1,59 et de la référence du secteur à 2,17.">
+                        <svg viewBox="0 0 940 330" role="img" aria-label="Deux panneaux de barres pour les mêmes cinq modèles. En taux de victoire, la régression et le modèle learning-to-rank atteignent tous deux 40 % contre 15 % pour la référence du secteur. En gains projetés, le modèle learning-to-rank atteint 2,39 millions de dollars, au-dessus de la régression à 1,59 et de la référence du secteur à 2,17.">
                           <g stroke="currentColor" opacity=".12" stroke-width="1">
                             <line x1="227.8" y1="56" x2="227.8" y2="292"/>
                             <line x1="285.6" y1="56" x2="285.6" y2="292"/>
@@ -328,8 +328,8 @@
                             <text x="150" y="269" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" font-weight="600">LTR (ce travail)</text>
                             <rect x="170" y="254" width="231.1" height="22" rx="2" fill="var(--hedge)" opacity="1"/>
                             <text x="409.1" y="269" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">40 %</text>
-                            <rect x="580" y="254" width="264.0" height="22" rx="2" fill="var(--hedge)" opacity="1"/>
-                            <text x="852.0" y="269" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">3,52</text>
+                            <rect x="580" y="254" width="179.25" height="22" rx="2" fill="var(--hedge)" opacity="1"/>
+                            <text x="767.25" y="269" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">2,39</text>
 
                           <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".6">
                             <text x="170.0" y="308" text-anchor="middle">0 %</text>
@@ -363,7 +363,7 @@
                     </div>
                   </div>
 
-                  <p class="rk-foot">Publié sous la référence E. Salaun, M. Belmouadden, R. Pellerin, A. Neumann, C. Vasseur, « Leveraging artificial intelligence and strategic data for tender response processes », CENTERIS 2026, <em>Procedia Computer Science</em>, Elsevier. Polytechnique Montréal et CIRRELT, avec les Commissionnaires du Québec ; financé par Mitacs. Les résultats sont rétrospectifs et portent sur un petit jeu de données, et chaque recommandation est revue par un expert. Les données contractuelles sont confidentielles ; les figures ont été redessinées pour cette page.</p>
+                  <p class="rk-foot">Article de conférence (accepté) : E. Salaun, M. Belmouadden, R. Pellerin, A. Neumann, C. Vasseur, « Leveraging artificial intelligence and strategic data for tender response processes », CENTERIS 2026. Polytechnique Montréal et CIRRELT, avec les Commissionnaires du Québec ; financé par Mitacs. Les résultats sont rétrospectifs, et chaque recommandation est revue par un expert. Les données contractuelles sont confidentielles ; le reste du travail est publié dans un mémoire public ; les figures ont été redessinées pour cette page.</p>
 
                 </div>
 
@@ -382,7 +382,7 @@
                       aria-expanded="false" aria-controls="p-jetfighter-panel">
                 <span class="project-name">Apprendre à voler à un F-16 simulé par apprentissage par renforcement</span>
                 <span class="project-meta">2025 · Python · dynamique du vol à 6 DDL · Gymnasium · PPO · Stable-Baselines3 · apprentissage par imitation</span>
-                <span class="project-summary">Un simulateur de vol d'avion de chasse écrit à partir de la physique et validé sur des données publiées du F-16, puis utilisé comme environnement pour des agents PPO qui apprennent à se stabiliser, virer, naviguer et faire de la voltige, comparés à un pilote automatique classique.</span>
+                <span class="project-summary">Un simulateur de vol d'avion de chasse écrit <b>à partir de la physique</b> et <b>validé</b> sur des données publiées du F-16, puis utilisé comme environnement pour des agents d'<b>apprentissage par renforcement PPO</b> qui apprennent à se stabiliser, virer, naviguer et faire de la voltige, comparés à un pilote automatique classique.</span>
                 <img class="project-icon" src="../assets/img/icon_project_jet.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -393,7 +393,7 @@
 
                 <div class="rk">
 
-                  <img class="rk-resume" src="../assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Résumé du projet d'avion de chasse" width="800" height="600" loading="lazy" decoding="async">
+                  <!-- <img class="rk-resume" src="../assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Résumé du projet d'avion de chasse" width="800" height="600" loading="lazy" decoding="async"> -->
 
                   <div class="rk-top">
                     <p>Un agent qui apprend par essais et erreurs peut-il piloter un avion de chasse aussi bien qu'un pilote automatique réglé à la main ? Un agent entraîné sur une physique fausse apprend à en exploiter les bogues ; le projet est donc divisé en deux : <a href="https://github.com/elouansalaun/jetfighter-sim">jetfighter-sim</a>, un simulateur de vol de F-16 écrit à partir de la physique et validé sur des données publiées, et <a href="https://github.com/elouansalaun/jetfighter-rl">jetfighter-rl</a>, qui le transforme en environnement d'apprentissage par renforcement et entraîne des agents sur un curriculum de manœuvres, chacune évaluée face au pilote automatique classique.</p>
@@ -425,9 +425,9 @@
                   <div class="rk-sec">
                     <span class="rk-eyebrow">02 — Compétences</span>
                     <ul class="rk-plain">
-                      <li><b>Apprentissage par renforcement.</b> PPO (Stable-Baselines3, PyTorch) sur un environnement Gymnasium sur mesure, avec apprentissage par curriculum et façonnage de la récompense à partir de termes nommés et journalisés séparément.</li>
+                      <li><b>Apprentissage par renforcement (RL).</b> PPO (Stable-Baselines3, PyTorch) sur un environnement Gymnasium sur mesure, avec apprentissage par curriculum et façonnage de la récompense à partir de termes nommés et journalisés séparément.</li>
                       <li><b>Apprentissage par imitation.</b> Clonage comportemental avec bruit DART et préchauffage du critique, nécessaire là où le RL pur ne trouve jamais une manœuvre de 20 secondes comme un looping.</li>
-                      <li><b>Apprentissage par transfert.</b> Les politiques entraînées sur l'avion simplifié sont copiées dans le modèle complet puis affinées (20 % → 100 % de réussite).</li>
+                      <li><b>Apprentissage par transfert.</b> Les politiques entraînées sur l'avion simplifié (3 DDL) sont copiées dans le modèle complet (6 DDL) puis affinées (20 % → 100 % de réussite).</li>
                       <li><b>Conception d'environnement.</b> Des observations sans discontinuités (direction de la gravité au lieu des angles d'Euler), une action neutre qui maintient la trajectoire, et trois horloges par pas (physique à 100 Hz, commandes de vol électriques à 50 Hz, agent à 10 Hz).</li>
                       <li><b>Simulation et commande.</b> Corps rigide à 6 DDL sur des données de soufflerie de la NASA, quaternions et RK4, commandes de vol électriques à gains séquencés, pilote automatique en cascade, LQR ; 596 tests par rapport à des solutions analytiques et à des données publiées du F-16.</li>
                     </ul>
@@ -494,13 +494,13 @@
                       aria-expanded="false" aria-controls="p-neuron-agi-panel">
                 <span class="project-name">Du neurone à l'AGI : deep learning, LLM et agents construits de zéro</span>
                 <span class="project-meta">2026 · Python · NumPy · PyTorch · Transformers · LoRA · DPO · GRPO · PPO · RAG · MCP</span>
-                <span class="project-summary">27 notebooks qui retracent le chemin d'un simple perceptron jusqu'à un GPT, un chatbot, un modèle de raisonnement et un agent de programmation. Chaque brique est écrite à la main, vérifiée par rapport à la bibliothèque de référence, et seulement ensuite réutilisée, le tout sur un ordinateur portable.</span>
+                <span class="project-summary">L'IA reconstruite du perceptron jusqu'aux agents LLM, en 27 modules codés à la main et vérifiés par rapport à <b>PyTorch</b> et <b>Hugging Face</b> (GPT, LoRA, PPO, DPO, GRPO, RAG). Le tout sur un ordinateur portable.</span>
                 <img class="project-icon" src="../assets/img/icon_project_neuron_agi.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
             </h3>
 
-            <img class="project-preview" src="../assets/img/NeuronAGI/from_neuron_to_agi_overview.gif" alt="Aperçu animé du projet Du neurone à l'AGI : du neurone seul au deep learning, à GPT, à l'apprentissage par renforcement et aux agents." width="1200" height="675" loading="lazy" decoding="async">
+            <img class="project-preview" src="../assets/img/NeuronAGI/from_neuron_to_agi_overview_fr.gif" alt="Aperçu animé du projet Du neurone à l'AGI : du neurone seul au deep learning, à GPT, à l'apprentissage par renforcement et aux agents." width="1200" height="675" loading="lazy" decoding="async">
 
             <div class="panel" id="p-neuron-agi-panel" role="region" aria-labelledby="p-neuron-agi-btn">
               <div class="panel-inner">
@@ -631,13 +631,13 @@
                       aria-expanded="false" aria-controls="p-llm-rts-panel">
                 <span class="project-name">Un LLM local joue à un jeu de stratégie en temps réel, avec des agents et une base de connaissances</span>
                 <span class="project-meta">2026 · TypeScript · Node.js · Qwen 3.5 9B · LM Studio · JSON Schema · RAG · Vitest</span>
-                <span class="project-summary">Un petit LLM qui tourne sur un ordinateur portable joue à OpenFront contre l'IA du jeu : il lit la partie sous forme de graphe, puise dans une base de connaissances testée, planifie en stratège et donne les ordres en commandant, tandis que le code fait respecter le plan. Il a remporté une partie complète avec 80,9 % du territoire.</span>
+                <span class="project-summary">Un petit <b>LLM</b> qui tourne sur un ordinateur portable joue à OpenFront contre l'IA du jeu : il lit la partie sous forme de <b>graphe</b>, puise dans une <b>base de connaissances</b> testée, <b>planifie en stratège et donne les ordres en commandant</b>, tandis que le code fait respecter le plan. Il a remporté une partie complète avec 80,9 % du territoire.</span>
                 <img class="project-icon" src="../assets/img/icon_project_rts.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
             </h3>
 
-            <img class="project-preview" src="../assets/img/LLMRTS/llm_rts_explained.gif" alt="Explication animée du projet LLM RTS : un LLM local stratège et commandant pilote un jeu de stratégie en temps réel, les règles des troupes étant appliquées par le code." width="1200" height="675" loading="lazy" decoding="async">
+            <img class="project-preview" src="../assets/img/LLMRTS/llm_rts_explained_fr.gif" alt="Explication animée du projet LLM RTS : un LLM local stratège et commandant pilote un jeu de stratégie en temps réel, les règles des troupes étant appliquées par le code." width="1200" height="675" loading="lazy" decoding="async">
 
             <div class="panel" id="p-llm-rts-panel" role="region" aria-labelledby="p-llm-rts-btn">
               <div class="panel-inner">
@@ -645,7 +645,7 @@
                 <div class="rk">
 
                   <div class="rk-top">
-                    <p>Un <strong>modèle de 9 milliards de paramètres exécuté localement</strong> (Qwen 3.5 9B dans LM Studio, sur un MacBook Air) peut-il bien jouer à un jeu de stratégie en temps réel ? Pas en regardant 328 000 cases de carte. Cet agent réduit <a href="https://github.com/openfrontio/OpenFrontIO">OpenFront</a> à un graphe d'environ 30 joueurs, donne au modèle un court texte décrivant la situation et un menu d'options légales, et le divise en deux rôles : un <strong>stratège</strong> qui planifie et un <strong>commandant</strong> qui donne les ordres. Le code fait respecter le plan entre les appels.</p>
+                    <p>Un <strong>modèle de 9 milliards de paramètres exécuté localement</strong> (Qwen 3.5 9B dans LM Studio, sur un MacBook Air) peut-il bien jouer à un jeu de stratégie en temps réel ? Pas en regardant 328 000 cases de carte. Cet agent réduit <a href="https://github.com/openfrontio/OpenFrontIO">OpenFront</a> à un graphe, donne au modèle un court texte décrivant la situation et un menu d'options légales, et le divise en deux rôles : un <strong>stratège</strong> qui planifie et un <strong>commandant</strong> qui donne les ordres. Le code fait respecter le plan entre les appels.</p>
                   </div>
 
                   <div class="rk-sec">
@@ -722,7 +722,7 @@
                     </ul>
                   </div>
 
-                  <p class="rk-foot">Projet personnel. Limites : la partie gagnante était en mode Facile et sur une seule graine ; des exécutions sur plusieurs graines et des ablations (sans base de connaissances, sans règles de troupes) sont la prochaine étape. AGPL-3.0 ; indépendant d'OpenFront.</p>
+                  <p class="rk-foot">Projet personnel. Des exécutions sur plusieurs graines et des ablations (sans base de connaissances, sans règles de troupes) sont la prochaine étape. AGPL-3.0 ; indépendant d'OpenFront.</p>
 
                 </div>
 
@@ -741,13 +741,13 @@
                       aria-expanded="false" aria-controls="p-lidar-agent-panel">
                 <span class="project-name">Agent IA LiDAR : interroger un nuage de points en langage naturel</span>
                 <span class="project-meta">2026 · Python · LiDAR · Random Forest · Claude API · LangGraph · GeoPandas · Streamlit</span>
-                <span class="project-summary">Posez une question sur Montréal en langage naturel : un agent LLM planifie et exécute un pipeline déterministe LiDAR → ML → SIG, un validateur à base de règles vérifie chaque résultat, et vous obtenez une réponse, un tableau et une carte.</span>
+                <span class="project-summary">Posez une question sur Montréal en langage naturel : un agent LLM planifie et exécute un <b>pipeline déterministe LiDAR → modèle d'apprentissage automatique → SIG</b>, un <b>validateur à base de règles</b> vérifie chaque résultat, et vous obtenez une réponse, un tableau et une carte.</span>
                 <img class="project-icon" src="../assets/img/icon_project_lidar_agent.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
             </h3>
 
-            <img class="project-preview" src="../assets/img/LiDARAgent/lidar_agent_explained.gif" alt="Explication animée de l'agent IA LiDAR : une question en langage naturel traduite en appels d'outils sur un nuage de points." width="1200" height="675" loading="lazy" decoding="async">
+            <img class="project-preview" src="../assets/img/LiDARAgent/lidar_agent_explained_fr.gif" alt="Explication animée de l'agent IA LiDAR : une question en langage naturel traduite en appels d'outils sur un nuage de points." width="1200" height="675" loading="lazy" decoding="async">
 
             <div class="panel" id="p-lidar-agent-panel" role="region" aria-labelledby="p-lidar-agent-btn">
               <div class="panel-inner">
@@ -845,13 +845,13 @@
                       aria-expanded="false" aria-controls="p-seao-panel">
                 <span class="project-name">Outil MCP sur la base de données SEAO pour Claude/GPT</span>
                 <span class="project-meta">2026 · Python · MCP · FastMCP · SQLite · FTS5 · OCDS</span>
-                <span class="project-summary">Un serveur MCP local qui permet à un LLM analyste d'interroger en langage naturel les données ouvertes des marchés publics québécois du SEAO. Un petit pipeline télécharge le flux OCDS brut, le filtre et le normalise en une base SQLite prête à interroger.</span>
+                <span class="project-summary">Un serveur <b>MCP (Model Context Protocol, FastMCP)</b> local qui permet à un <b>LLM (Claude ou GPT)</b> analyste d'interroger en langage naturel les données ouvertes des marchés publics québécois du SEAO. Un petit pipeline télécharge le flux OCDS brut, le filtre et le normalise en une base <b>SQLite</b> prête à interroger.</span>
                 <img class="project-icon" src="../assets/img/icon_project_Mcp.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
             </h3>
 
-            <img class="project-preview" src="../assets/img/MCP/seao_mcp_explained.gif" alt="Explication animée de l'outil MCP SEAO : les données ouvertes du SEAO chargées dans une base SQLite et exposées en lecture seule à Claude ou GPT par des outils MCP." width="1200" height="675" loading="lazy" decoding="async">
+            <img class="project-preview" src="../assets/img/MCP/seao_mcp_explained_fr.gif" alt="Explication animée de l'outil MCP SEAO : les données ouvertes du SEAO chargées dans une base SQLite et exposées en lecture seule à Claude ou GPT par des outils MCP." width="1200" height="675" loading="lazy" decoding="async">
 
             <div class="panel" id="p-seao-panel" role="region" aria-labelledby="p-seao-btn">
               <div class="panel-inner">
@@ -998,7 +998,7 @@
 
         <!-- ==================== CATEGORY: INGÉNIERIE ==================== -->
         <div class="cat-slide" id="cat-eng" role="tabpanel" aria-labelledby="cat-eng-tab">
-          <p class="cat-label">Ingénierie</p>
+          <p class="cat-label">ML/RO/Ingénierie</p>
 
           <!-- ---------- PROJECT 4 ---------- -->
           <article class="project" id="p-caisse">
@@ -1007,7 +1007,7 @@
                       aria-expanded="false" aria-controls="p-caisse-panel">
                 <span class="project-name">Système de caisses connectées multipoints</span>
                 <span class="project-meta">2023 · ESP32 · C++ · MQTT · 4G · Google Sheets</span>
-                <span class="project-summary">Conception et réalisation d'un dispositif d'enregistrement des ventes en temps réel (ESP32) connecté à un serveur central, permettant le suivi, l'analyse et la prévision des ventes en temps réel pour un gala de 3 000 personnes.</span>
+                <span class="project-summary">Conception et réalisation d'un dispositif multipoint d'enregistrement des ventes <b>en temps réel</b> (ESP32), connecté à un serveur central pour le suivi, l'analyse et la <b>prévision</b> des ventes en temps réel lors d'un gala de <b>3 000 personnes</b>.</span>
                 <img class="project-icon" src="../assets/img/icon_project_caisse.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -1018,10 +1018,10 @@
 
                 <div class="rk">
 
-                  <img class="rk-resume" src="../assets/img/CashRegister/resume_connected-cash-register.svg" alt="Résumé en une page du système : des terminaux ESP32 à grille de boutons, avec anti-rebond local, publient chaque vente par une liaison 4G en MQTT QoS 1 vers un broker, via un point d'accès privé indépendant du wifi du lieu ; un pont supprime les doublons par appareil et numéro de séquence et ajoute des lignes à une feuille Google Sheets, qui alimente un tableau de réassort envoyant des alertes par bar et par article ; à côté, la prévision de rupture construite à partir de la référence de l'année précédente, d'un multiplicateur par moment de la soirée et d'un poids par emplacement, et un graphique des unités restantes d'un bar au cours d'une soirée, avec l'alerte déclenchée environ trente minutes avant l'épuisement." width="800" height="600" loading="lazy" decoding="async">
+                  <!-- <img class="rk-resume" src="../assets/img/CashRegister/resume_connected-cash-register.svg" alt="Résumé en une page du système : des terminaux ESP32 à grille de boutons, avec anti-rebond local, publient chaque vente par une liaison 4G en MQTT QoS 1 vers un broker, via un point d'accès privé indépendant du wifi du lieu ; un pont supprime les doublons par appareil et numéro de séquence et ajoute des lignes à une feuille Google Sheets, qui alimente un tableau de réassort envoyant des alertes par bar et par article ; à côté, la prévision de rupture construite à partir de la référence de l'année précédente, d'un multiplicateur par moment de la soirée et d'un poids par emplacement, et un graphique des unités restantes d'un bar au cours d'une soirée, avec l'alerte déclenchée environ trente minutes avant l'épuisement." width="800" height="600" loading="lazy" decoding="async"> -->
 
                   <div class="rk-top">
-                    <p>Lors d'un gala étudiant de 3 000 invités, le stock des bars était suivi à coups de bâtonnets et d'estimations. J'ai conçu et déployé un système connecté : un pavé de boutons ESP32 à chaque bar enregistre chaque vente, les données arrivent en temps réel dans une feuille Google Sheets partagée grâce à la 4G, et une prévision légère avertit <strong>environ 30 minutes avant qu'un bar soit à court</strong>, soit le temps qu'il faut à un coursier pour le réapprovisionner.</p>
+                    <p>Lors d'un gala étudiant de 3 000 invités, le stock des bars était suivi à coups de bâtonnets et d'estimations. Ce projet visait à concevoir et déployer un système connecté : un pavé de boutons ESP32 à chaque bar enregistre chaque vente, les données arrivent en temps réel dans une feuille Google Sheets partagée grâce à la 4G, et une prévision légère avertit <strong>environ 30 minutes avant qu'un bar soit à court</strong>, soit le temps qu'il faut à un coursier pour le réapprovisionner.</p>
                   </div>
 
                   <div class="rk-sec">
@@ -1242,13 +1242,13 @@
                       aria-expanded="false" aria-controls="p-lidar-panel">
                 <span class="project-name">Surveillance optimale d'un site à partir de LiDAR aéroporté</span>
                 <span class="project-meta">2026 · Python · LiDAR · numba · MILP (HiGHS) · NSGA-II · PyTorch · Streamlit</span>
-                <span class="project-summary">Placer caméras et radars à partir d'un nuage de points LiDAR classifié pour qu'un intrus qui connaît le dispositif soit détecté, et détecté à temps : visibilité exacte à travers une végétation semi-transparente, optimums certifiés et boucle exacte optimiseur ↔ intrus.</span>
+                <span class="project-summary">Ce projet <b>optimise</b> le placement de caméras et de radars sur un site fictif à partir de nuages de points LiDAR 3D. Il combine un moteur de visibilité exact (parcours de rayons, végétation selon la loi de Beer-Lambert), de la <b>recherche opérationnelle (MCLP formulé en MILP, coupes sous-modulaires, NSGA-II)</b> et un modèle <b>substitut U-Net</b>. Il va au-delà de la couverture : une boucle adverse exacte garantit la détection à temps d'un intrus qui connaît le dispositif (modèle EASI). Chaque optimum est certifié par des bornes ou une preuve, et <b>NSGA-II</b> comme la boucle adverse sont validés par rapport à ces bornes et par énumération exhaustive.</span>
                 <img class="project-icon" src="../assets/img/icon_project_lidar.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
             </h3>
 
-            <img class="project-preview" src="../assets/img/LiDAR/sec_phy_lidar_overview.gif" alt="Aperçu animé du projet de surveillance par LiDAR aéroporté : placer des caméras sur le nuage de points d'un site pour le couvrir de façon optimale." width="1200" height="675" loading="lazy" decoding="async">
+            <img class="project-preview" src="../assets/img/LiDAR/sec_phy_lidar_overview_fr.gif" alt="Aperçu animé du projet de surveillance par LiDAR aéroporté : placer des caméras sur le nuage de points d'un site pour le couvrir de façon optimale." width="1200" height="675" loading="lazy" decoding="async">
 
             <div class="panel" id="p-lidar-panel" role="region" aria-labelledby="p-lidar-btn">
               <div class="panel-inner">
@@ -1364,7 +1364,7 @@
                       aria-expanded="false" aria-controls="p-causal-panel">
                 <span class="project-name">Optimisation de portefeuille avec Python</span>
                 <span class="project-meta">2025 · Python · portefeuille · Markowitz · Monte Carlo · CPPI</span>
-                <span class="project-summary">Une boîte à outils Python de gestion des risques, de l'optimisation de Markowitz à l'allocation CPPI guidée par le passif, testée sur 5 000 scénarios Monte Carlo et 28 ans de données de marché.</span>
+                <span class="project-summary">Une boîte à outils complète de gestion de portefeuille. Elle couvre les <b>mesures de risque</b> (VaR, CVaR, drawdown), l'optimisation de <b>Markowitz</b>, le CPPI et la simulation <b>Monte Carlo</b> (GBM, taux CIR) pour répartir le capital entre un portefeuille de performance et un portefeuille de couverture du passif.</span>
                 <img class="project-icon" src="../assets/img/icon_project_Finance.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -1529,7 +1529,7 @@
                       aria-expanded="false" aria-controls="p-perseus-panel">
                 <span class="project-name">Fabrication d'une coiffe de fusée par enroulement filamentaire</span>
                 <span class="project-meta">2023 · Python · NumPy · SciPy · géométrie différentielle · RK4 · G-code</span>
-                <span class="project-summary">Projet de semestre avec le Centre National d'Études Spatiales (CNES). Modélisation mathématique et simulation des procédés d'enroulement. Programmation de la machine d'enroulement 4 axes.</span>
+                <span class="project-summary">Projet de semestre avec le <b>Centre National d'Études Spatiales (CNES)</b>. Modélisation mathématique et simulation des procédés d'enroulement. Programmation de la machine d'enroulement 4 axes.</span>
                 <img class="project-icon" src="../assets/img/icon_project_perseus.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
@@ -1773,7 +1773,7 @@
       </div>
       <div>
         <dt>Apprentissage automatique</dt>
-        <dd>Apprentissage supervisé et gradient boosting · Learning-to-Rank · réseaux de neurones avec retours humains · TALN (NLP) · Deep Learning · séries temporelles</dd>
+        <dd>Apprentissage supervisé et gradient boosting · Learning-to-Rank · réseaux de neurones avec retours humains · Deep Learning · TALN (NLP) · séries temporelles</dd>
       </div>
       <div>
         <dt>Systèmes LLM</dt>

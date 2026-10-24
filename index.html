@@ -129,8 +129,8 @@
 
                   <div class="rk-top">
                     <p>In guarding and patrol services almost every contract is won through a public call
-                    for tenders, yet bids were priced from memory while the market publishes nearly
-                    everything needed to do better. For my MSc thesis at Polytechnique Montréal, with a
+                    for tenders, yet bids were priced by intuition while available data could improve the response
+                    process. For my research MSc thesis at Polytechnique Montréal, with a
                     leading Québec security-services company, I designed, built and evaluated an
                     <strong>end-to-end decision-support tool</strong>: it finds the tender, reads its
                     100–200-page specification, retrieves comparable past contracts and recommends the
@@ -165,7 +165,7 @@
                         <div class="rk-nb">03</div>
                         <div>
                           <h5>Compare</h5>
-                          <p>A similarity score whose weights are learned from about 300 rankings made by a bid expert.</p>
+                          <p>A similarity score whose weights are re-adjusted from rankings made by bid experts.</p>
                         </div>
                       </div>
                       <div class="rk-block">
@@ -278,7 +278,7 @@
                       parsing, section-aware chunking, BM25 with a security-domain vocabulary, and
                       schema-constrained JSON extraction by a <em>local</em> quantised LLM
                       (Ministral-3-14B), so confidential documents never leave the company.</li>
-                      <li><b>Learning from human feedback.</b> A small neural network trained with a RankNet
+                      <li><b>Learning from human feedback.</b> A small neural network retrained with a RankNet
                       pairwise loss on expert rankings to learn what "comparable contract" means.</li>
                       <li><b>Learning to Rank.</b> Pricing reframed as ranking candidate margins with
                       XGBRanker (pairwise objective, NDCG), which fits the asymmetric business loss and
@@ -298,7 +298,7 @@
                       <li><b>87% precision / 98% recall</b> for the RAG extraction, on 50 labelled contracts.</li>
                       <li><b>92% concordance</b> when linking 60 tenders of 2025 to their past contracts.</li>
                       <li><b>40% win rate against 15%</b> for the company's own pricing, and
-                      <b>3.52 M$ against 2.17 M$</b> of projected gains (+62%), in chronological
+                      <b>+10% projected profits</b>, in chronological
                       leave-one-out on 54 tenders.</li>
                       <li>On a second run of 57 tenders, ranked <b>first on 59%</b> and in the
                       <b>top three on 83%</b>.</li>
@@ -306,7 +306,7 @@
 
                     <figure>
                       <div class="rk-frame">
-                        <svg viewBox="0 0 940 330" role="img" aria-label="Two bar panels over the same five models. On win rate, regression and the learning-to-rank model both reach 40 percent against 15 percent for the industry reference. On projected gains, the learning-to-rank model reaches 3.52 million dollars, well above the regression at 1.59 and the industry reference at 2.17.">
+                        <svg viewBox="0 0 940 330" role="img" aria-label="Two bar panels over the same five models. On win rate, regression and the learning-to-rank model both reach 40 percent against 15 percent for the industry reference. On projected gains, the learning-to-rank model reaches 2.39 million dollars, above the regression at 1.59 and the industry reference at 2.17.">
                           <g stroke="currentColor" opacity=".12" stroke-width="1">
                             <line x1="227.8" y1="56" x2="227.8" y2="292"/>
                             <line x1="285.6" y1="56" x2="285.6" y2="292"/>
@@ -347,8 +347,8 @@
                             <text x="150" y="269" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" font-weight="600">LTR (this work)</text>
                             <rect x="170" y="254" width="231.1" height="22" rx="2" fill="var(--hedge)" opacity="1"/>
                             <text x="409.1" y="269" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">40%</text>
-                            <rect x="580" y="254" width="264.0" height="22" rx="2" fill="var(--hedge)" opacity="1"/>
-                            <text x="852.0" y="269" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">3.52</text>
+                            <rect x="580" y="254" width="179.25" height="22" rx="2" fill="var(--hedge)" opacity="1"/>
+                            <text x="767.25" y="269" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".8">2.39</text>
 
                           <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".6">
                             <text x="170.0" y="308" text-anchor="middle">0%</text>
@@ -386,8 +386,9 @@
                   C. Vasseur, "Leveraging artificial intelligence and strategic data for tender response
                   processes", CENTERIS 2026. Polytechnique
                   Montréal and CIRRELT, with Commissionnaires du Québec; funded by Mitacs. Results are
-                  retrospective on a small dataset, and every recommendation is reviewed by an expert. The
-                  contract data is confidential; figures are redrawn for this page.</p>
+                  retrospective, and every recommendation is reviewed by an expert. The contract data is
+                  confidential; the rest of the work is published in a public thesis; figures are redrawn
+                  for this page.</p>
 
                 </div>
 
@@ -417,7 +418,7 @@
 
                 <div class="rk">
 
-                  <img class="rk-resume" src="assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Summary of the jet fighter project" width="800" height="600" loading="lazy" decoding="async">
+                  <!-- <img class="rk-resume" src="assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Summary of the jet fighter project" width="800" height="600" loading="lazy" decoding="async"> -->
 
                   <div class="rk-top">
                     <p>Can an agent that learns by trial and error fly a fighter jet as well as a
@@ -458,13 +459,13 @@
                   <div class="rk-sec">
                     <span class="rk-eyebrow">02 — Skills</span>
                     <ul class="rk-plain">
-                      <li><b>Reinforcement learning.</b> PPO (Stable-Baselines3, PyTorch) on a custom
+                      <li><b>Reinforcement learning (RL).</b> PPO (Stable-Baselines3, PyTorch) on a custom
                       Gymnasium environment, with curriculum learning and reward shaping from named,
                       separately logged terms.</li>
                       <li><b>Imitation learning.</b> Behaviour cloning with DART noise and a critic
                       warm-up, needed where pure RL never finds a 20-second manoeuvre such as a loop.</li>
-                      <li><b>Transfer learning.</b> Policies trained on the simplified aircraft are copied
-                      into the full model and fine-tuned (20% → 100% success).</li>
+                      <li><b>Transfer learning.</b> Policies trained on the simplified aircraft (3 DOF) are
+                      copied into the full model (6 DOF) and fine-tuned (20% → 100% success).</li>
                       <li><b>Environment design.</b> Observations without discontinuities (gravity
                       direction instead of Euler angles), a neutral action that holds the flight path, and
                       three clocks per step (100 Hz physics, 50 Hz fly-by-wire, 10 Hz agent).</li>
@@ -730,7 +731,7 @@
                     <p>Can a <strong>9-billion-parameter model running locally</strong> (Qwen 3.5 9B in LM
                     Studio, on a MacBook Air) play a real-time strategy game well? Not by looking at
                     328,000 map tiles. This agent reduces <a href="https://github.com/openfrontio/OpenFrontIO">OpenFront</a>
-                    to a graph of about 30 players, gives the model a short situation text and a menu of
+                    to a graph, gives the model a short situation text and a menu of
                     legal options, and splits it into two roles: a <strong>strategist</strong> that plans and
                     a <strong>commander</strong> that gives orders. The code enforces the plan between calls.</p>
                   </div>
@@ -839,8 +840,7 @@
                     </ul>
                   </div>
 
-                  <p class="rk-foot">Personal project. Limits: the winning match was on Easy and on a single
-                  seed; multi-seed runs and ablations (knowledge base off, troop rules off) are the next
+                  <p class="rk-foot">Personal project. Multi-seed runs and ablations (knowledge base off, troop rules off) are the next
                   step. AGPL-3.0; independent of OpenFront.</p>
 
                 </div>
@@ -1187,11 +1187,11 @@
 
                 <div class="rk">
 
-                  <img class="rk-resume" src="assets/img/CashRegister/resume_connected-cash-register.svg" alt="One-page summary of the system: ESP32 button-grid terminals with local debounce publish each sale over a 4G uplink with MQTT QoS 1 to a broker on a private access point, independent of the venue wifi; a bridge deduplicates by device and sequence number and appends rows to a Google Sheet, which feeds a restock board alerting per bar and item; beside it, the stockout forecast built from last year's baseline, a night-segment multiplier and a location weight, and a chart of units remaining for one bar over one night, with the alert raised about thirty minutes before depletion." width="800" height="600" loading="lazy" decoding="async">
+                  <!-- <img class="rk-resume" src="assets/img/CashRegister/resume_connected-cash-register.svg" alt="One-page summary of the system: ESP32 button-grid terminals with local debounce publish each sale over a 4G uplink with MQTT QoS 1 to a broker on a private access point, independent of the venue wifi; a bridge deduplicates by device and sequence number and appends rows to a Google Sheet, which feeds a restock board alerting per bar and item; beside it, the stockout forecast built from last year's baseline, a night-segment multiplier and a location weight, and a chart of units remaining for one bar over one night, with the alert raised about thirty minutes before depletion." width="800" height="600" loading="lazy" decoding="async"> -->
 
                   <div class="rk-top">
                     <p>At a 3,000-guest student gala, bar stock was tracked with tally marks and guesswork.
-                    I designed and deployed a connected system: an ESP32 button pad at every bar records
+                    This project aimed to design and deploy a connected system: an ESP32 button pad at every bar records
                     each sale, the data reaches a shared Google Sheet in real time over 4G, and a
                     lightweight forecast warns <strong>about 30 minutes before a bar runs out</strong>,
                     which is the time a runner needs to restock it.</p>
