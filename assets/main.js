@@ -95,8 +95,12 @@
     track.addEventListener('scroll', function () {
       clearTimeout(settle);
       settle = setTimeout(function () {
-        var i = Math.round(track.scrollLeft / track.clientWidth);
-        if (i !== active && slides[i]) setActive(i);
+        var i = 0;
+        slides.forEach(function (slide, k) {
+          if (Math.abs(slide.offsetLeft - track.scrollLeft) <
+              Math.abs(slides[i].offsetLeft - track.scrollLeft)) i = k;
+        });
+        if (i !== active) setActive(i);
       }, 90);
     }, { passive: true });
 

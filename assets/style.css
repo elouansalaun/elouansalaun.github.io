@@ -368,8 +368,11 @@ main { max-width: var(--measure); margin: 0 auto; padding: 0 var(--pad) 5rem; }
 .cat-next span { transform: translate(-70%, -50%) rotate(-45deg); }
 .cat-arrow:hover:not(:disabled) span { border-color: var(--accent); }
 
+/* The gap keeps a sliver of the neighbouring slide out of view: slide widths
+   are often fractional while scroll positions are whole pixels, which showed
+   the edge of the full-width preview images next door as a thin line. */
 .js .cat-track {
-  display: flex; align-items: flex-start;
+  display: flex; align-items: flex-start; gap: 2rem;
   position: relative;               /* offsetParent for the slides */
   overflow-x: auto; overflow-y: hidden;
   scroll-snap-type: x mandatory;
