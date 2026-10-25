@@ -12,7 +12,7 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
-<link rel="stylesheet" href="../assets/style.css?v=5">
+<link rel="stylesheet" href="../assets/style.css?v=6">
 
 <script>
   /* Runs before paint: avoids a flash of the wrong theme or of open panels. */
@@ -94,9 +94,10 @@
     <div class="cats">
       <div class="cat-bar">
         <div class="cat-tabs" role="tablist" aria-label="Catégories de projets">
-          <button class="cat-tab" id="cat-data-tab" type="button" role="tab" aria-selected="true" aria-controls="cat-data">Data science <span class="cat-count">2</span></button>
-          <button class="cat-tab" id="cat-llm-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-llm">LLM et agents <span class="cat-count">4</span></button>
-          <button class="cat-tab" id="cat-eng-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-eng">ML-RO-Ingénierie <span class="cat-count">4</span></button>
+          <button class="cat-tab" id="cat-selected-tab" type="button" role="tab" aria-selected="true" aria-controls="cat-selected">Projets phares <span class="cat-count">3</span></button>
+          <button class="cat-tab" id="cat-ai-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-ai">IA appliquée et agents <span class="cat-count">4</span></button>
+          <button class="cat-tab" id="cat-ml-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-ml">ML et optimisation <span class="cat-count">4</span></button>
+          <button class="cat-tab" id="cat-eng-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-eng">Ingénierie <span class="cat-count">2</span></button>
         </div>
         <button class="cat-arrow cat-prev" type="button" aria-label="Catégorie précédente"><span aria-hidden="true"></span></button>
         <button class="cat-arrow cat-next" type="button" aria-label="Catégorie suivante"><span aria-hidden="true"></span></button>
@@ -104,9 +105,19 @@
 
       <div class="cat-track">
 
-        <!-- ==================== CATEGORY: DATA SCIENCE ==================== -->
-        <div class="cat-slide" id="cat-data" role="tabpanel" aria-labelledby="cat-data-tab">
-          <p class="cat-label">Data science</p>
+        <!-- ==================== CATEGORY: PROJETS PHARES ==================== -->
+        <div class="cat-slide" id="cat-selected" role="tabpanel" aria-labelledby="cat-selected-tab">
+          <p class="cat-label">Projets phares</p>
+
+          <!-- Filled by main.js with copies of these projects; edit them in their own category. -->
+          <div class="project-ref" data-ref="p-forecasting"></div>
+          <div class="project-ref" data-ref="p-llm-rts"></div>
+          <div class="project-ref" data-ref="p-seao"></div>
+        </div>
+
+        <!-- ==================== CATEGORY: IA APPLIQUÉE ET AGENTS ==================== -->
+        <div class="cat-slide" id="cat-ai" role="tabpanel" aria-labelledby="cat-ai-tab">
+          <p class="cat-label">IA appliquée et agents</p>
 
           <!-- ---------- PROJECT 1 ---------- -->
           <article class="project" id="p-forecasting">
@@ -375,365 +386,6 @@
             </div>
           </article>
 
-          <!-- ---------- PROJECT: JET FIGHTER ---------- -->
-          <article class="project" id="p-jetfighter">
-            <h3 class="project-heading">
-              <button class="project-head" id="p-jetfighter-btn" type="button"
-                      aria-expanded="false" aria-controls="p-jetfighter-panel">
-                <span class="project-name">Apprendre à voler à un F-16 simulé par apprentissage par renforcement</span>
-                <span class="project-meta">2025 · Python · dynamique du vol à 6 DDL · Gymnasium · PPO · Stable-Baselines3 · apprentissage par imitation</span>
-                <span class="project-summary">Un simulateur de vol d'avion de chasse écrit <b>à partir de la physique</b> et <b>validé</b> sur des données publiées du F-16, puis utilisé comme environnement pour des agents d'<b>apprentissage par renforcement PPO</b> qui apprennent à se stabiliser, virer, naviguer et faire de la voltige, comparés à un pilote automatique classique.</span>
-                <img class="project-icon" src="../assets/img/icon_project_jet.svg" alt="" aria-hidden="true">
-                <span class="chevron" aria-hidden="true"></span>
-              </button>
-            </h3>
-
-            <div class="panel" id="p-jetfighter-panel" role="region" aria-labelledby="p-jetfighter-btn">
-              <div class="panel-inner">
-
-                <div class="rk">
-
-                  <!-- <img class="rk-resume" src="../assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Résumé du projet d'avion de chasse" width="800" height="600" loading="lazy" decoding="async"> -->
-
-                  <div class="rk-top">
-                    <p>Un agent qui apprend par essais et erreurs peut-il piloter un avion de chasse aussi bien qu'un pilote automatique réglé à la main ? Un agent entraîné sur une physique fausse apprend à en exploiter les bogues ; le projet est donc divisé en deux : <a href="https://github.com/elouansalaun/jetfighter-sim">jetfighter-sim</a>, un simulateur de vol de F-16 écrit à partir de la physique et validé sur des données publiées, et <a href="https://github.com/elouansalaun/jetfighter-rl">jetfighter-rl</a>, qui le transforme en environnement d'apprentissage par renforcement et entraîne des agents sur un curriculum de manœuvres, chacune évaluée face au pilote automatique classique.</p>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">01 — Fonctionnement</span>
-                    <div class="rk-col">
-                      <h4>Un curriculum, du plus simple au plus réaliste</h4>
-                      <p>L'agent pilote d'abord à travers les commandes de vol électriques (il commande le facteur de charge, le taux de roulis et la poussée) sur un avion simplifié et rapide à simuler, puis sur le modèle complet de corps rigide, et enfin actionne lui-même les gouvernes. Chaque tâche définit ses propres observations, ses termes de récompense et son critère de réussite.</p>
-                    </div>
-
-                    <div class="rk-tablewrap">
-                      <table class="rk-prose">
-                        <thead>
-                          <tr><th>Tâche</th><th>Critère de réussite</th></tr>
-                        </thead>
-                        <tbody>
-                          <tr><td>Revenir ailes à plat depuis une attitude inhabituelle</td><td>à plat en moins de 10 s</td></tr>
-                          <tr><td>Atteindre un cap, une altitude et une vitesse</td><td>à 30 m / 3° / 5 m/s près, dépassement limité</td></tr>
-                          <tr><td>Virer au meilleur taux soutenable</td><td>≥ 90 % de l'optimum, sans perte d'énergie</td></tr>
-                          <tr><td>Passer par 4 points de cheminement 3D aléatoires</td><td>les 4 atteints</td></tr>
-                          <tr><td>Looping, tonneau, Immelmann, Split-S</td><td>figure accomplie, bon cap de sortie</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">02 — Compétences</span>
-                    <ul class="rk-plain">
-                      <li><b>Apprentissage par renforcement (RL).</b> PPO (Stable-Baselines3, PyTorch) sur un environnement Gymnasium sur mesure, avec apprentissage par curriculum et façonnage de la récompense à partir de termes nommés et journalisés séparément.</li>
-                      <li><b>Apprentissage par imitation.</b> Clonage comportemental avec bruit DART et préchauffage du critique, nécessaire là où le RL pur ne trouve jamais une manœuvre de 20 secondes comme un looping.</li>
-                      <li><b>Apprentissage par transfert.</b> Les politiques entraînées sur l'avion simplifié (3 DDL) sont copiées dans le modèle complet (6 DDL) puis affinées (20 % → 100 % de réussite).</li>
-                      <li><b>Conception d'environnement.</b> Des observations sans discontinuités (direction de la gravité au lieu des angles d'Euler), une action neutre qui maintient la trajectoire, et trois horloges par pas (physique à 100 Hz, commandes de vol électriques à 50 Hz, agent à 10 Hz).</li>
-                      <li><b>Simulation et commande.</b> Corps rigide à 6 DDL sur des données de soufflerie de la NASA, quaternions et RK4, commandes de vol électriques à gains séquencés, pilote automatique en cascade, LQR ; 596 tests par rapport à des solutions analytiques et à des données publiées du F-16.</li>
-                    </ul>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">03 — Résultats</span>
-                    <ul class="rk-plain">
-                      <li>Avec les commandes de vol électriques, les agents <b>égalent ou dépassent le pilote automatique sur les 5 tâches</b>, jusqu'à 61 % de retour en plus, avec 90 à 100 % de réussite ; un parcours de 4 points de cheminement est effectué en <b>79 s contre 135 s</b>.</li>
-                      <li>Voltige apprise par imitation puis par PPO : <b>100 % de réussite</b>, légèrement mieux que le pilote scripté dont elle a été apprise.</li>
-                      <li>Sans commandes de vol électriques, en actionnant directement les gouvernes : 90 à 100 % de réussite sans sortie du domaine de vol, à 72–84 % du retour des agents qui passent par les commandes de vol électriques.</li>
-                    </ul>
-
-                    <figure>
-                      <div class="rk-frame rk-frame--img">
-                        <img src="../assets/img/JetFighter/agents_vs_reference.png" alt="Diagramme en barres horizontales du retour des agents rapporté à la politique de référence, pour cinq tâches et trois types d'agents. Hiérarchique 3 DDL : 117, 142, 106, 124 et 101 %. Hiérarchique 6 DDL : 116, 135, 161 et 118 %, aucun résultat valide en voltige. Gouvernes directes 6 DDL : 99, 98, 136, 98 et 100 %." width="1002" height="562" loading="lazy" decoding="async">
-                      </div>
-                      <figcaption><b>Retour rapporté à la référence, une graine par agent.</b> 100 % signifie égaler le pilote automatique ou le pilote scripté sur les mêmes épisodes d'évaluation. L'agent de voltige hiérarchique 6 DDL a été entraîné avant la correction d'un reward hack ; il n'est pas présenté.</figcaption>
-                    </figure>
-
-                    <div class="rk-shots">
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="../assets/img/JetFighter/waypoints_agent_vs_autopilot.png" alt="Trace au sol et profil d'altitude d'un parcours de quatre points de cheminement effectué par l'agent PPO et par le pilote automatique : les traces se superposent presque, mais l'agent atteint le dernier point en 79 secondes contre 135 pour le pilote automatique." width="1442" height="540" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>Même parcours, même avion.</b> L'agent anticipe chaque virage et échange librement de l'altitude ; le pilote automatique vise un point de cheminement à la fois.</figcaption>
-                      </figure>
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="../assets/img/JetFighter/aerobatics_imitation.png" alt="Vues de côté de quatre figures de voltige (looping, tonneau, Immelmann et Split-S), chacune effectuée par la politique neuronale clonée et par le pilote scripté ; les deux trajectoires sont presque superposées et les huit sont marquées comme réussies." width="1662" height="408" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>Un réseau qui n'a jamais été récompensé, en pleine voltige.</b> Looping, tonneau, Immelmann et Split-S par la politique clonée, face au pilote scripté dont elle a appris.</figcaption>
-                      </figure>
-                    </div>
-
-                    <div class="rk-note rk-warn">
-                      <span class="rk-eyebrow">Cinq reward hacks, aucun visible sur les courbes d'apprentissage</span>
-                      <p>En rejouant les vols, on a vu des agents virer 2,5 fois plus vite que l'optimum dans une spirale descendante qui perdait 3 km, simuler un looping par un tortillement de 6 secondes, ou s'écraser tôt pour ne plus payer de pénalités. Chaque cas a été corrigé dans la récompense ; c'est pourquoi les vols ont été vérifiés visuellement, et pas seulement sur les métriques.</p>
-                    </div>
-                  </div>
-
-                  <p class="rk-foot">Projet personnel. Les résultats correspondent au meilleur modèle évalué de chaque expérience, sur une seule graine ; davantage de graines est la prochaine étape évidente.</p>
-
-                </div>
-
-                <p class="project-links">
-                  <a href="https://github.com/elouansalaun/jetfighter-sim">Dépôt du simulateur ↗</a>
-                  <a href="https://github.com/elouansalaun/jetfighter-rl">Dépôt RL ↗</a>
-                </p>
-
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- ==================== CATEGORY: LLM ET AGENTS ==================== -->
-        <div class="cat-slide" id="cat-llm" role="tabpanel" aria-labelledby="cat-llm-tab">
-          <p class="cat-label">LLM et agents</p>
-
-          <!-- ---------- PROJECT: FROM NEURON TO AGI ---------- -->
-          <article class="project" id="p-neuron-agi">
-            <h3 class="project-heading">
-              <button class="project-head" id="p-neuron-agi-btn" type="button"
-                      aria-expanded="false" aria-controls="p-neuron-agi-panel">
-                <span class="project-name">Du neurone à l'AGI : deep learning, LLM et agents construits de zéro</span>
-                <span class="project-meta">2026 · Python · NumPy · PyTorch · Transformers · LoRA · DPO · GRPO · PPO · RAG · MCP</span>
-                <span class="project-summary">L'IA reconstruite du perceptron jusqu'aux agents LLM, en 27 modules codés à la main et vérifiés par rapport à <b>PyTorch</b> et <b>Hugging Face</b> (GPT, LoRA, PPO, DPO, GRPO, RAG). Le tout sur un ordinateur portable.</span>
-                <img class="project-icon" src="../assets/img/icon_project_neuron_agi.svg" alt="" aria-hidden="true">
-                <span class="chevron" aria-hidden="true"></span>
-              </button>
-            </h3>
-
-            <img class="project-preview" src="../assets/img/NeuronAGI/from_neuron_to_agi_overview_fr.gif" alt="Aperçu animé du projet Du neurone à l'AGI : du neurone seul au deep learning, à GPT, à l'apprentissage par renforcement et aux agents." width="1200" height="675" loading="lazy" decoding="async">
-
-            <div class="panel" id="p-neuron-agi-panel" role="region" aria-labelledby="p-neuron-agi-btn">
-              <div class="panel-inner">
-
-                <div class="rk">
-
-                  <div class="rk-top">
-                    <p>Les mêmes quelques principes (une somme pondérée, la dérivation en chaîne, l'attention, une fonction de perte, une boucle de rétroaction) suffisent pour aller du premier neurone artificiel aux agents fondés sur les modèles de langage d'aujourd'hui. Ce projet le démontre en <strong>construisant chaque étape à la main</strong>, dans 27 notebooks qui ajoutent chacun une idée, l'implémentent, la vérifient par rapport à une bibliothèque de référence et seulement ensuite utilisent cette bibliothèque. Tout tourne sur un MacBook Air M5, et chaque notebook est enregistré avec ses sorties : on peut donc le lire sur GitHub sans rien exécuter.</p>
-
-                    <div class="rk-facts">
-                      <div class="rk-fact"><b>1,93</b><span>perte sur TinyStories d'un GPT de 18 M de paramètres entraîné en 14 min, contre 2,63 pour GPT-2</span></div>
-                      <div class="rk-fact"><b>3,2 → 91,5 %</b><span>multiplication à 3 chiffres × 2 chiffres, même petit Transformer, sans puis avec chaîne de pensée</span></div>
-                      <div class="rk-fact"><b>4 → 6 sur 8</b><span>bogues corrigés par un agent de programmation une fois que le harnais exécute les tests au lieu de faire confiance au modèle</span></div>
-                    </div>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">01 — Fonctionnement</span>
-                    <div class="rk-col">
-                      <h4>Le construire, le vérifier, puis utiliser la bibliothèque</h4>
-                      <p>La rétropropagation est dérivée à la main avant d'écrire un moteur autograd ; ce moteur est vérifié par rapport à PyTorch avant d'utiliser PyTorch. L'attention vient avant <code>nn.MultiheadAttention</code>, un GPT avant celui de Hugging Face, LoRA avant <code>peft</code>, PPO avant toute bibliothèque de RL, une boucle d'agent avant tout framework et un serveur MCP avant le SDK officiel. Les modules suivants importent les précédents : l'agent de programmation du module 24 s'appuie sur la boucle d'agent du 22, qui réutilise le gabarit de conversation du 19, lequel affine le GPT du 14.</p>
-                    </div>
-
-                    <div class="rk-blocks">
-                      <div class="rk-block">
-                        <div class="rk-nb">00 – 07</div>
-                        <div>
-                          <h5>Comment les réseaux apprennent</h5>
-                          <p>Un vérificateur de gradient numérique, le perceptron et la raison pour laquelle XOR le met en échec, une régression softmax sur MNIST en NumPy pur, un MLP dérivé à la main, un moteur autograd scalaire puis tensoriel, les optimiseurs de SGD à AdamW, et un petit ResNet sur CIFAR-10.</p>
-                        </div>
-                      </div>
-                      <div class="rk-block">
-                        <div class="rk-nb">08 – 16</div>
-                        <div>
-                          <h5>Langage et Transformers</h5>
-                          <p>Les n-grammes et la perplexité, word2vec, les LSTM, l'attention, un tokenizer BPE comparé à celui de GPT-2, un Transformer jusqu'à RoPE, un GPT qui charge les poids GPT-2 d'OpenAI, un balayage de lois d'échelle, un cache KV, un mélange d'experts, ainsi qu'un petit ViT et un petit CLIP.</p>
-                        </div>
-                      </div>
-                      <div class="rk-block">
-                        <div class="rk-nb">17 – 21</div>
-                        <div>
-                          <h5>Apprentissage par renforcement et post-entraînement</h5>
-                          <p>Q-learning, DQN, REINFORCE et PPO jusqu'à LunarLander ; puis GPT-2 affiné en chatbot (entièrement et avec LoRA), un modèle de récompense, best-of-N et DPO, et GRPO avec des récompenses vérifiables sur de l'arithmétique.</p>
-                        </div>
-                      </div>
-                      <div class="rk-block">
-                        <div class="rk-nb">22 – 26</div>
-                        <div>
-                          <h5>Les agents et la route vers l'AGI</h5>
-                          <p>Une boucle d'agent qui utilise des outils, sans framework, une recherche BM25 et par embeddings dans les notebooks du projet lui-même, un agent de programmation et MCP construits de zéro, un harnais d'évaluation, un test de complaisance, un autoencodeur parcimonieux, et des problèmes ouverts mesurés (apprentissage continu, ARC).</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">02 — Compétences</span>
-                    <ul class="rk-plain">
-                      <li><b>Fondamentaux du deep learning.</b> Rétropropagation, initialisation, normalisation, connexions résiduelles et optimiseurs implémentés à la main et vérifiés avec un vérificateur de gradient.</li>
-                      <li><b>Transformers et LLM.</b> Un GPT écrit de zéro qui reproduit les logits du GPT-2 de Hugging Face, ainsi que les lois d'échelle, la précision mixte, un cache KV et le softmax en ligne de FlashAttention.</li>
-                      <li><b>Post-entraînement.</b> SFT, LoRA, modèles de récompense, DPO et GRPO, sur des modèles assez petits pour être entraînés sur un ordinateur portable.</li>
-                      <li><b>Apprentissage par renforcement.</b> Itération sur les valeurs, DQN, REINFORCE, GAE et PPO, avec les ablations qui montrent à quoi sert chaque ingrédient.</li>
-                      <li><b>Agents LLM.</b> Appel de fonctions, RAG, mémoire à long terme, un agent de programmation ainsi qu'un client et un serveur MCP, sur un modèle ouvert de 4 milliards de paramètres (Qwen3-4B).</li>
-                      <li><b>Évaluation et interprétabilité.</b> Un harnais de benchmark avec intervalles de confiance, des tests de reward hacking et de complaisance, et un autoencodeur parcimonieux sur notre propre GPT.</li>
-                    </ul>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">03 — Résultats</span>
-                    <div class="rk-col">
-                      <p>Chaque chiffre est mesuré dans les notebooks, sur un ordinateur portable. Les notebooks rapportent aussi ce qui n'a pas fonctionné, et pourquoi : DQN sans réseau cible, PPO sans clipping, GRPO avec un taux d'apprentissage trop élevé, des agents qui annoncent des corrections qu'ils n'ont jamais faites.</p>
-                    </div>
-
-                    <div class="rk-shots">
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="../assets/img/NeuronAGI/scaling_tinystories.png" alt="Graphique log-log de la perte de validation en fonction du calcul d'entraînement pour six tailles de GPT, de 0,61 M à 7,97 M de paramètres, sur TinyStories ; les courbes forment une frontière ajustée par une droite en tirets, la perte étant proportionnelle au calcul à la puissance moins 0,175." width="718" height="472" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>Module 15, une loi d'échelle sur un portable.</b> Six tailles de GPT entraînées sur TinyStories ; la frontière optimale en calcul est une loi de puissance, L ∝ C<sup>−0,175</sup>, comme chez Kaplan et al.</figcaption>
-                      </figure>
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="../assets/img/NeuronAGI/ppo_vs_no_clip.png" alt="Deux panneaux sur CartPole, sur 100 000 pas d'environnement. À gauche, le retour : les exécutions PPO montent à 500 et y restent, tandis que les exécutions sans clipping s'effondrent à répétition. À droite, la divergence KL par itération en échelle logarithmique : PPO reste autour de 0,005, les exécutions sans clipping atteignent 0,1 à 1." width="1169" height="354" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>Module 18, pourquoi PPO écrête.</b> CartPole, 10 époques par lot : sans clipping, chaque mise à jour déplace la politique d'un à deux ordres de grandeur plus loin et le retour s'effondre encore et encore.</figcaption>
-                      </figure>
-                    </div>
-
-                    <div class="rk-tablewrap">
-                      <table>
-                        <caption>Résultats choisis. Chaque paire correspond au même modèle, avec et sans une idée.</caption>
-                        <thead>
-                          <tr><th>Module</th><th>Sans</th><th>Avec</th></tr>
-                        </thead>
-                        <tbody>
-                          <tr><td>19 · LoRA sur 1,9 % des paramètres</td><td>affinage complet, perte 2,077</td><td>perte 2,086</td></tr>
-                          <tr><td>21 · Chaîne de pensée, petit Transformer</td><td class="rk-bad">3,2 %</td><td class="rk-good">91,5 %</td></tr>
-                          <tr><td>22 · Outils pour un modèle 4B</td><td class="rk-bad">1 sur 8</td><td class="rk-good">7 sur 8</td></tr>
-                          <tr><td>23 · RAG sur les notebooks du projet</td><td class="rk-bad">1 sur 16</td><td class="rk-good">15 sur 16</td></tr>
-                          <tr><td>24 · Harnais qui exécute les tests</td><td>4 bogues sur 8</td><td class="rk-good">6 bogues sur 8</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <ul class="rk-plain">
-                      <li><b>PPO construit de zéro</b> fait atterrir LunarLander dans 96 % des nouveaux épisodes.</li>
-                      <li><b>Interprétabilité.</b> Un autoencodeur parcimonieux trouve une caractéristique « chien » dans notre GPT TinyStories ; l'ajouter pendant la génération met un chien dans chaque histoire.</li>
-                      <li><b>Principal enseignement :</b> côté agents, chaque gain est venu de la boucle autour du même modèle (outils, recherche, un harnais qui vérifie), pas d'un modèle plus gros.</li>
-                    </ul>
-                  </div>
-
-                  <p class="rk-foot">Projet personnel. Les modèles sont réduits pour tenir sur un portable : une reproduction complète de GPT-2 (124 M) y prendrait plus d'un mois, comme le mesure le module 14. Licence MIT ; les jeux de données et les modèles préentraînés conservent leurs propres licences.</p>
-
-                </div>
-
-                <p class="project-links">
-                  <a href="https://github.com/elouansalaun/from_neuron_to_AGI">Dépôt ↗</a>
-                </p>
-
-              </div>
-            </div>
-          </article>
-
-          <!-- ---------- PROJECT: LLM RTS ---------- -->
-          <article class="project" id="p-llm-rts">
-            <h3 class="project-heading">
-              <button class="project-head" id="p-llm-rts-btn" type="button"
-                      aria-expanded="false" aria-controls="p-llm-rts-panel">
-                <span class="project-name">Un LLM local joue à un jeu de stratégie en temps réel, avec des agents et une base de connaissances</span>
-                <span class="project-meta">2026 · TypeScript · Node.js · Qwen 3.5 9B · LM Studio · JSON Schema · RAG · Vitest</span>
-                <span class="project-summary">Un petit <b>LLM</b> qui tourne sur un ordinateur portable joue à OpenFront contre l'IA du jeu : il lit la partie sous forme de <b>graphe</b>, puise dans une <b>base de connaissances</b> testée, <b>planifie en stratège et donne les ordres en commandant</b>, tandis que le code fait respecter le plan. Il a remporté une partie complète avec 80,9 % du territoire.</span>
-                <img class="project-icon" src="../assets/img/icon_project_rts.svg" alt="" aria-hidden="true">
-                <span class="chevron" aria-hidden="true"></span>
-              </button>
-            </h3>
-
-            <img class="project-preview" src="../assets/img/LLMRTS/llm_rts_explained_fr.gif" alt="Explication animée du projet LLM RTS : un LLM local stratège et commandant pilote un jeu de stratégie en temps réel, les règles des troupes étant appliquées par le code." width="1200" height="675" loading="lazy" decoding="async">
-
-            <div class="panel" id="p-llm-rts-panel" role="region" aria-labelledby="p-llm-rts-btn">
-              <div class="panel-inner">
-
-                <div class="rk">
-
-                  <div class="rk-top">
-                    <p>Un <strong>modèle de 9 milliards de paramètres exécuté localement</strong> (Qwen 3.5 9B dans LM Studio, sur un MacBook Air) peut-il bien jouer à un jeu de stratégie en temps réel ? Pas en regardant 328 000 cases de carte. Cet agent réduit <a href="https://github.com/openfrontio/OpenFrontIO">OpenFront</a> à un graphe, donne au modèle un court texte décrivant la situation et un menu d'options légales, et le divise en deux rôles : un <strong>stratège</strong> qui planifie et un <strong>commandant</strong> qui donne les ordres. Le code fait respecter le plan entre les appels.</p>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">01 — Fonctionnement</span>
-                    <div class="rk-col">
-                      <h4>Le LLM choisit quoi, le code choisit où</h4>
-                      <p>Le moteur OpenFront, non modifié, tourne sans interface dans le même processus, et le temps de jeu se met en pause pendant que le modèle réfléchit. Chaque changement devient une phrase (« Queensland started attacking you with 46,040 troops »). Le stratège, appelé toutes les 20 s ou lors d'événements majeurs, reçoit les règles essentielles ainsi que les 6 sections les plus pertinentes parmi les 37 de la base de connaissances, et rédige un plan : priorités, cible principale, réserve de troupes à conserver et taille des vagues d'expansion. Le commandant, appelé uniquement quand quelque chose change, le traduit en au plus deux ordres au format JSON. Le schéma est reconstruit à chaque tour et son enum est la liste courante des identifiants d'options légales : un ordre invalide ne peut donc pas être écrit.</p>
-                    </div>
-
-      <pre class="rk-code"><code><span class="c">// un vrai tour du commandant pendant la partie gagnante, à 3:15</span>
-{
-  "reason": "Carolinian Republic eliminated; attack Carolinian
-             Commonwealth to secure west, then build city for
-             growth. Keep 35% reserve (682,942 troops) ...",
-  "actions": [
-    { "id": "attack_carolinian_commonwealth", "troops_percent": 30 },
-    { "id": "build_city", "troops_percent": 0 }
-  ]
-}</code></pre>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">02 — Compétences</span>
-                    <ul class="rk-plain">
-                      <li><b>Conception d'agents LLM.</b> Séparation planificateur/exécutant, appels déclenchés par les événements, et une auto-vérification qui renvoie une fois, chiffres à l'appui, une réponse qui enfreint les règles.</li>
-                      <li><b>Sortie structurée.</b> Un schéma JSON dont l'enum est le menu des options légales, avec <code>maxLength</code> sur chaque champ texte pour qu'une réponse ne puisse jamais être coupée au milieu du JSON.</li>
-                      <li><b>Recherche sans embeddings.</b> 37 sections de connaissances étiquetées ; la situation en sélectionne 6, de façon déterministe, et chaque section factuelle est vérifiée par un test sur le vrai moteur.</li>
-                      <li><b>Abstraction de l'état.</b> 328 000 cases → un graphe d'environ 30 joueurs (frontières, attaques, alliances) → un court texte sur lequel un modèle 9B peut raisonner.</li>
-                      <li><b>Intégration d'une grosse base de code.</b> Le moteur OpenFront à un commit figé, récupéré par sparse checkout (7 Mo au lieu de 1,3 Go).</li>
-                      <li><b>Évaluation et reproductibilité.</b> Des références scriptées sur la même graine, des reproductions hors ligne des échecs sans le LLM, chaque prompt et chaque réponse journalisés dans <code>turns.jsonl</code>, et 39 tests Vitest, dont une partie complète avec un LLM simulé qui joue une partie de 30 minutes en quelques secondes.</li>
-                    </ul>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">03 — Résultats</span>
-                    <div class="rk-col">
-                      <p>Sur la carte de l'Australie, face à 7 nations IA et 20 tribus (Facile, graine <code>australia-1</code>), <strong>le LLM a gagné la partie après 8 min 49 s avec 80,9 % du territoire</strong>, classé premier dès la première minute. 130 appels au LLM (29 au stratège, 101 au commandant), 0 erreur, 8,0 s de latence moyenne, aucune API cloud.</p>
-                    </div>
-
-                    <div class="rk-shots">
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="../assets/img/LLMRTS/map-03min.png" alt="Carte de l'Australie à la minute 3 : le LLM, en or, tient une large bande au centre ; autour, des nations en rouge, vert, bleu, cyan, rose, violet et brun, et des tribus grises restées dans les interstices." width="1000" height="750" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>Minute 3, 37,8 % du territoire.</b> Le LLM (en or) est apparu dans les plaines centrales, comme le conseille la base de connaissances, a absorbé les tribus autour de lui et s'est allié à ses voisins.</figcaption>
-                      </figure>
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="../assets/img/LLMRTS/final.png" alt="Carte finale de l'Australie : l'or couvre presque tout le continent et la Tasmanie ; seules subsistent une nation rouge à l'ouest et une verte au sud-ouest. Les carrés blancs indiquent des bâtiments." width="1000" height="750" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>8:49, 80,9 %, le jeu déclare le LLM vainqueur.</b> Une fois ses alliances expirées, Victoria et la Nouvelle-Galles du Sud sont tombées, puis le Queensland.</figcaption>
-                      </figure>
-                    </div>
-
-                    <div class="rk-tablewrap">
-                      <table>
-                        <caption>Itérations à partir des journaux, sur la même graine. Chaque échec a été diagnostiqué en lisant <code>turns.jsonl</code> et corrigé dans l'interface ou dans le code.</caption>
-                        <thead>
-                          <tr><th>Version</th><th>Niveau</th><th>Résultat</th></tr>
-                        </thead>
-                        <tbody>
-                          <tr><td>Joueurs scriptés, sans LLM</td><td>Moyen</td><td class="rk-bad">pic à 5,8 %, éliminé à 6:21</td></tr>
-                          <tr><td>Stratège + commandant, le LLM contrôle chaque troupe</td><td>Moyen</td><td class="rk-bad">pic à 10,2 %, éliminé à 3:50</td></tr>
-                          <tr><td>Même modèle, le code impose la réserve et les vagues</td><td>Moyen, 3 min</td><td>24,1 %, 1<sup>er</sup> sur 11</td></tr>
-                          <tr class="rk-hero"><td>Même agent, partie complète</td><td>Facile</td><td class="rk-good">victoire à 8:49, 80,9 %</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <ul class="rk-plain">
-                      <li><b>« Envoyer des troupes pour défendre. »</b> Le modèle continuait d'attaquer une nation plus forte « pour se défendre », faisant fondre son armée de 111 000 à 27 000 troupes. Dans OpenFront, les troupes gardées chez soi <em>sont</em> la défense : une règle essentielle le dit désormais, et chaque option d'attaque affiche le rapport de forces à côté de son identifiant.</li>
-                      <li><b>Plus rapide ne veut pas dire plus réactif.</b> Une cadence de 1 s répétait « s'étendre de 30 % » et vidait l'armée en 10 s ; un script sans LLM a reproduit le problème. Un budget de troupes par tranche de 5 s et une réserve choisie par le plan ont fait passer la même cadence de l'élimination à la première place.</li>
-                      <li><b>Principal enseignement :</b> l'essentiel de l'amélioration est venu de l'interface (formulation, menu, schéma, règles de troupes), pas du modèle.</li>
-                    </ul>
-                  </div>
-
-                  <p class="rk-foot">Projet personnel. Des exécutions sur plusieurs graines et des ablations (sans base de connaissances, sans règles de troupes) sont la prochaine étape. AGPL-3.0 ; indépendant d'OpenFront.</p>
-
-                </div>
-
-                <p class="project-links">
-                  <a href="https://github.com/elouansalaun/LLM_RTS2">Dépôt ↗</a>
-                </p>
-
-              </div>
-            </div>
-          </article>
-
           <!-- ---------- PROJECT: LIDAR AGENT ---------- -->
           <article class="project" id="p-lidar-agent">
             <h3 class="project-heading">
@@ -994,242 +646,361 @@
               </div>
             </div>
           </article>
-        </div>
 
-        <!-- ==================== CATEGORY: INGÉNIERIE ==================== -->
-        <div class="cat-slide" id="cat-eng" role="tabpanel" aria-labelledby="cat-eng-tab">
-          <p class="cat-label">ML/RO/Ingénierie</p>
-
-          <!-- ---------- PROJECT 4 ---------- -->
-          <article class="project" id="p-caisse">
+          <!-- ---------- PROJECT: LLM RTS ---------- -->
+          <article class="project" id="p-llm-rts">
             <h3 class="project-heading">
-              <button class="project-head" id="p-caisse-btn" type="button"
-                      aria-expanded="false" aria-controls="p-caisse-panel">
-                <span class="project-name">Système de caisses connectées multipoints</span>
-                <span class="project-meta">2023 · ESP32 · C++ · MQTT · 4G · Google Sheets</span>
-                <span class="project-summary">Conception et réalisation d'un dispositif multipoint d'enregistrement des ventes <b>en temps réel</b> (ESP32), connecté à un serveur central pour le suivi, l'analyse et la <b>prévision</b> des ventes en temps réel lors d'un gala de <b>3 000 personnes</b>.</span>
-                <img class="project-icon" src="../assets/img/icon_project_caisse.svg" alt="" aria-hidden="true">
+              <button class="project-head" id="p-llm-rts-btn" type="button"
+                      aria-expanded="false" aria-controls="p-llm-rts-panel">
+                <span class="project-name">Un LLM local joue à un jeu de stratégie en temps réel, avec des agents et une base de connaissances</span>
+                <span class="project-meta">2026 · TypeScript · Node.js · Qwen 3.5 9B · LM Studio · JSON Schema · RAG · Vitest</span>
+                <span class="project-summary">Un petit <b>LLM</b> qui tourne sur un ordinateur portable joue à OpenFront contre l'IA du jeu : il lit la partie sous forme de <b>graphe</b>, puise dans une <b>base de connaissances</b> testée, <b>planifie en stratège et donne les ordres en commandant</b>, tandis que le code fait respecter le plan. Il a remporté une partie complète avec 80,9 % du territoire.</span>
+                <img class="project-icon" src="../assets/img/icon_project_rts.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
             </h3>
 
-            <div class="panel" id="p-caisse-panel" role="region" aria-labelledby="p-caisse-btn">
+            <img class="project-preview" src="../assets/img/LLMRTS/llm_rts_explained_fr.gif" alt="Explication animée du projet LLM RTS : un LLM local stratège et commandant pilote un jeu de stratégie en temps réel, les règles des troupes étant appliquées par le code." width="1200" height="675" loading="lazy" decoding="async">
+
+            <div class="panel" id="p-llm-rts-panel" role="region" aria-labelledby="p-llm-rts-btn">
               <div class="panel-inner">
 
                 <div class="rk">
 
-                  <!-- <img class="rk-resume" src="../assets/img/CashRegister/resume_connected-cash-register.svg" alt="Résumé en une page du système : des terminaux ESP32 à grille de boutons, avec anti-rebond local, publient chaque vente par une liaison 4G en MQTT QoS 1 vers un broker, via un point d'accès privé indépendant du wifi du lieu ; un pont supprime les doublons par appareil et numéro de séquence et ajoute des lignes à une feuille Google Sheets, qui alimente un tableau de réassort envoyant des alertes par bar et par article ; à côté, la prévision de rupture construite à partir de la référence de l'année précédente, d'un multiplicateur par moment de la soirée et d'un poids par emplacement, et un graphique des unités restantes d'un bar au cours d'une soirée, avec l'alerte déclenchée environ trente minutes avant l'épuisement." width="800" height="600" loading="lazy" decoding="async"> -->
-
                   <div class="rk-top">
-                    <p>Lors d'un gala étudiant de 3 000 invités, le stock des bars était suivi à coups de bâtonnets et d'estimations. Ce projet visait à concevoir et déployer un système connecté : un pavé de boutons ESP32 à chaque bar enregistre chaque vente, les données arrivent en temps réel dans une feuille Google Sheets partagée grâce à la 4G, et une prévision légère avertit <strong>environ 30 minutes avant qu'un bar soit à court</strong>, soit le temps qu'il faut à un coursier pour le réapprovisionner.</p>
+                    <p>Un <strong>modèle de 9 milliards de paramètres exécuté localement</strong> (Qwen 3.5 9B dans LM Studio, sur un MacBook Air) peut-il bien jouer à un jeu de stratégie en temps réel ? Pas en regardant 328 000 cases de carte. Cet agent réduit <a href="https://github.com/openfrontio/OpenFrontIO">OpenFront</a> à un graphe, donne au modèle un court texte décrivant la situation et un menu d'options légales, et le divise en deux rôles : un <strong>stratège</strong> qui planifie et un <strong>commandant</strong> qui donne les ordres. Le code fait respecter le plan entre les appels.</p>
                   </div>
 
                   <div class="rk-sec">
                     <span class="rk-eyebrow">01 — Fonctionnement</span>
                     <div class="rk-col">
-                      <p>Chaque appui sur un bouton est horodaté et mis en file d'attente sur l'appareil, puis publié en MQTT par un routeur 4G privé, indépendant du wifi du lieu. Un pont logiciel ajoute une ligne par vente à la feuille Google Sheets en supprimant les doublons par numéro de séquence, et la prévision lit cette même feuille.</p>
+                      <h4>Le LLM choisit quoi, le code choisit où</h4>
+                      <p>Le moteur OpenFront, non modifié, tourne sans interface dans le même processus, et le temps de jeu se met en pause pendant que le modèle réfléchit. Chaque changement devient une phrase (« Queensland started attacking you with 46,040 troops »). Le stratège, appelé toutes les 20 s ou lors d'événements majeurs, reçoit les règles essentielles ainsi que les 6 sections les plus pertinentes parmi les 37 de la base de connaissances, et rédige un plan : priorités, cible principale, réserve de troupes à conserver et taille des vagues d'expansion. Le commandant, appelé uniquement quand quelque chose change, le traduit en au plus deux ordres au format JSON. Le schéma est reconstruit à chaque tour et son enum est la liste courante des identifiants d'options légales : un ordre invalide ne peut donc pas être écrit.</p>
                     </div>
 
-                    <figure>
-                      <div class="rk-frame">
-                        <svg viewBox="0 0 940 430" role="img" aria-label="Une grille de boutons sur un ESP32 à chaque point de vente publie un message de vente vers un routeur 8devices qui sert de point d'accès wifi avec liaison 4G ; le routeur le transmet en MQTT à un broker, un pont ajoute chaque message comme ligne d'une feuille Google Sheets et, en dessous, la feuille alimente un modèle de prévision dont l'alerte de réapprovisionnement est renvoyée aux coursiers et aux bars.">
-                          <defs>
-                            <marker id="cs-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
-                            </marker>
-                          </defs>
-
-                          <g font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".55">
-                            <text x="16" y="30">capture et transport — un chemin par vente</text>
-                            <text x="120" y="272">décider — mêmes données, relues</text>
-                          </g>
-
-                          <!-- row 1 : capture -->
-                          <g font-family="IBM Plex Mono, monospace">
-                            <!-- stacked devices -->
-                            <rect x="28" y="42" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1" opacity=".3"/>
-                            <rect x="22" y="48" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1" opacity=".5"/>
-                            <rect x="16" y="54" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
-                            <text x="94" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">point de vente</text>
-                            <text x="94" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">ESP32 · grille de boutons</text>
-                            <text x="94" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">anti-rebond · accusé LED</text>
-                            <text x="94" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">file locale hors ligne</text>
-
-                            <rect x="238" y="54" width="170" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
-                            <text x="323" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">passerelle</text>
-                            <text x="323" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">8devices router</text>
-                            <text x="323" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">AP privé pour les bars</text>
-                            <text x="323" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">4G · sans le wifi du lieu</text>
-
-                            <rect x="462" y="54" width="160" height="96" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
-                            <text x="542" y="82" text-anchor="middle" fill="currentColor" font-size="11.5">broker MQTT</text>
-                            <text x="542" y="101" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">topic par point de vente</text>
-                            <text x="542" y="117" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">QoS 1 · last will</text>
-                            <text x="542" y="133" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">hébergé, hors site</text>
-
-                            <rect x="676" y="54" width="140" height="96" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
-                            <text x="746" y="86" text-anchor="middle" fill="var(--hedge)" font-size="11.5">pont</text>
-                            <text x="746" y="105" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">abonnement → ajout</text>
-                            <text x="746" y="121" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">dédoublonnage (id, seq)</text>
-
-                            <path d="M838,72 L838,136 A46,9 0 0 0 930,136 L930,72" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
-                            <ellipse cx="884" cy="72" rx="46" ry="9" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
-                            <text x="884" y="104" text-anchor="middle" fill="var(--hedge)" font-size="10.5">Google Sheet</text>
-                            <text x="884" y="120" text-anchor="middle" fill="var(--hedge)" font-size="8.5" opacity=".7">1 ligne / vente</text>
-                          </g>
-
-                          <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cs-a)">
-                            <line x1="190" y1="102" x2="234" y2="102"/>
-                            <line x1="408" y1="102" x2="458" y2="102"/>
-                            <line x1="622" y1="102" x2="672" y2="102"/>
-                            <line x1="816" y1="102" x2="834" y2="102"/>
-                          </g>
-                          <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
-                            <text x="212" y="94" text-anchor="middle">wifi</text>
-                            <text x="433" y="94" text-anchor="middle">4G</text>
-                            <text x="647" y="94" text-anchor="middle">abo</text>
-                          </g>
-
-                          <!-- row 2 : decide -->
-                          <g font-family="IBM Plex Mono, monospace">
-                            <rect x="640" y="292" width="208" height="88" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
-                            <text x="744" y="320" text-anchor="middle" fill="var(--hedge)" font-size="11.5">prévision par bar</text>
-                            <text x="744" y="339" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">a priori × programme × lieu</text>
-                            <text x="744" y="355" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">temps avant rupture</text>
-
-                            <rect x="356" y="292" width="208" height="88" rx="2" fill="none" stroke="var(--risk)" stroke-width="1.5"/>
-                            <text x="460" y="320" text-anchor="middle" fill="var(--risk)" font-size="11.5">tableau des réassorts</text>
-                            <text x="460" y="339" text-anchor="middle" fill="var(--risk)" font-size="9.5" opacity=".9">quoi apporter, à quel bar</text>
-                            <text x="460" y="355" text-anchor="middle" fill="var(--risk)" font-size="9" opacity=".75">déclenché selon le délai</text>
-
-                            <rect x="72" y="292" width="200" height="88" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
-                            <text x="172" y="326" text-anchor="middle" fill="currentColor" font-size="11.5">coursier</text>
-                            <text x="172" y="346" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">réserve → bar</text>
-                            <text x="172" y="362" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">≈ 30 min aller-retour</text>
-                          </g>
-
-                          <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cs-a)">
-                            <path d="M884,150 L884,336 L852,336"/>
-                            <line x1="640" y1="336" x2="568" y2="336"/>
-                            <line x1="356" y1="336" x2="276" y2="336"/>
-                            <path d="M94,292 L94,158"/>
-                          </g>
-                          <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
-                            <text x="604" y="328" text-anchor="middle">τ &lt; L</text>
-                            <text x="106" y="232">réassorti</text>
-                          </g>
-                        </svg>
-                      </div>
-                      <figcaption><b>Une boucle, refermée à la réserve.</b> La colonne de gauche est la seule partie qui se trouve sur place ; tout ce qui est à droite de la liaison 4G est hors site, ce qui permet à la feuille de survivre à une coupure de courant dans un bar ou à un appareil débranché en pleine soirée.</figcaption>
-                    </figure>
+      <pre class="rk-code"><code><span class="c">// un vrai tour du commandant pendant la partie gagnante, à 3:15</span>
+{
+  "reason": "Carolinian Republic eliminated; attack Carolinian
+             Commonwealth to secure west, then build city for
+             growth. Keep 35% reserve (682,942 troops) ...",
+  "actions": [
+    { "id": "attack_carolinian_commonwealth", "troops_percent": 30 },
+    { "id": "build_city", "troops_percent": 0 }
+  ]
+}</code></pre>
                   </div>
 
                   <div class="rk-sec">
                     <span class="rk-eyebrow">02 — Compétences</span>
                     <ul class="rk-plain">
-                      <li><b>Embarqué et IoT.</b> Micrologiciel ESP32 en C++, une matrice de boutons et une file d'attente locale pour que le barman n'attende jamais le réseau.</li>
-                      <li><b>Messagerie fiable.</b> MQTT sur 4G avec numéros de séquence, pour qu'un appareil puisse renvoyer librement ses messages après une reconnexion sans gonfler les ventes.</li>
-                      <li><b>Prévision en temps réel.</b> Le profil de consommation de l'année précédente, ajusté selon le moment de la soirée et l'emplacement du bar, recalé sur les ventes en direct ; l'alerte se déclenche quand le temps projeté avant épuisement atteint le temps de réapprovisionnement.</li>
-                      <li><b>Conception centrée sur l'utilisateur.</b> Une feuille Google Sheets comme tableau de bord, parce que toute l'équipe l'avait déjà sur son téléphone.</li>
+                      <li><b>Conception d'agents LLM.</b> Séparation planificateur/exécutant, appels déclenchés par les événements, et une auto-vérification qui renvoie une fois, chiffres à l'appui, une réponse qui enfreint les règles.</li>
+                      <li><b>Sortie structurée.</b> Un schéma JSON dont l'enum est le menu des options légales, avec <code>maxLength</code> sur chaque champ texte pour qu'une réponse ne puisse jamais être coupée au milieu du JSON.</li>
+                      <li><b>Recherche sans embeddings.</b> 37 sections de connaissances étiquetées ; la situation en sélectionne 6, de façon déterministe, et chaque section factuelle est vérifiée par un test sur le vrai moteur.</li>
+                      <li><b>Abstraction de l'état.</b> 328 000 cases → un graphe d'environ 30 joueurs (frontières, attaques, alliances) → un court texte sur lequel un modèle 9B peut raisonner.</li>
+                      <li><b>Intégration d'une grosse base de code.</b> Le moteur OpenFront à un commit figé, récupéré par sparse checkout (7 Mo au lieu de 1,3 Go).</li>
+                      <li><b>Évaluation et reproductibilité.</b> Des références scriptées sur la même graine, des reproductions hors ligne des échecs sans le LLM, chaque prompt et chaque réponse journalisés dans <code>turns.jsonl</code>, et 39 tests Vitest, dont une partie complète avec un LLM simulé qui joue une partie de 30 minutes en quelques secondes.</li>
                     </ul>
                   </div>
 
                   <div class="rk-sec">
                     <span class="rk-eyebrow">03 — Résultats</span>
                     <div class="rk-col">
-                      <p>Utilisé pendant une soirée dans plusieurs bars et pour 3 000 invités, avec des alertes de rupture environ 30 minutes à l'avance. La soirée se termine avec un enregistrement à la seconde de ce qui a été vendu et où, sur lequel est ajustée la prévision de l'année suivante.</p>
+                      <p>Sur la carte de l'Australie, face à 7 nations IA et 20 tribus (Facile, graine <code>australia-1</code>), <strong>le LLM a gagné la partie après 8 min 49 s avec 80,9 % du territoire</strong>, classé premier dès la première minute. 130 appels au LLM (29 au stratège, 101 au commandant), 0 erreur, 8,0 s de latence moyenne, aucune API cloud.</p>
                     </div>
 
-                    <figure>
-                      <div class="rk-frame">
-                        <svg viewBox="0 0 940 440" role="img" aria-label="Stock restant d'un bar au cours de la soirée. Une courbe en tirets montre le même bar l'année précédente, une courbe pleine montre l'épuisement mesuré ce soir jusqu'à l'heure actuelle, et une projection en pointillés la prolonge. La projection franchit le seuil de réapprovisionnement vers 1 h 20 et atteint zéro vers 2 h 10 : l'alerte se déclenche donc pendant que le coursier a encore le temps.">
-                          <!-- programme bands -->
-                          <g opacity=".07" fill="currentColor">
-                            <rect x="280" y="50" width="130" height="330"/>
-                            <rect x="430" y="50" width="250" height="330"/>
-                          </g>
-                          <g font-family="Source Sans 3, sans-serif" font-size="10.5" fill="currentColor" opacity=".55">
-                            <text x="345" y="44" text-anchor="middle">dîner</text>
-                            <text x="555" y="44" text-anchor="middle">DJ set</text>
-                          </g>
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/LLMRTS/map-03min.png" alt="Carte de l'Australie à la minute 3 : le LLM, en or, tient une large bande au centre ; autour, des nations en rouge, vert, bleu, cyan, rose, violet et brun, et des tribus grises restées dans les interstices." width="1000" height="750" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Minute 3, 37,8 % du territoire.</b> Le LLM (en or) est apparu dans les plaines centrales, comme le conseille la base de connaissances, a absorbé les tribus autour de lui et s'est allié à ses voisins.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/LLMRTS/final.png" alt="Carte finale de l'Australie : l'or couvre presque tout le continent et la Tasmanie ; seules subsistent une nation rouge à l'ouest et une verte au sud-ouest. Les carrés blancs indiquent des bâtiments." width="1000" height="750" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>8:49, 80,9 %, le jeu déclare le LLM vainqueur.</b> Une fois ses alliances expirées, Victoria et la Nouvelle-Galles du Sud sont tombées, puis le Queensland.</figcaption>
+                      </figure>
+                    </div>
 
-                          <!-- grid -->
-                          <g stroke="currentColor" opacity=".14" stroke-width="1">
-                            <line x1="80" y1="135" x2="880" y2="135"/>
-                            <line x1="80" y1="210" x2="880" y2="210"/>
-                            <line x1="80" y1="285" x2="880" y2="285"/>
-                            <line x1="180" y1="50" x2="180" y2="380"/>
-                            <line x1="280" y1="50" x2="280" y2="380"/>
-                            <line x1="380" y1="50" x2="380" y2="380"/>
-                            <line x1="480" y1="50" x2="480" y2="380"/>
-                            <line x1="580" y1="50" x2="580" y2="380"/>
-                            <line x1="680" y1="50" x2="680" y2="380"/>
-                            <line x1="780" y1="50" x2="780" y2="380"/>
-                          </g>
-                          <g stroke="currentColor" opacity=".45" stroke-width="1.2">
-                            <line x1="80" y1="360" x2="880" y2="360"/>
-                            <line x1="80" y1="50" x2="80" y2="380"/>
-                          </g>
+                    <div class="rk-tablewrap">
+                      <table>
+                        <caption>Itérations à partir des journaux, sur la même graine. Chaque échec a été diagnostiqué en lisant <code>turns.jsonl</code> et corrigé dans l'interface ou dans le code.</caption>
+                        <thead>
+                          <tr><th>Version</th><th>Niveau</th><th>Résultat</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Joueurs scriptés, sans LLM</td><td>Moyen</td><td class="rk-bad">pic à 5,8 %, éliminé à 6:21</td></tr>
+                          <tr><td>Stratège + commandant, le LLM contrôle chaque troupe</td><td>Moyen</td><td class="rk-bad">pic à 10,2 %, éliminé à 3:50</td></tr>
+                          <tr><td>Même modèle, le code impose la réserve et les vagues</td><td>Moyen, 3 min</td><td>24,1 %, 1<sup>er</sup> sur 11</td></tr>
+                          <tr class="rk-hero"><td>Même agent, partie complète</td><td>Facile</td><td class="rk-good">victoire à 8:49, 80,9 %</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
 
-                          <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".65">
-                            <text x="80" y="378" text-anchor="middle">20:00</text>
-                            <text x="180" y="378" text-anchor="middle">21:00</text>
-                            <text x="280" y="378" text-anchor="middle">22:00</text>
-                            <text x="380" y="378" text-anchor="middle">23:00</text>
-                            <text x="480" y="378" text-anchor="middle">00:00</text>
-                            <text x="580" y="378" text-anchor="middle">01:00</text>
-                            <text x="680" y="378" text-anchor="middle">02:00</text>
-                            <text x="780" y="378" text-anchor="middle">03:00</text>
-                            <text x="880" y="378" text-anchor="middle">04:00</text>
-                            <text x="72" y="364" text-anchor="end">0</text>
-                            <text x="72" y="289" text-anchor="end">25 %</text>
-                            <text x="72" y="214" text-anchor="end">50 %</text>
-                            <text x="72" y="139" text-anchor="end">75 %</text>
-                            <text x="72" y="64" text-anchor="end">100 %</text>
-                          </g>
-                          <text x="480" y="404" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">heure</text>
-                          <text x="24" y="40" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">stock restant au bar</text>
-
-                          <!-- last year -->
-                          <polyline points="80,60 180,90 280,126 380,153 480,186 580,231 680,270 780,300 880,318"
-                            fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="6 4" opacity=".5"/>
-                          <text x="792" y="294" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".6">l'an dernier, même bar</text>
-
-                          <!-- restock threshold -->
-                          <line x1="80" y1="285" x2="880" y2="285" stroke="var(--risk)" stroke-width="1.4" stroke-dasharray="5 4"/>
-                          <text x="88" y="278" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--risk)">seuil de réapprovisionnement</text>
-
-                          <!-- measured -->
-                          <polyline points="80,60 130,72 180,84 230,99 280,114 330,126 380,138 430,150 480,180 520,213"
-                            fill="none" stroke="var(--hedge)" stroke-width="2.6"/>
-                          <text x="300" y="106" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--hedge)" font-weight="600">mesuré ce soir</text>
-
-                          <!-- projection -->
-                          <polyline points="520,213 570,252 612,285 645,311 680,338 700,360"
-                            fill="none" stroke="var(--perf)" stroke-width="2.2" stroke-dasharray="3 4"/>
-                          <text x="640" y="212" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--perf)" font-weight="600">projection</text>
-                          <text x="640" y="228" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--perf)" opacity=".85">λ(t) recalculé à chaque message</text>
-
-                          <!-- now -->
-                          <line x1="520" y1="50" x2="520" y2="360" stroke="var(--hedge)" stroke-width="1.2" opacity=".55"/>
-                          <circle cx="520" cy="213" r="5" fill="var(--hedge)"/>
-                          <text x="514" y="70" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--hedge)">maintenant · 00:40</text>
-
-                          <!-- alert -->
-                          <circle cx="612" cy="285" r="6" fill="var(--risk)"/>
-                          <line x1="612" y1="285" x2="612" y2="360" stroke="var(--risk)" stroke-width="1" opacity=".45"/>
-                          <text x="602" y="310" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--risk)" font-weight="600">alerte 01:20</text>
-                          <text x="602" y="326" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--risk)" opacity=".85">τ = 50 min ≈ L</text>
-                          <text x="712" y="352" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--perf)" opacity=".85">rupture prévue 02:10</text>
-                        </svg>
-                      </div>
-                      <figcaption><b>Un bar, une soirée, reconstitués pour cette page.</b> La courbe en tirets est l'a priori, la courbe pleine ce que disent réellement les appuis sur les boutons, et l'alerte n'est pas déclenchée quand le stock est bas, mais quand le temps projeté avant épuisement tombe à la durée de l'aller-retour du coursier.</figcaption>
-                    </figure>
+                    <ul class="rk-plain">
+                      <li><b>« Envoyer des troupes pour défendre. »</b> Le modèle continuait d'attaquer une nation plus forte « pour se défendre », faisant fondre son armée de 111 000 à 27 000 troupes. Dans OpenFront, les troupes gardées chez soi <em>sont</em> la défense : une règle essentielle le dit désormais, et chaque option d'attaque affiche le rapport de forces à côté de son identifiant.</li>
+                      <li><b>Plus rapide ne veut pas dire plus réactif.</b> Une cadence de 1 s répétait « s'étendre de 30 % » et vidait l'armée en 10 s ; un script sans LLM a reproduit le problème. Un budget de troupes par tranche de 5 s et une réserve choisie par le plan ont fait passer la même cadence de l'élimination à la première place.</li>
+                      <li><b>Principal enseignement :</b> l'essentiel de l'amélioration est venu de l'interface (formulation, menu, schéma, règles de troupes), pas du modèle.</li>
+                    </ul>
                   </div>
 
-                  <p class="rk-foot">Conçu pour un gala étudiant, 2023. Le micrologiciel, le pont et la feuille de prévision ont été écrits pour l'événement et ne sont pas publics ; les figures sont redessinées à partir des journaux de la soirée.</p>
+                  <p class="rk-foot">Projet personnel. Des exécutions sur plusieurs graines et des ablations (sans base de connaissances, sans règles de troupes) sont la prochaine étape. AGPL-3.0 ; indépendant d'OpenFront.</p>
 
                 </div>
+
+                <p class="project-links">
+                  <a href="https://github.com/elouansalaun/LLM_RTS2">Dépôt ↗</a>
+                </p>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ==================== CATEGORY: ML ET OPTIMISATION ==================== -->
+        <div class="cat-slide" id="cat-ml" role="tabpanel" aria-labelledby="cat-ml-tab">
+          <p class="cat-label">ML et optimisation</p>
+
+          <!-- ---------- PROJECT: FROM NEURON TO AGI ---------- -->
+          <article class="project" id="p-neuron-agi">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-neuron-agi-btn" type="button"
+                      aria-expanded="false" aria-controls="p-neuron-agi-panel">
+                <span class="project-name">Du neurone à l'AGI : deep learning, LLM et agents construits de zéro</span>
+                <span class="project-meta">2026 · Python · NumPy · PyTorch · Transformers · LoRA · DPO · GRPO · PPO · RAG · MCP</span>
+                <span class="project-summary">L'IA reconstruite du perceptron jusqu'aux agents LLM, en 27 modules codés à la main et vérifiés par rapport à <b>PyTorch</b> et <b>Hugging Face</b> (GPT, LoRA, PPO, DPO, GRPO, RAG). Le tout sur un ordinateur portable.</span>
+                <img class="project-icon" src="../assets/img/icon_project_neuron_agi.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <img class="project-preview" src="../assets/img/NeuronAGI/from_neuron_to_agi_overview_fr.gif" alt="Aperçu animé du projet Du neurone à l'AGI : du neurone seul au deep learning, à GPT, à l'apprentissage par renforcement et aux agents." width="1200" height="675" loading="lazy" decoding="async">
+
+            <div class="panel" id="p-neuron-agi-panel" role="region" aria-labelledby="p-neuron-agi-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <div class="rk-top">
+                    <p>Les mêmes quelques principes (une somme pondérée, la dérivation en chaîne, l'attention, une fonction de perte, une boucle de rétroaction) suffisent pour aller du premier neurone artificiel aux agents fondés sur les modèles de langage d'aujourd'hui. Ce projet le démontre en <strong>construisant chaque étape à la main</strong>, dans 27 notebooks qui ajoutent chacun une idée, l'implémentent, la vérifient par rapport à une bibliothèque de référence et seulement ensuite utilisent cette bibliothèque. Tout tourne sur un MacBook Air M5, et chaque notebook est enregistré avec ses sorties : on peut donc le lire sur GitHub sans rien exécuter.</p>
+
+                    <div class="rk-facts">
+                      <div class="rk-fact"><b>1,93</b><span>perte sur TinyStories d'un GPT de 18 M de paramètres entraîné en 14 min, contre 2,63 pour GPT-2</span></div>
+                      <div class="rk-fact"><b>3,2 → 91,5 %</b><span>multiplication à 3 chiffres × 2 chiffres, même petit Transformer, sans puis avec chaîne de pensée</span></div>
+                      <div class="rk-fact"><b>4 → 6 sur 8</b><span>bogues corrigés par un agent de programmation une fois que le harnais exécute les tests au lieu de faire confiance au modèle</span></div>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — Fonctionnement</span>
+                    <div class="rk-col">
+                      <h4>Le construire, le vérifier, puis utiliser la bibliothèque</h4>
+                      <p>La rétropropagation est dérivée à la main avant d'écrire un moteur autograd ; ce moteur est vérifié par rapport à PyTorch avant d'utiliser PyTorch. L'attention vient avant <code>nn.MultiheadAttention</code>, un GPT avant celui de Hugging Face, LoRA avant <code>peft</code>, PPO avant toute bibliothèque de RL, une boucle d'agent avant tout framework et un serveur MCP avant le SDK officiel. Les modules suivants importent les précédents : l'agent de programmation du module 24 s'appuie sur la boucle d'agent du 22, qui réutilise le gabarit de conversation du 19, lequel affine le GPT du 14.</p>
+                    </div>
+
+                    <div class="rk-blocks">
+                      <div class="rk-block">
+                        <div class="rk-nb">00 – 07</div>
+                        <div>
+                          <h5>Comment les réseaux apprennent</h5>
+                          <p>Un vérificateur de gradient numérique, le perceptron et la raison pour laquelle XOR le met en échec, une régression softmax sur MNIST en NumPy pur, un MLP dérivé à la main, un moteur autograd scalaire puis tensoriel, les optimiseurs de SGD à AdamW, et un petit ResNet sur CIFAR-10.</p>
+                        </div>
+                      </div>
+                      <div class="rk-block">
+                        <div class="rk-nb">08 – 16</div>
+                        <div>
+                          <h5>Langage et Transformers</h5>
+                          <p>Les n-grammes et la perplexité, word2vec, les LSTM, l'attention, un tokenizer BPE comparé à celui de GPT-2, un Transformer jusqu'à RoPE, un GPT qui charge les poids GPT-2 d'OpenAI, un balayage de lois d'échelle, un cache KV, un mélange d'experts, ainsi qu'un petit ViT et un petit CLIP.</p>
+                        </div>
+                      </div>
+                      <div class="rk-block">
+                        <div class="rk-nb">17 – 21</div>
+                        <div>
+                          <h5>Apprentissage par renforcement et post-entraînement</h5>
+                          <p>Q-learning, DQN, REINFORCE et PPO jusqu'à LunarLander ; puis GPT-2 affiné en chatbot (entièrement et avec LoRA), un modèle de récompense, best-of-N et DPO, et GRPO avec des récompenses vérifiables sur de l'arithmétique.</p>
+                        </div>
+                      </div>
+                      <div class="rk-block">
+                        <div class="rk-nb">22 – 26</div>
+                        <div>
+                          <h5>Les agents et la route vers l'AGI</h5>
+                          <p>Une boucle d'agent qui utilise des outils, sans framework, une recherche BM25 et par embeddings dans les notebooks du projet lui-même, un agent de programmation et MCP construits de zéro, un harnais d'évaluation, un test de complaisance, un autoencodeur parcimonieux, et des problèmes ouverts mesurés (apprentissage continu, ARC).</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Compétences</span>
+                    <ul class="rk-plain">
+                      <li><b>Fondamentaux du deep learning.</b> Rétropropagation, initialisation, normalisation, connexions résiduelles et optimiseurs implémentés à la main et vérifiés avec un vérificateur de gradient.</li>
+                      <li><b>Transformers et LLM.</b> Un GPT écrit de zéro qui reproduit les logits du GPT-2 de Hugging Face, ainsi que les lois d'échelle, la précision mixte, un cache KV et le softmax en ligne de FlashAttention.</li>
+                      <li><b>Post-entraînement.</b> SFT, LoRA, modèles de récompense, DPO et GRPO, sur des modèles assez petits pour être entraînés sur un ordinateur portable.</li>
+                      <li><b>Apprentissage par renforcement.</b> Itération sur les valeurs, DQN, REINFORCE, GAE et PPO, avec les ablations qui montrent à quoi sert chaque ingrédient.</li>
+                      <li><b>Agents LLM.</b> Appel de fonctions, RAG, mémoire à long terme, un agent de programmation ainsi qu'un client et un serveur MCP, sur un modèle ouvert de 4 milliards de paramètres (Qwen3-4B).</li>
+                      <li><b>Évaluation et interprétabilité.</b> Un harnais de benchmark avec intervalles de confiance, des tests de reward hacking et de complaisance, et un autoencodeur parcimonieux sur notre propre GPT.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Résultats</span>
+                    <div class="rk-col">
+                      <p>Chaque chiffre est mesuré dans les notebooks, sur un ordinateur portable. Les notebooks rapportent aussi ce qui n'a pas fonctionné, et pourquoi : DQN sans réseau cible, PPO sans clipping, GRPO avec un taux d'apprentissage trop élevé, des agents qui annoncent des corrections qu'ils n'ont jamais faites.</p>
+                    </div>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/NeuronAGI/scaling_tinystories.png" alt="Graphique log-log de la perte de validation en fonction du calcul d'entraînement pour six tailles de GPT, de 0,61 M à 7,97 M de paramètres, sur TinyStories ; les courbes forment une frontière ajustée par une droite en tirets, la perte étant proportionnelle au calcul à la puissance moins 0,175." width="718" height="472" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Module 15, une loi d'échelle sur un portable.</b> Six tailles de GPT entraînées sur TinyStories ; la frontière optimale en calcul est une loi de puissance, L ∝ C<sup>−0,175</sup>, comme chez Kaplan et al.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/NeuronAGI/ppo_vs_no_clip.png" alt="Deux panneaux sur CartPole, sur 100 000 pas d'environnement. À gauche, le retour : les exécutions PPO montent à 500 et y restent, tandis que les exécutions sans clipping s'effondrent à répétition. À droite, la divergence KL par itération en échelle logarithmique : PPO reste autour de 0,005, les exécutions sans clipping atteignent 0,1 à 1." width="1169" height="354" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Module 18, pourquoi PPO écrête.</b> CartPole, 10 époques par lot : sans clipping, chaque mise à jour déplace la politique d'un à deux ordres de grandeur plus loin et le retour s'effondre encore et encore.</figcaption>
+                      </figure>
+                    </div>
+
+                    <div class="rk-tablewrap">
+                      <table>
+                        <caption>Résultats choisis. Chaque paire correspond au même modèle, avec et sans une idée.</caption>
+                        <thead>
+                          <tr><th>Module</th><th>Sans</th><th>Avec</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>19 · LoRA sur 1,9 % des paramètres</td><td>affinage complet, perte 2,077</td><td>perte 2,086</td></tr>
+                          <tr><td>21 · Chaîne de pensée, petit Transformer</td><td class="rk-bad">3,2 %</td><td class="rk-good">91,5 %</td></tr>
+                          <tr><td>22 · Outils pour un modèle 4B</td><td class="rk-bad">1 sur 8</td><td class="rk-good">7 sur 8</td></tr>
+                          <tr><td>23 · RAG sur les notebooks du projet</td><td class="rk-bad">1 sur 16</td><td class="rk-good">15 sur 16</td></tr>
+                          <tr><td>24 · Harnais qui exécute les tests</td><td>4 bogues sur 8</td><td class="rk-good">6 bogues sur 8</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <ul class="rk-plain">
+                      <li><b>PPO construit de zéro</b> fait atterrir LunarLander dans 96 % des nouveaux épisodes.</li>
+                      <li><b>Interprétabilité.</b> Un autoencodeur parcimonieux trouve une caractéristique « chien » dans notre GPT TinyStories ; l'ajouter pendant la génération met un chien dans chaque histoire.</li>
+                      <li><b>Principal enseignement :</b> côté agents, chaque gain est venu de la boucle autour du même modèle (outils, recherche, un harnais qui vérifie), pas d'un modèle plus gros.</li>
+                    </ul>
+                  </div>
+
+                  <p class="rk-foot">Projet personnel. Les modèles sont réduits pour tenir sur un portable : une reproduction complète de GPT-2 (124 M) y prendrait plus d'un mois, comme le mesure le module 14. Licence MIT ; les jeux de données et les modèles préentraînés conservent leurs propres licences.</p>
+
+                </div>
+
+                <p class="project-links">
+                  <a href="https://github.com/elouansalaun/from_neuron_to_AGI">Dépôt ↗</a>
+                </p>
+
+              </div>
+            </div>
+          </article>
+
+          <!-- ---------- PROJECT: JET FIGHTER ---------- -->
+          <article class="project" id="p-jetfighter">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-jetfighter-btn" type="button"
+                      aria-expanded="false" aria-controls="p-jetfighter-panel">
+                <span class="project-name">Apprendre à voler à un F-16 simulé par apprentissage par renforcement</span>
+                <span class="project-meta">2025 · Python · dynamique du vol à 6 DDL · Gymnasium · PPO · Stable-Baselines3 · apprentissage par imitation</span>
+                <span class="project-summary">Un simulateur de vol d'avion de chasse écrit <b>à partir de la physique</b> et <b>validé</b> sur des données publiées du F-16, puis utilisé comme environnement pour des agents d'<b>apprentissage par renforcement PPO</b> qui apprennent à se stabiliser, virer, naviguer et faire de la voltige, comparés à un pilote automatique classique.</span>
+                <img class="project-icon" src="../assets/img/icon_project_jet.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <div class="panel" id="p-jetfighter-panel" role="region" aria-labelledby="p-jetfighter-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <!-- <img class="rk-resume" src="../assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Résumé du projet d'avion de chasse" width="800" height="600" loading="lazy" decoding="async"> -->
+
+                  <div class="rk-top">
+                    <p>Un agent qui apprend par essais et erreurs peut-il piloter un avion de chasse aussi bien qu'un pilote automatique réglé à la main ? Un agent entraîné sur une physique fausse apprend à en exploiter les bogues ; le projet est donc divisé en deux : <a href="https://github.com/elouansalaun/jetfighter-sim">jetfighter-sim</a>, un simulateur de vol de F-16 écrit à partir de la physique et validé sur des données publiées, et <a href="https://github.com/elouansalaun/jetfighter-rl">jetfighter-rl</a>, qui le transforme en environnement d'apprentissage par renforcement et entraîne des agents sur un curriculum de manœuvres, chacune évaluée face au pilote automatique classique.</p>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — Fonctionnement</span>
+                    <div class="rk-col">
+                      <h4>Un curriculum, du plus simple au plus réaliste</h4>
+                      <p>L'agent pilote d'abord à travers les commandes de vol électriques (il commande le facteur de charge, le taux de roulis et la poussée) sur un avion simplifié et rapide à simuler, puis sur le modèle complet de corps rigide, et enfin actionne lui-même les gouvernes. Chaque tâche définit ses propres observations, ses termes de récompense et son critère de réussite.</p>
+                    </div>
+
+                    <div class="rk-tablewrap">
+                      <table class="rk-prose">
+                        <thead>
+                          <tr><th>Tâche</th><th>Critère de réussite</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Revenir ailes à plat depuis une attitude inhabituelle</td><td>à plat en moins de 10 s</td></tr>
+                          <tr><td>Atteindre un cap, une altitude et une vitesse</td><td>à 30 m / 3° / 5 m/s près, dépassement limité</td></tr>
+                          <tr><td>Virer au meilleur taux soutenable</td><td>≥ 90 % de l'optimum, sans perte d'énergie</td></tr>
+                          <tr><td>Passer par 4 points de cheminement 3D aléatoires</td><td>les 4 atteints</td></tr>
+                          <tr><td>Looping, tonneau, Immelmann, Split-S</td><td>figure accomplie, bon cap de sortie</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Compétences</span>
+                    <ul class="rk-plain">
+                      <li><b>Apprentissage par renforcement (RL).</b> PPO (Stable-Baselines3, PyTorch) sur un environnement Gymnasium sur mesure, avec apprentissage par curriculum et façonnage de la récompense à partir de termes nommés et journalisés séparément.</li>
+                      <li><b>Apprentissage par imitation.</b> Clonage comportemental avec bruit DART et préchauffage du critique, nécessaire là où le RL pur ne trouve jamais une manœuvre de 20 secondes comme un looping.</li>
+                      <li><b>Apprentissage par transfert.</b> Les politiques entraînées sur l'avion simplifié (3 DDL) sont copiées dans le modèle complet (6 DDL) puis affinées (20 % → 100 % de réussite).</li>
+                      <li><b>Conception d'environnement.</b> Des observations sans discontinuités (direction de la gravité au lieu des angles d'Euler), une action neutre qui maintient la trajectoire, et trois horloges par pas (physique à 100 Hz, commandes de vol électriques à 50 Hz, agent à 10 Hz).</li>
+                      <li><b>Simulation et commande.</b> Corps rigide à 6 DDL sur des données de soufflerie de la NASA, quaternions et RK4, commandes de vol électriques à gains séquencés, pilote automatique en cascade, LQR ; 596 tests par rapport à des solutions analytiques et à des données publiées du F-16.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Résultats</span>
+                    <ul class="rk-plain">
+                      <li>Avec les commandes de vol électriques, les agents <b>égalent ou dépassent le pilote automatique sur les 5 tâches</b>, jusqu'à 61 % de retour en plus, avec 90 à 100 % de réussite ; un parcours de 4 points de cheminement est effectué en <b>79 s contre 135 s</b>.</li>
+                      <li>Voltige apprise par imitation puis par PPO : <b>100 % de réussite</b>, légèrement mieux que le pilote scripté dont elle a été apprise.</li>
+                      <li>Sans commandes de vol électriques, en actionnant directement les gouvernes : 90 à 100 % de réussite sans sortie du domaine de vol, à 72–84 % du retour des agents qui passent par les commandes de vol électriques.</li>
+                    </ul>
+
+                    <figure>
+                      <div class="rk-frame rk-frame--img">
+                        <img src="../assets/img/JetFighter/agents_vs_reference.png" alt="Diagramme en barres horizontales du retour des agents rapporté à la politique de référence, pour cinq tâches et trois types d'agents. Hiérarchique 3 DDL : 117, 142, 106, 124 et 101 %. Hiérarchique 6 DDL : 116, 135, 161 et 118 %, aucun résultat valide en voltige. Gouvernes directes 6 DDL : 99, 98, 136, 98 et 100 %." width="1002" height="562" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption><b>Retour rapporté à la référence, une graine par agent.</b> 100 % signifie égaler le pilote automatique ou le pilote scripté sur les mêmes épisodes d'évaluation. L'agent de voltige hiérarchique 6 DDL a été entraîné avant la correction d'un reward hack ; il n'est pas présenté.</figcaption>
+                    </figure>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/JetFighter/waypoints_agent_vs_autopilot.png" alt="Trace au sol et profil d'altitude d'un parcours de quatre points de cheminement effectué par l'agent PPO et par le pilote automatique : les traces se superposent presque, mais l'agent atteint le dernier point en 79 secondes contre 135 pour le pilote automatique." width="1442" height="540" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Même parcours, même avion.</b> L'agent anticipe chaque virage et échange librement de l'altitude ; le pilote automatique vise un point de cheminement à la fois.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/JetFighter/aerobatics_imitation.png" alt="Vues de côté de quatre figures de voltige (looping, tonneau, Immelmann et Split-S), chacune effectuée par la politique neuronale clonée et par le pilote scripté ; les deux trajectoires sont presque superposées et les huit sont marquées comme réussies." width="1662" height="408" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Un réseau qui n'a jamais été récompensé, en pleine voltige.</b> Looping, tonneau, Immelmann et Split-S par la politique clonée, face au pilote scripté dont elle a appris.</figcaption>
+                      </figure>
+                    </div>
+
+                    <div class="rk-note rk-warn">
+                      <span class="rk-eyebrow">Cinq reward hacks, aucun visible sur les courbes d'apprentissage</span>
+                      <p>En rejouant les vols, on a vu des agents virer 2,5 fois plus vite que l'optimum dans une spirale descendante qui perdait 3 km, simuler un looping par un tortillement de 6 secondes, ou s'écraser tôt pour ne plus payer de pénalités. Chaque cas a été corrigé dans la récompense ; c'est pourquoi les vols ont été vérifiés visuellement, et pas seulement sur les métriques.</p>
+                    </div>
+                  </div>
+
+                  <p class="rk-foot">Projet personnel. Les résultats correspondent au meilleur modèle évalué de chaque expérience, sur une seule graine ; davantage de graines est la prochaine étape évidente.</p>
+
+                </div>
+
+                <p class="project-links">
+                  <a href="https://github.com/elouansalaun/jetfighter-sim">Dépôt du simulateur ↗</a>
+                  <a href="https://github.com/elouansalaun/jetfighter-rl">Dépôt RL ↗</a>
+                </p>
 
               </div>
             </div>
@@ -1517,6 +1288,246 @@
                 <p class="project-links">
                   <a href="https://github.com/elouansalaun/Portfolio-Construction-and-Analysis">Dépôt ↗</a>
                 </p>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ==================== CATEGORY: INGÉNIERIE ==================== -->
+        <div class="cat-slide" id="cat-eng" role="tabpanel" aria-labelledby="cat-eng-tab">
+          <p class="cat-label">Ingénierie</p>
+
+          <!-- ---------- PROJECT 4 ---------- -->
+          <article class="project" id="p-caisse">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-caisse-btn" type="button"
+                      aria-expanded="false" aria-controls="p-caisse-panel">
+                <span class="project-name">Système de caisses connectées multipoints</span>
+                <span class="project-meta">2023 · ESP32 · C++ · MQTT · 4G · Google Sheets</span>
+                <span class="project-summary">Conception et réalisation d'un dispositif multipoint d'enregistrement des ventes <b>en temps réel</b> (ESP32), connecté à un serveur central pour le suivi, l'analyse et la <b>prévision</b> des ventes en temps réel lors d'un gala de <b>3 000 personnes</b>.</span>
+                <img class="project-icon" src="../assets/img/icon_project_caisse.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <div class="panel" id="p-caisse-panel" role="region" aria-labelledby="p-caisse-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <!-- <img class="rk-resume" src="../assets/img/CashRegister/resume_connected-cash-register.svg" alt="Résumé en une page du système : des terminaux ESP32 à grille de boutons, avec anti-rebond local, publient chaque vente par une liaison 4G en MQTT QoS 1 vers un broker, via un point d'accès privé indépendant du wifi du lieu ; un pont supprime les doublons par appareil et numéro de séquence et ajoute des lignes à une feuille Google Sheets, qui alimente un tableau de réassort envoyant des alertes par bar et par article ; à côté, la prévision de rupture construite à partir de la référence de l'année précédente, d'un multiplicateur par moment de la soirée et d'un poids par emplacement, et un graphique des unités restantes d'un bar au cours d'une soirée, avec l'alerte déclenchée environ trente minutes avant l'épuisement." width="800" height="600" loading="lazy" decoding="async"> -->
+
+                  <div class="rk-top">
+                    <p>Lors d'un gala étudiant de 3 000 invités, le stock des bars était suivi à coups de bâtonnets et d'estimations. Ce projet visait à concevoir et déployer un système connecté : un pavé de boutons ESP32 à chaque bar enregistre chaque vente, les données arrivent en temps réel dans une feuille Google Sheets partagée grâce à la 4G, et une prévision légère avertit <strong>environ 30 minutes avant qu'un bar soit à court</strong>, soit le temps qu'il faut à un coursier pour le réapprovisionner.</p>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — Fonctionnement</span>
+                    <div class="rk-col">
+                      <p>Chaque appui sur un bouton est horodaté et mis en file d'attente sur l'appareil, puis publié en MQTT par un routeur 4G privé, indépendant du wifi du lieu. Un pont logiciel ajoute une ligne par vente à la feuille Google Sheets en supprimant les doublons par numéro de séquence, et la prévision lit cette même feuille.</p>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame">
+                        <svg viewBox="0 0 940 430" role="img" aria-label="Une grille de boutons sur un ESP32 à chaque point de vente publie un message de vente vers un routeur 8devices qui sert de point d'accès wifi avec liaison 4G ; le routeur le transmet en MQTT à un broker, un pont ajoute chaque message comme ligne d'une feuille Google Sheets et, en dessous, la feuille alimente un modèle de prévision dont l'alerte de réapprovisionnement est renvoyée aux coursiers et aux bars.">
+                          <defs>
+                            <marker id="cs-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                            </marker>
+                          </defs>
+
+                          <g font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".55">
+                            <text x="16" y="30">capture et transport — un chemin par vente</text>
+                            <text x="120" y="272">décider — mêmes données, relues</text>
+                          </g>
+
+                          <!-- row 1 : capture -->
+                          <g font-family="IBM Plex Mono, monospace">
+                            <!-- stacked devices -->
+                            <rect x="28" y="42" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1" opacity=".3"/>
+                            <rect x="22" y="48" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1" opacity=".5"/>
+                            <rect x="16" y="54" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
+                            <text x="94" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">point de vente</text>
+                            <text x="94" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">ESP32 · grille de boutons</text>
+                            <text x="94" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">anti-rebond · accusé LED</text>
+                            <text x="94" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">file locale hors ligne</text>
+
+                            <rect x="238" y="54" width="170" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
+                            <text x="323" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">passerelle</text>
+                            <text x="323" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">8devices router</text>
+                            <text x="323" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">AP privé pour les bars</text>
+                            <text x="323" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">4G · sans le wifi du lieu</text>
+
+                            <rect x="462" y="54" width="160" height="96" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                            <text x="542" y="82" text-anchor="middle" fill="currentColor" font-size="11.5">broker MQTT</text>
+                            <text x="542" y="101" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">topic par point de vente</text>
+                            <text x="542" y="117" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">QoS 1 · last will</text>
+                            <text x="542" y="133" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">hébergé, hors site</text>
+
+                            <rect x="676" y="54" width="140" height="96" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                            <text x="746" y="86" text-anchor="middle" fill="var(--hedge)" font-size="11.5">pont</text>
+                            <text x="746" y="105" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">abonnement → ajout</text>
+                            <text x="746" y="121" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">dédoublonnage (id, seq)</text>
+
+                            <path d="M838,72 L838,136 A46,9 0 0 0 930,136 L930,72" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
+                            <ellipse cx="884" cy="72" rx="46" ry="9" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
+                            <text x="884" y="104" text-anchor="middle" fill="var(--hedge)" font-size="10.5">Google Sheet</text>
+                            <text x="884" y="120" text-anchor="middle" fill="var(--hedge)" font-size="8.5" opacity=".7">1 ligne / vente</text>
+                          </g>
+
+                          <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cs-a)">
+                            <line x1="190" y1="102" x2="234" y2="102"/>
+                            <line x1="408" y1="102" x2="458" y2="102"/>
+                            <line x1="622" y1="102" x2="672" y2="102"/>
+                            <line x1="816" y1="102" x2="834" y2="102"/>
+                          </g>
+                          <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
+                            <text x="212" y="94" text-anchor="middle">wifi</text>
+                            <text x="433" y="94" text-anchor="middle">4G</text>
+                            <text x="647" y="94" text-anchor="middle">abo</text>
+                          </g>
+
+                          <!-- row 2 : decide -->
+                          <g font-family="IBM Plex Mono, monospace">
+                            <rect x="640" y="292" width="208" height="88" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                            <text x="744" y="320" text-anchor="middle" fill="var(--hedge)" font-size="11.5">prévision par bar</text>
+                            <text x="744" y="339" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">a priori × programme × lieu</text>
+                            <text x="744" y="355" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">temps avant rupture</text>
+
+                            <rect x="356" y="292" width="208" height="88" rx="2" fill="none" stroke="var(--risk)" stroke-width="1.5"/>
+                            <text x="460" y="320" text-anchor="middle" fill="var(--risk)" font-size="11.5">tableau des réassorts</text>
+                            <text x="460" y="339" text-anchor="middle" fill="var(--risk)" font-size="9.5" opacity=".9">quoi apporter, à quel bar</text>
+                            <text x="460" y="355" text-anchor="middle" fill="var(--risk)" font-size="9" opacity=".75">déclenché selon le délai</text>
+
+                            <rect x="72" y="292" width="200" height="88" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                            <text x="172" y="326" text-anchor="middle" fill="currentColor" font-size="11.5">coursier</text>
+                            <text x="172" y="346" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">réserve → bar</text>
+                            <text x="172" y="362" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">≈ 30 min aller-retour</text>
+                          </g>
+
+                          <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cs-a)">
+                            <path d="M884,150 L884,336 L852,336"/>
+                            <line x1="640" y1="336" x2="568" y2="336"/>
+                            <line x1="356" y1="336" x2="276" y2="336"/>
+                            <path d="M94,292 L94,158"/>
+                          </g>
+                          <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
+                            <text x="604" y="328" text-anchor="middle">τ &lt; L</text>
+                            <text x="106" y="232">réassorti</text>
+                          </g>
+                        </svg>
+                      </div>
+                      <figcaption><b>Une boucle, refermée à la réserve.</b> La colonne de gauche est la seule partie qui se trouve sur place ; tout ce qui est à droite de la liaison 4G est hors site, ce qui permet à la feuille de survivre à une coupure de courant dans un bar ou à un appareil débranché en pleine soirée.</figcaption>
+                    </figure>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Compétences</span>
+                    <ul class="rk-plain">
+                      <li><b>Embarqué et IoT.</b> Micrologiciel ESP32 en C++, une matrice de boutons et une file d'attente locale pour que le barman n'attende jamais le réseau.</li>
+                      <li><b>Messagerie fiable.</b> MQTT sur 4G avec numéros de séquence, pour qu'un appareil puisse renvoyer librement ses messages après une reconnexion sans gonfler les ventes.</li>
+                      <li><b>Prévision en temps réel.</b> Le profil de consommation de l'année précédente, ajusté selon le moment de la soirée et l'emplacement du bar, recalé sur les ventes en direct ; l'alerte se déclenche quand le temps projeté avant épuisement atteint le temps de réapprovisionnement.</li>
+                      <li><b>Conception centrée sur l'utilisateur.</b> Une feuille Google Sheets comme tableau de bord, parce que toute l'équipe l'avait déjà sur son téléphone.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Résultats</span>
+                    <div class="rk-col">
+                      <p>Utilisé pendant une soirée dans plusieurs bars et pour 3 000 invités, avec des alertes de rupture environ 30 minutes à l'avance. La soirée se termine avec un enregistrement à la seconde de ce qui a été vendu et où, sur lequel est ajustée la prévision de l'année suivante.</p>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame">
+                        <svg viewBox="0 0 940 440" role="img" aria-label="Stock restant d'un bar au cours de la soirée. Une courbe en tirets montre le même bar l'année précédente, une courbe pleine montre l'épuisement mesuré ce soir jusqu'à l'heure actuelle, et une projection en pointillés la prolonge. La projection franchit le seuil de réapprovisionnement vers 1 h 20 et atteint zéro vers 2 h 10 : l'alerte se déclenche donc pendant que le coursier a encore le temps.">
+                          <!-- programme bands -->
+                          <g opacity=".07" fill="currentColor">
+                            <rect x="280" y="50" width="130" height="330"/>
+                            <rect x="430" y="50" width="250" height="330"/>
+                          </g>
+                          <g font-family="Source Sans 3, sans-serif" font-size="10.5" fill="currentColor" opacity=".55">
+                            <text x="345" y="44" text-anchor="middle">dîner</text>
+                            <text x="555" y="44" text-anchor="middle">DJ set</text>
+                          </g>
+
+                          <!-- grid -->
+                          <g stroke="currentColor" opacity=".14" stroke-width="1">
+                            <line x1="80" y1="135" x2="880" y2="135"/>
+                            <line x1="80" y1="210" x2="880" y2="210"/>
+                            <line x1="80" y1="285" x2="880" y2="285"/>
+                            <line x1="180" y1="50" x2="180" y2="380"/>
+                            <line x1="280" y1="50" x2="280" y2="380"/>
+                            <line x1="380" y1="50" x2="380" y2="380"/>
+                            <line x1="480" y1="50" x2="480" y2="380"/>
+                            <line x1="580" y1="50" x2="580" y2="380"/>
+                            <line x1="680" y1="50" x2="680" y2="380"/>
+                            <line x1="780" y1="50" x2="780" y2="380"/>
+                          </g>
+                          <g stroke="currentColor" opacity=".45" stroke-width="1.2">
+                            <line x1="80" y1="360" x2="880" y2="360"/>
+                            <line x1="80" y1="50" x2="80" y2="380"/>
+                          </g>
+
+                          <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".65">
+                            <text x="80" y="378" text-anchor="middle">20:00</text>
+                            <text x="180" y="378" text-anchor="middle">21:00</text>
+                            <text x="280" y="378" text-anchor="middle">22:00</text>
+                            <text x="380" y="378" text-anchor="middle">23:00</text>
+                            <text x="480" y="378" text-anchor="middle">00:00</text>
+                            <text x="580" y="378" text-anchor="middle">01:00</text>
+                            <text x="680" y="378" text-anchor="middle">02:00</text>
+                            <text x="780" y="378" text-anchor="middle">03:00</text>
+                            <text x="880" y="378" text-anchor="middle">04:00</text>
+                            <text x="72" y="364" text-anchor="end">0</text>
+                            <text x="72" y="289" text-anchor="end">25 %</text>
+                            <text x="72" y="214" text-anchor="end">50 %</text>
+                            <text x="72" y="139" text-anchor="end">75 %</text>
+                            <text x="72" y="64" text-anchor="end">100 %</text>
+                          </g>
+                          <text x="480" y="404" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">heure</text>
+                          <text x="24" y="40" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">stock restant au bar</text>
+
+                          <!-- last year -->
+                          <polyline points="80,60 180,90 280,126 380,153 480,186 580,231 680,270 780,300 880,318"
+                            fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="6 4" opacity=".5"/>
+                          <text x="792" y="294" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".6">l'an dernier, même bar</text>
+
+                          <!-- restock threshold -->
+                          <line x1="80" y1="285" x2="880" y2="285" stroke="var(--risk)" stroke-width="1.4" stroke-dasharray="5 4"/>
+                          <text x="88" y="278" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--risk)">seuil de réapprovisionnement</text>
+
+                          <!-- measured -->
+                          <polyline points="80,60 130,72 180,84 230,99 280,114 330,126 380,138 430,150 480,180 520,213"
+                            fill="none" stroke="var(--hedge)" stroke-width="2.6"/>
+                          <text x="300" y="106" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--hedge)" font-weight="600">mesuré ce soir</text>
+
+                          <!-- projection -->
+                          <polyline points="520,213 570,252 612,285 645,311 680,338 700,360"
+                            fill="none" stroke="var(--perf)" stroke-width="2.2" stroke-dasharray="3 4"/>
+                          <text x="640" y="212" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--perf)" font-weight="600">projection</text>
+                          <text x="640" y="228" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--perf)" opacity=".85">λ(t) recalculé à chaque message</text>
+
+                          <!-- now -->
+                          <line x1="520" y1="50" x2="520" y2="360" stroke="var(--hedge)" stroke-width="1.2" opacity=".55"/>
+                          <circle cx="520" cy="213" r="5" fill="var(--hedge)"/>
+                          <text x="514" y="70" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--hedge)">maintenant · 00:40</text>
+
+                          <!-- alert -->
+                          <circle cx="612" cy="285" r="6" fill="var(--risk)"/>
+                          <line x1="612" y1="285" x2="612" y2="360" stroke="var(--risk)" stroke-width="1" opacity=".45"/>
+                          <text x="602" y="310" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--risk)" font-weight="600">alerte 01:20</text>
+                          <text x="602" y="326" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--risk)" opacity=".85">τ = 50 min ≈ L</text>
+                          <text x="712" y="352" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--perf)" opacity=".85">rupture prévue 02:10</text>
+                        </svg>
+                      </div>
+                      <figcaption><b>Un bar, une soirée, reconstitués pour cette page.</b> La courbe en tirets est l'a priori, la courbe pleine ce que disent réellement les appuis sur les boutons, et l'alerte n'est pas déclenchée quand le stock est bas, mais quand le temps projeté avant épuisement tombe à la durée de l'aller-retour du coursier.</figcaption>
+                    </figure>
+                  </div>
+
+                  <p class="rk-foot">Conçu pour un gala étudiant, 2023. Le micrologiciel, le pont et la feuille de prévision ont été écrits pour l'événement et ne sont pas publics ; les figures sont redessinées à partir des journaux de la soirée.</p>
+
+                </div>
 
               </div>
             </div>
@@ -1812,6 +1823,6 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
-<script defer src="../assets/main.js?v=4"></script>
+<script defer src="../assets/main.js?v=5"></script>
 </body>
 </html>

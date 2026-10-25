@@ -12,7 +12,7 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
-<link rel="stylesheet" href="assets/style.css?v=5">
+<link rel="stylesheet" href="assets/style.css?v=6">
 
 <script>
   /* Runs before paint: avoids a flash of the wrong theme or of open panels. */
@@ -93,9 +93,10 @@
     <div class="cats">
       <div class="cat-bar">
         <div class="cat-tabs" role="tablist" aria-label="Project categories">
-          <button class="cat-tab" id="cat-data-tab" type="button" role="tab" aria-selected="true" aria-controls="cat-data">Data science <span class="cat-count">2</span></button>
-          <button class="cat-tab" id="cat-llm-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-llm">LLMs &amp; agents <span class="cat-count">4</span></button>
-          <button class="cat-tab" id="cat-eng-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-eng">ML-OR-Engineering <span class="cat-count">4</span></button>
+          <button class="cat-tab" id="cat-selected-tab" type="button" role="tab" aria-selected="true" aria-controls="cat-selected">Selected projects <span class="cat-count">3</span></button>
+          <button class="cat-tab" id="cat-ai-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-ai">Applied AI &amp; agents <span class="cat-count">4</span></button>
+          <button class="cat-tab" id="cat-ml-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-ml">ML &amp; optimization <span class="cat-count">4</span></button>
+          <button class="cat-tab" id="cat-eng-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-eng">Engineering <span class="cat-count">2</span></button>
         </div>
         <button class="cat-arrow cat-prev" type="button" aria-label="Previous category"><span aria-hidden="true"></span></button>
         <button class="cat-arrow cat-next" type="button" aria-label="Next category"><span aria-hidden="true"></span></button>
@@ -103,9 +104,19 @@
 
       <div class="cat-track">
 
-        <!-- ==================== CATEGORY: DATA SCIENCE ==================== -->
-        <div class="cat-slide" id="cat-data" role="tabpanel" aria-labelledby="cat-data-tab">
-          <p class="cat-label">Data science</p>
+        <!-- ==================== CATEGORY: SELECTED PROJECTS ==================== -->
+        <div class="cat-slide" id="cat-selected" role="tabpanel" aria-labelledby="cat-selected-tab">
+          <p class="cat-label">Selected projects</p>
+
+          <!-- Filled by main.js with copies of these projects; edit them in their own category. -->
+          <div class="project-ref" data-ref="p-forecasting"></div>
+          <div class="project-ref" data-ref="p-llm-rts"></div>
+          <div class="project-ref" data-ref="p-seao"></div>
+        </div>
+
+        <!-- ==================== CATEGORY: APPLIED AI &AMP; AGENTS ==================== -->
+        <div class="cat-slide" id="cat-ai" role="tabpanel" aria-labelledby="cat-ai-tab">
+          <p class="cat-label">Applied AI &amp; agents</p>
 
           <!-- ---------- PROJECT 1 ---------- -->
           <article class="project" id="p-forecasting">
@@ -394,459 +405,6 @@
 
                 <p class="project-links">
                   <a href="https://github.com/elouansalaun/MSc.A_Integrating_AI_to_tender_response_process">Thesis summary and full thesis ↗</a>
-                </p>
-
-              </div>
-            </div>
-          </article>
-
-          <!-- ---------- PROJECT: JET FIGHTER ---------- -->
-          <article class="project" id="p-jetfighter">
-            <h3 class="project-heading">
-              <button class="project-head" id="p-jetfighter-btn" type="button"
-                      aria-expanded="false" aria-controls="p-jetfighter-panel">
-                <span class="project-name">Teaching a simulated F-16 to fly with reinforcement learning</span>
-                <span class="project-meta">2025 · Python · 6-DOF flight dynamics · Gymnasium · PPO · Stable-Baselines3 · imitation learning</span>
-                <span class="project-summary">A fighter-jet flight simulator written <b>from the physics up</b> and <b>validated</b> against published F-16 data, then used as the environment for <b>PPO reinforcement learning</b> agents that learn to stabilize, turn, navigate and fly aerobatics, judged against a classical autopilot.</span>
-                <img class="project-icon" src="assets/img/icon_project_jet.svg" alt="" aria-hidden="true">
-                <span class="chevron" aria-hidden="true"></span>
-              </button>
-            </h3>
-
-            <div class="panel" id="p-jetfighter-panel" role="region" aria-labelledby="p-jetfighter-btn">
-              <div class="panel-inner">
-
-                <div class="rk">
-
-                  <!-- <img class="rk-resume" src="assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Summary of the jet fighter project" width="800" height="600" loading="lazy" decoding="async"> -->
-
-                  <div class="rk-top">
-                    <p>Can an agent that learns by trial and error fly a fighter jet as well as a
-                    hand-tuned autopilot? An agent trained on wrong physics learns to exploit the bugs, so
-                    the project is split in two: <a href="https://github.com/elouansalaun/jetfighter-sim">jetfighter-sim</a>,
-                    an F-16 flight simulator written from the physics up and validated against published
-                    data, and <a href="https://github.com/elouansalaun/jetfighter-rl">jetfighter-rl</a>,
-                    which turns it into a reinforcement-learning environment and trains agents on a
-                    curriculum of manoeuvres, each judged against the classical autopilot.</p>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">01 — How it works</span>
-                    <div class="rk-col">
-                      <h4>A curriculum, from easy to realistic</h4>
-                      <p>The agent first flies through the fly-by-wire (it commands g, roll rate and
-                      throttle) on a fast simplified aircraft, then on the full rigid-body model, and
-                      finally moves the control surfaces itself. Each task defines its own observations,
-                      reward terms and success criterion.</p>
-                    </div>
-
-                    <div class="rk-tablewrap">
-                      <table class="rk-prose">
-                        <thead>
-                          <tr><th>Task</th><th>Success criterion</th></tr>
-                        </thead>
-                        <tbody>
-                          <tr><td>Recover wings-level from an unusual attitude</td><td>level within 10 s</td></tr>
-                          <tr><td>Reach a heading, altitude and speed</td><td>within 30 m / 3° / 5 m/s, limited overshoot</td></tr>
-                          <tr><td>Turn at the best sustainable rate</td><td>≥ 90% of optimal, no energy loss</td></tr>
-                          <tr><td>Fly through 4 random 3D waypoints</td><td>all 4 captured</td></tr>
-                          <tr><td>Loop, roll, Immelmann, Split-S</td><td>figure completed, right exit heading</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">02 — Skills</span>
-                    <ul class="rk-plain">
-                      <li><b>Reinforcement learning (RL).</b> PPO (Stable-Baselines3, PyTorch) on a custom
-                      Gymnasium environment, with curriculum learning and reward shaping from named,
-                      separately logged terms.</li>
-                      <li><b>Imitation learning.</b> Behaviour cloning with DART noise and a critic
-                      warm-up, needed where pure RL never finds a 20-second manoeuvre such as a loop.</li>
-                      <li><b>Transfer learning.</b> Policies trained on the simplified aircraft (3 DOF) are
-                      copied into the full model (6 DOF) and fine-tuned (20% → 100% success).</li>
-                      <li><b>Environment design.</b> Observations without discontinuities (gravity
-                      direction instead of Euler angles), a neutral action that holds the flight path, and
-                      three clocks per step (100 Hz physics, 50 Hz fly-by-wire, 10 Hz agent).</li>
-                      <li><b>Simulation and control.</b> 6-DOF rigid body on NASA wind-tunnel data,
-                      quaternions and RK4, gain-scheduled fly-by-wire, cascaded autopilot, LQR; 596
-                      tests against analytic solutions and published F-16 figures.</li>
-                    </ul>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">03 — Results</span>
-                    <ul class="rk-plain">
-                      <li>Through the fly-by-wire, agents <b>match or beat the autopilot on all 5 tasks</b>,
-                      by up to 61% in return, with 90–100% success; a 4-waypoint course is flown in
-                      <b>79 s against 135 s</b>.</li>
-                      <li>Aerobatics learned by imitation then PPO: <b>100% success</b>, slightly better
-                      than the scripted pilot it learned from.</li>
-                      <li>Without the fly-by-wire, moving the raw control surfaces: 90–100% success with
-                      no envelope violation, at 72–84% of the fly-by-wire agents' return.</li>
-                    </ul>
-
-                    <figure>
-                      <div class="rk-frame rk-frame--img">
-                        <img src="assets/img/JetFighter/agents_vs_reference.png" alt="Horizontal bar chart of agent return relative to the reference policy for five tasks and three agent types. Hierarchical 3-DOF: 117, 142, 106, 124 and 101 percent. Hierarchical 6-DOF: 116, 135, 161 and 118 percent, no valid aerobatics result. Direct surfaces 6-DOF: 99, 98, 136, 98 and 100 percent." width="1002" height="562" loading="lazy" decoding="async">
-                      </div>
-                      <figcaption><b>Return relative to the reference, one seed per agent.</b> 100% means
-                      matching the autopilot or scripted pilot on the same evaluation episodes. The 6-DOF
-                      hierarchical aerobatics agent was trained before a reward hack was fixed and is left out.</figcaption>
-                    </figure>
-
-                    <div class="rk-shots">
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="assets/img/JetFighter/waypoints_agent_vs_autopilot.png" alt="Ground track and altitude profile of a four-waypoint course flown by the PPO agent and the autopilot: the tracks nearly overlap, but the agent reaches the last waypoint in 79 seconds against 135 for the autopilot." width="1442" height="540" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>Same course, same aircraft.</b> The agent anticipates each turn and
-                        trades altitude freely; the autopilot flies to one waypoint at a time.</figcaption>
-                      </figure>
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="assets/img/JetFighter/aerobatics_imitation.png" alt="Side views of four aerobatic figures, loop, aileron roll, Immelmann and Split-S, each flown by the cloned neural policy and by the scripted pilot, with the two trajectories almost superimposed and all eight marked successful." width="1662" height="408" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>A network that was never rewarded, flying aerobatics.</b> Loop, roll,
-                        Immelmann and Split-S by the cloned policy against the scripted pilot it learned from.</figcaption>
-                      </figure>
-                    </div>
-
-                    <div class="rk-note rk-warn">
-                      <span class="rk-eyebrow">Five reward hacks, none visible on the learning curves</span>
-                      <p>Replaying the flights showed agents turning 2.5× faster than the optimum in a
-                      descending spiral that lost 3 km, faking a loop with a 6-second wiggle, or crashing
-                      early to stop paying costs. Each was closed by a reward fix, which is why the flights
-                      were checked visually, not only on the metrics.</p>
-                    </div>
-                  </div>
-
-                  <p class="rk-foot">Personal project. Results are the best evaluated model of each
-                  experiment on a single seed; more seeds are the obvious next step.</p>
-
-                </div>
-
-                <p class="project-links">
-                  <a href="https://github.com/elouansalaun/jetfighter-sim">Simulator repository ↗</a>
-                  <a href="https://github.com/elouansalaun/jetfighter-rl">RL repository ↗</a>
-                </p>
-
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- ==================== CATEGORY: LLMS &AMP; AGENTS ==================== -->
-        <div class="cat-slide" id="cat-llm" role="tabpanel" aria-labelledby="cat-llm-tab">
-          <p class="cat-label">LLMs &amp; agents</p>
-
-          <!-- ---------- PROJECT: FROM NEURON TO AGI ---------- -->
-          <article class="project" id="p-neuron-agi">
-            <h3 class="project-heading">
-              <button class="project-head" id="p-neuron-agi-btn" type="button"
-                      aria-expanded="false" aria-controls="p-neuron-agi-panel">
-                <span class="project-name">From Neuron to AGI: deep learning, LLMs and agents built from scratch</span>
-                <span class="project-meta">2026 · Python · NumPy · PyTorch · Transformers · LoRA · DPO · GRPO · PPO · RAG · MCP</span>
-                <span class="project-summary">Rebuilt AI from the perceptron to LLM agents in 27 hand-coded modules checked against <b>PyTorch</b> and <b>Hugging Face</b> (GPT, LoRA, PPO, DPO, GRPO, RAG). All on a laptop.</span>
-                <img class="project-icon" src="assets/img/icon_project_neuron_agi.svg" alt="" aria-hidden="true">
-                <span class="chevron" aria-hidden="true"></span>
-              </button>
-            </h3>
-
-            <img class="project-preview" src="assets/img/NeuronAGI/from_neuron_to_agi_overview.gif" alt="Animated overview of the From Neuron to AGI project: from a single neuron to deep learning, GPT, reinforcement learning and agents." width="1200" height="675" loading="lazy" decoding="async">
-
-            <div class="panel" id="p-neuron-agi-panel" role="region" aria-labelledby="p-neuron-agi-btn">
-              <div class="panel-inner">
-
-                <div class="rk">
-
-                  <div class="rk-top">
-                    <p>The same few principles (a weighted sum, the chain rule, attention, a loss, a
-                    feedback loop) are enough to go from the first artificial neuron to today's language-model
-                    agents. This project proves it by <strong>building every step by hand</strong>, in 27
-                    notebooks that each add one idea, implement it, check it against a reference library and
-                    only then use the library. Everything runs on a MacBook Air M5, and every notebook is
-                    saved with its outputs, so it can be read on GitHub without running anything.</p>
-
-                    <div class="rk-facts">
-                      <div class="rk-fact"><b>1.93</b><span>TinyStories loss of an 18M-parameter GPT trained in 14 min, against 2.63 for GPT-2</span></div>
-                      <div class="rk-fact"><b>3.2 → 91.5%</b><span>3-digit × 2-digit multiplication, same tiny Transformer, without and with a chain of thought</span></div>
-                      <div class="rk-fact"><b>4 → 6 of 8</b><span>bugs fixed by a coding agent once the harness runs the tests instead of trusting the model</span></div>
-                    </div>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">01 — How it works</span>
-                    <div class="rk-col">
-                      <h4>Build it, check it, then use the library</h4>
-                      <p>Backpropagation is derived by hand before an autograd engine is written; that engine
-                      is checked against PyTorch before PyTorch is used. Attention comes before
-                      <code>nn.MultiheadAttention</code>, a GPT before Hugging Face's, LoRA before
-                      <code>peft</code>, PPO before any RL library, an agent loop before any framework and an
-                      MCP server before the official SDK. Later modules import earlier ones: the coding agent
-                      of module 24 runs on the agent loop of 22, which reuses the chat template of 19, which
-                      fine-tunes the GPT of 14.</p>
-                    </div>
-
-                    <div class="rk-blocks">
-                      <div class="rk-block">
-                        <div class="rk-nb">00 – 07</div>
-                        <div>
-                          <h5>How networks learn</h5>
-                          <p>A numerical gradient checker, the perceptron and why XOR defeats it, softmax regression on MNIST in pure NumPy, a hand-derived MLP, a scalar then tensor autograd engine, optimisers from SGD to AdamW, and a small ResNet on CIFAR-10.</p>
-                        </div>
-                      </div>
-                      <div class="rk-block">
-                        <div class="rk-nb">08 – 16</div>
-                        <div>
-                          <h5>Language and Transformers</h5>
-                          <p>n-grams and perplexity, word2vec, LSTMs, attention, a BPE tokenizer compared with GPT-2's, a Transformer up to RoPE, a GPT that loads OpenAI's GPT-2 weights, a scaling sweep, a KV cache, mixture of experts, and a small ViT and CLIP.</p>
-                        </div>
-                      </div>
-                      <div class="rk-block">
-                        <div class="rk-nb">17 – 21</div>
-                        <div>
-                          <h5>Reinforcement learning and post-training</h5>
-                          <p>Q-learning, DQN, REINFORCE and PPO up to LunarLander; then GPT-2 fine-tuned into a chatbot (fully and with LoRA), a reward model, best-of-N and DPO, and GRPO with verifiable rewards on arithmetic.</p>
-                        </div>
-                      </div>
-                      <div class="rk-block">
-                        <div class="rk-nb">22 – 26</div>
-                        <div>
-                          <h5>Agents and the road to AGI</h5>
-                          <p>A tool-using agent loop with no framework, BM25 and embedding retrieval over the project's own notebooks, a coding agent and MCP from scratch, an evaluation harness, a sycophancy test, a sparse autoencoder, and measured open problems (continual learning, ARC).</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">02 — Skills</span>
-                    <ul class="rk-plain">
-                      <li><b>Deep-learning fundamentals.</b> Backpropagation, initialisation, normalisation,
-                      residual connections and optimisers implemented by hand and verified with a gradient
-                      checker.</li>
-                      <li><b>Transformers and LLMs.</b> A GPT written from scratch that reproduces Hugging
-                      Face's GPT-2 logits, plus scaling laws, mixed precision, a KV cache and
-                      FlashAttention's online softmax.</li>
-                      <li><b>Post-training.</b> SFT, LoRA, reward models, DPO and GRPO, on models small enough
-                      to train on a laptop.</li>
-                      <li><b>Reinforcement learning.</b> Value iteration, DQN, REINFORCE, GAE and PPO, with the
-                      ablations that show why each ingredient is there.</li>
-                      <li><b>LLM agents.</b> Function calling, RAG, long-term memory, a coding agent and an
-                      MCP client and server, on a 4B-parameter open model (Qwen3-4B).</li>
-                      <li><b>Evaluation and interpretability.</b> A benchmark harness with confidence intervals,
-                      reward-hacking and sycophancy tests, and a sparse autoencoder on our own GPT.</li>
-                    </ul>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">03 — Results</span>
-                    <div class="rk-col">
-                      <p>Every number is measured in the notebooks, on a laptop. The notebooks also report
-                      what did not work, and why: DQN without a target network, PPO without clipping, GRPO at
-                      too high a learning rate, agents that claim fixes they never made.</p>
-                    </div>
-
-                    <div class="rk-shots">
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="assets/img/NeuronAGI/scaling_tinystories.png" alt="Log-log plot of validation loss against training compute for six GPT sizes from 0.61M to 7.97M parameters on TinyStories; the curves form a frontier fitted by a dashed line, loss proportional to compute to the power minus 0.175." width="718" height="472" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>Module 15, a scaling law on a laptop.</b> Six GPT sizes trained on
-                        TinyStories; the compute-optimal frontier is a power law, L ∝ C<sup>−0.175</sup>, as in
-                        Kaplan et al.</figcaption>
-                      </figure>
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="assets/img/NeuronAGI/ppo_vs_no_clip.png" alt="Two panels on CartPole over 100,000 environment steps. Left, return: PPO runs climb to 500 and stay there, while runs without clipping repeatedly collapse. Right, KL divergence per iteration on a log scale: PPO stays around 0.005, unclipped runs reach 0.1 to 1." width="1169" height="354" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>Module 18, why PPO clips.</b> CartPole, 10 epochs per batch: without
-                        clipping, each update moves the policy one to two orders of magnitude further and the
-                        return collapses again and again.</figcaption>
-                      </figure>
-                    </div>
-
-                    <div class="rk-tablewrap">
-                      <table>
-                        <caption>Selected results. Each pair is the same model, with and without one idea.</caption>
-                        <thead>
-                          <tr><th>Module</th><th>Without</th><th>With</th></tr>
-                        </thead>
-                        <tbody>
-                          <tr><td>19 · LoRA on 1.9% of the parameters</td><td>full fine-tuning, loss 2.077</td><td>loss 2.086</td></tr>
-                          <tr><td>21 · Chain of thought, tiny Transformer</td><td class="rk-bad">3.2%</td><td class="rk-good">91.5%</td></tr>
-                          <tr><td>22 · Tools for a 4B model</td><td class="rk-bad">1 of 8</td><td class="rk-good">7 of 8</td></tr>
-                          <tr><td>23 · RAG over the project's notebooks</td><td class="rk-bad">1 of 16</td><td class="rk-good">15 of 16</td></tr>
-                          <tr><td>24 · Harness that runs the tests</td><td>4 of 8 bugs</td><td class="rk-good">6 of 8 bugs</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <ul class="rk-plain">
-                      <li><b>PPO from scratch</b> lands LunarLander in 96% of new episodes.</li>
-                      <li><b>Interpretability.</b> A sparse autoencoder finds a "dog" feature in our TinyStories
-                      GPT; adding it while generating puts a dog in every story.</li>
-                      <li><b>Main takeaway:</b> on the agent side, every gain came from the loop around the same
-                      model (tools, retrieval, a harness that checks), not from a bigger one.</li>
-                    </ul>
-                  </div>
-
-                  <p class="rk-foot">Personal project. The models are scaled down to fit a laptop: a full
-                  GPT-2 (124M) reproduction would take more than a month on it, as module 14 measures. MIT
-                  licence; datasets and pretrained models keep their own licences.</p>
-
-                </div>
-
-                <p class="project-links">
-                  <a href="https://github.com/elouansalaun/from_neuron_to_AGI">Repository ↗</a>
-                </p>
-
-              </div>
-            </div>
-          </article>
-
-          <!-- ---------- PROJECT: LLM RTS ---------- -->
-          <article class="project" id="p-llm-rts">
-            <h3 class="project-heading">
-              <button class="project-head" id="p-llm-rts-btn" type="button"
-                      aria-expanded="false" aria-controls="p-llm-rts-panel">
-                <span class="project-name">A local LLM plays a real-time strategy game with agents and knowledge base</span>
-                <span class="project-meta">2026 · TypeScript · Node.js · Qwen 3.5 9B · LM Studio · JSON Schema · RAG · Vitest</span>
-                <span class="project-summary">A small <b>LLM</b> running on a laptop plays OpenFront against the game's own AI: it reads the game as a <b>graph</b>, draws on a tested <b>knowledge base</b>, <b>plans as a strategist and orders as a commander</b>, while the code enforces the plan. It won a full match with 80.9% of the land.</span>
-                <img class="project-icon" src="assets/img/icon_project_rts.svg" alt="" aria-hidden="true">
-                <span class="chevron" aria-hidden="true"></span>
-              </button>
-            </h3>
-
-            <img class="project-preview" src="assets/img/LLMRTS/llm_rts_explained.gif" alt="Animated explanation of the LLM RTS project: a local LLM strategist and commander driving a real-time strategy game, with troop rules enforced by code." width="1200" height="675" loading="lazy" decoding="async">
-
-            <div class="panel" id="p-llm-rts-panel" role="region" aria-labelledby="p-llm-rts-btn">
-              <div class="panel-inner">
-
-                <div class="rk">
-
-                  <div class="rk-top">
-                    <p>Can a <strong>9-billion-parameter model running locally</strong> (Qwen 3.5 9B in LM
-                    Studio, on a MacBook Air) play a real-time strategy game well? Not by looking at
-                    328,000 map tiles. This agent reduces <a href="https://github.com/openfrontio/OpenFrontIO">OpenFront</a>
-                    to a graph, gives the model a short situation text and a menu of
-                    legal options, and splits it into two roles: a <strong>strategist</strong> that plans and
-                    a <strong>commander</strong> that gives orders. The code enforces the plan between calls.</p>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">01 — How it works</span>
-                    <div class="rk-col">
-                      <h4>The LLM chooses what, the code chooses where</h4>
-                      <p>The unmodified OpenFront engine runs headless in the same process, and game time
-                      pauses while the model thinks. Each change becomes a sentence ("Queensland started
-                      attacking you with 46,040 troops"). The strategist, called every 20 s or on major
-                      events, gets the core rules plus the 6 most relevant of 37 knowledge sections and
-                      writes a plan: priorities, a focus, the troop reserve to keep and the size of expansion
-                      waves. The commander, called only when something changes, turns it into at most two
-                      orders as JSON. The schema is rebuilt every turn and its enum is the current list of
-                      legal option ids, so an invalid order cannot be written.</p>
-                    </div>
-
-      <pre class="rk-code"><code><span class="c">// a real commander turn from the winning match, at 3:15</span>
-{
-  "reason": "Carolinian Republic eliminated; attack Carolinian
-             Commonwealth to secure west, then build city for
-             growth. Keep 35% reserve (682,942 troops) ...",
-  "actions": [
-    { "id": "attack_carolinian_commonwealth", "troops_percent": 30 },
-    { "id": "build_city", "troops_percent": 0 }
-  ]
-}</code></pre>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">02 — Skills</span>
-                    <ul class="rk-plain">
-                      <li><b>LLM agent design.</b> A planner/executor split, event-driven calls, and a
-                      self-check that sends a rule-breaking answer back once with the numbers.</li>
-                      <li><b>Structured output.</b> A JSON schema whose enum is the menu of legal options,
-                      with <code>maxLength</code> on every text field so an answer can never be cut off
-                      mid-JSON.</li>
-                      <li><b>Retrieval without embeddings.</b> 37 tagged knowledge sections; the situation
-                      picks 6, deterministically, and every factual section is checked against the real
-                      engine by a test.</li>
-                      <li><b>State abstraction.</b> 328,000 tiles → a graph of ~30 players (borders, attacks,
-                      alliances) → a short text a 9B model can reason about.</li>
-                      <li><b>Integrating a large codebase.</b> The OpenFront engine at a pinned commit,
-                      fetched with a sparse checkout (7 MB instead of 1.3 GB).</li>
-                      <li><b>Evaluation and reproducibility.</b> Scripted baselines on the same seed, offline
-                      reproductions of failures without the LLM, every prompt and answer logged to
-                      <code>turns.jsonl</code>, and 39 Vitest tests, including a full match with a mock LLM
-                      that runs a 30-minute game in seconds.</li>
-                    </ul>
-                  </div>
-
-                  <div class="rk-sec">
-                    <span class="rk-eyebrow">03 — Results</span>
-                    <div class="rk-col">
-                      <p>On the Australia map against 7 AI nations and 20 tribes (Easy, seed
-                      <code>australia-1</code>), <strong>the LLM won outright after 8 min 49 s with 80.9% of
-                      the land</strong>, ranked first from the first minute. 130 LLM calls (29 strategist,
-                      101 commander), 0 errors, 8.0 s mean latency, no cloud API.</p>
-                    </div>
-
-                    <div class="rk-shots">
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="assets/img/LLMRTS/map-03min.png" alt="Map of Australia at minute 3: the LLM in gold holds a wide band across the centre; around it, nations in red, green, blue, cyan, pink, purple and brown, and grey tribes left in the gaps." width="1000" height="750" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>Minute 3, 37.8% of the land.</b> The LLM (gold) spawned in the central
-                        plains as the knowledge base advises, ate the tribes around it and allied with its
-                        neighbours.</figcaption>
-                      </figure>
-                      <figure>
-                        <div class="rk-frame rk-frame--img">
-                          <img src="assets/img/LLMRTS/final.png" alt="Final map of Australia: gold covers almost the whole continent and Tasmania; only a red nation in the west and a green one in the south-west remain. White squares mark buildings." width="1000" height="750" loading="lazy" decoding="async">
-                        </div>
-                        <figcaption><b>8:49, 80.9%, the game declares the LLM the winner.</b> Once its
-                        alliances expired, Victoria and New South Wales fell, then Queensland.</figcaption>
-                      </figure>
-                    </div>
-
-                    <div class="rk-tablewrap">
-                      <table>
-                        <caption>Iterating from the logs, on the same seed. Each failure was diagnosed by
-                        reading <code>turns.jsonl</code> and fixed in the interface or the code.</caption>
-                        <thead>
-                          <tr><th>Version</th><th>Setting</th><th>Result</th></tr>
-                        </thead>
-                        <tbody>
-                          <tr><td>Scripted players, no LLM</td><td>Medium</td><td class="rk-bad">peak 5.8%, eliminated 6:21</td></tr>
-                          <tr><td>Strategist + commander, the LLM controls every troop</td><td>Medium</td><td class="rk-bad">peak 10.2%, eliminated 3:50</td></tr>
-                          <tr><td>Same model, the code enforces reserve and waves</td><td>Medium, 3 min</td><td>24.1%, rank 1 of 11</td></tr>
-                          <tr class="rk-hero"><td>Same agent, full game</td><td>Easy</td><td class="rk-good">won at 8:49, 80.9%</td></tr>
-                        </tbody>
-                      </table>
-                    </div>
-
-                    <ul class="rk-plain">
-                      <li><b>"Send troops to defend."</b> The model kept attacking a stronger nation "to
-                      defend", draining its army from 111,000 to 27,000. In OpenFront, troops kept at home
-                      <em>are</em> the defence: a core rule now says so, and each attack option shows the
-                      strength comparison next to its id.</li>
-                      <li><b>Faster is not more reactive.</b> A 1 s cadence repeated "expand 30%" and drained
-                      the army in 10 s; a script with no LLM reproduced it. A troop budget per 5 s and a
-                      reserve chosen by the plan took the same cadence from eliminated to first place.</li>
-                      <li><b>Main takeaway:</b> most of the improvement came from the interface (wording,
-                      menu, schema, troop rules), not from the model.</li>
-                    </ul>
-                  </div>
-
-                  <p class="rk-foot">Personal project. Multi-seed runs and ablations (knowledge base off, troop rules off) are the next
-                  step. AGPL-3.0; independent of OpenFront.</p>
-
-                </div>
-
-                <p class="project-links">
-                  <a href="https://github.com/elouansalaun/LLM_RTS2">Repository ↗</a>
                 </p>
 
               </div>
@@ -1163,263 +721,455 @@
               </div>
             </div>
           </article>
-        </div>
 
-        <!-- ==================== CATEGORY: ENGINEERING ==================== -->
-        <div class="cat-slide" id="cat-eng" role="tabpanel" aria-labelledby="cat-eng-tab">
-          <p class="cat-label">ML/OR/Engineering</p>
-
-          <!-- ---------- PROJECT 4 ---------- -->
-          <article class="project" id="p-caisse">
+          <!-- ---------- PROJECT: LLM RTS ---------- -->
+          <article class="project" id="p-llm-rts">
             <h3 class="project-heading">
-              <button class="project-head" id="p-caisse-btn" type="button"
-                      aria-expanded="false" aria-controls="p-caisse-panel">
-                <span class="project-name">Connected multi-point cash-register system</span>
-                <span class="project-meta">2023 · ESP32 · C++ · MQTT · 4G · Google Sheets</span>
-                <span class="project-summary">Design and implementation of <b>real-time</b> multi-point sales-recording device (ESP32) connected to a central server to enable real-time tracking, analysis and <b>forecasting</b> of sales data for a <b>3000-person</b> gala.</span>
-                <img class="project-icon" src="assets/img/icon_project_caisse.svg" alt="" aria-hidden="true">
+              <button class="project-head" id="p-llm-rts-btn" type="button"
+                      aria-expanded="false" aria-controls="p-llm-rts-panel">
+                <span class="project-name">A local LLM plays a real-time strategy game with agents and knowledge base</span>
+                <span class="project-meta">2026 · TypeScript · Node.js · Qwen 3.5 9B · LM Studio · JSON Schema · RAG · Vitest</span>
+                <span class="project-summary">A small <b>LLM</b> running on a laptop plays OpenFront against the game's own AI: it reads the game as a <b>graph</b>, draws on a tested <b>knowledge base</b>, <b>plans as a strategist and orders as a commander</b>, while the code enforces the plan. It won a full match with 80.9% of the land.</span>
+                <img class="project-icon" src="assets/img/icon_project_rts.svg" alt="" aria-hidden="true">
                 <span class="chevron" aria-hidden="true"></span>
               </button>
             </h3>
 
-            <div class="panel" id="p-caisse-panel" role="region" aria-labelledby="p-caisse-btn">
+            <img class="project-preview" src="assets/img/LLMRTS/llm_rts_explained.gif" alt="Animated explanation of the LLM RTS project: a local LLM strategist and commander driving a real-time strategy game, with troop rules enforced by code." width="1200" height="675" loading="lazy" decoding="async">
+
+            <div class="panel" id="p-llm-rts-panel" role="region" aria-labelledby="p-llm-rts-btn">
               <div class="panel-inner">
 
                 <div class="rk">
 
-                  <!-- <img class="rk-resume" src="assets/img/CashRegister/resume_connected-cash-register.svg" alt="One-page summary of the system: ESP32 button-grid terminals with local debounce publish each sale over a 4G uplink with MQTT QoS 1 to a broker on a private access point, independent of the venue wifi; a bridge deduplicates by device and sequence number and appends rows to a Google Sheet, which feeds a restock board alerting per bar and item; beside it, the stockout forecast built from last year's baseline, a night-segment multiplier and a location weight, and a chart of units remaining for one bar over one night, with the alert raised about thirty minutes before depletion." width="800" height="600" loading="lazy" decoding="async"> -->
-
                   <div class="rk-top">
-                    <p>At a 3,000-guest student gala, bar stock was tracked with tally marks and guesswork.
-                    This project aimed to design and deploy a connected system: an ESP32 button pad at every bar records
-                    each sale, the data reaches a shared Google Sheet in real time over 4G, and a
-                    lightweight forecast warns <strong>about 30 minutes before a bar runs out</strong>,
-                    which is the time a runner needs to restock it.</p>
+                    <p>Can a <strong>9-billion-parameter model running locally</strong> (Qwen 3.5 9B in LM
+                    Studio, on a MacBook Air) play a real-time strategy game well? Not by looking at
+                    328,000 map tiles. This agent reduces <a href="https://github.com/openfrontio/OpenFrontIO">OpenFront</a>
+                    to a graph, gives the model a short situation text and a menu of
+                    legal options, and splits it into two roles: a <strong>strategist</strong> that plans and
+                    a <strong>commander</strong> that gives orders. The code enforces the plan between calls.</p>
                   </div>
 
                   <div class="rk-sec">
                     <span class="rk-eyebrow">01 — How it works</span>
                     <div class="rk-col">
-                      <p>A button press is timestamped and queued on the device, then published over MQTT
-                      through a private 4G router, independent of the venue's wifi. A bridge appends one row
-                      per sale to the Google Sheet, removing duplicates by sequence number, and the
-                      forecast reads the same sheet.</p>
+                      <h4>The LLM chooses what, the code chooses where</h4>
+                      <p>The unmodified OpenFront engine runs headless in the same process, and game time
+                      pauses while the model thinks. Each change becomes a sentence ("Queensland started
+                      attacking you with 46,040 troops"). The strategist, called every 20 s or on major
+                      events, gets the core rules plus the 6 most relevant of 37 knowledge sections and
+                      writes a plan: priorities, a focus, the troop reserve to keep and the size of expansion
+                      waves. The commander, called only when something changes, turns it into at most two
+                      orders as JSON. The schema is rebuilt every turn and its enum is the current list of
+                      legal option ids, so an invalid order cannot be written.</p>
                     </div>
 
-                    <figure>
-                      <div class="rk-frame">
-                        <svg viewBox="0 0 940 430" role="img" aria-label="A button grid on an ESP32 at each point of sale publishes a sale message to an 8devices router acting as wifi access point with a 4G uplink; the router forwards it over MQTT to a broker, a bridge appends each message as a row of a Google Sheet, and below, the sheet feeds a forecasting model whose restocking alert is sent back to the runners and the bars.">
-                          <defs>
-                            <marker id="cs-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
-                            </marker>
-                          </defs>
-
-                          <g font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".55">
-                            <text x="16" y="30">capture and transport — one path per sale</text>
-                            <text x="120" y="272">decide — same data, read back</text>
-                          </g>
-
-                          <!-- row 1 : capture -->
-                          <g font-family="IBM Plex Mono, monospace">
-                            <!-- stacked devices -->
-                            <rect x="28" y="42" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1" opacity=".3"/>
-                            <rect x="22" y="48" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1" opacity=".5"/>
-                            <rect x="16" y="54" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
-                            <text x="94" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">point of sale</text>
-                            <text x="94" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">ESP32 · button grid</text>
-                            <text x="94" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">debounce · LED ack</text>
-                            <text x="94" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">local queue if offline</text>
-
-                            <rect x="238" y="54" width="170" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
-                            <text x="323" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">gateway</text>
-                            <text x="323" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">8devices router</text>
-                            <text x="323" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">private AP for the bars</text>
-                            <text x="323" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">4G uplink · no venue wifi</text>
-
-                            <rect x="462" y="54" width="160" height="96" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
-                            <text x="542" y="82" text-anchor="middle" fill="currentColor" font-size="11.5">MQTT broker</text>
-                            <text x="542" y="101" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">topic per point of sale</text>
-                            <text x="542" y="117" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">QoS 1 · last will</text>
-                            <text x="542" y="133" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">hosted, off site</text>
-
-                            <rect x="676" y="54" width="140" height="96" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
-                            <text x="746" y="86" text-anchor="middle" fill="var(--hedge)" font-size="11.5">bridge</text>
-                            <text x="746" y="105" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">subscribe → append</text>
-                            <text x="746" y="121" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">dedupe on (id, seq)</text>
-
-                            <path d="M838,72 L838,136 A46,9 0 0 0 930,136 L930,72" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
-                            <ellipse cx="884" cy="72" rx="46" ry="9" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
-                            <text x="884" y="104" text-anchor="middle" fill="var(--hedge)" font-size="10.5">Google Sheet</text>
-                            <text x="884" y="120" text-anchor="middle" fill="var(--hedge)" font-size="8.5" opacity=".7">one row per sale</text>
-                          </g>
-
-                          <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cs-a)">
-                            <line x1="190" y1="102" x2="234" y2="102"/>
-                            <line x1="408" y1="102" x2="458" y2="102"/>
-                            <line x1="622" y1="102" x2="672" y2="102"/>
-                            <line x1="816" y1="102" x2="834" y2="102"/>
-                          </g>
-                          <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
-                            <text x="212" y="94" text-anchor="middle">wifi</text>
-                            <text x="433" y="94" text-anchor="middle">4G</text>
-                            <text x="647" y="94" text-anchor="middle">sub</text>
-                          </g>
-
-                          <!-- row 2 : decide -->
-                          <g font-family="IBM Plex Mono, monospace">
-                            <rect x="640" y="292" width="208" height="88" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
-                            <text x="744" y="320" text-anchor="middle" fill="var(--hedge)" font-size="11.5">forecast per bar</text>
-                            <text x="744" y="339" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">prior × programme × place</text>
-                            <text x="744" y="355" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">time to stock-out</text>
-
-                            <rect x="356" y="292" width="208" height="88" rx="2" fill="none" stroke="var(--risk)" stroke-width="1.5"/>
-                            <text x="460" y="320" text-anchor="middle" fill="var(--risk)" font-size="11.5">restocking board</text>
-                            <text x="460" y="339" text-anchor="middle" fill="var(--risk)" font-size="9.5" opacity=".9">what to carry, to which bar</text>
-                            <text x="460" y="355" text-anchor="middle" fill="var(--risk)" font-size="9" opacity=".75">fires on a lead-time margin</text>
-
-                            <rect x="72" y="292" width="200" height="88" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
-                            <text x="172" y="326" text-anchor="middle" fill="currentColor" font-size="11.5">runner</text>
-                            <text x="172" y="346" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">storeroom → bar</text>
-                            <text x="172" y="362" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">≈ 30 min round trip</text>
-                          </g>
-
-                          <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cs-a)">
-                            <path d="M884,150 L884,336 L852,336"/>
-                            <line x1="640" y1="336" x2="568" y2="336"/>
-                            <line x1="356" y1="336" x2="276" y2="336"/>
-                            <path d="M94,292 L94,158"/>
-                          </g>
-                          <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
-                            <text x="604" y="328" text-anchor="middle">τ &lt; L</text>
-                            <text x="106" y="232">refilled</text>
-                          </g>
-                        </svg>
-                      </div>
-                      <figcaption><b>One loop, closed at the storeroom.</b> The left column is the only part
-                      that lives in the venue; everything to the right of the 4G uplink is off site, which is
-                      what makes the sheet survive a bar losing power or a device being unplugged mid-evening.</figcaption>
-                    </figure>
+      <pre class="rk-code"><code><span class="c">// a real commander turn from the winning match, at 3:15</span>
+{
+  "reason": "Carolinian Republic eliminated; attack Carolinian
+             Commonwealth to secure west, then build city for
+             growth. Keep 35% reserve (682,942 troops) ...",
+  "actions": [
+    { "id": "attack_carolinian_commonwealth", "troops_percent": 30 },
+    { "id": "build_city", "troops_percent": 0 }
+  ]
+}</code></pre>
                   </div>
 
                   <div class="rk-sec">
                     <span class="rk-eyebrow">02 — Skills</span>
                     <ul class="rk-plain">
-                      <li><b>Embedded and IoT.</b> ESP32 firmware in C++, a button matrix, and a local
-                      queue so the bartender never waits for the network.</li>
-                      <li><b>Reliable messaging.</b> MQTT over 4G with sequence numbers, so a device can
-                      resend freely after a reconnection without inflating sales.</li>
-                      <li><b>Real-time forecasting.</b> Last year's consumption profile, adjusted for the
-                      moment of the night and the bar's location, re-anchored on live sales; the alert
-                      fires when the projected time to empty reaches the restocking time.</li>
-                      <li><b>User-centred design.</b> A Google Sheet as the dashboard, because the whole
-                      team already had it on their phones.</li>
+                      <li><b>LLM agent design.</b> A planner/executor split, event-driven calls, and a
+                      self-check that sends a rule-breaking answer back once with the numbers.</li>
+                      <li><b>Structured output.</b> A JSON schema whose enum is the menu of legal options,
+                      with <code>maxLength</code> on every text field so an answer can never be cut off
+                      mid-JSON.</li>
+                      <li><b>Retrieval without embeddings.</b> 37 tagged knowledge sections; the situation
+                      picks 6, deterministically, and every factual section is checked against the real
+                      engine by a test.</li>
+                      <li><b>State abstraction.</b> 328,000 tiles → a graph of ~30 players (borders, attacks,
+                      alliances) → a short text a 9B model can reason about.</li>
+                      <li><b>Integrating a large codebase.</b> The OpenFront engine at a pinned commit,
+                      fetched with a sparse checkout (7 MB instead of 1.3 GB).</li>
+                      <li><b>Evaluation and reproducibility.</b> Scripted baselines on the same seed, offline
+                      reproductions of failures without the LLM, every prompt and answer logged to
+                      <code>turns.jsonl</code>, and 39 Vitest tests, including a full match with a mock LLM
+                      that runs a 30-minute game in seconds.</li>
                     </ul>
                   </div>
 
                   <div class="rk-sec">
                     <span class="rk-eyebrow">03 — Results</span>
                     <div class="rk-col">
-                      <p>Used for one night across several bars and 3,000 guests, with stock-out warnings
-                      about 30 minutes ahead. The night ends with a per-second record of what was sold
-                      where, which is what next year's forecast is fitted on.</p>
+                      <p>On the Australia map against 7 AI nations and 20 tribes (Easy, seed
+                      <code>australia-1</code>), <strong>the LLM won outright after 8 min 49 s with 80.9% of
+                      the land</strong>, ranked first from the first minute. 130 LLM calls (29 strategist,
+                      101 commander), 0 errors, 8.0 s mean latency, no cloud API.</p>
                     </div>
 
-                    <figure>
-                      <div class="rk-frame">
-                        <svg viewBox="0 0 940 440" role="img" aria-label="Remaining stock of one bar through the night. A dashed curve shows the same bar last year, a solid curve shows tonight's measured depletion up to the current time, and a dotted projection continues it. The projection crosses the restocking threshold at about 1:20 and reaches zero at about 2:10, so the alert fires while the runner still has time.">
-                          <!-- programme bands -->
-                          <g opacity=".07" fill="currentColor">
-                            <rect x="280" y="50" width="130" height="330"/>
-                            <rect x="430" y="50" width="250" height="330"/>
-                          </g>
-                          <g font-family="Source Sans 3, sans-serif" font-size="10.5" fill="currentColor" opacity=".55">
-                            <text x="345" y="44" text-anchor="middle">dinner</text>
-                            <text x="555" y="44" text-anchor="middle">DJ set</text>
-                          </g>
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/LLMRTS/map-03min.png" alt="Map of Australia at minute 3: the LLM in gold holds a wide band across the centre; around it, nations in red, green, blue, cyan, pink, purple and brown, and grey tribes left in the gaps." width="1000" height="750" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Minute 3, 37.8% of the land.</b> The LLM (gold) spawned in the central
+                        plains as the knowledge base advises, ate the tribes around it and allied with its
+                        neighbours.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/LLMRTS/final.png" alt="Final map of Australia: gold covers almost the whole continent and Tasmania; only a red nation in the west and a green one in the south-west remain. White squares mark buildings." width="1000" height="750" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>8:49, 80.9%, the game declares the LLM the winner.</b> Once its
+                        alliances expired, Victoria and New South Wales fell, then Queensland.</figcaption>
+                      </figure>
+                    </div>
 
-                          <!-- grid -->
-                          <g stroke="currentColor" opacity=".14" stroke-width="1">
-                            <line x1="80" y1="135" x2="880" y2="135"/>
-                            <line x1="80" y1="210" x2="880" y2="210"/>
-                            <line x1="80" y1="285" x2="880" y2="285"/>
-                            <line x1="180" y1="50" x2="180" y2="380"/>
-                            <line x1="280" y1="50" x2="280" y2="380"/>
-                            <line x1="380" y1="50" x2="380" y2="380"/>
-                            <line x1="480" y1="50" x2="480" y2="380"/>
-                            <line x1="580" y1="50" x2="580" y2="380"/>
-                            <line x1="680" y1="50" x2="680" y2="380"/>
-                            <line x1="780" y1="50" x2="780" y2="380"/>
-                          </g>
-                          <g stroke="currentColor" opacity=".45" stroke-width="1.2">
-                            <line x1="80" y1="360" x2="880" y2="360"/>
-                            <line x1="80" y1="50" x2="80" y2="380"/>
-                          </g>
+                    <div class="rk-tablewrap">
+                      <table>
+                        <caption>Iterating from the logs, on the same seed. Each failure was diagnosed by
+                        reading <code>turns.jsonl</code> and fixed in the interface or the code.</caption>
+                        <thead>
+                          <tr><th>Version</th><th>Setting</th><th>Result</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Scripted players, no LLM</td><td>Medium</td><td class="rk-bad">peak 5.8%, eliminated 6:21</td></tr>
+                          <tr><td>Strategist + commander, the LLM controls every troop</td><td>Medium</td><td class="rk-bad">peak 10.2%, eliminated 3:50</td></tr>
+                          <tr><td>Same model, the code enforces reserve and waves</td><td>Medium, 3 min</td><td>24.1%, rank 1 of 11</td></tr>
+                          <tr class="rk-hero"><td>Same agent, full game</td><td>Easy</td><td class="rk-good">won at 8:49, 80.9%</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
 
-                          <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".65">
-                            <text x="80" y="378" text-anchor="middle">20:00</text>
-                            <text x="180" y="378" text-anchor="middle">21:00</text>
-                            <text x="280" y="378" text-anchor="middle">22:00</text>
-                            <text x="380" y="378" text-anchor="middle">23:00</text>
-                            <text x="480" y="378" text-anchor="middle">00:00</text>
-                            <text x="580" y="378" text-anchor="middle">01:00</text>
-                            <text x="680" y="378" text-anchor="middle">02:00</text>
-                            <text x="780" y="378" text-anchor="middle">03:00</text>
-                            <text x="880" y="378" text-anchor="middle">04:00</text>
-                            <text x="72" y="364" text-anchor="end">0</text>
-                            <text x="72" y="289" text-anchor="end">25%</text>
-                            <text x="72" y="214" text-anchor="end">50%</text>
-                            <text x="72" y="139" text-anchor="end">75%</text>
-                            <text x="72" y="64" text-anchor="end">100%</text>
-                          </g>
-                          <text x="480" y="404" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">time</text>
-                          <text x="24" y="40" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">stock remaining at the bar</text>
-
-                          <!-- last year -->
-                          <polyline points="80,60 180,90 280,126 380,153 480,186 580,231 680,270 780,300 880,318"
-                            fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="6 4" opacity=".5"/>
-                          <text x="792" y="294" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".6">last year, same bar</text>
-
-                          <!-- restock threshold -->
-                          <line x1="80" y1="285" x2="880" y2="285" stroke="var(--risk)" stroke-width="1.4" stroke-dasharray="5 4"/>
-                          <text x="88" y="278" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--risk)">restocking threshold</text>
-
-                          <!-- measured -->
-                          <polyline points="80,60 130,72 180,84 230,99 280,114 330,126 380,138 430,150 480,180 520,213"
-                            fill="none" stroke="var(--hedge)" stroke-width="2.6"/>
-                          <text x="300" y="106" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--hedge)" font-weight="600">measured tonight</text>
-
-                          <!-- projection -->
-                          <polyline points="520,213 570,252 612,285 645,311 680,338 700,360"
-                            fill="none" stroke="var(--perf)" stroke-width="2.2" stroke-dasharray="3 4"/>
-                          <text x="640" y="212" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--perf)" font-weight="600">projection</text>
-                          <text x="640" y="228" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--perf)" opacity=".85">λ(t) rebuilt at every message</text>
-
-                          <!-- now -->
-                          <line x1="520" y1="50" x2="520" y2="360" stroke="var(--hedge)" stroke-width="1.2" opacity=".55"/>
-                          <circle cx="520" cy="213" r="5" fill="var(--hedge)"/>
-                          <text x="514" y="70" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--hedge)">now · 00:40</text>
-
-                          <!-- alert -->
-                          <circle cx="612" cy="285" r="6" fill="var(--risk)"/>
-                          <line x1="612" y1="285" x2="612" y2="360" stroke="var(--risk)" stroke-width="1" opacity=".45"/>
-                          <text x="602" y="310" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--risk)" font-weight="600">alert 01:20</text>
-                          <text x="602" y="326" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--risk)" opacity=".85">τ = 50 min ≈ L</text>
-                          <text x="712" y="352" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--perf)" opacity=".85">projected stock-out 02:10</text>
-                        </svg>
-                      </div>
-                      <figcaption><b>One bar, one night, reconstructed for this page.</b> The dashed curve is
-                      the prior, the solid one is what the presses actually say, and the alert is not raised
-                      when the stock is low but when the projected time to empty falls to the runner's round
-                      trip.</figcaption>
-                    </figure>
+                    <ul class="rk-plain">
+                      <li><b>"Send troops to defend."</b> The model kept attacking a stronger nation "to
+                      defend", draining its army from 111,000 to 27,000. In OpenFront, troops kept at home
+                      <em>are</em> the defence: a core rule now says so, and each attack option shows the
+                      strength comparison next to its id.</li>
+                      <li><b>Faster is not more reactive.</b> A 1 s cadence repeated "expand 30%" and drained
+                      the army in 10 s; a script with no LLM reproduced it. A troop budget per 5 s and a
+                      reserve chosen by the plan took the same cadence from eliminated to first place.</li>
+                      <li><b>Main takeaway:</b> most of the improvement came from the interface (wording,
+                      menu, schema, troop rules), not from the model.</li>
+                    </ul>
                   </div>
 
-                  <p class="rk-foot">Built for a student gala, 2023. The firmware, bridge and forecasting
-                  sheet were written for the event and are not public; figures are redrawn from the
-                  evening's logs.</p>
+                  <p class="rk-foot">Personal project. Multi-seed runs and ablations (knowledge base off, troop rules off) are the next
+                  step. AGPL-3.0; independent of OpenFront.</p>
 
                 </div>
+
+                <p class="project-links">
+                  <a href="https://github.com/elouansalaun/LLM_RTS2">Repository ↗</a>
+                </p>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- ==================== CATEGORY: ML &AMP; OPTIMIZATION ==================== -->
+        <div class="cat-slide" id="cat-ml" role="tabpanel" aria-labelledby="cat-ml-tab">
+          <p class="cat-label">ML &amp; optimization</p>
+
+          <!-- ---------- PROJECT: FROM NEURON TO AGI ---------- -->
+          <article class="project" id="p-neuron-agi">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-neuron-agi-btn" type="button"
+                      aria-expanded="false" aria-controls="p-neuron-agi-panel">
+                <span class="project-name">From Neuron to AGI: deep learning, LLMs and agents built from scratch</span>
+                <span class="project-meta">2026 · Python · NumPy · PyTorch · Transformers · LoRA · DPO · GRPO · PPO · RAG · MCP</span>
+                <span class="project-summary">Rebuilt AI from the perceptron to LLM agents in 27 hand-coded modules checked against <b>PyTorch</b> and <b>Hugging Face</b> (GPT, LoRA, PPO, DPO, GRPO, RAG). All on a laptop.</span>
+                <img class="project-icon" src="assets/img/icon_project_neuron_agi.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <img class="project-preview" src="assets/img/NeuronAGI/from_neuron_to_agi_overview.gif" alt="Animated overview of the From Neuron to AGI project: from a single neuron to deep learning, GPT, reinforcement learning and agents." width="1200" height="675" loading="lazy" decoding="async">
+
+            <div class="panel" id="p-neuron-agi-panel" role="region" aria-labelledby="p-neuron-agi-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <div class="rk-top">
+                    <p>The same few principles (a weighted sum, the chain rule, attention, a loss, a
+                    feedback loop) are enough to go from the first artificial neuron to today's language-model
+                    agents. This project proves it by <strong>building every step by hand</strong>, in 27
+                    notebooks that each add one idea, implement it, check it against a reference library and
+                    only then use the library. Everything runs on a MacBook Air M5, and every notebook is
+                    saved with its outputs, so it can be read on GitHub without running anything.</p>
+
+                    <div class="rk-facts">
+                      <div class="rk-fact"><b>1.93</b><span>TinyStories loss of an 18M-parameter GPT trained in 14 min, against 2.63 for GPT-2</span></div>
+                      <div class="rk-fact"><b>3.2 → 91.5%</b><span>3-digit × 2-digit multiplication, same tiny Transformer, without and with a chain of thought</span></div>
+                      <div class="rk-fact"><b>4 → 6 of 8</b><span>bugs fixed by a coding agent once the harness runs the tests instead of trusting the model</span></div>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — How it works</span>
+                    <div class="rk-col">
+                      <h4>Build it, check it, then use the library</h4>
+                      <p>Backpropagation is derived by hand before an autograd engine is written; that engine
+                      is checked against PyTorch before PyTorch is used. Attention comes before
+                      <code>nn.MultiheadAttention</code>, a GPT before Hugging Face's, LoRA before
+                      <code>peft</code>, PPO before any RL library, an agent loop before any framework and an
+                      MCP server before the official SDK. Later modules import earlier ones: the coding agent
+                      of module 24 runs on the agent loop of 22, which reuses the chat template of 19, which
+                      fine-tunes the GPT of 14.</p>
+                    </div>
+
+                    <div class="rk-blocks">
+                      <div class="rk-block">
+                        <div class="rk-nb">00 – 07</div>
+                        <div>
+                          <h5>How networks learn</h5>
+                          <p>A numerical gradient checker, the perceptron and why XOR defeats it, softmax regression on MNIST in pure NumPy, a hand-derived MLP, a scalar then tensor autograd engine, optimisers from SGD to AdamW, and a small ResNet on CIFAR-10.</p>
+                        </div>
+                      </div>
+                      <div class="rk-block">
+                        <div class="rk-nb">08 – 16</div>
+                        <div>
+                          <h5>Language and Transformers</h5>
+                          <p>n-grams and perplexity, word2vec, LSTMs, attention, a BPE tokenizer compared with GPT-2's, a Transformer up to RoPE, a GPT that loads OpenAI's GPT-2 weights, a scaling sweep, a KV cache, mixture of experts, and a small ViT and CLIP.</p>
+                        </div>
+                      </div>
+                      <div class="rk-block">
+                        <div class="rk-nb">17 – 21</div>
+                        <div>
+                          <h5>Reinforcement learning and post-training</h5>
+                          <p>Q-learning, DQN, REINFORCE and PPO up to LunarLander; then GPT-2 fine-tuned into a chatbot (fully and with LoRA), a reward model, best-of-N and DPO, and GRPO with verifiable rewards on arithmetic.</p>
+                        </div>
+                      </div>
+                      <div class="rk-block">
+                        <div class="rk-nb">22 – 26</div>
+                        <div>
+                          <h5>Agents and the road to AGI</h5>
+                          <p>A tool-using agent loop with no framework, BM25 and embedding retrieval over the project's own notebooks, a coding agent and MCP from scratch, an evaluation harness, a sycophancy test, a sparse autoencoder, and measured open problems (continual learning, ARC).</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Skills</span>
+                    <ul class="rk-plain">
+                      <li><b>Deep-learning fundamentals.</b> Backpropagation, initialisation, normalisation,
+                      residual connections and optimisers implemented by hand and verified with a gradient
+                      checker.</li>
+                      <li><b>Transformers and LLMs.</b> A GPT written from scratch that reproduces Hugging
+                      Face's GPT-2 logits, plus scaling laws, mixed precision, a KV cache and
+                      FlashAttention's online softmax.</li>
+                      <li><b>Post-training.</b> SFT, LoRA, reward models, DPO and GRPO, on models small enough
+                      to train on a laptop.</li>
+                      <li><b>Reinforcement learning.</b> Value iteration, DQN, REINFORCE, GAE and PPO, with the
+                      ablations that show why each ingredient is there.</li>
+                      <li><b>LLM agents.</b> Function calling, RAG, long-term memory, a coding agent and an
+                      MCP client and server, on a 4B-parameter open model (Qwen3-4B).</li>
+                      <li><b>Evaluation and interpretability.</b> A benchmark harness with confidence intervals,
+                      reward-hacking and sycophancy tests, and a sparse autoencoder on our own GPT.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Results</span>
+                    <div class="rk-col">
+                      <p>Every number is measured in the notebooks, on a laptop. The notebooks also report
+                      what did not work, and why: DQN without a target network, PPO without clipping, GRPO at
+                      too high a learning rate, agents that claim fixes they never made.</p>
+                    </div>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/NeuronAGI/scaling_tinystories.png" alt="Log-log plot of validation loss against training compute for six GPT sizes from 0.61M to 7.97M parameters on TinyStories; the curves form a frontier fitted by a dashed line, loss proportional to compute to the power minus 0.175." width="718" height="472" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Module 15, a scaling law on a laptop.</b> Six GPT sizes trained on
+                        TinyStories; the compute-optimal frontier is a power law, L ∝ C<sup>−0.175</sup>, as in
+                        Kaplan et al.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/NeuronAGI/ppo_vs_no_clip.png" alt="Two panels on CartPole over 100,000 environment steps. Left, return: PPO runs climb to 500 and stay there, while runs without clipping repeatedly collapse. Right, KL divergence per iteration on a log scale: PPO stays around 0.005, unclipped runs reach 0.1 to 1." width="1169" height="354" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Module 18, why PPO clips.</b> CartPole, 10 epochs per batch: without
+                        clipping, each update moves the policy one to two orders of magnitude further and the
+                        return collapses again and again.</figcaption>
+                      </figure>
+                    </div>
+
+                    <div class="rk-tablewrap">
+                      <table>
+                        <caption>Selected results. Each pair is the same model, with and without one idea.</caption>
+                        <thead>
+                          <tr><th>Module</th><th>Without</th><th>With</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>19 · LoRA on 1.9% of the parameters</td><td>full fine-tuning, loss 2.077</td><td>loss 2.086</td></tr>
+                          <tr><td>21 · Chain of thought, tiny Transformer</td><td class="rk-bad">3.2%</td><td class="rk-good">91.5%</td></tr>
+                          <tr><td>22 · Tools for a 4B model</td><td class="rk-bad">1 of 8</td><td class="rk-good">7 of 8</td></tr>
+                          <tr><td>23 · RAG over the project's notebooks</td><td class="rk-bad">1 of 16</td><td class="rk-good">15 of 16</td></tr>
+                          <tr><td>24 · Harness that runs the tests</td><td>4 of 8 bugs</td><td class="rk-good">6 of 8 bugs</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <ul class="rk-plain">
+                      <li><b>PPO from scratch</b> lands LunarLander in 96% of new episodes.</li>
+                      <li><b>Interpretability.</b> A sparse autoencoder finds a "dog" feature in our TinyStories
+                      GPT; adding it while generating puts a dog in every story.</li>
+                      <li><b>Main takeaway:</b> on the agent side, every gain came from the loop around the same
+                      model (tools, retrieval, a harness that checks), not from a bigger one.</li>
+                    </ul>
+                  </div>
+
+                  <p class="rk-foot">Personal project. The models are scaled down to fit a laptop: a full
+                  GPT-2 (124M) reproduction would take more than a month on it, as module 14 measures. MIT
+                  licence; datasets and pretrained models keep their own licences.</p>
+
+                </div>
+
+                <p class="project-links">
+                  <a href="https://github.com/elouansalaun/from_neuron_to_AGI">Repository ↗</a>
+                </p>
+
+              </div>
+            </div>
+          </article>
+
+          <!-- ---------- PROJECT: JET FIGHTER ---------- -->
+          <article class="project" id="p-jetfighter">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-jetfighter-btn" type="button"
+                      aria-expanded="false" aria-controls="p-jetfighter-panel">
+                <span class="project-name">Teaching a simulated F-16 to fly with reinforcement learning</span>
+                <span class="project-meta">2025 · Python · 6-DOF flight dynamics · Gymnasium · PPO · Stable-Baselines3 · imitation learning</span>
+                <span class="project-summary">A fighter-jet flight simulator written <b>from the physics up</b> and <b>validated</b> against published F-16 data, then used as the environment for <b>PPO reinforcement learning</b> agents that learn to stabilize, turn, navigate and fly aerobatics, judged against a classical autopilot.</span>
+                <img class="project-icon" src="assets/img/icon_project_jet.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <div class="panel" id="p-jetfighter-panel" role="region" aria-labelledby="p-jetfighter-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <!-- <img class="rk-resume" src="assets/img/JetFighter/resume_jetfighter-sim-rl.svg" alt="Summary of the jet fighter project" width="800" height="600" loading="lazy" decoding="async"> -->
+
+                  <div class="rk-top">
+                    <p>Can an agent that learns by trial and error fly a fighter jet as well as a
+                    hand-tuned autopilot? An agent trained on wrong physics learns to exploit the bugs, so
+                    the project is split in two: <a href="https://github.com/elouansalaun/jetfighter-sim">jetfighter-sim</a>,
+                    an F-16 flight simulator written from the physics up and validated against published
+                    data, and <a href="https://github.com/elouansalaun/jetfighter-rl">jetfighter-rl</a>,
+                    which turns it into a reinforcement-learning environment and trains agents on a
+                    curriculum of manoeuvres, each judged against the classical autopilot.</p>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — How it works</span>
+                    <div class="rk-col">
+                      <h4>A curriculum, from easy to realistic</h4>
+                      <p>The agent first flies through the fly-by-wire (it commands g, roll rate and
+                      throttle) on a fast simplified aircraft, then on the full rigid-body model, and
+                      finally moves the control surfaces itself. Each task defines its own observations,
+                      reward terms and success criterion.</p>
+                    </div>
+
+                    <div class="rk-tablewrap">
+                      <table class="rk-prose">
+                        <thead>
+                          <tr><th>Task</th><th>Success criterion</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Recover wings-level from an unusual attitude</td><td>level within 10 s</td></tr>
+                          <tr><td>Reach a heading, altitude and speed</td><td>within 30 m / 3° / 5 m/s, limited overshoot</td></tr>
+                          <tr><td>Turn at the best sustainable rate</td><td>≥ 90% of optimal, no energy loss</td></tr>
+                          <tr><td>Fly through 4 random 3D waypoints</td><td>all 4 captured</td></tr>
+                          <tr><td>Loop, roll, Immelmann, Split-S</td><td>figure completed, right exit heading</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Skills</span>
+                    <ul class="rk-plain">
+                      <li><b>Reinforcement learning (RL).</b> PPO (Stable-Baselines3, PyTorch) on a custom
+                      Gymnasium environment, with curriculum learning and reward shaping from named,
+                      separately logged terms.</li>
+                      <li><b>Imitation learning.</b> Behaviour cloning with DART noise and a critic
+                      warm-up, needed where pure RL never finds a 20-second manoeuvre such as a loop.</li>
+                      <li><b>Transfer learning.</b> Policies trained on the simplified aircraft (3 DOF) are
+                      copied into the full model (6 DOF) and fine-tuned (20% → 100% success).</li>
+                      <li><b>Environment design.</b> Observations without discontinuities (gravity
+                      direction instead of Euler angles), a neutral action that holds the flight path, and
+                      three clocks per step (100 Hz physics, 50 Hz fly-by-wire, 10 Hz agent).</li>
+                      <li><b>Simulation and control.</b> 6-DOF rigid body on NASA wind-tunnel data,
+                      quaternions and RK4, gain-scheduled fly-by-wire, cascaded autopilot, LQR; 596
+                      tests against analytic solutions and published F-16 figures.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Results</span>
+                    <ul class="rk-plain">
+                      <li>Through the fly-by-wire, agents <b>match or beat the autopilot on all 5 tasks</b>,
+                      by up to 61% in return, with 90–100% success; a 4-waypoint course is flown in
+                      <b>79 s against 135 s</b>.</li>
+                      <li>Aerobatics learned by imitation then PPO: <b>100% success</b>, slightly better
+                      than the scripted pilot it learned from.</li>
+                      <li>Without the fly-by-wire, moving the raw control surfaces: 90–100% success with
+                      no envelope violation, at 72–84% of the fly-by-wire agents' return.</li>
+                    </ul>
+
+                    <figure>
+                      <div class="rk-frame rk-frame--img">
+                        <img src="assets/img/JetFighter/agents_vs_reference.png" alt="Horizontal bar chart of agent return relative to the reference policy for five tasks and three agent types. Hierarchical 3-DOF: 117, 142, 106, 124 and 101 percent. Hierarchical 6-DOF: 116, 135, 161 and 118 percent, no valid aerobatics result. Direct surfaces 6-DOF: 99, 98, 136, 98 and 100 percent." width="1002" height="562" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption><b>Return relative to the reference, one seed per agent.</b> 100% means
+                      matching the autopilot or scripted pilot on the same evaluation episodes. The 6-DOF
+                      hierarchical aerobatics agent was trained before a reward hack was fixed and is left out.</figcaption>
+                    </figure>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/JetFighter/waypoints_agent_vs_autopilot.png" alt="Ground track and altitude profile of a four-waypoint course flown by the PPO agent and the autopilot: the tracks nearly overlap, but the agent reaches the last waypoint in 79 seconds against 135 for the autopilot." width="1442" height="540" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Same course, same aircraft.</b> The agent anticipates each turn and
+                        trades altitude freely; the autopilot flies to one waypoint at a time.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/JetFighter/aerobatics_imitation.png" alt="Side views of four aerobatic figures, loop, aileron roll, Immelmann and Split-S, each flown by the cloned neural policy and by the scripted pilot, with the two trajectories almost superimposed and all eight marked successful." width="1662" height="408" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>A network that was never rewarded, flying aerobatics.</b> Loop, roll,
+                        Immelmann and Split-S by the cloned policy against the scripted pilot it learned from.</figcaption>
+                      </figure>
+                    </div>
+
+                    <div class="rk-note rk-warn">
+                      <span class="rk-eyebrow">Five reward hacks, none visible on the learning curves</span>
+                      <p>Replaying the flights showed agents turning 2.5× faster than the optimum in a
+                      descending spiral that lost 3 km, faking a loop with a 6-second wiggle, or crashing
+                      early to stop paying costs. Each was closed by a reward fix, which is why the flights
+                      were checked visually, not only on the metrics.</p>
+                    </div>
+                  </div>
+
+                  <p class="rk-foot">Personal project. Results are the best evaluated model of each
+                  experiment on a single seed; more seeds are the obvious next step.</p>
+
+                </div>
+
+                <p class="project-links">
+                  <a href="https://github.com/elouansalaun/jetfighter-sim">Simulator repository ↗</a>
+                  <a href="https://github.com/elouansalaun/jetfighter-rl">RL repository ↗</a>
+                </p>
 
               </div>
             </div>
@@ -1751,6 +1501,267 @@
               </div>
             </div>
           </article>
+        </div>
+
+        <!-- ==================== CATEGORY: ENGINEERING ==================== -->
+        <div class="cat-slide" id="cat-eng" role="tabpanel" aria-labelledby="cat-eng-tab">
+          <p class="cat-label">Engineering</p>
+
+          <!-- ---------- PROJECT 4 ---------- -->
+          <article class="project" id="p-caisse">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-caisse-btn" type="button"
+                      aria-expanded="false" aria-controls="p-caisse-panel">
+                <span class="project-name">Connected multi-point cash-register system</span>
+                <span class="project-meta">2023 · ESP32 · C++ · MQTT · 4G · Google Sheets</span>
+                <span class="project-summary">Design and implementation of <b>real-time</b> multi-point sales-recording device (ESP32) connected to a central server to enable real-time tracking, analysis and <b>forecasting</b> of sales data for a <b>3000-person</b> gala.</span>
+                <img class="project-icon" src="assets/img/icon_project_caisse.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <div class="panel" id="p-caisse-panel" role="region" aria-labelledby="p-caisse-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <!-- <img class="rk-resume" src="assets/img/CashRegister/resume_connected-cash-register.svg" alt="One-page summary of the system: ESP32 button-grid terminals with local debounce publish each sale over a 4G uplink with MQTT QoS 1 to a broker on a private access point, independent of the venue wifi; a bridge deduplicates by device and sequence number and appends rows to a Google Sheet, which feeds a restock board alerting per bar and item; beside it, the stockout forecast built from last year's baseline, a night-segment multiplier and a location weight, and a chart of units remaining for one bar over one night, with the alert raised about thirty minutes before depletion." width="800" height="600" loading="lazy" decoding="async"> -->
+
+                  <div class="rk-top">
+                    <p>At a 3,000-guest student gala, bar stock was tracked with tally marks and guesswork.
+                    This project aimed to design and deploy a connected system: an ESP32 button pad at every bar records
+                    each sale, the data reaches a shared Google Sheet in real time over 4G, and a
+                    lightweight forecast warns <strong>about 30 minutes before a bar runs out</strong>,
+                    which is the time a runner needs to restock it.</p>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — How it works</span>
+                    <div class="rk-col">
+                      <p>A button press is timestamped and queued on the device, then published over MQTT
+                      through a private 4G router, independent of the venue's wifi. A bridge appends one row
+                      per sale to the Google Sheet, removing duplicates by sequence number, and the
+                      forecast reads the same sheet.</p>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame">
+                        <svg viewBox="0 0 940 430" role="img" aria-label="A button grid on an ESP32 at each point of sale publishes a sale message to an 8devices router acting as wifi access point with a 4G uplink; the router forwards it over MQTT to a broker, a bridge appends each message as a row of a Google Sheet, and below, the sheet feeds a forecasting model whose restocking alert is sent back to the runners and the bars.">
+                          <defs>
+                            <marker id="cs-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                            </marker>
+                          </defs>
+
+                          <g font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".55">
+                            <text x="16" y="30">capture and transport — one path per sale</text>
+                            <text x="120" y="272">decide — same data, read back</text>
+                          </g>
+
+                          <!-- row 1 : capture -->
+                          <g font-family="IBM Plex Mono, monospace">
+                            <!-- stacked devices -->
+                            <rect x="28" y="42" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1" opacity=".3"/>
+                            <rect x="22" y="48" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1" opacity=".5"/>
+                            <rect x="16" y="54" width="156" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
+                            <text x="94" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">point of sale</text>
+                            <text x="94" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">ESP32 · button grid</text>
+                            <text x="94" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">debounce · LED ack</text>
+                            <text x="94" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">local queue if offline</text>
+
+                            <rect x="238" y="54" width="170" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
+                            <text x="323" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">gateway</text>
+                            <text x="323" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">8devices router</text>
+                            <text x="323" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">private AP for the bars</text>
+                            <text x="323" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">4G uplink · no venue wifi</text>
+
+                            <rect x="462" y="54" width="160" height="96" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                            <text x="542" y="82" text-anchor="middle" fill="currentColor" font-size="11.5">MQTT broker</text>
+                            <text x="542" y="101" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">topic per point of sale</text>
+                            <text x="542" y="117" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">QoS 1 · last will</text>
+                            <text x="542" y="133" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">hosted, off site</text>
+
+                            <rect x="676" y="54" width="140" height="96" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                            <text x="746" y="86" text-anchor="middle" fill="var(--hedge)" font-size="11.5">bridge</text>
+                            <text x="746" y="105" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">subscribe → append</text>
+                            <text x="746" y="121" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">dedupe on (id, seq)</text>
+
+                            <path d="M838,72 L838,136 A46,9 0 0 0 930,136 L930,72" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
+                            <ellipse cx="884" cy="72" rx="46" ry="9" fill="none" stroke="var(--hedge)" stroke-width="1.6"/>
+                            <text x="884" y="104" text-anchor="middle" fill="var(--hedge)" font-size="10.5">Google Sheet</text>
+                            <text x="884" y="120" text-anchor="middle" fill="var(--hedge)" font-size="8.5" opacity=".7">one row per sale</text>
+                          </g>
+
+                          <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cs-a)">
+                            <line x1="190" y1="102" x2="234" y2="102"/>
+                            <line x1="408" y1="102" x2="458" y2="102"/>
+                            <line x1="622" y1="102" x2="672" y2="102"/>
+                            <line x1="816" y1="102" x2="834" y2="102"/>
+                          </g>
+                          <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
+                            <text x="212" y="94" text-anchor="middle">wifi</text>
+                            <text x="433" y="94" text-anchor="middle">4G</text>
+                            <text x="647" y="94" text-anchor="middle">sub</text>
+                          </g>
+
+                          <!-- row 2 : decide -->
+                          <g font-family="IBM Plex Mono, monospace">
+                            <rect x="640" y="292" width="208" height="88" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                            <text x="744" y="320" text-anchor="middle" fill="var(--hedge)" font-size="11.5">forecast per bar</text>
+                            <text x="744" y="339" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">prior × programme × place</text>
+                            <text x="744" y="355" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">time to stock-out</text>
+
+                            <rect x="356" y="292" width="208" height="88" rx="2" fill="none" stroke="var(--risk)" stroke-width="1.5"/>
+                            <text x="460" y="320" text-anchor="middle" fill="var(--risk)" font-size="11.5">restocking board</text>
+                            <text x="460" y="339" text-anchor="middle" fill="var(--risk)" font-size="9.5" opacity=".9">what to carry, to which bar</text>
+                            <text x="460" y="355" text-anchor="middle" fill="var(--risk)" font-size="9" opacity=".75">fires on a lead-time margin</text>
+
+                            <rect x="72" y="292" width="200" height="88" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                            <text x="172" y="326" text-anchor="middle" fill="currentColor" font-size="11.5">runner</text>
+                            <text x="172" y="346" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">storeroom → bar</text>
+                            <text x="172" y="362" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">≈ 30 min round trip</text>
+                          </g>
+
+                          <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cs-a)">
+                            <path d="M884,150 L884,336 L852,336"/>
+                            <line x1="640" y1="336" x2="568" y2="336"/>
+                            <line x1="356" y1="336" x2="276" y2="336"/>
+                            <path d="M94,292 L94,158"/>
+                          </g>
+                          <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
+                            <text x="604" y="328" text-anchor="middle">τ &lt; L</text>
+                            <text x="106" y="232">refilled</text>
+                          </g>
+                        </svg>
+                      </div>
+                      <figcaption><b>One loop, closed at the storeroom.</b> The left column is the only part
+                      that lives in the venue; everything to the right of the 4G uplink is off site, which is
+                      what makes the sheet survive a bar losing power or a device being unplugged mid-evening.</figcaption>
+                    </figure>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Skills</span>
+                    <ul class="rk-plain">
+                      <li><b>Embedded and IoT.</b> ESP32 firmware in C++, a button matrix, and a local
+                      queue so the bartender never waits for the network.</li>
+                      <li><b>Reliable messaging.</b> MQTT over 4G with sequence numbers, so a device can
+                      resend freely after a reconnection without inflating sales.</li>
+                      <li><b>Real-time forecasting.</b> Last year's consumption profile, adjusted for the
+                      moment of the night and the bar's location, re-anchored on live sales; the alert
+                      fires when the projected time to empty reaches the restocking time.</li>
+                      <li><b>User-centred design.</b> A Google Sheet as the dashboard, because the whole
+                      team already had it on their phones.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Results</span>
+                    <div class="rk-col">
+                      <p>Used for one night across several bars and 3,000 guests, with stock-out warnings
+                      about 30 minutes ahead. The night ends with a per-second record of what was sold
+                      where, which is what next year's forecast is fitted on.</p>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame">
+                        <svg viewBox="0 0 940 440" role="img" aria-label="Remaining stock of one bar through the night. A dashed curve shows the same bar last year, a solid curve shows tonight's measured depletion up to the current time, and a dotted projection continues it. The projection crosses the restocking threshold at about 1:20 and reaches zero at about 2:10, so the alert fires while the runner still has time.">
+                          <!-- programme bands -->
+                          <g opacity=".07" fill="currentColor">
+                            <rect x="280" y="50" width="130" height="330"/>
+                            <rect x="430" y="50" width="250" height="330"/>
+                          </g>
+                          <g font-family="Source Sans 3, sans-serif" font-size="10.5" fill="currentColor" opacity=".55">
+                            <text x="345" y="44" text-anchor="middle">dinner</text>
+                            <text x="555" y="44" text-anchor="middle">DJ set</text>
+                          </g>
+
+                          <!-- grid -->
+                          <g stroke="currentColor" opacity=".14" stroke-width="1">
+                            <line x1="80" y1="135" x2="880" y2="135"/>
+                            <line x1="80" y1="210" x2="880" y2="210"/>
+                            <line x1="80" y1="285" x2="880" y2="285"/>
+                            <line x1="180" y1="50" x2="180" y2="380"/>
+                            <line x1="280" y1="50" x2="280" y2="380"/>
+                            <line x1="380" y1="50" x2="380" y2="380"/>
+                            <line x1="480" y1="50" x2="480" y2="380"/>
+                            <line x1="580" y1="50" x2="580" y2="380"/>
+                            <line x1="680" y1="50" x2="680" y2="380"/>
+                            <line x1="780" y1="50" x2="780" y2="380"/>
+                          </g>
+                          <g stroke="currentColor" opacity=".45" stroke-width="1.2">
+                            <line x1="80" y1="360" x2="880" y2="360"/>
+                            <line x1="80" y1="50" x2="80" y2="380"/>
+                          </g>
+
+                          <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".65">
+                            <text x="80" y="378" text-anchor="middle">20:00</text>
+                            <text x="180" y="378" text-anchor="middle">21:00</text>
+                            <text x="280" y="378" text-anchor="middle">22:00</text>
+                            <text x="380" y="378" text-anchor="middle">23:00</text>
+                            <text x="480" y="378" text-anchor="middle">00:00</text>
+                            <text x="580" y="378" text-anchor="middle">01:00</text>
+                            <text x="680" y="378" text-anchor="middle">02:00</text>
+                            <text x="780" y="378" text-anchor="middle">03:00</text>
+                            <text x="880" y="378" text-anchor="middle">04:00</text>
+                            <text x="72" y="364" text-anchor="end">0</text>
+                            <text x="72" y="289" text-anchor="end">25%</text>
+                            <text x="72" y="214" text-anchor="end">50%</text>
+                            <text x="72" y="139" text-anchor="end">75%</text>
+                            <text x="72" y="64" text-anchor="end">100%</text>
+                          </g>
+                          <text x="480" y="404" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">time</text>
+                          <text x="24" y="40" font-family="Source Sans 3, sans-serif" font-size="12" fill="currentColor" opacity=".7">stock remaining at the bar</text>
+
+                          <!-- last year -->
+                          <polyline points="80,60 180,90 280,126 380,153 480,186 580,231 680,270 780,300 880,318"
+                            fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="6 4" opacity=".5"/>
+                          <text x="792" y="294" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".6">last year, same bar</text>
+
+                          <!-- restock threshold -->
+                          <line x1="80" y1="285" x2="880" y2="285" stroke="var(--risk)" stroke-width="1.4" stroke-dasharray="5 4"/>
+                          <text x="88" y="278" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--risk)">restocking threshold</text>
+
+                          <!-- measured -->
+                          <polyline points="80,60 130,72 180,84 230,99 280,114 330,126 380,138 430,150 480,180 520,213"
+                            fill="none" stroke="var(--hedge)" stroke-width="2.6"/>
+                          <text x="300" y="106" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--hedge)" font-weight="600">measured tonight</text>
+
+                          <!-- projection -->
+                          <polyline points="520,213 570,252 612,285 645,311 680,338 700,360"
+                            fill="none" stroke="var(--perf)" stroke-width="2.2" stroke-dasharray="3 4"/>
+                          <text x="640" y="212" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--perf)" font-weight="600">projection</text>
+                          <text x="640" y="228" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--perf)" opacity=".85">λ(t) rebuilt at every message</text>
+
+                          <!-- now -->
+                          <line x1="520" y1="50" x2="520" y2="360" stroke="var(--hedge)" stroke-width="1.2" opacity=".55"/>
+                          <circle cx="520" cy="213" r="5" fill="var(--hedge)"/>
+                          <text x="514" y="70" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="11.5" fill="var(--hedge)">now · 00:40</text>
+
+                          <!-- alert -->
+                          <circle cx="612" cy="285" r="6" fill="var(--risk)"/>
+                          <line x1="612" y1="285" x2="612" y2="360" stroke="var(--risk)" stroke-width="1" opacity=".45"/>
+                          <text x="602" y="310" text-anchor="end" font-family="Source Sans 3, sans-serif" font-size="12" fill="var(--risk)" font-weight="600">alert 01:20</text>
+                          <text x="602" y="326" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--risk)" opacity=".85">τ = 50 min ≈ L</text>
+                          <text x="712" y="352" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--perf)" opacity=".85">projected stock-out 02:10</text>
+                        </svg>
+                      </div>
+                      <figcaption><b>One bar, one night, reconstructed for this page.</b> The dashed curve is
+                      the prior, the solid one is what the presses actually say, and the alert is not raised
+                      when the stock is low but when the projected time to empty falls to the runner's round
+                      trip.</figcaption>
+                    </figure>
+                  </div>
+
+                  <p class="rk-foot">Built for a student gala, 2023. The firmware, bridge and forecasting
+                  sheet were written for the event and are not public; figures are redrawn from the
+                  evening's logs.</p>
+
+                </div>
+
+              </div>
+            </div>
+          </article>
 
           <!-- ---------- PROJECT 5 ---------- -->
           <article class="project" id="p-perseus">
@@ -2067,6 +2078,6 @@
 
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
-<script defer src="assets/main.js?v=4"></script>
+<script defer src="assets/main.js?v=5"></script>
 </body>
 </html>

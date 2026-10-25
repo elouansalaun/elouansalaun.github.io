@@ -7,6 +7,39 @@
 (function () {
   'use strict';
 
+  /* ---------- selected projects ---------- */
+
+  // Each placeholder in "Selected projects" becomes a copy of the project it
+  // names, so a project's content lives in one place only. The copy's ids get
+  // a suffix, and the references to them inside the copy follow.
+  Array.prototype.forEach.call(document.querySelectorAll('.project-ref'), function (ref) {
+    var source = document.getElementById(ref.getAttribute('data-ref'));
+    if (!source) { ref.remove(); return; }
+
+    var copy = source.cloneNode(true);
+    var owned = [copy].concat(Array.prototype.slice.call(copy.querySelectorAll('[id]')));
+    var renamed = {};
+    owned.forEach(function (el) { renamed[el.id] = el.id + '-sel'; el.id = renamed[el.id]; });
+
+    var swap = function (id) { return renamed[id] || id; };
+    Array.prototype.forEach.call(copy.querySelectorAll('*'), function (el) {
+      Array.prototype.forEach.call(el.attributes, function (attr) {
+        var value = attr.value;
+        if (attr.name === 'aria-controls' || attr.name === 'aria-labelledby') {
+          value = value.split(/\s+/).map(swap).join(' ');
+        } else if (attr.name === 'href' && value.charAt(0) === '#') {
+          value = '#' + swap(value.slice(1));
+        } else {
+          value = value.replace(/url\(#([^)]+)\)/g, function (m, id) { return 'url(#' + swap(id) + ')'; });
+        }
+        if (value !== attr.value) attr.value = value;
+      });
+    });
+
+    copy.setAttribute('data-ref', source.id);
+    ref.replaceWith(copy);
+  });
+
   /* ---------- expandable projects ---------- */
 
   var projects = Array.prototype.slice.call(document.querySelectorAll('.project'));
@@ -32,9 +65,11 @@
     panel.inert = !open;
 
     // Keep the URL shareable: /#p-forecasting opens that project directly.
-    if (open && project.id) {
-      history.replaceState(null, '', '#' + project.id);
-    } else if (!open && location.hash === '#' + project.id) {
+    // A copy in "Selected projects" shares its original's address.
+    var id = project.getAttribute('data-ref') || project.id;
+    if (open && id) {
+      history.replaceState(null, '', '#' + id);
+    } else if (!open && location.hash === '#' + id) {
       history.replaceState(null, '', location.pathname + location.search);
     }
   }
@@ -122,7 +157,8 @@
   function openFromHash() {
     var id = location.hash.slice(1);
     if (!id) return;
-    var target = document.getElementById(id);
+    // Prefer the copy in "Selected projects": it sits in the tab shown first.
+    var target = document.querySelector('.project[data-ref="' + id + '"]') || document.getElementById(id);
     if (target && target.classList.contains('project') && !target.classList.contains('open')) {
       showCategoryOf(target);
       setOpen(target, true);

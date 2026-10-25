@@ -319,6 +319,9 @@ main { max-width: var(--measure); margin: 0 auto; padding: 0 var(--pad) 5rem; }
   margin: 2rem 0 .75rem !important;
 }
 .cat-slide:first-child .cat-label { margin-top: 0 !important; }
+/* "Selected projects" only holds placeholders that main.js fills in. */
+html:not(.js) #cat-selected { display: none; }
+html:not(.js) #cat-selected + .cat-slide .cat-label { margin-top: 0 !important; }
 
 .js .cat-label { display: none; }
 .js .cat-bar {
