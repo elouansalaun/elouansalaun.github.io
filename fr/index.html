@@ -97,7 +97,7 @@
           <button class="cat-tab" id="cat-selected-tab" type="button" role="tab" aria-selected="true" aria-controls="cat-selected">Projets phares <span class="cat-count">3</span></button>
           <button class="cat-tab" id="cat-ai-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-ai">IA appliquée et agents <span class="cat-count">4</span></button>
           <button class="cat-tab" id="cat-ml-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-ml">ML et optimisation <span class="cat-count">4</span></button>
-          <button class="cat-tab" id="cat-eng-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-eng">Ingénierie <span class="cat-count">2</span></button>
+          <button class="cat-tab" id="cat-eng-tab" type="button" role="tab" aria-selected="false" aria-controls="cat-eng">Ingénierie <span class="cat-count">3</span></button>
         </div>
         <button class="cat-arrow cat-prev" type="button" aria-label="Catégorie précédente"><span aria-hidden="true"></span></button>
         <button class="cat-arrow cat-next" type="button" aria-label="Catégorie suivante"><span aria-hidden="true"></span></button>
@@ -1704,6 +1704,178 @@
                   <p class="rk-foot">Projet de semestre pour le programme CNES/PERSEUS, démonstrateur ASTREOS, à Arts et Métiers. Le rapport du projet couvre aussi les matériaux lin/Elium, la machine et la campagne expérimentale ; cette page couvre les parties mathématique et logicielle.</p>
 
                 </div>
+
+              </div>
+            </div>
+          </article>
+
+          <!-- ---------- PROJECT: CFDXEL ---------- -->
+          <article class="project" id="p-cfdxel">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-cfdxel-btn" type="button"
+                      aria-expanded="false" aria-controls="p-cfdxel-panel">
+                <span class="project-name">CFDxel : une soufflerie en formules Excel pures</span>
+                <span class="project-meta">2023 · Excel · CFD · Lattice Boltzmann (D2Q9, BGK) · calcul itératif · NumPy</span>
+                <span class="project-summary">Une <b>soufflerie numérique 2D</b> qui tourne entièrement en formules de cellules Excel, <b>sans VBA</b> ni macros. Un solveur <b>Lattice Boltzmann</b> avance d'un pas de temps à chaque passe du moteur de références circulaires d'Excel : on tape x pour dessiner un obstacle, on appuie sur F9, et une <b>allée de tourbillons de von Kármán</b> se forme derrière lui.</span>
+                <img class="project-icon" src="../assets/img/icon_project_cfd.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <img class="project-preview" src="../assets/img/CFDxel/cfdxel_preview.jpg" alt="Capture du classeur CFDxel dans Excel, vue de la vorticité : un cylindre violet sur une grille de cellules, suivi d'une allée de tourbillons de von Kármán alternant rouge et bleu." width="1200" height="675" loading="lazy" decoding="async">
+
+            <div class="panel" id="p-cfdxel-panel" role="region" aria-labelledby="p-cfdxel-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <div class="rk-top">
+                    <p>Une soufflerie bidimensionnelle construite uniquement avec des formules de cellules Excel, sans VBA, macros ni compléments. On dessine un obstacle en tapant x dans des cellules, on appuie sur F9, et l'écoulement se développe autour jusqu'à ce que des tourbillons se détachent derrière lui. Sous le capot, c'est un solveur Lattice Boltzmann (D2Q9, BGK) ; la vraie difficulté était de faire avancer un tableur dans le temps, ce qui a demandé de <strong>transformer le moteur de références circulaires d'Excel en intégrateur temporel</strong>.</p>
+
+                    <div class="rk-facts">
+                      <div class="rk-fact"><b>0</b><span>ligne de VBA : chaque population de chaque cellule est une simple formule</span></div>
+                      <div class="rk-fact"><b>≈540 000</b><span>formules recalculées à chaque pas de temps sur une grille de 100 × 300</span></div>
+                      <div class="rk-fact"><b>10⁻¹⁵</b><span>écart entre le classeur et une référence NumPy du même schéma</span></div>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — Fonctionnement</span>
+                    <div class="rk-col">
+                      <p>La méthode de Lattice Boltzmann convient à un tableur parce qu'elle est locale et explicite : une cellule n'a besoin que de ses 8 voisines au pas précédent, donc une formule donne une mise à jour, et une paroi tient en un seul IF. Chaque itération du calcul itératif d'Excel est un pas de temps. Deux copies des 9 populations travaillent à tour de rôle, et un indicateur de phase décide laquelle est écrite pendant que l'autre reste figée.</p>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame">
+                        <svg viewBox="0 0 940 410" role="img" aria-label="La feuille Tunnel, où l'on tape les obstacles, alimente la feuille Mask, qui combine les parois, les cellules dessinées et une forme prédéfinie. Le masque alimente deux tampons de neuf populations, A et B, mis à jour par propagation en mode pull et collision BGK. Une horloge sur la feuille Control inverse un indicateur de phase à chaque itération pour choisir le tampon écrit. En dessous, la densité et la vitesse sont lues dans le dernier tampon écrit, normalisées sur la feuille View pour le mode choisi, puis peintes sur la feuille Tunnel par mise en forme conditionnelle.">
+                          <defs>
+                            <marker id="cfd-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                            </marker>
+                          </defs>
+
+                          <g font-family="Source Sans 3, sans-serif" font-size="11.5" fill="currentColor" opacity=".55">
+                            <text x="16" y="30">résoudre — une passe du calcul circulaire d'Excel = un pas de temps</text>
+                            <text x="16" y="272">afficher — lu dans le dernier tampon écrit</text>
+                          </g>
+
+                          <!-- row 1 : solve -->
+                          <g font-family="IBM Plex Mono, monospace">
+                            <rect x="16" y="54" width="160" height="96" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                            <text x="96" y="78" text-anchor="middle" fill="currentColor" font-size="11.5">Tunnel</text>
+                            <text x="96" y="96" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">taper x pour dessiner</text>
+                            <text x="96" y="112" text-anchor="middle" fill="currentColor" font-size="9.5" opacity=".7">forme · ρ, μ, U, D</text>
+                            <text x="96" y="128" text-anchor="middle" fill="currentColor" font-size="9" opacity=".55">seule feuille éditée</text>
+
+                            <rect x="220" y="54" width="160" height="96" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
+                            <text x="300" y="78" text-anchor="middle" fill="var(--perf)" font-size="11.5">Mask</text>
+                            <text x="300" y="96" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">parois OU x OU forme</text>
+                            <text x="300" y="112" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">1 solide · 0 fluide</text>
+                            <text x="300" y="128" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">recalculé à chaque F9</text>
+
+                            <rect x="424" y="54" width="300" height="96" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.8"/>
+                            <text x="574" y="78" text-anchor="middle" fill="var(--hedge)" font-size="11.5">A_0…A_8  ⇄  B_0…B_8</text>
+                            <text x="574" y="96" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">9 populations × 2 tampons</text>
+                            <text x="574" y="112" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".75">propagation pull + BGK, un LET par cellule</text>
+                            <text x="574" y="128" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".6">rebond : IF(Mask=1, opposée, voisine)</text>
+
+                            <rect x="780" y="54" width="144" height="96" rx="2" fill="none" stroke="var(--risk)" stroke-width="1.5"/>
+                            <text x="852" y="78" text-anchor="middle" fill="var(--risk)" font-size="11.5">Control</text>
+                            <text x="852" y="96" text-anchor="middle" fill="var(--risk)" font-size="9.5" opacity=".9">Phase = 1 − Phase</text>
+                            <text x="852" y="112" text-anchor="middle" fill="var(--risk)" font-size="9.5" opacity=".75">Tick = Tick + 1</text>
+                            <text x="852" y="128" text-anchor="middle" fill="var(--risk)" font-size="9" opacity=".6">évaluée en premier</text>
+                          </g>
+
+                          <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cfd-a)">
+                            <line x1="176" y1="102" x2="216" y2="102"/>
+                            <line x1="380" y1="102" x2="420" y2="102"/>
+                            <line x1="780" y1="102" x2="728" y2="102"/>
+                            <path d="M640,150 C640,190 508,190 508,158"/>
+                          </g>
+                          <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
+                            <text x="754" y="94" text-anchor="middle">écrit</text>
+                            <text x="560" y="200" text-anchor="middle">Phase 0 : A depuis B · Phase 1 : B depuis A</text>
+                          </g>
+
+                          <!-- row 2 : display -->
+                          <g font-family="IBM Plex Mono, monospace">
+                            <rect x="424" y="292" width="300" height="88" rx="2" fill="none" stroke="var(--hedge)" stroke-width="1.5"/>
+                            <text x="574" y="320" text-anchor="middle" fill="var(--hedge)" font-size="11.5">Rho · Ux · Uy</text>
+                            <text x="574" y="339" text-anchor="middle" fill="var(--hedge)" font-size="9.5" opacity=".9">moments du dernier tampon écrit</text>
+                            <text x="574" y="355" text-anchor="middle" fill="var(--hedge)" font-size="9" opacity=".75">ρ = Σ fᵢ · ρu = Σ fᵢ cᵢ</text>
+
+                            <rect x="220" y="292" width="160" height="88" rx="2" fill="none" stroke="var(--perf)" stroke-width="1.5"/>
+                            <text x="300" y="320" text-anchor="middle" fill="var(--perf)" font-size="11.5">View</text>
+                            <text x="300" y="339" text-anchor="middle" fill="var(--perf)" font-size="9.5" opacity=".9">|u| · ω · Δρ</text>
+                            <text x="300" y="355" text-anchor="middle" fill="var(--perf)" font-size="9" opacity=".75">normalisé sur [0, 1]</text>
+
+                            <rect x="16" y="292" width="160" height="88" rx="2" fill="none" stroke="var(--risk)" stroke-width="1.5"/>
+                            <text x="96" y="320" text-anchor="middle" fill="var(--risk)" font-size="11.5">mise en forme</text>
+                            <text x="96" y="339" text-anchor="middle" fill="var(--risk)" font-size="9.5" opacity=".9">9 bandes de couleur</text>
+                            <text x="96" y="355" text-anchor="middle" fill="var(--risk)" font-size="9" opacity=".75">règles lisant View!</text>
+                          </g>
+
+                          <g stroke="currentColor" stroke-width="1.3" fill="none" opacity=".55" marker-end="url(#cfd-a)">
+                            <line x1="680" y1="150" x2="680" y2="288"/>
+                            <line x1="424" y1="336" x2="384" y2="336"/>
+                            <line x1="220" y1="336" x2="180" y2="336"/>
+                            <path d="M96,292 L96,154"/>
+                          </g>
+                          <g font-family="Source Sans 3, sans-serif" font-size="10" fill="currentColor" opacity=".55">
+                            <text x="108" y="226">peint sur la grille</text>
+                          </g>
+                        </svg>
+                      </div>
+                      <figcaption><b>Deux tampons et une horloge.</b> Excel évalue les cellules dans son propre ordre, donc un tampon unique mélangerait les niveaux de temps. Comme Phase s'inverse à chaque itération, le tampon lu est toujours figé ; la seule hypothèse restante est que Control est évaluée en premier, ce que le compteur Tick vérifie à chaque F9.</figcaption>
+                    </figure>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Compétences</span>
+                    <ul class="rk-plain">
+                      <li><b>Mécanique des fluides numérique.</b> Lattice Boltzmann D2Q9 avec collision BGK, parois par rebond (bounce-back), une entrée à l'équilibre avec une courte rafale latérale pour déclencher le détachement, et une sortie à gradient nul.</li>
+                      <li><b>Modélisation numérique.</b> Des entrées physiques (ρ, μ, U, D) converties en nombre de Reynolds, en temps de relaxation puis de nouveau en unités physiques ; τ est borné à 0,52 pour la stabilité, et le Reynolds réellement simulé est affiché à côté de celui demandé.</li>
+                      <li><b>Ingénierie de tableur.</b> Un seul modèle LET pour les 18 feuilles de tampons, un double tampon contre l'ordre de calcul d'Excel, un masque qui combine parois, cellules dessinées et formes paramétriques (cercle, rectangle, NACA 0012 avec angle d'attaque), et la mise en forme conditionnelle entre feuilles comme moteur de rendu.</li>
+                      <li><b>Vérification.</b> Une implémentation NumPy du même schéma, injectée dans le classeur : chaque population concorde à environ 10⁻¹⁵ près.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Résultats</span>
+                    <div class="rk-col">
+                      <p>Avec un cylindre de 20 cellules à Re = 100, le classeur passe par la séquence attendue : une paire symétrique de zones de recirculation, un sillage plus long qui se met à osciller, puis un détachement périodique des tourbillons après environ 3 000 pas. Les obstacles peuvent être redessinés pendant que l'écoulement tourne.</p>
+                    </div>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/CFDxel/wake_symmetric.jpg" alt="Vue de la vitesse après environ 600 pas : deux zones de recirculation lentes, en bleu, se tiennent symétriquement derrière le cylindre violet, avec un écoulement rapide, en rouge, sur ses côtés." width="1200" height="450" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Sillage symétrique.</b> Après environ 600 pas, deux zones de recirculation lentes (en bleu) se forment derrière le cylindre, dans la vue de la vitesse.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/CFDxel/wake_shedding.jpg" alt="Vue de la vitesse pendant le détachement périodique : le sillage bleu et lent derrière le cylindre est devenu ondulé et se fragmente en poches qui partent vers l'aval." width="1200" height="450" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Détachement périodique.</b> Du fluide lent se détache alternativement du haut et du bas du cylindre et part vers l'aval.</figcaption>
+                      </figure>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame rk-frame--img">
+                        <img src="../assets/img/CFDxel/custom_obstacles.jpg" alt="Vue de la vitesse avec deux coins violets dessinés à la main à la place du cylindre : un jet rapide, en rouge, passe dans l'espace entre eux et un sillage lent, en bleu, suit chacun d'eux." width="1200" height="403" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption><b>N'importe quelle forme, tapée à la main.</b> Deux coins dessinés avec des x à la place du cylindre. Le fluide resserré entre eux accélère en un jet (en rouge) et chaque coin laisse un sillage lent ; les bords en escalier sont ceux de toute géométrie en rebond.</figcaption>
+                    </figure>
+                  </div>
+
+                  <p class="rk-foot">Projet personnel, 2023. Le BGK simple et le rebond simple limitent le Reynolds simulé à environ 300 sur cette grille, et la densité moyenne dérive d'environ 2 % en 6 000 pas avec l'entrée et la sortie ouvertes ; des conditions aux limites de Zou–He et une collision MRT sont les prochaines étapes.</p>
+
+                </div>
+
+                <!-- <p class="project-links">
+                  <a href="https://github.com/elouansalaun/CFDxel">Dépôt ↗</a>
+                </p> -->
 
               </div>
             </div>
