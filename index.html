@@ -110,8 +110,8 @@
 
           <!-- Filled by main.js with copies of these projects; edit them in their own category. -->
           <div class="project-ref" data-ref="p-forecasting"></div>
+          <div class="project-ref" data-ref="p-mechagent"></div>
           <div class="project-ref" data-ref="p-llm-rts"></div>
-          <div class="project-ref" data-ref="p-seao"></div>
         </div>
 
         <!-- ==================== CATEGORY: APPLIED AI &AMP; AGENTS ==================== -->
@@ -540,6 +540,264 @@
               </div>
             </div>
           </article>-->
+
+          <!-- ---------- PROJECT: MECHAGENT ---------- -->
+          <article class="project" id="p-mechagent">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-mechagent-btn" type="button"
+                      aria-expanded="false" aria-controls="p-mechagent-panel">
+                <span class="project-name">MechAgent: an AI engineering agent that designs, simulates and verifies a mechanical part</span>
+                <span class="project-meta">2026 · Python · LangGraph · Qwen 3.5 9B · LM Studio · CalculiX FEM · Gmsh · CadQuery · Optuna · Streamlit</span>
+                <span class="project-summary">From a <b>plain-text specification</b>, an <b>LLM agent</b> designs a bracket in <b>parametric CAD</b>, simulates it with <b>finite elements</b>, <b>optimizes</b> it for minimum mass and checks it, then delivers a PDF engineering report and a STEP file. <b>The LLM orchestrates, deterministic tools compute</b>: every stress, displacement and fatigue life comes from a real solver.</span>
+                <img class="project-icon" src="assets/img/icon_project_mech.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <img class="project-preview" src="assets/img/MechAgent/mechagent_explained.gif" alt="Animated explanation of MechAgent: a plain-text request turned by an LLM agent and deterministic engineering tools into a simulated, optimized and verified bracket, with a PDF report and a STEP file." width="1200" height="675" loading="lazy" decoding="async">
+
+            <div class="panel" id="p-mechagent-panel" role="region" aria-labelledby="p-mechagent-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <div class="rk-top">
+                    <p>Designing a load-bearing bracket is a chain of decisions: read the requirements,
+                    choose the analyses, pick a material, size the geometry, simulate, iterate, and prove
+                    the result is correct. An LLM can drive that chain, but it must never be the source of
+                    an engineering number. In MechAgent, a <strong>local LLM reads the request and chooses
+                    between actions that engineering rules already allow</strong>; CAD, meshing, finite
+                    elements, fatigue and optimization are deterministic tools, and a design is only
+                    declared <strong>verified</strong> once every required check has run and passed.</p>
+
+                    <div class="rk-facts">
+                      <div class="rk-fact"><b>960.5 g</b><span>titanium shelf bracket under 2,000 N, verified in about 20 min on a laptop</span></div>
+                      <div class="rk-fact"><b>10 / 10</b><span>checks passed: solver, mesh, equilibrium, linearity, requirements, convergence</span></div>
+                      <div class="rk-fact"><b>6 / 6</b><span>analytical reference cases the FEM chain must reproduce before any result is trusted</span></div>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — How it works</span>
+                    <div class="rk-col">
+                      <h4>The LLM orchestrates, deterministic tools compute</h4>
+                      <p>The agent is a LangGraph state graph. The LLM appears at only two points: it
+                      extracts loads, mounting points and limits from the text, and every value it read
+                      is checked against the original text; later, it arbitrates between the actions
+                      the rules allow. Everything else is engineering rules and tools, and each node writes
+                      its decision to a trace tagged <code>[llm]</code>, <code>[rule]</code> or
+                      <code>[tool]</code>. Each optimization trial is a full chain: CadQuery builds the
+                      parametric bracket, Gmsh meshes it in quadratic tetrahedra, CalculiX solves it, then
+                      yield, displacement, fatigue (S-N curves, Miner) and buckling are checked.</p>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame">
+                        <svg viewBox="0 0 940 330" role="img" aria-label="The MechAgent workflow. The LLM parses the request; engineering rules review it and plan the analyses; deterministic tools validate the solver on six analytical cases, rank materials, run an Optuna search with one finite element evaluation per trial and verify the best designs on a finer mesh. A decide step, where rules list the allowed actions and the LLM picks one, loops back to the search to refine or widen it, or goes to the report, which delivers a status, a PDF and a STEP file.">
+                          <defs>
+                            <marker id="ma-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                            </marker>
+                            <marker id="ma-h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="var(--hedge)"/>
+                            </marker>
+                          </defs>
+
+                          <!-- legend -->
+                          <g font-family="Source Sans 3, sans-serif" font-size="11" fill="currentColor">
+                            <rect x="14" y="14" width="14" height="10" rx="1" fill="none" stroke="var(--hedge)" stroke-width="1.8"/>
+                            <text x="34" y="23" opacity=".7">LLM</text>
+                            <rect x="80" y="14" width="14" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 2"/>
+                            <text x="100" y="23" opacity=".7">engineering rule</text>
+                            <rect x="210" y="14" width="14" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="230" y="23" opacity=".7">deterministic tool</text>
+                          </g>
+
+                          <!-- first row, left to right -->
+                          <g font-family="IBM Plex Mono, monospace" text-anchor="middle">
+                            <rect x="14" y="56" width="156" height="68" rx="2" fill="none" stroke="var(--hedge)" stroke-width="2"/>
+                            <text x="92" y="82" fill="var(--hedge)" font-size="11.5">parse</text>
+                            <text x="92" y="100" fill="var(--hedge)" font-size="10" opacity=".85">reads the request</text>
+                            <text x="92" y="114" fill="var(--hedge)" font-size="10" opacity=".85">values checked vs. text</text>
+
+                            <rect x="205" y="56" width="156" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3"/>
+                            <text x="283" y="82" fill="currentColor" font-size="11.5">review</text>
+                            <text x="283" y="100" fill="currentColor" font-size="10" opacity=".65">places the bracket</text>
+                            <text x="283" y="114" fill="currentColor" font-size="10" opacity=".65">flags missing data</text>
+
+                            <rect x="396" y="56" width="156" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3"/>
+                            <text x="474" y="82" fill="currentColor" font-size="11.5">plan</text>
+                            <text x="474" y="100" fill="currentColor" font-size="10" opacity=".65">static · fatigue</text>
+                            <text x="474" y="114" fill="currentColor" font-size="10" opacity=".65">buckling · modal</text>
+
+                            <rect x="587" y="56" width="156" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="665" y="82" fill="currentColor" font-size="11.5">validate_solver</text>
+                            <text x="665" y="100" fill="currentColor" font-size="10" opacity=".65">6 analytical cases</text>
+                            <text x="665" y="114" fill="currentColor" font-size="10" opacity=".65">must all pass</text>
+
+                            <rect x="778" y="56" width="156" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="856" y="82" fill="currentColor" font-size="11.5">select_materials</text>
+                            <text x="856" y="100" fill="currentColor" font-size="10" opacity=".65">Ashby indices</text>
+                            <text x="856" y="114" fill="currentColor" font-size="10" opacity=".65">shortlist</text>
+                          </g>
+
+                          <!-- second row, right to left -->
+                          <g font-family="IBM Plex Mono, monospace" text-anchor="middle">
+                            <rect x="778" y="186" width="156" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="856" y="212" fill="currentColor" font-size="11.5">search</text>
+                            <text x="856" y="230" fill="currentColor" font-size="10" opacity=".65">Optuna TPE</text>
+                            <text x="856" y="244" fill="currentColor" font-size="10" opacity=".65">1 full FEM per trial</text>
+
+                            <rect x="570" y="186" width="150" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="645" y="212" fill="currentColor" font-size="11.5">verify</text>
+                            <text x="645" y="230" fill="currentColor" font-size="10" opacity=".65">finer mesh</text>
+                            <text x="645" y="244" fill="currentColor" font-size="10" opacity=".65">convergence study</text>
+
+                            <rect x="356" y="186" width="150" height="68" rx="2" fill="none" stroke="var(--hedge)" stroke-width="2.2"/>
+                            <text x="431" y="212" fill="var(--hedge)" font-size="11.5">decide</text>
+                            <text x="431" y="230" fill="var(--hedge)" font-size="10" opacity=".85">rules list actions</text>
+                            <text x="431" y="244" fill="var(--hedge)" font-size="10" opacity=".85">the LLM picks one</text>
+
+                            <rect x="150" y="186" width="140" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="220" y="212" fill="currentColor" font-size="11.5">report</text>
+                            <text x="220" y="230" fill="currentColor" font-size="10" opacity=".65">PDF · STEP</text>
+                            <text x="220" y="244" fill="currentColor" font-size="10" opacity=".65">decision trace</text>
+
+                            <rect x="14" y="186" width="110" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                            <text x="69" y="216" fill="currentColor" font-size="11">status</text>
+                            <text x="69" y="234" fill="currentColor" font-size="10" opacity=".6">+ deliverables</text>
+                          </g>
+
+                          <g stroke="currentColor" stroke-width="1.4" fill="none" opacity=".6" marker-end="url(#ma-c)">
+                            <line x1="170" y1="90" x2="203" y2="90"/>
+                            <line x1="361" y1="90" x2="394" y2="90"/>
+                            <line x1="552" y1="90" x2="585" y2="90"/>
+                            <line x1="743" y1="90" x2="776" y2="90"/>
+                            <line x1="856" y1="124" x2="856" y2="184"/>
+                            <line x1="778" y1="220" x2="722" y2="220"/>
+                            <line x1="570" y1="220" x2="508" y2="220"/>
+                            <line x1="150" y1="220" x2="126" y2="220"/>
+                          </g>
+
+                          <!-- the LLM's two exits from decide -->
+                          <g stroke="var(--hedge)" stroke-width="1.5" fill="none" marker-end="url(#ma-h)">
+                            <line x1="356" y1="220" x2="292" y2="220"/>
+                            <path d="M431,254 L431,288 L856,288 L856,258"/>
+                          </g>
+                          <g font-family="Source Sans 3, sans-serif" font-size="10.5" fill="var(--hedge)" text-anchor="middle">
+                            <text x="323" y="210">accept</text>
+                            <text x="323" y="238">or stop</text>
+                            <text x="643" y="306">refine / widen_search</text>
+                          </g>
+                        </svg>
+                      </div>
+                      <figcaption><b>Two LLM steps in a deterministic workflow.</b> Unreadable text, a blocking question, an analysis that is not implemented or a failed solver validation stop the run early with an explicit status, instead of producing an unchecked design.</figcaption>
+                    </figure>
+
+                    <div class="rk-tablewrap">
+                      <table class="rk-prose">
+                        <caption>The LLM never chooses freely. After each verification the rules compute which actions are allowed; the LLM only arbitrates when there is more than one, and an answer outside the list falls back to the rule default.</caption>
+                        <thead>
+                          <tr><th>Situation after verification</th><th>Allowed actions</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Valid design, a requirement within 10% of its limit, or no iteration left</td><td><code>accept</code></td></tr>
+                          <tr><td>Valid design with margin left on every requirement</td><td><code>refine</code>, <code>accept</code></td></tr>
+                          <tr><td>Valid designs found, none passed the final verification</td><td><code>refine</code>, <code>stop</code></td></tr>
+                          <tr><td>No valid design found</td><td><code>widen_search</code>, <code>stop</code></td></tr>
+                          <tr><td>No valid design and no iteration left</td><td><code>stop</code></td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Skills</span>
+                    <ul class="rk-plain">
+                      <li><b>LLM agents with guardrails.</b> A LangGraph state graph around a local LLM
+                      (Qwen 3.5 9B in LM Studio, no cloud API); decisions restricted to rule-allowed
+                      actions, every extracted number and vector checked against the source text, and
+                      every decision traced with its source.</li>
+                      <li><b>Finite element analysis.</b> Linear static FEM with quadratic tetrahedra
+                      (CalculiX, Gmsh), mesh quality, equilibrium and linearity checks, mesh convergence,
+                      and a solver chain validated against 6 analytical cases.</li>
+                      <li><b>Fatigue and strength.</b> S-N curves with Marin factors, Goodman, Gerber and
+                      Soderberg mean stress corrections, rainflow counting, Miner damage, buckling
+                      screening.</li>
+                      <li><b>Parametric CAD.</b> A CadQuery L bracket with ribs and fillets, placed on
+                      arbitrary mounting points by frame transforms and exported as STEP in the request's
+                      global frame.</li>
+                      <li><b>Optimization and materials.</b> Mass minimization under constraints with Optuna,
+                      warm-started refinement, material ranking with Ashby indices and a cost model.</li>
+                      <li><b>Software engineering.</b> Pydantic data models, a single enforced unit system,
+                      186 tests (unit tests with a fake LLM, smoke tests on the real solvers), a Streamlit
+                      app with background runs, and a PDF report built with ReportLab and PyVista.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Results</span>
+                    <div class="rk-col">
+                      <p>On a titanium shelf bracket under a 2,000 N static load, the LLM chose
+                      <code>refine</code> after the first iteration (1,004.7 g, 14% margin on displacement);
+                      after the second (960.5 g, 7% margin) the rules allowed only <code>accept</code>.
+                      <strong>Final design: Ti-6Al-4V, 960.5 g, 1.86 mm displacement for a 2 mm limit, a
+                      yield safety factor of 7.34 for 2 required, 10 / 10 checks passed.</strong> A second
+                      example, an aluminium wall bracket under one million load cycles, ends verified at
+                      239 g of Al7075-T6, 19% lighter than its first iteration.</p>
+                    </div>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/MechAgent/result_von_mises.png" alt="Von Mises stress on the deformed L bracket, magnified six times: low stress in dark blue on the vertical flange, yellow to orange across the base, and red concentrations at the two bolt holes and along the bend." width="1400" height="1000" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Von Mises stress (MPa).</b> The scale is capped at the 120 MPa
+                        design stress; higher values sit at the rigid bolt supports.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/MechAgent/result_displacement.png" alt="Displacement on the deformed L bracket, magnified six times: zero at the bolted base, increasing through the bend to a maximum of 1.86 mm at the top edge of the flange that carries the load." width="1400" height="1000" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Displacement (mm).</b> 1.86 mm at the loaded flange, for a 2 mm
+                        limit.</figcaption>
+                      </figure>
+                    </div>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/MechAgent/streamlit_request.png" alt="The Streamlit app, dark theme: the plain-text specification of a titanium shelf bracket, its interpretation as a bracket frame in global coordinates with the derived dimensions, and the analysis plan table where static analysis is required and fatigue, buckling and modal are not, each with its method and reason." width="1920" height="1049" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>The request, as understood.</b> The bracket placed in the global frame,
+                        and each analysis required or not, with its reason.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/MechAgent/decision_trace.png" alt="The decision trace of the titanium run in the Streamlit app: 17 numbered steps tagged llm, rule or tool, from parsing and planning through solver validation, material selection, two search and verify iterations, an LLM decision to refine and a final rule decision to accept, with download buttons for report.pdf, report.md and design.step." width="1920" height="1048" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>The decision trace.</b> 17 steps, each tagged with who decided:
+                        the LLM, a rule or a tool.</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+
+                  <p class="rk-foot">Personal project. The first supported component is a two-bolt L
+                  bracket, optimized parametrically rather than by topology optimization; modal analysis
+                  is not implemented, so a request that needs it is marked unverifiable rather than
+                  passed. Next steps: a contact-based bolted joint, buckling and modal FEM, more component
+                  types and a mass–cost Pareto front.</p>
+
+                </div>
+
+                <p class="project-links">
+                  <a href="https://github.com/elouansalaun/MechAgent">Repository ↗</a>
+                  <a href="https://github.com/elouansalaun/MechAgent/blob/main/docs/media/example_report.pdf">Example report (PDF) ↗</a>
+                </p>
+
+              </div>
+            </div>
+          </article>
 
           <!-- ---------- PROJECT 2 ---------- -->
           <article class="project" id="p-seao">

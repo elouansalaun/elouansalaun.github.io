@@ -111,8 +111,9 @@
 
           <!-- Filled by main.js with copies of these projects; edit them in their own category. -->
           <div class="project-ref" data-ref="p-forecasting"></div>
+          <div class="project-ref" data-ref="p-mechagent"></div>
           <div class="project-ref" data-ref="p-llm-rts"></div>
-          <div class="project-ref" data-ref="p-seao"></div>
+          
         </div>
 
         <!-- ==================== CATEGORY: IA APPLIQUÉE ET AGENTS ==================== -->
@@ -489,6 +490,225 @@
               </div>
             </div>
           </article>-->
+
+          <!-- ---------- PROJECT: MECHAGENT ---------- -->
+          <article class="project" id="p-mechagent">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-mechagent-btn" type="button"
+                      aria-expanded="false" aria-controls="p-mechagent-panel">
+                <span class="project-name">MechAgent : un agent IA d'ingénierie qui conçoit, simule et vérifie une pièce mécanique</span>
+                <span class="project-meta">2026 · Python · LangGraph · Qwen 3.5 9B · LM Studio · CalculiX MEF · Gmsh · CadQuery · Optuna · Streamlit</span>
+                <span class="project-summary">À partir d'un <b>cahier des charges en texte libre</b>, un <b>agent LLM</b> conçoit une équerre en <b>CAO paramétrique</b>, la simule par <b>éléments finis</b>, l'<b>optimise</b> pour une masse minimale et la vérifie, puis livre un rapport d'ingénierie PDF et un fichier STEP. <b>Le LLM orchestre, les outils déterministes calculent</b> : chaque contrainte, déplacement et durée de vie en fatigue vient d'un vrai solveur.</span>
+                <img class="project-icon" src="../assets/img/icon_project_mech.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <img class="project-preview" src="../assets/img/MechAgent/mechagent_explained_fr.gif" alt="Explication animée de MechAgent : une demande en texte libre transformée par un agent LLM et des outils d'ingénierie déterministes en une équerre simulée, optimisée et vérifiée, avec un rapport PDF et un fichier STEP." width="1200" height="675" loading="lazy" decoding="async">
+
+            <div class="panel" id="p-mechagent-panel" role="region" aria-labelledby="p-mechagent-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <div class="rk-top">
+                    <p>Concevoir une équerre qui porte une charge est une suite de décisions : lire les exigences, choisir les analyses, choisir un matériau, dimensionner la géométrie, simuler, itérer, puis prouver que le résultat est correct. Un LLM peut piloter cette suite, mais il ne doit jamais être la source d'un chiffre d'ingénierie. Dans MechAgent, un <strong>LLM local lit la demande et choisit entre des actions que les règles d'ingénierie autorisent déjà</strong> ; la CAO, le maillage, les éléments finis, la fatigue et l'optimisation sont des outils déterministes, et une conception n'est déclarée <strong>vérifiée</strong> qu'une fois chaque vérification requise exécutée et réussie.</p>
+
+                    <div class="rk-facts">
+                      <div class="rk-fact"><b>960,5 g</b><span>équerre d'étagère en titane sous 2 000 N, vérifiée en 20 min environ sur un ordinateur portable</span></div>
+                      <div class="rk-fact"><b>10 / 10</b><span>vérifications réussies : solveur, maillage, équilibre, linéarité, exigences, convergence</span></div>
+                      <div class="rk-fact"><b>6 / 6</b><span>cas de référence analytiques que la chaîne éléments finis doit reproduire avant qu'un résultat soit pris en compte</span></div>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — Fonctionnement</span>
+                    <div class="rk-col">
+                      <h4>Le LLM orchestre, les outils déterministes calculent</h4>
+                      <p>L'agent est un graphe d'états LangGraph. Le LLM n'intervient qu'à deux endroits : il extrait du texte les charges, les points de fixation et les limites, et chaque valeur lue est vérifiée par rapport au texte d'origine ; plus tard, il arbitre entre les actions autorisées par les règles. Tout le reste relève de règles d'ingénierie et d'outils, et chaque nœud inscrit sa décision dans une trace marquée <code>[llm]</code>, <code>[rule]</code> ou <code>[tool]</code>. Chaque essai d'optimisation est une chaîne complète : CadQuery construit l'équerre paramétrique, Gmsh la maille en tétraèdres quadratiques, CalculiX la résout, puis la limite élastique, le déplacement, la fatigue (courbes S-N, Miner) et le flambement sont vérifiés.</p>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame">
+                        <svg viewBox="0 0 940 330" role="img" aria-label="Le déroulement de MechAgent. Le LLM analyse la demande ; des règles d'ingénierie la relisent et planifient les analyses ; des outils déterministes valident le solveur sur six cas analytiques, classent les matériaux, lancent une recherche Optuna avec un calcul éléments finis par essai et vérifient les meilleures conceptions sur un maillage plus fin. Une étape de décision, où les règles listent les actions autorisées et le LLM en choisit une, revient à la recherche pour l'affiner ou l'élargir, ou passe au rapport, qui livre un statut, un PDF et un fichier STEP.">
+                          <defs>
+                            <marker id="ma-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                            </marker>
+                            <marker id="ma-h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="var(--hedge)"/>
+                            </marker>
+                          </defs>
+
+                          <!-- legend -->
+                          <g font-family="Source Sans 3, sans-serif" font-size="11" fill="currentColor">
+                            <rect x="14" y="14" width="14" height="10" rx="1" fill="none" stroke="var(--hedge)" stroke-width="1.8"/>
+                            <text x="34" y="23" opacity=".7">LLM</text>
+                            <rect x="80" y="14" width="14" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 2"/>
+                            <text x="100" y="23" opacity=".7">règle d'ingénierie</text>
+                            <rect x="214" y="14" width="14" height="10" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="234" y="23" opacity=".7">outil déterministe</text>
+                          </g>
+
+                          <!-- first row, left to right -->
+                          <g font-family="IBM Plex Mono, monospace" text-anchor="middle">
+                            <rect x="14" y="56" width="156" height="68" rx="2" fill="none" stroke="var(--hedge)" stroke-width="2"/>
+                            <text x="92" y="82" fill="var(--hedge)" font-size="11.5">parse</text>
+                            <text x="92" y="100" fill="var(--hedge)" font-size="10" opacity=".85">lit la demande</text>
+                            <text x="92" y="114" fill="var(--hedge)" font-size="10" opacity=".85">valeurs vs. texte</text>
+
+                            <rect x="205" y="56" width="156" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3"/>
+                            <text x="283" y="82" fill="currentColor" font-size="11.5">review</text>
+                            <text x="283" y="100" fill="currentColor" font-size="10" opacity=".65">place l'équerre</text>
+                            <text x="283" y="114" fill="currentColor" font-size="10" opacity=".65">données manquantes</text>
+
+                            <rect x="396" y="56" width="156" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3"/>
+                            <text x="474" y="82" fill="currentColor" font-size="11.5">plan</text>
+                            <text x="474" y="100" fill="currentColor" font-size="10" opacity=".65">statique · fatigue</text>
+                            <text x="474" y="114" fill="currentColor" font-size="10" opacity=".65">flambement · modal</text>
+
+                            <rect x="587" y="56" width="156" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="665" y="82" fill="currentColor" font-size="11.5">validate_solver</text>
+                            <text x="665" y="100" fill="currentColor" font-size="10" opacity=".65">6 cas analytiques</text>
+                            <text x="665" y="114" fill="currentColor" font-size="10" opacity=".65">tous réussis</text>
+
+                            <rect x="778" y="56" width="156" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="856" y="82" fill="currentColor" font-size="11.5">select_materials</text>
+                            <text x="856" y="100" fill="currentColor" font-size="10" opacity=".65">indices d'Ashby</text>
+                            <text x="856" y="114" fill="currentColor" font-size="10" opacity=".65">présélection</text>
+                          </g>
+
+                          <!-- second row, right to left -->
+                          <g font-family="IBM Plex Mono, monospace" text-anchor="middle">
+                            <rect x="778" y="186" width="156" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="856" y="212" fill="currentColor" font-size="11.5">search</text>
+                            <text x="856" y="230" fill="currentColor" font-size="10" opacity=".65">Optuna TPE</text>
+                            <text x="856" y="244" fill="currentColor" font-size="10" opacity=".65">1 calcul MEF / essai</text>
+
+                            <rect x="570" y="186" width="150" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="645" y="212" fill="currentColor" font-size="11.5">verify</text>
+                            <text x="645" y="230" fill="currentColor" font-size="10" opacity=".65">maillage plus fin</text>
+                            <text x="645" y="244" fill="currentColor" font-size="10" opacity=".65">convergence</text>
+
+                            <rect x="356" y="186" width="150" height="68" rx="2" fill="none" stroke="var(--hedge)" stroke-width="2.2"/>
+                            <text x="431" y="212" fill="var(--hedge)" font-size="11.5">decide</text>
+                            <text x="431" y="230" fill="var(--hedge)" font-size="10" opacity=".85">règles → actions</text>
+                            <text x="431" y="244" fill="var(--hedge)" font-size="10" opacity=".85">le LLM en choisit une</text>
+
+                            <rect x="150" y="186" width="140" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="220" y="212" fill="currentColor" font-size="11.5">report</text>
+                            <text x="220" y="230" fill="currentColor" font-size="10" opacity=".65">PDF · STEP</text>
+                            <text x="220" y="244" fill="currentColor" font-size="10" opacity=".65">trace des décisions</text>
+
+                            <rect x="14" y="186" width="110" height="68" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                            <text x="69" y="216" fill="currentColor" font-size="11">statut</text>
+                            <text x="69" y="234" fill="currentColor" font-size="10" opacity=".6">+ livrables</text>
+                          </g>
+
+                          <g stroke="currentColor" stroke-width="1.4" fill="none" opacity=".6" marker-end="url(#ma-c)">
+                            <line x1="170" y1="90" x2="203" y2="90"/>
+                            <line x1="361" y1="90" x2="394" y2="90"/>
+                            <line x1="552" y1="90" x2="585" y2="90"/>
+                            <line x1="743" y1="90" x2="776" y2="90"/>
+                            <line x1="856" y1="124" x2="856" y2="184"/>
+                            <line x1="778" y1="220" x2="722" y2="220"/>
+                            <line x1="570" y1="220" x2="508" y2="220"/>
+                            <line x1="150" y1="220" x2="126" y2="220"/>
+                          </g>
+
+                          <!-- the LLM's two exits from decide -->
+                          <g stroke="var(--hedge)" stroke-width="1.5" fill="none" marker-end="url(#ma-h)">
+                            <line x1="356" y1="220" x2="292" y2="220"/>
+                            <path d="M431,254 L431,288 L856,288 L856,258"/>
+                          </g>
+                          <g font-family="Source Sans 3, sans-serif" font-size="10.5" fill="var(--hedge)" text-anchor="middle">
+                            <text x="323" y="210">accept</text>
+                            <text x="323" y="238">ou stop</text>
+                            <text x="643" y="306">refine / widen_search</text>
+                          </g>
+                        </svg>
+                      </div>
+                      <figcaption><b>Deux étapes LLM dans un déroulement déterministe.</b> Un texte illisible, une question bloquante, une analyse non implémentée ou une validation du solveur ratée arrêtent l'exécution tôt avec un statut explicite, au lieu de produire une conception non vérifiée.</figcaption>
+                    </figure>
+
+                    <div class="rk-tablewrap">
+                      <table class="rk-prose">
+                        <caption>Le LLM ne choisit jamais librement. Après chaque vérification, les règles calculent les actions autorisées ; le LLM n'arbitre que s'il y en a plusieurs, et une réponse hors de la liste revient à l'action par défaut de la règle.</caption>
+                        <thead>
+                          <tr><th>Situation après vérification</th><th>Actions autorisées</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Conception valide, une exigence à moins de 10 % de sa limite, ou plus d'itération disponible</td><td><code>accept</code></td></tr>
+                          <tr><td>Conception valide avec de la marge sur chaque exigence</td><td><code>refine</code>, <code>accept</code></td></tr>
+                          <tr><td>Conceptions valides trouvées, aucune n'a passé la vérification finale</td><td><code>refine</code>, <code>stop</code></td></tr>
+                          <tr><td>Aucune conception valide trouvée</td><td><code>widen_search</code>, <code>stop</code></td></tr>
+                          <tr><td>Aucune conception valide et plus d'itération disponible</td><td><code>stop</code></td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Compétences</span>
+                    <ul class="rk-plain">
+                      <li><b>Agents LLM avec garde-fous.</b> Un graphe d'états LangGraph autour d'un LLM local (Qwen 3.5 9B dans LM Studio, aucune API cloud) ; des décisions limitées aux actions autorisées par les règles, chaque nombre et vecteur extrait vérifié par rapport au texte source, et chaque décision tracée avec sa source.</li>
+                      <li><b>Analyse par éléments finis.</b> Calcul statique linéaire en tétraèdres quadratiques (CalculiX, Gmsh), contrôles de qualité du maillage, d'équilibre et de linéarité, convergence du maillage, et une chaîne de calcul validée sur 6 cas analytiques.</li>
+                      <li><b>Fatigue et résistance.</b> Courbes S-N avec facteurs de Marin, corrections de contrainte moyenne de Goodman, Gerber et Soderberg, comptage rainflow, cumul de dommage de Miner, vérification au flambement.</li>
+                      <li><b>CAO paramétrique.</b> Une équerre en L CadQuery avec nervures et congés, placée sur des points de fixation quelconques par changements de repère et exportée en STEP dans le repère global de la demande.</li>
+                      <li><b>Optimisation et matériaux.</b> Minimisation de la masse sous contraintes avec Optuna, raffinement à partir de la meilleure solution, classement des matériaux par indices d'Ashby et modèle de coût.</li>
+                      <li><b>Génie logiciel.</b> Modèles de données Pydantic, un système d'unités unique imposé, 186 tests (tests unitaires avec un LLM simulé, tests de fumée sur les vrais solveurs), une application Streamlit avec exécutions en arrière-plan, et un rapport PDF généré avec ReportLab et PyVista.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Résultats</span>
+                    <div class="rk-col">
+                      <p>Sur une équerre d'étagère en titane sous une charge statique de 2 000 N, le LLM a choisi <code>refine</code> après la première itération (1 004,7 g, 14 % de marge sur le déplacement) ; après la deuxième (960,5 g, 7 % de marge), les règles n'autorisaient plus que <code>accept</code>. <strong>Conception finale : Ti-6Al-4V, 960,5 g, 1,86 mm de déplacement pour une limite de 2 mm, un coefficient de sécurité à la limite élastique de 7,34 pour 2 requis, 10 vérifications sur 10 réussies.</strong> Un second exemple, une équerre murale en aluminium soumise à un million de cycles de charge, se termine vérifié à 239 g d'Al7075-T6, 19 % plus légère que sa première itération.</p>
+                    </div>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/MechAgent/result_von_mises.png" alt="Contrainte de von Mises sur l'équerre en L déformée, amplifiée six fois : contrainte faible en bleu foncé sur l'aile verticale, jaune à orange sur la base, et concentrations rouges aux deux trous de boulons et le long du pli." width="1400" height="1000" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Contrainte de von Mises (MPa).</b> L'échelle est plafonnée à la contrainte de conception de 120 MPa ; les valeurs plus élevées se situent aux appuis rigides des boulons.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/MechAgent/result_displacement.png" alt="Déplacement sur l'équerre en L déformée, amplifiée six fois : nul à la base boulonnée, croissant à travers le pli jusqu'à un maximum de 1,86 mm au bord supérieur de l'aile qui porte la charge." width="1400" height="1000" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Déplacement (mm).</b> 1,86 mm à l'aile chargée, pour une limite de 2 mm.</figcaption>
+                      </figure>
+                    </div>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/MechAgent/streamlit_request.png" alt="L'application Streamlit, thème sombre : le cahier des charges en texte libre d'une équerre d'étagère en titane, son interprétation sous forme de repère de l'équerre en coordonnées globales avec les dimensions déduites, et le tableau du plan d'analyse où l'analyse statique est requise et la fatigue, le flambement et l'analyse modale ne le sont pas, chacune avec sa méthode et sa raison." width="1920" height="1049" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>La demande, telle que comprise.</b> L'équerre placée dans le repère global, et chaque analyse requise ou non, avec sa raison.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/MechAgent/decision_trace.png" alt="La trace des décisions de l'exécution en titane dans l'application Streamlit : 17 étapes numérotées marquées llm, rule ou tool, de l'analyse et de la planification à la validation du solveur, à la sélection du matériau, à deux itérations de recherche et de vérification, à une décision du LLM d'affiner puis à une décision finale de la règle d'accepter, avec des boutons de téléchargement pour report.pdf, report.md et design.step." width="1920" height="1048" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>La trace des décisions.</b> 17 étapes, chacune marquée selon qui a décidé : le LLM, une règle ou un outil.</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+
+                  <p class="rk-foot">Projet personnel. Le premier composant pris en charge est une équerre en L à deux boulons, optimisée de façon paramétrique et non par optimisation topologique ; l'analyse modale n'est pas implémentée, donc une demande qui la nécessite est marquée invérifiable plutôt que validée. Prochaines étapes : un modèle d'assemblage boulonné avec contact, le flambement et l'analyse modale par éléments finis, d'autres types de composants et un front de Pareto masse–coût.</p>
+
+                </div>
+
+                <p class="project-links">
+                  <a href="https://github.com/elouansalaun/MechAgent">Dépôt ↗</a>
+                  <a href="https://github.com/elouansalaun/MechAgent/blob/main/docs/media/example_report.pdf">Exemple de rapport (PDF) ↗</a>
+                </p>
+
+              </div>
+            </div>
+          </article>
 
           <!-- ---------- PROJECT 2 ---------- -->
           <article class="project" id="p-seao">

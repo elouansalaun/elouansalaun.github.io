@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="100%" height="100%" viewBox="0 0 300 100" version="1.1" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;">
+    <!-- plain-text specification -->
+    <path d="M18,22L58,22L70,34L70,80L18,80Z" style="fill:none;stroke:black;stroke-width:2.2px;"/>
+    <path d="M58,22L58,34L70,34" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <path d="M26,42L60,42M26,51L56,51M26,60L61,60M26,69L48,69" style="fill:none;stroke:black;stroke-width:1.4px;"/>
+
+    <!-- arrow -->
+    <path d="M89,51L109,51" style="fill:none;stroke:black;stroke-width:1.67px;"/>
+    <path d="M108,47.25L113,51L108,54.75Z"/>
+
+    <!-- L bracket bolted to a wall, loaded at its tip -->
+    <path d="M126,18L126,84" style="fill:none;stroke:black;stroke-width:2px;"/>
+    <path d="M126,26L120,32M126,38L120,44M126,50L120,56M126,62L120,68M126,74L120,80" style="fill:none;stroke:black;stroke-width:1.1px;"/>
+    <path d="M128,24L136,24L136,64C136,66 137,67 139,67L190,67L190,75L128,75Z" style="fill:none;stroke:black;stroke-width:2.2px;"/>
+    <path d="M122,34L140,34M122,48L140,48" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <path d="M178,34L178,58" style="fill:none;stroke:black;stroke-width:1.67px;"/>
+    <path d="M174.25,57L178,62L181.75,57Z"/>
+
+    <!-- arrow -->
+    <path d="M201,51L221,51" style="fill:none;stroke:black;stroke-width:1.67px;"/>
+    <path d="M220,47.25L225,51L220,54.75Z"/>
+
+    <!-- verified report -->
+    <path d="M236,22L276,22L288,34L288,80L236,80Z" style="fill:none;stroke:black;stroke-width:2.2px;"/>
+    <path d="M276,22L276,34L288,34" style="fill:none;stroke:black;stroke-width:1.6px;"/>
+    <path d="M244,40L268,40M244,48L262,48" style="fill:none;stroke:black;stroke-width:1.4px;"/>
+    <circle cx="262" cy="64" r="10" style="fill:none;stroke:black;stroke-width:1.8px;"/>
+    <path d="M257,64L260.5,67.5L267,60.5" style="fill:none;stroke:black;stroke-width:2px;"/>
+</svg>
