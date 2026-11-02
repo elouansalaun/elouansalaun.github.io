@@ -1131,6 +1131,253 @@
         <div class="cat-slide" id="cat-ml" role="tabpanel" aria-labelledby="cat-ml-tab">
           <p class="cat-label">ML &amp; optimization</p>
 
+          <!-- ---------- PROJECT: ROBOT ARM WORLD MODEL ---------- -->
+          <article class="project" id="p-robot-arm">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-robot-arm-btn" type="button"
+                      aria-expanded="false" aria-controls="p-robot-arm-panel">
+                <span class="project-name">Robot arm pick-and-place: reinforcement learning against a learned world model</span>
+                <span class="project-meta">2025 · Python · MuJoCo · PyTorch · SAC · Stable-Baselines3 · world model · MPC · OpenCV</span>
+                <span class="project-summary">A simulated <b>6-DOF robot arm</b> finds an object with an <b>RGB-D camera</b>, picks it up and places it on a platform, while shape, mass, friction and positions change every episode. Everything is built from scratch to compare three controllers: <b>scripted inverse kinematics</b>, a <b>SAC reinforcement learning</b> policy and <b>MPC through a learned world model</b>. On unseen positions, the world model keeps <b>64% success against 16%</b> for the policy.</span>
+                <img class="project-icon" src="assets/img/icon_project_robot.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <img class="project-preview" src="assets/img/RobotArm/robot_world_model_explained.gif" alt="Animated explanation of the robot arm project: a simulated arm sees an object with a camera, and a scripted controller, a reinforcement learning policy and a planner using a learned world model each pick it up and place it on a target platform." width="1200" height="675" loading="lazy" decoding="async">
+
+            <div class="panel" id="p-robot-arm-panel" role="region" aria-labelledby="p-robot-arm-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <div class="rk-top">
+                    <p>Should a robot learn a policy that maps states to actions, or learn how the world
+                    responds and plan through that model? To find out, I built the whole pipeline from
+                    scratch: robot model, kinematics, perception, reinforcement learning, a learned dynamics
+                    model and a planner. A simulated arm has to find an object, pick it up and place it on
+                    a target, and <strong>three controllers are compared on the same fixed test
+                    episodes</strong>, including conditions they never saw in training. Everything runs in
+                    MuJoCo on two CPU cores, with no robot and no GPU.</p>
+
+                    <div class="rk-facts">
+                      <div class="rk-fact"><b>64% vs 16%</b><span>success on unseen object positions: planning through the world model against the SAC policy</span></div>
+                      <div class="rk-fact"><b>70 → 88%</b><span>on unseen objects once the planner penalises disagreement between the models of its ensemble</span></div>
+                      <div class="rk-fact"><b>≈1 mm</b><span>object localisation from a single RGB-D frame, under noise, lighting changes and clutter</span></div>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — How it works</span>
+                    <div class="rk-col">
+                      <h4>One task, three controllers, one benchmark</h4>
+                      <p>Each episode is a scenario sampled from a configuration: object shape, size, mass,
+                      friction, and object and target positions. The camera turns one RGB-D frame into
+                      the object's position, yaw and size by depth back-projection, colour segmentation and
+                      geometric fitting. The three controllers then receive the same state and are scored
+                      on the same reward.</p>
+                    </div>
+
+                    <div class="rk-tablewrap">
+                      <table class="rk-prose">
+                        <caption>The three controllers.</caption>
+                        <thead>
+                          <tr><th>Controller</th><th>How it decides</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Scripted</td><td>Hand-written phases, minimum-jerk Cartesian trajectories, closed-form inverse kinematics, and a retry when a grasp fails</td></tr>
+                          <tr><td>SAC</td><td>A neural policy trained by reinforcement learning, 300k steps with 100 scripted demonstrations mixed into every batch</td></tr>
+                          <tr><td>MPC</td><td>Plans through a learned dynamics model, an ensemble of 5 neural networks, and replans at every step</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame">
+                        <svg viewBox="0 44 940 246" role="img" aria-label="The model predictive control loop. The RGB-D camera estimates the object pose to about 1 mm; the 33-dimensional state goes to a cross-entropy method planner, which sends 256 candidate action sequences of 0.5 s to an ensemble of 5 neural networks; the ensemble returns predicted states and their spread, each sequence is scored by reward minus a penalty on the ensemble's disagreement, and only the first action of the best sequence is applied to the simulated arm before replanning, about 190 ms per decision.">
+                          <defs>
+                            <marker id="ra-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                            </marker>
+                            <marker id="ra-h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="var(--hedge)"/>
+                            </marker>
+                          </defs>
+
+                          <g font-family="IBM Plex Mono, monospace" text-anchor="middle">
+                            <rect x="14" y="70" width="156" height="72" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                            <text x="92" y="96" fill="currentColor" font-size="11.5">RGB-D camera</text>
+                            <text x="92" y="114" fill="currentColor" font-size="10" opacity=".65">segment + fit</text>
+                            <text x="92" y="128" fill="currentColor" font-size="10" opacity=".65">pose ≈ 1 mm</text>
+
+                            <rect x="214" y="70" width="140" height="72" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="284" y="96" fill="currentColor" font-size="11.5">state</text>
+                            <text x="284" y="114" fill="currentColor" font-size="10" opacity=".65">33 dims</text>
+                            <text x="284" y="128" fill="currentColor" font-size="10" opacity=".65">object, gripper</text>
+
+                            <rect x="398" y="70" width="170" height="72" rx="2" fill="none" stroke="var(--hedge)" stroke-width="2"/>
+                            <text x="483" y="96" fill="var(--hedge)" font-size="11.5">CEM planner</text>
+                            <text x="483" y="114" fill="var(--hedge)" font-size="10" opacity=".85">256 action sequences</text>
+                            <text x="483" y="128" fill="var(--hedge)" font-size="10" opacity=".85">of 0.5 s each</text>
+
+                            <rect x="672" y="58" width="170" height="72" rx="2" fill="none" stroke="currentColor" stroke-width="1" opacity=".4"/>
+                            <rect x="666" y="64" width="170" height="72" rx="2" fill="var(--surface)" stroke="currentColor" stroke-width="1.1" opacity=".7"/>
+                            <rect x="660" y="70" width="170" height="72" rx="2" fill="var(--surface)" stroke="currentColor" stroke-width="1.6"/>
+                            <text x="745" y="96" fill="currentColor" font-size="11.5">world model</text>
+                            <text x="745" y="114" fill="currentColor" font-size="10" opacity=".65">ensemble of 5 MLPs</text>
+                            <text x="745" y="128" fill="currentColor" font-size="10" opacity=".65">next state + contact</text>
+
+                            <rect x="398" y="214" width="170" height="60" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="483" y="240" fill="currentColor" font-size="11.5">MuJoCo arm</text>
+                            <text x="483" y="258" fill="currentColor" font-size="10" opacity=".65">6-DOF + gripper</text>
+                          </g>
+
+                          <g stroke="currentColor" stroke-width="1.4" fill="none" opacity=".6" marker-end="url(#ra-c)">
+                            <line x1="170" y1="106" x2="212" y2="106"/>
+                            <line x1="354" y1="106" x2="396" y2="106"/>
+                            <path d="M398,244 L92,244 L92,146"/>
+                          </g>
+                          <g stroke="var(--hedge)" stroke-width="1.5" fill="none" marker-end="url(#ra-h)">
+                            <line x1="568" y1="94" x2="656" y2="94"/>
+                            <line x1="660" y1="124" x2="572" y2="124"/>
+                            <line x1="483" y1="142" x2="483" y2="210"/>
+                          </g>
+
+                          <g font-family="Source Sans 3, sans-serif" font-size="10.5" fill="currentColor" opacity=".6">
+                            <text x="614" y="84" text-anchor="middle">sequences</text>
+                            <text x="614" y="158" text-anchor="middle">states, spread</text>
+                            <text x="475" y="182" text-anchor="end">first action only</text>
+                            <text x="245" y="236" text-anchor="middle">replan at every step · ≈190 ms per decision</text>
+                          </g>
+                          <text x="745" y="196" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--hedge)">score = reward − λ · disagreement</text>
+                        </svg>
+                      </div>
+                      <figcaption><b>Planning through a learned model.</b> The ensemble's disagreement
+                      measures how far the model is from what it was trained on; adding it to the cost keeps
+                      the planner away from actions the model cannot predict.</figcaption>
+                    </figure>
+
+                    <figure>
+                      <div class="rk-frame rk-frame--img">
+                        <img src="assets/img/RobotArm/controllers_comparison.gif" alt="Three side-by-side simulations of the same scenario: the scripted controller, the SAC policy and the MPC planner each move the arm to a red cube on a table, grasp it and place it on a green platform." width="720" height="180" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption><b>The same scenario, three controllers:</b> scripted (inverse kinematics and trajectories), SAC and MPC with the world model.</figcaption>
+                    </figure>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Skills</span>
+                    <ul class="rk-plain">
+                      <li><b>Robotics.</b> An MJCF arm with a two-finger gripper, position servos and tuned
+                      contacts; forward kinematics and Jacobian matching MuJoCo to 10⁻¹⁵, closed-form
+                      inverse kinematics returning all 8 branches, and damped least squares at every
+                      control step.</li>
+                      <li><b>Computer vision.</b> Object position, yaw and size from a single RGB-D frame,
+                      tested under depth noise, missing pixels, lighting changes and occluding
+                      distractors.</li>
+                      <li><b>Reinforcement learning.</b> A Gymnasium environment and SAC (Stable-Baselines3).
+                      Pure SAC never learned to grasp; mixing scripted demonstrations into every batch
+                      (RLPD) brought it to 85–100% validation success.</li>
+                      <li><b>World models and planning.</b> An ensemble of 5 MLPs predicting the next state
+                      and the risk of an unwanted contact, trained on about 120,000 transitions; a
+                      cross-entropy method planner with an uncertainty-aware cost.</li>
+                      <li><b>Evaluation.</b> Fixed test sets, 95% Wilson confidence intervals, 3 seeds,
+                      replayable simulator snapshots, resumable long jobs and unit tests from kinematics
+                      to the world model.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Results</span>
+
+                    <div class="rk-tablewrap">
+                      <table>
+                        <caption>Success rate over the same 50 test episodes per condition; SAC is pooled over
+                        3 seeds. "With camera" uses the estimated object pose instead of the true one.</caption>
+                        <thead>
+                          <tr><th>Controller</th><th>Nominal</th><th>New positions</th><th>New objects</th><th>Heavier, slippery</th><th>With camera</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Scripted (IK)</td><td>100%</td><td>100%</td><td>100%</td><td>100%</td><td>96%</td></tr>
+                          <tr><td>SAC</td><td>86%</td><td class="rk-bad">16%</td><td>69%</td><td>83%</td><td>60%</td></tr>
+                          <tr><td>MPC</td><td>86%</td><td class="rk-good">64%</td><td>70%</td><td>84%</td><td>68%</td></tr>
+                          <tr class="rk-hero"><td>MPC + uncertainty penalty</td><td>80%</td><td>58%</td><td class="rk-good">88%</td><td class="rk-good">96%</td><td>64%</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <ul class="rk-plain">
+                      <li><b>Equal in training, different outside it.</b> SAC and MPC both reach 86% on the
+                      training distribution, but the policy does not extrapolate to positions it has never
+                      seen (16%), while the learned dynamics carry over (64%).</li>
+                      <li><b>The model's own uncertainty pays off on new dynamics.</b> Penalising
+                      disagreement between ensemble members gains 12 to 18 points on unseen objects and
+                      physics, at a small cost on familiar ones.</li>
+                      <li><b>The camera is good enough for the script, not for the learned
+                      controllers.</b> Localisation is about 1 mm, but SAC and MPC lose 18 to 26 points
+                      because they rely on quantities the camera measures badly, such as velocities and
+                      the orientation of symmetric objects.</li>
+                      <li><b>The scripted controller is the reference</b>, it never fails here, but it
+                      encodes the task entirely by hand and is the slowest; SAC is the fastest (34 steps
+                      against 60) and about 400 times cheaper per decision than MPC.</li>
+                    </ul>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/RobotArm/sac_learning_curves.png" alt="SAC validation success on 40 fixed scenarios against environment steps: SAC with demonstrations, averaged over 3 seeds, rises from 0 to about 90% at 300,000 steps, while SAC from scratch stays at 0 throughout." width="902" height="572" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Demonstrations make SAC learn.</b> From scratch it never grasps;
+                        with demonstrations in every batch it reaches about 90%.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="assets/img/RobotArm/uncertainty_sweep.png" alt="MPC success rate against the weight of the ensemble disagreement in the planning cost, from 0 to 0.2: on new objects it rises from 70% to 90% at 0.1 then drops to 68% at 0.2; on the nominal condition it slowly falls from 86% to 66%." width="853" height="572" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>How much to trust the model.</b> A moderate penalty helps on new
+                        objects; too much makes the planner too cautious everywhere.</figcaption>
+                      </figure>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame rk-frame--img">
+                        <img src="assets/img/RobotArm/world_model_error.png" alt="Two log-scale panels of the world model's median open-loop prediction error on held-out episodes, for the object position and the gripper position, at 1, 5 and 10 steps of 50 ms. The model stays between about 0.3 and 8 mm, in free motion and in contact, while a 'nothing moves' baseline reaches 50 to 100 mm at 10 steps." width="1376" height="739" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption><b>The world model, open loop.</b> Under 1 cm of error over 0.5 s, against
+                      50 to 100 mm for assuming nothing moves once the arm or the object is in motion; its ensemble spread tracks the real error
+                      (log correlation 0.76), which is what the planner's penalty relies on.</figcaption>
+                    </figure>
+
+                    <figure>
+                      <div class="rk-frame rk-frame--img">
+                        <img src="assets/img/RobotArm/perception_detections.jpg" alt="Six camera views of the table with the detected object marked by its centre and a yellow yaw line: clean, realistic, lighting and heavy noise on the nominal cube or cylinder, a new object shape, and a cluttered scene with grey distractor objects next to the target." width="1440" height="720" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption><b>Perception under noise and clutter.</b> Detected position and yaw drawn on
+                      the camera image, from a clean frame to heavy noise and occluding distractors.</figcaption>
+                    </figure>
+
+                    <ul class="rk-plain">
+                      <li><b>Bugs only the full loop reveals.</b> A planner exploiting the reward by throwing
+                      objects onto the platform; a sampling distribution unable to express "go down, then
+                      hold still"; a 1 mm camera error turned into a 10-sigma input for the policy by its
+                      input normalisation.</li>
+                    </ul>
+                  </div>
+
+                  <p class="rk-foot">Personal project, in simulation only. Fixed test sets and 95% confidence
+                  intervals everywhere: an early 20-episode test showed an improvement that vanished on 50
+                  episodes.</p>
+
+                </div>
+
+                <p class="project-links">
+                  <a href="https://github.com/elouansalaun/Robotic_arm_rl_wm">Repository ↗</a>
+                </p>
+
+              </div>
+            </div>
+          </article>
+
           <!-- ---------- PROJECT: FROM NEURON TO AGI ---------- -->
           <article class="project" id="p-neuron-agi">
             <h3 class="project-heading">

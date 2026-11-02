@@ -982,6 +982,210 @@
         <div class="cat-slide" id="cat-ml" role="tabpanel" aria-labelledby="cat-ml-tab">
           <p class="cat-label">ML et optimisation</p>
 
+          <!-- ---------- PROJECT: ROBOT ARM WORLD MODEL ---------- -->
+          <article class="project" id="p-robot-arm">
+            <h3 class="project-heading">
+              <button class="project-head" id="p-robot-arm-btn" type="button"
+                      aria-expanded="false" aria-controls="p-robot-arm-panel">
+                <span class="project-name">Bras robotique de prise et dépose : apprentissage par renforcement contre modèle du monde appris</span>
+                <span class="project-meta">2025 · Python · MuJoCo · PyTorch · SAC · Stable-Baselines3 · modèle du monde · MPC · OpenCV</span>
+                <span class="project-summary">Un <b>bras robotique simulé à 6 degrés de liberté</b> repère un objet avec une <b>caméra RGB-D</b>, le saisit et le dépose sur une plateforme, alors que la forme, la masse, le frottement et les positions changent à chaque épisode. Tout est construit de zéro pour comparer trois contrôleurs : une <b>cinématique inverse scriptée</b>, une politique d'<b>apprentissage par renforcement SAC</b> et un <b>MPC à travers un modèle du monde appris</b>. Sur des positions jamais vues, le modèle du monde conserve <b>64 % de réussite contre 16 %</b> pour la politique.</span>
+                <img class="project-icon" src="../assets/img/icon_project_robot.svg" alt="" aria-hidden="true">
+                <span class="chevron" aria-hidden="true"></span>
+              </button>
+            </h3>
+
+            <img class="project-preview" src="../assets/img/RobotArm/robot_world_model_explained.gif" alt="Explication animée du projet de bras robotique : un bras simulé voit un objet avec une caméra, et un contrôleur scripté, une politique d'apprentissage par renforcement et un planificateur utilisant un modèle du monde appris le saisissent chacun pour le déposer sur une plateforme cible." width="1200" height="675" loading="lazy" decoding="async">
+
+            <div class="panel" id="p-robot-arm-panel" role="region" aria-labelledby="p-robot-arm-btn">
+              <div class="panel-inner">
+
+                <div class="rk">
+
+                  <div class="rk-top">
+                    <p>Un robot doit-il apprendre une politique qui associe des actions aux états, ou apprendre comment le monde réagit et planifier à travers ce modèle ? Pour le savoir, j'ai construit toute la chaîne de zéro : modèle du robot, cinématique, perception, apprentissage par renforcement, modèle de dynamique appris et planificateur. Un bras simulé doit trouver un objet, le saisir et le déposer sur une cible, et <strong>trois contrôleurs sont comparés sur les mêmes épisodes de test figés</strong>, y compris dans des conditions jamais vues à l'entraînement. Tout tourne dans MuJoCo sur deux cœurs de processeur, sans robot et sans GPU.</p>
+
+                    <div class="rk-facts">
+                      <div class="rk-fact"><b>64 % contre 16 %</b><span>de réussite sur des positions d'objet jamais vues : planification par le modèle du monde contre la politique SAC</span></div>
+                      <div class="rk-fact"><b>70 → 88 %</b><span>sur des objets jamais vus, une fois que le planificateur pénalise le désaccord entre les modèles de son ensemble</span></div>
+                      <div class="rk-fact"><b>≈1 mm</b><span>de localisation de l'objet à partir d'une seule image RGB-D, malgré le bruit, les changements d'éclairage et l'encombrement</span></div>
+                    </div>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">01 — Fonctionnement</span>
+                    <div class="rk-col">
+                      <h4>Une tâche, trois contrôleurs, un banc d'essai</h4>
+                      <p>Chaque épisode est un scénario tiré d'une configuration : forme, taille, masse et frottement de l'objet, positions de l'objet et de la cible. La caméra transforme une image RGB-D en position, lacet et taille de l'objet par rétroprojection de la profondeur, segmentation par couleur et ajustement géométrique. Les trois contrôleurs reçoivent ensuite le même état et sont évalués avec la même récompense.</p>
+                    </div>
+
+                    <div class="rk-tablewrap">
+                      <table class="rk-prose">
+                        <caption>Les trois contrôleurs.</caption>
+                        <thead>
+                          <tr><th>Contrôleur</th><th>Comment il décide</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Scripté</td><td>Phases écrites à la main, trajectoires cartésiennes à jerk minimal, cinématique inverse analytique, et une nouvelle tentative quand une saisie échoue</td></tr>
+                          <tr><td>SAC</td><td>Une politique neuronale entraînée par apprentissage par renforcement, 300k pas avec 100 démonstrations scriptées mêlées à chaque lot</td></tr>
+                          <tr><td>MPC</td><td>Planifie à travers un modèle de dynamique appris, un ensemble de 5 réseaux de neurones, et replanifie à chaque pas</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame">
+                        <svg viewBox="0 44 940 246" role="img" aria-label="La boucle de commande prédictive. La caméra RGB-D estime la pose de l'objet à environ 1 mm près ; l'état de 33 dimensions va à un planificateur par méthode d'entropie croisée, qui envoie 256 séquences d'actions candidates de 0,5 s à un ensemble de 5 réseaux de neurones ; l'ensemble renvoie les états prédits et leur dispersion, chaque séquence est notée par la récompense moins une pénalité sur le désaccord de l'ensemble, et seule la première action de la meilleure séquence est appliquée au bras simulé avant de replanifier, environ 190 ms par décision.">
+                          <defs>
+                            <marker id="ra-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+                            </marker>
+                            <marker id="ra-h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                              <path d="M0,0 L10,5 L0,10 z" fill="var(--hedge)"/>
+                            </marker>
+                          </defs>
+
+                          <g font-family="IBM Plex Mono, monospace" text-anchor="middle">
+                            <rect x="14" y="70" width="156" height="72" rx="2" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 3" opacity=".85"/>
+                            <text x="92" y="96" fill="currentColor" font-size="11.5">caméra RGB-D</text>
+                            <text x="92" y="114" fill="currentColor" font-size="10" opacity=".65">segmentation</text>
+                            <text x="92" y="128" fill="currentColor" font-size="10" opacity=".65">pose ≈ 1 mm</text>
+
+                            <rect x="214" y="70" width="140" height="72" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="284" y="96" fill="currentColor" font-size="11.5">état</text>
+                            <text x="284" y="114" fill="currentColor" font-size="10" opacity=".65">33 dimensions</text>
+                            <text x="284" y="128" fill="currentColor" font-size="10" opacity=".65">objet, pince</text>
+
+                            <rect x="398" y="70" width="170" height="72" rx="2" fill="none" stroke="var(--hedge)" stroke-width="2"/>
+                            <text x="483" y="96" fill="var(--hedge)" font-size="11.5">planificateur CEM</text>
+                            <text x="483" y="114" fill="var(--hedge)" font-size="10" opacity=".85">256 séquences</text>
+                            <text x="483" y="128" fill="var(--hedge)" font-size="10" opacity=".85">de 0,5 s chacune</text>
+
+                            <rect x="672" y="58" width="170" height="72" rx="2" fill="none" stroke="currentColor" stroke-width="1" opacity=".4"/>
+                            <rect x="666" y="64" width="170" height="72" rx="2" fill="var(--surface)" stroke="currentColor" stroke-width="1.1" opacity=".7"/>
+                            <rect x="660" y="70" width="170" height="72" rx="2" fill="var(--surface)" stroke="currentColor" stroke-width="1.6"/>
+                            <text x="745" y="96" fill="currentColor" font-size="11.5">modèle du monde</text>
+                            <text x="745" y="114" fill="currentColor" font-size="10" opacity=".65">ensemble de 5 MLP</text>
+                            <text x="745" y="128" fill="currentColor" font-size="10" opacity=".65">état suivant, contact</text>
+
+                            <rect x="398" y="214" width="170" height="60" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                            <text x="483" y="240" fill="currentColor" font-size="11.5">bras MuJoCo</text>
+                            <text x="483" y="258" fill="currentColor" font-size="10" opacity=".65">6 ddl + pince</text>
+                          </g>
+
+                          <g stroke="currentColor" stroke-width="1.4" fill="none" opacity=".6" marker-end="url(#ra-c)">
+                            <line x1="170" y1="106" x2="212" y2="106"/>
+                            <line x1="354" y1="106" x2="396" y2="106"/>
+                            <path d="M398,244 L92,244 L92,146"/>
+                          </g>
+                          <g stroke="var(--hedge)" stroke-width="1.5" fill="none" marker-end="url(#ra-h)">
+                            <line x1="568" y1="94" x2="656" y2="94"/>
+                            <line x1="660" y1="124" x2="572" y2="124"/>
+                            <line x1="483" y1="142" x2="483" y2="210"/>
+                          </g>
+
+                          <g font-family="Source Sans 3, sans-serif" font-size="10.5" fill="currentColor" opacity=".6">
+                            <text x="614" y="84" text-anchor="middle">séquences</text>
+                            <text x="614" y="158" text-anchor="middle">états, dispersion</text>
+                            <text x="475" y="182" text-anchor="end">première action seulement</text>
+                            <text x="245" y="236" text-anchor="middle">replanifie à chaque pas · ≈190 ms par décision</text>
+                          </g>
+                          <text x="745" y="196" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="var(--hedge)">score = récompense − λ · désaccord</text>
+                        </svg>
+                      </div>
+                      <figcaption><b>Planifier à travers un modèle appris.</b> Le désaccord de l'ensemble mesure à quel point le modèle s'éloigne de ce qu'il a vu à l'entraînement ; l'ajouter au coût éloigne le planificateur des actions que le modèle ne sait pas prédire.</figcaption>
+                    </figure>
+
+                    <figure>
+                      <div class="rk-frame rk-frame--img">
+                        <img src="../assets/img/RobotArm/controllers_comparison.gif" alt="Trois simulations côte à côte du même scénario : le contrôleur scripté, la politique SAC et le planificateur MPC amènent chacun le bras jusqu'à un cube rouge sur une table, le saisissent et le déposent sur une plateforme verte." width="720" height="180" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption><b>Le même scénario, trois contrôleurs :</b> scripté (cinématique inverse et trajectoires), SAC et MPC avec le modèle du monde.</figcaption>
+                    </figure>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">02 — Compétences</span>
+                    <ul class="rk-plain">
+                      <li><b>Robotique.</b> Un bras MJCF avec une pince à deux doigts, des servos en position et des contacts réglés ; cinématique directe et jacobienne identiques à MuJoCo à 10⁻¹⁵ près, cinématique inverse analytique renvoyant les 8 branches, et moindres carrés amortis à chaque pas de commande.</li>
+                      <li><b>Vision par ordinateur.</b> Position, lacet et taille de l'objet à partir d'une seule image RGB-D, testés sous bruit de profondeur, pixels manquants, changements d'éclairage et distracteurs occultants.</li>
+                      <li><b>Apprentissage par renforcement.</b> Un environnement Gymnasium et SAC (Stable-Baselines3). SAC seul n'a jamais appris à saisir ; mêler des démonstrations scriptées à chaque lot (RLPD) l'a amené à 85–100 % de réussite en validation.</li>
+                      <li><b>Modèles du monde et planification.</b> Un ensemble de 5 MLP prédisant l'état suivant et le risque d'un contact indésirable, entraîné sur environ 120 000 transitions ; un planificateur par méthode d'entropie croisée avec un coût tenant compte de l'incertitude.</li>
+                      <li><b>Évaluation.</b> Jeux de test figés, intervalles de confiance de Wilson à 95 %, 3 graines, instantanés du simulateur rejouables, longues tâches reprenables et tests unitaires, de la cinématique au modèle du monde.</li>
+                    </ul>
+                  </div>
+
+                  <div class="rk-sec">
+                    <span class="rk-eyebrow">03 — Résultats</span>
+
+                    <div class="rk-tablewrap">
+                      <table>
+                        <caption>Taux de réussite sur les mêmes 50 épisodes de test par condition ; SAC est regroupé sur 3 graines. « Avec caméra » utilise la pose estimée de l'objet au lieu de la vraie.</caption>
+                        <thead>
+                          <tr><th>Contrôleur</th><th>Nominal</th><th>Nouvelles positions</th><th>Nouveaux objets</th><th>Plus lourd, glissant</th><th>Avec caméra</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr><td>Scripté (IK)</td><td>100 %</td><td>100 %</td><td>100 %</td><td>100 %</td><td>96 %</td></tr>
+                          <tr><td>SAC</td><td>86 %</td><td class="rk-bad">16 %</td><td>69 %</td><td>83 %</td><td>60 %</td></tr>
+                          <tr><td>MPC</td><td>86 %</td><td class="rk-good">64 %</td><td>70 %</td><td>84 %</td><td>68 %</td></tr>
+                          <tr class="rk-hero"><td>MPC + pénalité d'incertitude</td><td>80 %</td><td>58 %</td><td class="rk-good">88 %</td><td class="rk-good">96 %</td><td>64 %</td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <ul class="rk-plain">
+                      <li><b>Égaux à l'entraînement, différents en dehors.</b> SAC et MPC atteignent tous deux 86 % sur la distribution d'entraînement, mais la politique n'extrapole pas aux positions qu'elle n'a jamais vues (16 %), alors que la dynamique apprise se transpose (64 %).</li>
+                      <li><b>L'incertitude du modèle paie sur des dynamiques nouvelles.</b> Pénaliser le désaccord entre les membres de l'ensemble fait gagner 12 à 18 points sur les objets et la physique jamais vus, pour un faible coût sur les cas connus.</li>
+                      <li><b>La caméra suffit au script, pas aux contrôleurs appris.</b> La localisation est d'environ 1 mm, mais SAC et MPC perdent 18 à 26 points car ils s'appuient sur des grandeurs que la caméra mesure mal, comme les vitesses et l'orientation des objets symétriques.</li>
+                      <li><b>Le contrôleur scripté est la référence</b>, il n'échoue jamais ici, mais il encode toute la tâche à la main et c'est le plus lent ; SAC est le plus rapide (34 pas contre 60) et environ 400 fois moins coûteux par décision que le MPC.</li>
+                    </ul>
+
+                    <div class="rk-shots">
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/RobotArm/sac_learning_curves.png" alt="Réussite de SAC en validation sur 40 scénarios figés en fonction du nombre de pas d'environnement : SAC avec démonstrations, moyenné sur 3 graines, monte de 0 à environ 90 % à 300 000 pas, tandis que SAC partant de zéro reste à 0 tout du long." width="902" height="572" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Les démonstrations font apprendre SAC.</b> Seul, il ne saisit jamais ; avec des démonstrations dans chaque lot, il atteint environ 90 %.</figcaption>
+                      </figure>
+                      <figure>
+                        <div class="rk-frame rk-frame--img">
+                          <img src="../assets/img/RobotArm/uncertainty_sweep.png" alt="Taux de réussite du MPC en fonction du poids du désaccord de l'ensemble dans le coût de planification, de 0 à 0,2 : sur les nouveaux objets il passe de 70 % à 90 % à 0,1 puis retombe à 68 % à 0,2 ; en condition nominale il baisse lentement de 86 % à 66 %." width="853" height="572" loading="lazy" decoding="async">
+                        </div>
+                        <figcaption><b>Jusqu'où faire confiance au modèle.</b> Une pénalité modérée aide sur les nouveaux objets ; trop forte, elle rend le planificateur trop prudent partout.</figcaption>
+                      </figure>
+                    </div>
+
+                    <figure>
+                      <div class="rk-frame rk-frame--img">
+                        <img src="../assets/img/RobotArm/world_model_error.png" alt="Deux graphiques en échelle logarithmique de l'erreur médiane de prédiction en boucle ouverte du modèle du monde sur des épisodes de test, pour la position de l'objet et celle de la pince, à 1, 5 et 10 pas de 50 ms. Le modèle reste entre environ 0,3 et 8 mm, en mouvement libre comme en contact, alors qu'une référence « rien ne bouge » atteint 50 à 100 mm à 10 pas." width="1376" height="739" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption><b>Le modèle du monde, en boucle ouverte.</b> Moins de 1 cm d'erreur sur 0,5 s, contre 50 à 100 mm en supposant que rien ne bouge dès que le bras ou l'objet est en mouvement ; la dispersion de l'ensemble suit l'erreur réelle (corrélation logarithmique de 0,76), ce sur quoi repose la pénalité du planificateur.</figcaption>
+                    </figure>
+
+                    <figure>
+                      <div class="rk-frame rk-frame--img">
+                        <img src="../assets/img/RobotArm/perception_detections.jpg" alt="Six vues caméra de la table avec l'objet détecté marqué par son centre et une ligne jaune de lacet : bruit nul, réaliste, d'éclairage et fort sur le cube ou le cylindre nominal, une nouvelle forme d'objet, et une scène encombrée avec des objets gris distracteurs près de la cible." width="1440" height="720" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption><b>Perception sous bruit et encombrement.</b> Position et lacet détectés dessinés sur l'image de la caméra, d'une image propre à un bruit fort et à des distracteurs occultants.</figcaption>
+                    </figure>
+
+                    <ul class="rk-plain">
+                      <li><b>Des bogues que seule la boucle complète révèle.</b> Un planificateur exploitant la récompense en lançant les objets sur la plateforme ; une distribution d'échantillonnage incapable d'exprimer « descendre, puis rester immobile » ; une erreur caméra de 1 mm transformée en entrée à 10 sigmas pour la politique par sa normalisation des entrées.</li>
+                    </ul>
+                  </div>
+
+                  <p class="rk-foot">Projet personnel, en simulation uniquement. Jeux de test figés et intervalles de confiance à 95 % partout : un premier test sur 20 épisodes montrait une amélioration qui a disparu sur 50 épisodes.</p>
+
+                </div>
+
+                <p class="project-links">
+                  <a href="https://github.com/elouansalaun/Robotic_arm_rl_wm">Dépôt ↗</a>
+                </p>
+
+              </div>
+            </div>
+          </article>
+
           <!-- ---------- PROJECT: FROM NEURON TO AGI ---------- -->
           <article class="project" id="p-neuron-agi">
             <h3 class="project-heading">
